@@ -1,0 +1,1114 @@
+
+\documentclass{ctexbook}
+
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\begin{document}
+
+\title{神经网络与深度学习笔记}
+\author{inlmouse}
+\date{}
+\maketitle
+
+\chapter{序论}
+
+让机器具备智能是人们长期追求的目标，但是关于智能的定义也十分模糊。Alan Turing 在1950 年提出了著名的图灵测试：“一个人在不接触对方的情况下，通过一种特殊的方式，和对方进行一系列的问答。如果在相当长时间内，他无法根据这些问题判断对方是人还是计算机，那么就可以认为这个计算机是智能的”\footnote{传统意义上的图灵测试是有逻辑上的问题，具体请参考“Chinese Room”悖论；现代意义上的图灵测试在流程上更加复杂和严谨}。\\
+
+要通过真正地通过图灵测试，计算机必须具备理解语言、学习、记忆、推理、决策等能力。这也延伸出很多不同的学科，比如机器感知（计算机视觉、自然语言处理），学习（模式识别、机器学习、增强学习），记忆（知识表示）、决策（规划、数据挖掘）等。所有这些分支学科都可以看成是\textbf{人工智能}（Artificial Intelligence，AI）的研究范畴。其中，\textbf{机器学习}（Machine Learning，ML）因其在很多领域的出色表现逐渐成为热门学科。机器学习的主要目的是设计和分析一些\textbf{学习算法}，让计算机从数据中获得一些决策函数，从而可以帮助人们解决一些特定任务，提高效率。对于人工智能来说，机器学习从一开始就是一个重要的研究方向，并涉及了概率论、统计学、逼近论、凸分析、计算复杂性理论等多门学科。\\
+
+\textbf{人工神经网络}（Artificial Neural Network，ANN），也简称\textbf{神经网络}，是众多机器学习算法中比较接近生物神经网络特性的数学模型\footnote{这里的“接近”生物神经网络模型并非为一个仿生模型，本质而言现在计算机对一个事物的理解模型与人脑的差别是相当的大。这一点可能在后面的章节说明}。人工神经网络通过模拟生物神经网络（大脑）的结构和功能，由大量的节点（或称“神经元”，或“单元”）和之间相互联接构成，可以用来对数据之间的复杂关系进行建模。\\
+
+Rosenblatt\cite{rosenblatt1958perceptron} 最早提出可以模拟人类感知能力的数学模型，并称之为感知器（Perceptron），并提出了一种接近于人类学习过程（迭代、试错）的学习算法。但感知器因其结构过于简单，不能解决简单的异或（XOR）等线性不可分问题，造成了人工神经领域发展的长年停滞及低潮。直到1980 年以后，Geoffrey Hinton、Yann LeCun等人将\textbf{反向传播算法}（Backpropagation，BP）引入到多层感知器\cite{rumelhart1988learning}，人工神经网络才又重新引起人们的注意，并开始成为新的研究热点。但是，2000 年以后，因为当时计算机的计算能力不足以支持训练大规模的神经网络，并且随着支持向量机（SupportVector Machines，SVM）等方法的兴起，人工神经网络又一次陷入低潮。\\
+
+直到2006 年，Hinton and Salakhutdinov \cite{hinton2006reducing} 发现多层前馈神经网络可以先通过逐层预训练，再用反向传播算法进行精调的方式进行有效学习。并且近年来计算机计算能力的提高（大规模并行计算，GPU），计算机已经可以训练大规模的人工神经网络。随着深度的人工神经网络在语音识别\cite{hinton2012deep} 和图像分类\cite{krizhevsky2012imagenet} 等任务上的巨大成功，越来越多的人开始关注这一个“崭新”的研究领域：深度学习。目前，深度学习技术在学术界和工业界取得了广泛的成功，并逐渐受到了高度重视。\\
+
+\textbf{深度学习}（Deep Learning，DL）是从机器学习中的人工神经网络发展出来的新领域。早期所谓的“深度”是指超过一层的神经网络。但随着深度学习的快速发展，其内涵已经超出了传统的多层神经网络，甚至机器学习的范畴，逐渐朝着人工智能的方向快速发展。\\
+
+本笔记主要介绍人工神经网络与深度学习中的基础知识、主要模型：\textbf{ 卷积神经网络}（Convolution Neural Network, CNN）、\textbf{递归神经网络}（Recurrent Neural Network, RNN）等，以及在计算机视觉（Computer Vision, CV）、自然语言处理（Natural Language Processing, NLP）等领域的应用。
+
+\section{进一步的阅读和总结}
+若希望全面的了解人工神经网络和深度学习的知识，可以参考如下文献：
+\begin{enumerate}
+  \item Ian Gooddellow, Aaron Courville, and Yoshua Bengio. Deep learning. Book in preparation for MIT Press, 2015. \\URL: http://goodfeli.github.io/dlbook/
+      \cite{Goodfellow-et-al-2015-Book}.
+  \item Yoshua Bengio. Learning deep architectures for AI. Foundations and trendsR in Machine Learning, 2(1):1–127, 2009\cite{bengio2009learning}.
+  \item http://deeplearning.net/
+  \item http://arxiv.org/list/stat.ML/recent
+\end{enumerate}
+
+
+\chapter{数学准备知识}
+\section{矢量分析}
+在线性代数中，\textbf{标量}（Scalar）是一个实数，而\textbf{矢量}（Vector）是指$n$个实数组成的有序数组，也称为$n$维向量。如果没有特别说明，一个$n$ 维向量一般表示列向量，即大小为$n \times 1$ 的矩阵。
+\begin{equation}\label{2.1}
+  \boldsymbol{a}=\begin{pmatrix}
+a_{1}\\
+a_{2}\\
+\vdots\\
+a_{n}
+\end{pmatrix}
+\end{equation}
+其中，$a_i$称为向量$\boldsymbol{a}$的第$i$ 个分量，或第$i$维。
+为简化书写，有时加上转置符$T$来简单表示列向量：
+\begin{equation}\label{2.2}
+  \boldsymbol{a}=\begin{pmatrix}
+a_{1} & a_{2} & \cdots & a_{n}\end{pmatrix}^T
+\end{equation}
+
+向量符号一般用黑体小写字母$\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c}$，或小写希腊字母$\alpha, \beta, \gamma$ 等来表示。
+\subsection{矢量的模}
+矢量$\boldsymbol{a}$的模$\begin{Vmatrix}\boldsymbol{a}\end{Vmatrix}$ 为：
+\begin{equation}\label{2.3}
+  \begin{Vmatrix}\boldsymbol{a}\end{Vmatrix}=\sqrt{\sum_{i=1}^{n}a_{i}^{2}}
+\end{equation}
+\subsection{矢量的范数}
+在线性代数中，\textbf{范数}（norm）是一个表示“长度”概念的函数，为向量空间内的所有向量赋予非零的正长度或大小。对于一个$n$ 维的向量$\boldsymbol{x}$，其常见的范数有:\\
+$L_1$范数：
+    \begin{equation}\label{2.4}
+        \begin{vmatrix}\boldsymbol{x}\end{vmatrix}_1=\sum_{i=1}^{n}\begin{vmatrix}a_{i}\end{vmatrix}
+    \end{equation}
+$L_2$范数：
+    \begin{equation}\label{2.5}
+        \begin{Vmatrix}\boldsymbol{x}\end{Vmatrix}_2=\sqrt{\sum_{i=1}^{n}a_{i}^{2}}=\sqrt{\boldsymbol{x}^T\boldsymbol{x}}
+    \end{equation}
+\section{矩阵及其基本运算}
+\subsection{常见的矩阵}
+
+\textbf{对称矩阵}指其转置等于自己的矩阵，即满足$A = A^T$。
+
+\textbf{对角矩阵}（Diagonal Matrix）是一个主对角线之外的元素皆为0 的矩阵。对角线上的元素可以为0 或其他值。一个$n \times n$的对角矩阵矩阵$A$ 满足：
+\begin{equation}\label{2.6}
+  A_{ij}=0, (i\not=j),\forall i,j \in \{1,2,\dots,n\}
+\end{equation}
+
+对角矩阵$A$也可以记为$\boldsymbol{diag}(\boldsymbol{a})$ 和$n$ 维向量$\boldsymbol{b}$ 的乘积为一个$n$维向量:
+\begin{equation}\label{2.7}
+  \boldsymbol{Ab}=\boldsymbol{diag}(\boldsymbol{a})\boldsymbol{b}=\boldsymbol{a}\cdot\boldsymbol{b}
+\end{equation}
+
+\textbf{单位矩阵}是一种特殊的的对角矩阵，其主对角线元素为1，其余元素为0。$n$ 阶单位矩阵$I_n$，是一个$n \times n$的方形矩阵。可以记为$I_n=\boldsymbol{diag}(1,1,\cdots,1)$。
+\subsection{矩阵的范数}
+矩阵的范数有很多种形式，这里我们定义其p-范数为：
+\begin{equation}\label{2.8}
+  \begin{Vmatrix}\boldsymbol{A}\end{Vmatrix}_p=\left( \sum_{i=1}^{m}{\sum_{j=1}^{n}\begin{vmatrix}a_{ij}\end{vmatrix}^p}\right)^{\frac{1}{p}}
+\end{equation}
+
+\section{导数}
+对于一个$p$维向量$\boldsymbol{x}\in \mathbb{R}^p$，函数$y=f(x)=f(x_1,x_2,\cdots,x_p)\in\mathbb{R}$，则$y$关于$\boldsymbol{x}$的导数为：
+\begin{equation}\label{2.9}
+  \nabla_xf(x)=\begin{pmatrix}\frac{\partial f(x)}{\partial x_1}\\ \vdots\\ \frac{\partial f(x)}{\partial x_p}\end{pmatrix}\in\mathbb{R}^p
+\end{equation}
+
+对于一个$p$维向量$\boldsymbol{x}\in \mathbb{R}^p$，函数$y=f(x)=\left(f_1(x_1,\cdots,x_p), \cdots ,f_q(x_1,\cdots,x_p)\right)^T\in\mathbb{R}^q$，则$y$关于$\boldsymbol{x}$ 的导数为：
+\begin{equation}\label{2.10}
+  \nabla_xf(x)=\begin{pmatrix}\frac{\partial f_1(x)}{\partial x_1} & \cdots & \frac{\partial f_1(x)}{\partial x_q}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_q(x)}{\partial x_1} & \cdots & \frac{\partial f_q(x)}{\partial x_p} \end{pmatrix}\in\mathbb{R}^{p\times q}
+\end{equation}
+\subsection{常见的向量导数}
+\begin{equation}\label{2.11}
+  \frac{\partial A\boldsymbol{x}}{\partial\boldsymbol{x}}=A^T
+\end{equation}
+\begin{equation}\label{2.12}
+  \frac{\partial\boldsymbol{x}^TA}{\partial\boldsymbol{x}}=A
+\end{equation}
+证明留作习题。
+\subsection{导数法则}
+导数满足以下法则：
+\begin{itemize}
+  \item 加减法法则：$\boldsymbol{y}=f(\boldsymbol{x}),\boldsymbol{z}=g(\boldsymbol{x})$，那么：
+\end{itemize}
+\begin{equation}\label{2.13}
+  \frac{\partial (\boldsymbol{y}\pm\boldsymbol{z})}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{x}}\pm\frac{\partial \boldsymbol{z}}{\partial \boldsymbol{x}}
+\end{equation}
+\begin{itemize}
+  \item 乘法法则：$\boldsymbol{y}=f(\boldsymbol{x}),\boldsymbol{z}=g(\boldsymbol{x})$，那么：
+\end{itemize}
+\begin{equation}\label{2.14}
+  \frac{\partial\boldsymbol{y}^T\boldsymbol{z}}{\partial\boldsymbol{x}}=\frac{\partial\boldsymbol{y}}{\partial\boldsymbol{x}}\boldsymbol{z}+\frac{\partial\boldsymbol{z}}{\partial\boldsymbol{x}}\boldsymbol{y}
+\end{equation}
+\begin{itemize}
+  \item 链式法则：$\boldsymbol{z}=f(\boldsymbol{y}),\boldsymbol{y}=g(\boldsymbol{x})$，那么：
+\end{itemize}
+\begin{equation}\label{2.15}
+  \frac{\partial \boldsymbol{z}}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{x}}\cdot\frac{\partial \boldsymbol{z}}{\partial \boldsymbol{y}}
+\end{equation}
+如果$\boldsymbol{z}=f(\boldsymbol{y}),\boldsymbol{y}=g(\boldsymbol{X})$，则：
+\begin{equation}\label{2.16}
+  \frac{\partial \boldsymbol{z}}{\partial \boldsymbol{X_{ij}}}=\boldsymbol{tr}\left(\left(\frac{\partial \boldsymbol{z}}{\partial \boldsymbol{y}}\right)^T\cdot\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{X}_{ij}}\right)
+\end{equation}
+证明留作习题。
+\section{常用函数}
+这里列出几个常用的函数：
+
+假设一个函数$f(x)$的输入时标量$x$。对于标量族$\{x_1,\cdots,x_K\}$，可以通过$f(x)$映射到另一个标量族$\{z_1,\cdots,z_K\}$，即：
+\begin{equation}\label{2.17}
+  z_k=f(x_k),\forall k=1,\cdots,K
+\end{equation}
+简便起见，定义：$\boldsymbol{x}=(x_1,\cdots,x_K)^T,\boldsymbol{z}=(z_1,\cdots,z_K)^T$;
+\begin{equation}\label{2.18}
+  \boldsymbol{z}=f(\boldsymbol{x})
+\end{equation}
+注意这里的$f$是按位运算的。显然：
+\begin{equation}\label{2.19}
+  \frac{\partial f(\boldsymbol{x})}{\partial \boldsymbol{x}}=\begin{pmatrix}
+  f'(x_1) & 0 & \cdots & 0 \\
+  0 & f'(x_2) & \cdots & 0 \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  0 & 0 & \cdots & f'(x_K)
+ \end{pmatrix}=\boldsymbol{diag}(f'(\boldsymbol{x}))
+\end{equation}
+
+\subsection{logistic函数}
+logistic函数经常用来将一个实数空间的数映射到$(0, 1)$ 区间,记为$\sigma(x)$:
+\begin{equation}\label{2.20}
+  \sigma(x)=\frac{1}{1+\exp(-x)}
+\end{equation}
+重要的是其导数关系：
+\begin{equation}\label{2.21}
+  \sigma^{\prime}(x)=\sigma(x)(1-\sigma(x))
+\end{equation}
+\subsection{softmax函数}
+softmax 函数是将多个标量映射为一个概率分布。
+对于$K$个标量$x_1,\cdots, x_K$，softmax函数定义为：
+\begin{equation}\label{2.22}
+  z_k=softmax(x_k)=\frac{\exp(x_k)}{\sum_{i=1}^{K}\exp(x_i)}
+\end{equation}
+可以将$K$个变量$x_1,\cdots, x_K$转换为一个分布$z_1,\cdots, z_K$，使得满足：
+\begin{equation}\label{2.23}
+  z_k\in[0,1],\forall k,  \sum_{i=1}^{K}z_i=1.
+\end{equation}
+输入为$K$维向量$\boldsymbol{x}$时，
+
+\begin{gather}\label{2.24}
+  \boldsymbol{\hat{z}} = softmax(\boldsymbol{x}) \\[6pt]
+\begin{split}
+  =\frac{1}{\sum_{i=1}^{K}\exp(x_i)}\begin{pmatrix}exp(x_1)\\ \vdots\\ \exp(x_K)\end{pmatrix}\\
+  =\frac{\exp{\boldsymbol{x}}}{\sum_{i=1}^{K}\exp(x_i)}\\
+  =\frac{\exp{\boldsymbol{x}}}{ones_K^T\exp{\boldsymbol{x}}}
+  \end{split}\\[6pt]
+\end{gather}
+其中$ones_K^T=(1,\cdots,1)_{K \times 1}$。
+其导数为：
+\begin{gather}\label{2.27}
+  \frac{\partial softmax(\boldsymbol{x})}{\partial \boldsymbol{x}}=\frac{\partial \left( \frac{\exp{\boldsymbol{x}}}{ones_K^T\exp{\boldsymbol{x}}}\right)}{\partial \boldsymbol{x}}\\[6pt]
+  \begin{split}
+  =\frac{1}{ones_K\exp{\boldsymbol{x}}}\cdot \frac{\partial\exp{\boldsymbol{x}}}{\partial \boldsymbol{x}}+\frac{\partial \left( \frac{\exp{\boldsymbol{x}}}{ones_K^T\exp{\boldsymbol{x}}}\right)}{\partial \boldsymbol{x}}\cdot\left(\exp{\boldsymbol{x}}\right)^T\\
+  =\frac{\boldsymbol{diag}(\exp(\boldsymbol{x}))}{ones_K\exp(\boldsymbol{x})}-\left(\frac{1}{(ones_K^T\exp(\boldsymbol{x}))^2}\right) \cdot \frac{ones_K^T\exp(\boldsymbol{x})}{\partial \boldsymbol{x}}\cdot \left( \exp(\boldsymbol{x})\right)^T\\
+  =\frac{\boldsymbol{diag}(\exp(\boldsymbol{x}))}{ones_K\exp(\boldsymbol{x})}-\left(\frac{1}{(ones_K^T\exp(\boldsymbol{x}))^2}\right) \cdot \boldsymbol{diag}(\exp(\boldsymbol{x}))\cdot ones_K \cdot \left( \exp(\boldsymbol{x})\right)^T
+  \end{split}\\[6pt]
+\end{gather}
+考虑到$\boldsymbol{diag}(\exp(\boldsymbol{x}))\cdot ones_K=\exp(\boldsymbol{x})$,
+\begin{gather}\label{2.30}
+  \frac{\partial softmax(\boldsymbol{x})}{\partial \boldsymbol{x}}\\[6pt]
+  \begin{split}
+  =\frac{\boldsymbol{diag}(\exp(\boldsymbol{x}))}{ones_K\exp(\boldsymbol{x})}-\left(\frac{1}{(ones_K^T\exp(\boldsymbol{x}))^2}\right) \cdot \left( \exp(\boldsymbol{x})\right)\cdot \left( \exp(\boldsymbol{x})\right)^T\\
+  =\frac{\boldsymbol{diag}(\exp(\boldsymbol{x}))}{ones_K\exp(\boldsymbol{x})}-\frac{\exp(\boldsymbol{x})}{ones_K^T\exp(\boldsymbol{x})} \cdot \frac{\exp(\boldsymbol{x})^T}{ones_K^T\exp(\boldsymbol{x})}\\
+  =\boldsymbol{diag}(softmax(\boldsymbol{x}))-softmax(\boldsymbol{x})softmax(\boldsymbol{x})^T
+  \end{split}\\[6pt]
+\end{gather}
+
+\section{一些练习}
+矩阵求导的一些练习技巧和重要结论
+\section{进一步的阅读和总结}
+详细的矩阵偏导数参考:{https://en.wikipedia.org/wiki/Matrix\_calculus}.
+
+\chapter{机器学习概述}
+
+在介绍人工神经网络之前，首先了解下机器学习的基本概念。然后再介绍下最简单的神经网络：感知器。
+
+机器学习主要是研究如何使计算机从给定的数据中学习规律，即从观测数据（样本）中寻找规律，并利用学习到的规律（模型）对未知或无法观测的数据进行预测。目前，主流的机器学习算法是基于统计的方法，也叫统计机器学习。
+
+机器学习系统的示例见图\ref{fig:3.1}
+\section{机器学习概述}
+狭义地讲，机器学习是给定一些训练样本$(x_i, y_i), 1 \leq i \leq N$ （其中$x_i$是输入，$y_i$是需要预测的目标），让计算机自动寻找一个决策函数$f(\cdot)$ 来建立$x$和$y$之间的关系。
+\begin{equation}\label{3.1}
+  \hat{y}=f(\phi(x),\theta)
+\end{equation}
+
+\begin{figure}[b]
+ \centering
+ \includegraphics{pics/31.png}
+ \caption{机器学习系统示意图}
+ \label{fig:3.1}
+\end{figure}
+这里，$\hat{y}$是模型输出，$\theta$为决策函数的参数，$\phi(x)$ 表示样本$x$对应的特征表示。因为$x$不一定都是数值型的输入，因此需要通过$\phi(x)$将$x$转换为数值型的输入。如果我们假设$x$ 是已经处理好的标量或向量，公式\ref{3.1}也可以直接写为:
+\begin{equation}\label{3.2}
+  \hat{y}=f(x,\theta)
+\end{equation}
+
+此外，我们还要建立一些准则来衡量决策函数的好坏。在很多机器学习算法中，一般是定义一个损失函数$L(y, f(x, \theta))$，然后在所有的训练样本上来评价决策函数的风险:
+\begin{equation}\label{3.3}
+  R(\theta)=\frac{1}{N}\sum_{i=1}^{N}L(y^{(i)}, f(x^{(i)}, \theta))
+\end{equation}
+
+这里，风险函数$R(\theta)$是在已知的训练样本（经验数据）上计算得来的，因此被称之为\textbf{经验风险}。用对参数求经验风险来逐渐逼近理想的期望风险的最小值，就是我们常说的\textbf{经验风险最小化原则}（Empirical Risk Minimization）。这样，我们的目标就是变成了找到一个参数$\theta^{*}$使得经验风险最小。
+\begin{equation}\label{3.4}
+  \theta^{*}=\arg\min_{\theta}R(\theta)
+\end{equation}
+
+因为用来训练的样本往往是真实数据的一个很小的子集或者包含一定的噪声数据，不能很好地反映全部数据的真实分布。经验风险最小化原则很容易导致模型在训练集上错误率很低，但是在未知数据上错误率很高。这就是所谓的\textbf{过拟合}（Overfit）。过拟合问题往往是由于训练数据少和噪声等原因造成的。过拟合的标准定义为：给定一个假设空间$H$，一个假设$h$属于$H$，如果存在其他的假设$\bar{h}$属于$H$, 使得在训练样例上$h$的损失比$\bar{h}$ 小，但在整个实例分布上$\bar{h}$比$h$的损失小，那么就说假设$h$过度拟合训练数据\cite{mitchell1998introduction}。
+
+和过拟合相对应的一个概念是泛化错误，也称欠拟合。泛化错误是衡量一个机器学习模型是否可以很好地泛化到未知数据。泛化错误一般表现为一个模型在训练集和测试集上错误率的差距。
+
+为了解决过拟合问题，一般在经验风险最小化的原则上上加参数的\textbf{正则化}（Regularization），也叫\textbf{结构风险最小化原则}（Structure Risk Minimization）。
+\begin{gather}\label{3.5}
+  \theta^{*}=\arg\min_{\theta}R(\theta)+\lambda {\| \theta \|}_2^2\\
+  =\arg\min_{\theta}\frac{1}{N}\sum_{i=1}^{N}L(y^{(i)},\theta) +\lambda {\| \theta \|}_2^2
+\end{gather}
+这里，${\| \theta \|}_2^2$是$L_2$范数的\textbf{正则化项}，用来减少参数空间，避免过拟合。用$\lambda$来控制正则化的强度。
+
+正则化项也可以使用其它函数，比如$L_1$范数。$L_1$范数的引入通常会使得参数有一定稀疏性，因此在很多算法中也经常使用。在Bayes 估计的角度来讲，正则化是假设了参数的先验分布，不完全依赖训练数据。
+\subsection{损失函数}
+一个实例$(x, y)$，真实目标是$y$，机器学习模型的预测为$f(x, \theta)$。 如果预测错误时（$f(x, \theta) \not= y）$，我们需要定义一个度量函数来定量地计算错误的程度。常见的损失函数有如下几类：
+
+\textbf{0-1 损失函数}(0-1 loss function)
+\begin{equation}\label{3.7}
+  L(y^{(i)}, f(x^{(i)}, \theta))=I(y=f(x,\theta))
+\end{equation}
+这里$I$是特征函数。
+
+\textbf{平方损失函数}(quadratic loss function)
+\begin{equation}\label{3.8}
+  L(y,\hat{y})=(y-f(x,\theta))^2
+\end{equation}
+
+\textbf{交叉熵损失函数}\\
+对于分类问题，预测目标$y$的离散类别，模型输出$f(x,\theta)$为每个类别的条件概率。
+
+假设$y\in \{1,\dots\,C\}$，模型预测的第$i$ 类的条件概率$P(y=i|x)=f_i(x,\theta)$，则$f(x,\theta)$满足：
+\begin{equation}\label{3.9}
+  f_i(x,\theta)\in [0,1],   \sum_{i=1}^C f_i(x,\theta)=1
+\end{equation}
+
+$f_y(x,\theta)$可以看作真实类别$y$的似然函数。参数可以直接用最大似然估计来优化。考虑到计算问题，我们经常使用最小化负对数似然，也就是负对数似然损失函数（Negative Log Likelihood function）。
+\begin{equation}\label{3.10}
+  L(y,f(x,\theta))=-\log f_y(x,\theta)
+\end{equation}
+
+如果我们用one-hot向量\footnote{在数字电路中，one-hot 是一种状态编码，指对任意给定的状态，状态寄存器中只有l 位为1，其余位都为0。}$\boldsymbol{y}$来表示目标类别$c$，其中只有$y_c = 1$，其余的向量元素都为0。
+
+负对数似然函数也可以写为：
+\begin{equation}\label{3.11}
+  L(y,f(x,\theta))=-\sum_{i=1}^C y_i \log f_y(x,\theta)
+\end{equation}
+
+$y_i$ 也也可以看成是真实类别的分布，这样公式\ref{3.11}恰好是交叉熵的形式。因此，负对数似然损失函数也常叫做交叉熵损失函数（Cross Entropy Loss function）是负对数似然函数的一种改进。
+\\
+
+\textbf{Hinge损失函数}(Hinge Loss Function)
+对于两类分类问题，假设$y$和$f(x, \theta)$ 的取值为$\{-1,+1\}$。Hinge 损失函数的定义如下：
+\begin{equation}\label{3.12}
+  L(y,f(x,\theta))=\max(0,1-yf(x,\theta))=|1-yf(x,\theta)|_+
+\end{equation}
+
+\subsection{补充问题：机器学习与信息论的关系}
+信息论与机器学习同为涉及计算机科学和应用数学等学科的分支领域，这两门交叉学科在起源和应用上有很多相似之处。信息论的理论体系相对成熟一些。机器学习这些年比较受欢迎，理论和应用的扩充发展速度远远更快且看不到饱和的趋势。两个方向互有交叉，但主要还是机器学习中借用信息论的方法以此拓展理论研究和应用场景，比较典型的就是借鉴信息理论创造和改进学习算法（主要是分类问题），甚至衍生出了一个新方向，信息理论学习，详细介绍和研究近况可以参考\cite{principe2000information}
+\begin{figure}[b]
+ \centering
+ \includegraphics{pics/32.png}
+ \caption{Some information formulas and their properties as learning measures}
+ \label{fig:3.2}
+\end{figure}
+
+以上结论，以下具体说明。
+
+机器学习可以根据数学原理分为两种，一种基于经验公式（错误率、边界、代价、风险、实用性、分类边缘），还有一种则是基于信息理论。
+
+信息论中的一些度量也可以作为学习算法的度量。Watanabe也提出过“\textbf{学习就是一个熵减的过程}”，学习的过程也就是使信息的不确定度下降的过程。Bayesian理论也扎根于信息和优化的概念中。比起传统的经验公式为基础的机器学习，以信息理论为基础的机器学习也拥有无可比拟的优势。当少数类的样本数量接近0时，Bayesian分类器对少数类的分类趋向于完全的错误。而以互信息为学习准则的分类器则能够保护少数类，并根据各类样本数量比例自动平衡错误型和拒绝型。
+
+
+有目标随机变量$T$和预测结果随机变量$Y$，那么有图\ref{fig:3.2} 的关系。
+
+
+这些度量中，互信息可以用来衡量相似性，而条件熵、交叉熵和相对熵可以用来度量相异性。
+
+如果一个变量$T$在统计意义上提供真实值（也就是说$p(t)=(p_1,\dots,p_m)$ 其中总体率$p_i(i=1,\dots,m)$已知），那么它的熵$H(T)$ 就是学习的基线，也就是说出现这种情况$I(T,Y)=H(T;Y)=H(Y;T)=H(Y)=H(T)$ 或这种情况$KL(T,Y)=KL(Y,T)=H(Y|T)=H(T|Y)=0$ 时我们就可以说，我们就说这种方法达到了基线H(T).
+
+
+对于这些量的关系如图\ref{fig:3.3}所示：
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/33.png}
+ \caption{The relationship among some measures}
+ \label{fig:3.3}
+\end{figure}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/34.png}
+ \caption{The relationship among $E,Rej,A,CR$}
+ \label{fig:3.4}
+\end{figure}
+
+我们记$E,Rej,A,CR$分别表示错误率，拒绝率，正确率和正确识别率。那么有$CR+E+Rej=1$和$A=\frac{CR}{CR+E}$，这时有如图\ref{fig:3.4}所示关系\cite{mackay2003information}
+
+这里的$\{y_k\}=\{t_k\}$表示每个对应标签样本之间都相等。对于有限的数据集来说，这种形式用来表示分布和度量，用$\leftrightarrow$ 表示对于等价关系的双向连接，用$\rightarrow$表示单向连接。
+\begin{itemize}
+  \item 准确分类的必要条件是所有信息度量都达到了基线
+  \item 当所有信息度量都达到了基线，也不能充分说明这是准确分类
+  \item 单向连接的不同位置解释了充分条件为什么存在以及充分条件是什么
+\end{itemize}
+
+当然当遇到其他问题的时候我们还可以扩展到其他信息度量，比如聚类、特征选择/提取等。当我们从相似度（或者也能转变成相似度的相异度）着手来考虑机器学习/模式识别的过程的时候，有一个重要的定理用以描述它们的关系：一般来说，在经验定义的相似度量和信息度量之间，不存在一对一的对应关系（这个结论由错误和熵的学习边界的研究给出）。
+
+所以，由信息度量的优化并不能保证获得经验方法完成的优化效果。
+
+但是，也有不少研究者猜想\cite{hu2015information}，在机器学习中，所有学习目标的computational representation 都是可以用熵函数的优化来描述或者解释的。这个猜想给了我们很好的一个研究着力的方向。
+
+上面的概述比较抽象了，那么最后看一个简单的实例，如图\ref{fig:3.5}所示：
+
+以互信息作为学习准则。例如以应用信息增益（归一化的互信息）构造最简结构决策树就是其中一种应用。这种基于信息理论为学习准则的原理就是将无序（标签、特征）数据转变为有序数据，以信息熵差值作为测量尺度来评价转换效果。
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/35.png}
+ \caption{Example}
+ \label{fig:3.5}
+\end{figure}
+
+现在的研究有关于怎样设计目标函数，怎样处理其中互信息、经验熵的计算，互信息与分类器传统性能指标的关系？
+
+还有具体实例也暂时没想到怎么表述，另外除了常用的几个，应用较多的如Renyi entropy 也等待补充……
+
+
+\subsection{机器学习算法的类型}
+根据训练数据提供的信息以及反馈方式的不同，机器学习算法一般可以分为以下几类：
+
+\textbf{有监督学习}（Supervised Learning） 有监督学习是利用一组已知输入$x$和输出$y$的数据来学习模型的参数，使得模型预测的输出标记和真实标记尽可能的一致。有监督学习根据输出类型又可以分为\textbf{回归}和\textbf{分类}两类。
+
+\textbf{回归}（Regression） 如果输出$y$是连续值（实数或连续整数），$f(x)$的输出也是连续值。这种类型的问题就是回归问题。对于所有已知或未知的$(x, y)$，使得$f(x, \theta)$ 和$y$尽可能地一致。损失函数通常定义为平方误差。
+\begin{equation}\label{3.13}
+  L(y,f(x,\theta))=\|y-f(x,\theta)\|^2
+\end{equation}
+
+\textbf{分类}（Classification） 如果输出$y$是离散的类别标记（符号），就是分类问题。损失函数有很多种定义方式。一种常用的方式就是0-1 损失函数。
+\begin{equation}\label{3.14}
+  L(\hat(y),y)=I(f(x,\theta)=y)
+\end{equation}
+这里$f(x, \theta)$的输出也是离散值，$I(\cdot)$ 是特征函数.另一种常用的方式是让$f_i(x, \theta)$去估计给定$x$的情况下第$i$ 个类别的条件概率$P(y = i|x)$。损失函数定义为负对数似然函数。
+
+在分类问题中，通过学习得到的决策函数$f(x, \theta)$也叫分类器。
+
+\textbf{无监督学习}（Unsupervised Learning） 无监督学习是用来学习的数据不包含输出目标，需要学习算法自动学习到一些有价值的信息。一个典型的无监督学习问题就是\textbf{聚类}（Clustering）。
+
+\textbf{增强学习}（Reinforcement Learning） 增强学习也叫强化学习，强调如何基于环境做出一系列的动作，以取得最大化的累积收益。每做出一个动作，并不一定立刻得到收益。增强学习和有监督学习的不同在于增强学习不需要显式地以输入/输出对的方式给出训练样本，是一种在线的学习机制。
+
+
+有监督的学习方法需要每个数据记录都有类标号，而无监督的学习方法则不考虑任何指导性信息。一般而言，一个监督学习模型需要大量的有标记数据集，而这些数据集是需要人工标注的。因此，也出现了很多弱监督学习和半监督学习的方法，希望从大规模的未标记数据中充分挖掘有用的信息，降低对标记数据数量的要求。
+
+\subsection{机器学习中的一些基本概念}
+上述的关于机器学习的介绍中，提及了一些基本概念，比如“数据”，“样本”，“特征”，“数据集”等。我们首先来解释下这些概念。\\
+
+\textbf{数据}
+在计算机科学中，数据是指所有能计算机程序处理的对象的总称，可以是数字、字母和符号等。在不同的任务中，表现形式不一样，比如图像、声音、文字、传感器数据等。\\
+
+\textbf{特征}
+机器学习中很多算法的输入要求是数学上可计算的。而在现实世界中，原始数据通常是并不都以连续变量或离散变量的形式存在的。我们首先需要将抽取出一些可以表征这些数据的数值型特征。这些数值型特征一般可以表示为向量形式，也称为特征向量。\\
+
+\textbf{特征学习}
+数据的原始表示转换为。原始数据的特征有很多，但是并不是所有的特征都是有用的。并且，很多特征通常是冗余并且易变的。我们需要抽取有效的、稳定的特征。传统的特征提取是通过人工方式进行的，这需要大量的人工和专家知识。即使这样，人工总结的特征在很多任务上也不能满足需要。因此，如何自动地学习有效的特征也成为机器学习中一个重要的研究内容，也就是\textbf{特征学习}，也叫\textbf{表示学习}。特征学习分成两种，一种是\textbf{特征选择}，是在很多特征集合选取有效的子集；另一种是\textbf{特征提取}，是构造一个新的特征空间，并将原始特征投影在新的空间中。\\
+
+\textbf{样本}
+样本是按照一定的抽样规则从全部数据中取出的一部分数据，是实际观测得到的数据。在有监督学习中，需要提供一组有输出目标的样本用来学习模型以及检验模型的好坏。\\
+
+\textbf{训练集和测试集}
+一组样本集合就称为\textbf{数据集}。在很多领域，数据集也经常称为\textbf{语料库}。为了检验机器学习算法的好坏，一般将数据集分为两部分：训练集和测试集。训练集用来进行模型学习，测试集用来进行模型验证。通过学习算法，在训练集得到一个模型，这个模型可以对测试集上样本$x$预测一个类别标签$\hat{y}$。假设测试集为$T$, 模型的正确率为：
+\begin{equation}\label{3.15}
+  Acc=\frac{1}{|T|}\sum_{(x_i,y_i)\in T}|\hat{y_i}=y_i|
+\end{equation}
+其中$|T|$为测试集的大小。后面中会介绍更多的评价方法。\\
+
+\textbf{正例和负例}
+对于两类分类问题，类别可以表示为$\{+1, -1\}$，或者直接用正负号表示。因此，常用正例和负例来分别表示属于不同类别的样本。\\
+
+\textbf{判别函数}
+经过特征抽取后，一个样本可以表示为$k$维特征空间中的一个点。为了对这个特征空间中的点进行区分，就需要寻找一些超平面来将这个特征空间分为一些互不重叠的子区域，使得不同类别的点分布在不同的子区域中，这些超平面就成为判别界面。
+为了定义这些用来进行空间分割的超平面，就需要引入判别函数的概念。假设变量$\boldsymbol{z} \in \mathbb{R}^m$为特征空间中的点，这个超平面由所有满足函数$f(\boldsymbol{z}) = 0$的点组成。这里的$f(\boldsymbol{z})$就称为\textbf{判别函数}。
+有了判别函数，分类就变得很简单，就是看一个样本在特征空间中位于哪个区域，从而确定这个样本的类别。
+判别函数的形式多种多样，在自然语言处理中，最为常用的判别函数为线性函数。
+
+\subsection{参数学习方法}
+\textbf{学习算法}就是如何从训练集的样本中，自动学习决策函数的参数。不同机器学习算法的区别在于决策函数和学习算法的差异。相同的决策函数可以有不同的学习算法。比如线性分类器，其参数的学习算法可以是感知器、支持向量机以及梯度下降法等。通过一个学习算法进行自动学习参数的过程也叫作\textbf{训练过程}。
+
+这里我们介绍一种常用的参数学习算法：\textbf{梯度下降法}（Gradient Descent Method）。
+
+梯度下降法也叫最速下降法（Steepest Descend Method）。如果一个实值函数$f(\boldsymbol{x})$在点$\boldsymbol{a}$处可微且有定义，那么函数$f(\boldsymbol{x})$ 在$\boldsymbol{a}$点沿着梯度相反的方向$-\nabla f(\boldsymbol{a})$下降最快。梯度下降法经常用来求解无约束优化的极值问题。梯度下降法的迭代公式为：
+\begin{equation}\label{3.16}
+  \boldsymbol{a}_{t+1}=\boldsymbol{a}_{t}-\lambda\nabla f(\boldsymbol{a}_{t})
+\end{equation}
+其中$\lambda>0$是梯度方向上的搜索步长。
+
+对于$\lambda$为一个足够小的数值是，那么$f(\boldsymbol{a}_{t+1})\leq f(\boldsymbol{a}_{t})$.因此，我们可以从一个初始值$\boldsymbol{x_0}$开始，并通过迭代公式得到$\boldsymbol{x_0}, \boldsymbol{x_1}, \boldsymbol{x_2},\dots,\boldsymbol{x_n}$，并满足:
+\begin{equation*}
+  f(\boldsymbol{x}_0)\geq f(\boldsymbol{x}_1)\geq f(\boldsymbol{x}_2)\geq \dots\geq f(\boldsymbol{x}_n)
+\end{equation*}
+最终$\boldsymbol{x_n}$收敛到期望的极值。
+
+搜索步长的取值必须合适，如果过大就不会收敛，如果过小则收敛速度太慢。一般步长可以由线性搜索算法来确定。
+
+在机器学习问题中，我们需要学习到参数$\theta$，使得风险函数最小化。
+\begin{gather}\label{3.17}
+  \theta^{*}=\arg\min_{\theta}\mathcal{R}(\theta_t)\\
+  =\arg\min_{\theta}\frac{1}{N}\sum_{i=1}^{N}\mathcal{L}(y^{(i)},f(x^{(i)},\theta))
+\end{gather}
+
+如果用梯度下降法进行参数学习，
+\begin{gather}\label{3.19}
+  \boldsymbol{a}_{t+1}=\boldsymbol{a}_{t}-\lambda\frac{\partial \mathcal{R}(\theta)}{\partial \theta_t}\\
+  =\boldsymbol{a}_{t}-\lambda\sum_{i=1}^N\frac{\partial \mathcal{R}(\theta_t;x^{(i)},y^{(i)})}{\partial \theta}
+\end{gather}
+$\lambda$在机器学习中也叫作\textbf{学习率}（Learning Rate）
+
+这里，梯度下降是求得所有样本上的风险函数最小值，叫做\textbf{批量梯度下降法}。若样本个数$N$很大，输入$x$的维数也很大时，那么批量梯度下降法每次迭代要处理所有的样本，效率会较低。为此，有一种改进的方法即\textbf{随机梯度下降法}。
+
+随机梯度下降法（Stochastic Gradient Descent，SGD）也叫\textbf{增量梯度下降}，每个样本都进行更新:
+\begin{equation}\label{3.20}
+  \boldsymbol{a}_{t+1}=\boldsymbol{a}_{t}-\lambda\frac{\partial \mathcal{R}(\theta_t;x^{(t)},y^{(t)})}{\partial \theta}
+\end{equation}
+$x^{(t)},y^{(t)}$是第$t$次迭代选取的样本。
+
+批量梯度下降和随机梯度下降之间的区别在于每次迭代的风险是对所有样本汇总的风险还是单个样本的风险。随机梯度下降因为实现简单，收敛速度也非常快，因此使用非常广泛。
+
+还有一种折中的方法就是\textbf{mini-batch随机梯度下降}，每次迭代时，只采用一小部分的训练样本，兼顾了批量梯度下降和随机梯度下降的优点。\\
+
+\textbf{Early-Stop}
+在梯度下降训练的过程中，由于过拟合的原因，在训练样本上收敛的参数，并不一定在测试集上最优。因此，我们使用一个\textbf{验证集}（Validation Dataset）（也叫\textbf{开发集}（Development Dataset））来测试每一次迭代的参数在验证集上是否最优。如果在验证集上的错误率不再下降，就停止迭代。这种策略叫Early-Stop。如果没有验证集，可以在训练集上进行\textbf{交叉验证}。\\
+
+\textbf{学习率设置}
+在梯度下降中，学习率的取值非常关键，如果过大就不会收敛，如果过小则收敛速度太慢。一般步长可以由线性搜索算法来确定。在机器学习中，经常使用自适应调整学习率的方法。
+
+\textbf{动量法}（Momentum Method）\cite{rumelhart1988learning} 对当前迭代的更新中加入上一次迭代的更新。我们记$\nabla \theta_t = \theta_t-\theta_{t-1}$。 在第$t$迭代时，
+\begin{equation}\label{3.21}
+  \theta_t = \theta_{t-1} +(\rho\nabla\theta_{t}-\lambda g_t)
+\end{equation}
+其中，$\rho$为动量因子，通常设为0.9。这样，在迭代初期，使用前一次的梯度进行加速。在迭代后期的收敛值附近，因为两次更新方向基本相反，增加稳定性。
+
+\textbf{AdaGrad}（Adaptive Gradient）算法\cite{duchi2011adaptive} 是借鉴$L_2$正则化的思想。在第$t$迭代时，
+\begin{equation}\label{3.22}
+  \theta_t = \theta_{t-1}-\frac{\rho}{\sqrt{\sum_{\tau=1}^t g_{\tau}^2}}g_t
+\end{equation}
+其中，$\rho$是初始学习率，$g_{\tau}\in \mathbb{R}^{|\theta|}$ 是第$\tau$次迭代时的梯度。
+
+随着迭代次数的增加，梯度逐渐缩小。
+
+\textbf{AdaDelta} 算法\cite{zeiler2012adadelta} 用指数衰减的移动平均来累积历史的梯度信息。第$t$次迭代的梯度的期望$E(g^2)_t$ 为：
+\begin{equation}\label{3.23}
+  E(g^2)_t=\rho E(g^2)_{t-1}+(1-\rho g_t^2)
+\end{equation}
+其中$\rho$是衰减常数。
+
+本次迭代更新为：
+\begin{equation}\label{3.24}
+  \nabla\theta_t=-\frac{\sqrt{E(\nabla\theta^2)_{t-1}+\epsilon}}{\sqrt{E(g^2)_{t}+\epsilon}}g_t
+\end{equation}
+其中，$E(\nabla\theta^2)_t$为前一次迭代时$\nabla\theta^2$的移动平均，$\epsilon$为常数。
+
+最后更新参数：
+\begin{equation}\label{3.25}
+  \theta_t=\theta_{t-1}+\nabla\theta_t
+\end{equation}
+
+\section{线性回归}
+如果输入$\boldsymbol{x}$是列向量，目标$y$ 是连续值（实数或连续整数），预测函数$f(\boldsymbol{x})$ 的输出也是连续值。这种机器学习问题是回归问题。
+\section{线性分类}
+\subsection{二类分类}
+\subsection{多类线性分类}
+\section{评价方法}
+\section{进一步的阅读和总结}
+\chapter{感知器}
+\section{二类感知器}
+\subsection{感知器学习算法}
+\subsection{线性感知器收敛性证明}
+\section{多类感知器}
+\subsection{多类感知器收敛性证明}
+\section{投票感知器}
+\section{进一步的阅读和总结}
+\chapter{人工神经网络}
+\section{神经元}
+\subsection{激活函数}
+\section{前馈神经网络}
+\subsection{前馈计算}
+\section{反向传播算法}
+\section{梯度消失问题}
+\section{训练方法}
+\section{一些经验}
+\section{进一步的阅读和总结}
+\chapter{卷积神经网络CNN}
+
+\textbf{卷积神经网络}（Convolutional Neural Networks，CNN）是一种前馈神经网络。卷积神经网络是受生物学上\textbf{感受域}（Receptive Field）的机制而提出的。感受野主要是指听觉系统、本体感觉系统和视觉系统中神经元的一些性质。比如在视觉神经系统中，一个神经元的感受野是指视网膜上的特定区域，只有这个区域内的刺激才能够激活该神经元\cite{hubel1968receptive}。
+
+卷积神经网络有三个结构上的特性：局部连接，权重共享以及空间或时间上的次采样。这些特性使得卷积神经网络具有一定程度上的平移、缩放和扭曲不变性\cite{lecun1998gradient}。
+\section{卷积}
+\textbf{卷积}，也称褶积，是数学分析中的一种重要运算，这里只考虑离散序列的情况。
+
+\subsection{一维场合}
+一维卷积经常用在信号处理中。给定一个输入信号序列$x_t, t = 1,\cdots, n$，和滤波器$f_t, t = 1,\cdots,m$，一般情况下滤波器的长度$m$远小于信号序列长度$n$。
+
+卷积的输出为：
+\begin{equation}\label{6.1}
+  y_t=\sum_{k=1}^n{f_k\cdot x_{t-k+1}}
+\end{equation}
+
+当滤波器$f_t=1/n$ 时，卷积相当于信号序列的移动平均。
+
+卷积的结果按输出长度不同可以分为两类：一类是\textbf{宽卷积}，输出长度$n+m-1$，对于不在$[1,n]$ 范围之外的$x_t$ 用零补齐（zero-padding）。一类是\textbf{窄卷积}，输出长度$n-m+1$，不补零。
+
+在这里除了特别声明，我们一般说的卷积默认为\textbf{窄卷积}。
+
+\subsection{二维场合}
+一维卷积经常用在图像处理中。给定一个图像$x_{ij}, 1 \leq i \leq M, 1 \leq j \leq N$，和滤波器$f_{ij}, 1 \leq i \leq m, 1 \leq j \leq n$，一般$m \ll M, n \ll N$。
+
+卷积的输出为：
+\begin{equation}\label{6.2}
+  y_{ij}=\sum_{u-1}^m\sum_{v=1}^n{f_{uv}\cdot x_{i-u+1,j-v+1}}
+\end{equation}
+
+在图像处理中，常用的均值滤波（mean filter）就是当前位置的像素值设为滤波器窗口中所有像素的平均值，也就是$f_{uv} = 1/mn$。
+
+\section{卷积层：用卷积代替全链接}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/61.png}
+ \caption{Full Connection Layer and Convolutional Layer}
+ \label{fig:6.1}
+\end{figure}
+
+在全连接前馈神经网络中，如果第$l $层有$n^l$个神经元，第$l-1$ 层有$n^{(l-1)}$个神经元，连接边有$n^{(l)}\cdot n^{(l-1)}$个，也就是权重矩阵有$n^{(l)}\cdot n^{(l-1)}$ 个参数。当$m$和$n$ 都很大时，权重矩阵的参数非常多，训练的效率会非常低。
+
+如果采用卷积来代替全连接，第$l$层的每一个神经元都只和第$l-1$ 层的一个局部窗口内的神经元相连，构成一个局部连接网络。第$l$层的第$i$个神经元的输入定义为：
+\begin{gather}\label{6.2}
+  a_i^{(l)}=f\left( \sum_{j-1}^{(l)}{w_j^{(l-1)}\cdot a_{i-j+m}^{(l-1)}}+b^{(l)} \right) \\
+  =f\left( \boldsymbol{w}^{(l)}\cdot \boldsymbol{a}_{(i+m-1):i}^{(l-1)}+b_i \right)
+\end{gather}
+其中，$\boldsymbol{w}^{(l)}\in \mathbb{R}^m$为$m$维的滤波器，$\boldsymbol{a}_{(i+m-1):i}^{(l)}=[a_{(i+m-1)}^{(l)},\cdots ,a_{i}^{(l)}]^T$。这里$a^{(l)}$的下标从1开始，这里的卷积公式和原始的公式中的$\boldsymbol{a}$的下标有所不同。
+
+上述公式也可以写成：
+\begin{equation}\label{6.5}
+  \boldsymbol{a}^{(l)}=f(\boldsymbol{w}^{(l)}\otimes \boldsymbol{a}^{(l-1)}+b^{(l)})
+\end{equation}
+$\otimes$表示卷积运算。
+
+从式\ref{6.5}可知，$\boldsymbol{w}^{(l)}$ 对所有神经元是相同的。这也是卷积层的灵位一个特性：\textbf{权值共享}。这样，在卷积层中，只需$m+1$个参数。另外，第$l+1$层的神经元个数不是任意选择的，而是满足$n^{(l+1)}=n^{(l)}-m+1$。
+
+上面是一维卷积层的情况，下面考察二维的情况。在图像处理中，图象是以二维矩阵的形式输入到神经网络中，因此，假设$x^{(l)}\in \mathbb{R}^{(w_l\cdot h_l )}$和$ ^{(l-1)}\in \mathbb{R}^{(w_{l-1}\cdot h_{l-1})}$分别是第$l$层和第$l-1$层的神经元活性。$X^{(l)}$的每一个元素为：
+\begin{equation}\label{6.6}
+  X_{s,t}^{(l)}=f\left( \sum_{i=1}^u \sum_{j=1}^n{W_{i,j}^{(l)}\cdot X_{s-i+u,t-j+v}^{(l-1)}+b^{(l)}} \right)
+\end{equation}
+其中，$W^{(l)}\in \mathbb{R}^{u \times v}$ 为二维的滤波器，$b$ 为偏置矩阵。第$l-1$层的神经元个数为$(w_l\times h_l)$，并且$w_l=w_{l-1}-u+1, h_l=h_{l-1}-v+1$。
+
+于是上式也可以写为：
+\begin{equation}\label{6.7}
+  X^{(l)}=f\left( W^{(l)} \otimes X^{(l-1)} +b^{(l)} \right)
+\end{equation}
+
+为了增强卷积层的表示能力，我们可以使用$K$ 个不同的滤波器来得到$K$组输出。每一组输出都共享一个滤波器。如果我们把滤波器看成一个特征提取器，每一组输出都可以看成是输入图像经过一个特征抽取后得到的特征。因此，在卷积神经网络中每一组输出也叫作一组\textbf{特征映射}（Feature Map）。
+
+不失一般性，假设第$l-1$层的特征映射组数为$n_{l-1}$，每组特征映射的大小为$m_{l-1}=w_{l-1}\times h_{l-1}$。第$l-1$层的神经元数：$n_{l-1}\times m_{l-1}$。第$l$ 层的特征映射组数为$n_l$。 如果假设第$l$层的每一组特征映射$X^{(l,k)}$的输入为第$l-1$ 层的所有特征映射组。
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/62.png}
+ \caption{The mapping relationship of 2-D convolutional layer}
+ \label{fig:6.2}
+\end{figure}
+
+第$l$层的第$k$组特征映射$X^{(l,k)}$为：
+\begin{equation}\label{6.8}
+  X^{(l,k)}=f\left( \sum_{p=1}^{n_l-1}(W^{(l,k,p)} \otimes X^{(l-1,p)})+b^{(l,k)} \right)
+\end{equation}
+其中，$W^{(l,k,p)}$表示第$l-1$层的第$p$组特征向量到第$l$层的第$k$组特征映射所需要的滤波器。
+
+第$l$层的每一组特征映射都需要$n_{l-1}$个滤波器以及一个偏置$b$。假设每个滤波器的大小为$u \times v$，那么共需要$n_l \times n_{l-1} \times (u \times v) + n_l$。
+
+这样，我们在第$l+1$层就得到$n_l$组特征映射，每一组特征映射的大小为$m_l = w_{l-1}-u+1\times h_{l-1}-v +1$，总的神经元个数为$n_l \times m_l$。 图\ref{fig:6.2} 给出了式\ref{6.8}的可视化映射关系。
+
+\textbf{连接表}：  式\ref{6.8}中，第$l-1$ 层的所有特征映射都经过滤波器得到一个第$l$ 层的一组特征映射$X^{(l,k)}$。也就是说，第$l$ 层的每一组特征映射都依赖于第$l$层的所有特征映射，相当于不同层的特征映射之间是全连接的关系。实际上，这种全连接关系不是必须的。我们可以让第$l$层的每一组特征映射都依赖于前一层的少数几组特征映射。这样，我们定义一个\textbf{连接表}$T$来描述不同层的特征映射之间的连接关系。如果第$l$层的第$k$组特征映射依赖于前一层的第$p$ 组特征映射，则$T_{p,k}=1$，否则为$0$。
+\begin{equation}\label{6.9}
+  X^{(l,k)}=f\left( \sum_{p=1, T_{p,k}=1}(W^{(l,k,p)} \otimes X^{(l-1,p)})+b^{(l,k)} \right)
+\end{equation}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/63.png}
+ \caption{2-D convolutional layer}
+ \label{fig:6.3}
+\end{figure}
+
+这样，假如连接表$T$的非零个数为$K$，每个滤波器的大小为$u \times v$，那么共需要$K \times (u \times  v) + n_l$参数。
+
+卷积层的作用是提取一个局部区域的特征，每一个滤波器相当于一个特征提取器。图\ref{fig:6.3}给出了两维卷积层示例。
+\section{子采样层：池化}
+
+卷积层虽然可以显著减少连接的个数，但是每一个特征映射的神经元个数并没有显著减少。这样，如果后面接一个分类器，分类器的输入维数依然很高，很容易出现过拟合。为了解决这个问题，在卷积神经网络一般会在卷积层之后再加上一个池化（Pooling）操作，也就是子采样（Subsampling），构成一个子采样层。子采样层可以来大大降低特征
+的维数，避免过拟合。
+
+对于卷积层得到的一个特征映射$X^{(l)}$，我们可以将$X^{(l)}$划分为很多区域$R_k, k=1,\cdots ,K$，这些区域可以重叠，可以不重叠。一个子采样函数$\boldsymbol{down}(\cdot)$定义为：
+\begin{gather}\label{6.10}
+  X_k^{(l+1)}=f(Z_k^{(l+1)}) \\
+  =f\left( w^{(l+1)}\cdot \boldsymbol{down}(R_k) + b^{(l+1)} \right)
+\end{gather}
+其中，$w^{(l+1)}$和$b^{(l+1)}$分别是可训练的权重和偏置参数。
+
+\begin{gather}\label{6.12}
+  X^{(l+1)}=f(Z^{(l+1)}) \\
+  =f\left( w^{(l+1)}\cdot \boldsymbol{down}(X^l) + b^{(l+1)} \right)
+\end{gather}
+$\boldsymbol{down}(X^l)$是指子采样后的特征映射。
+
+子采样函数$\boldsymbol{down}(\cdot)$一般是取区域内所有神经元的最大值（Maximum Pooling）或平均值（Average Pooling）。
+\begin{equation}\label{6.14}
+  pool_{max}(R_k)=max_{i\in R_k}a_i
+\end{equation}
+\begin{equation}\label{6.15}
+  pool_{avg}(R_k)=\frac{1}{|R_k|}\sum_{i\in R_k}a_i
+\end{equation}
+
+子采样的作用还在于可以使得下一层的神经元对一些小的形态改变保持不变性，并拥有更大的感受域。
+\section{CNN示例：LeNet-5}
+下面我们来看一个具体的深层卷积神经网络：LeNet-5\cite{lecun1998gradient}。LeNet-5虽然提出时间比较早，但是是一个非常成功的神经网络模型。基于LeNet-5 的手写数字(MNIST) 识别系统在90 年代被美国很多银行使用，用来识别支票上面的手写数字。LeNet-5 的网络结构如图\ref{fig:6.4}所示。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/64.png}
+ \caption{Net Structure of LeNet-5}
+ \label{fig:6.4}
+\end{figure}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/65.png}
+ \caption{Connection table of LeNet-5's C3 layer}
+ \label{fig:6.5}
+\end{figure}
+不计输入层，LeNet-5 共有7 层，每一层的结构为：
+\begin{enumerate}
+  \item 输入层：输入图像大小为$32 \times 32 = 1024$。
+  \item C1层：这一层是卷积层。滤波器的大小是$5\times 5 = 25$，共有$6$个滤波器。得到$6$组大小为$28 \times 28 = 784$的特征映射。因此，C1层的神经元个数为$6 \times 784 = 4704$。可训练参数个数为$6 \times 25 + 6 = 156$。连接数为$156 \times 784 = 122304$（包括偏置在内，下同）。
+  \item S2 层：这一层为子采样层。由C1层每组特征映射中的$2\times 2$邻域点次采样为$1$个点，也就是$4$个数的平均。这一层的神经元个数为$14 \times 14 = 196$。可训练参数个数为$6 \times (1 + 1) = 12$。连接数为$6 \times 196 \times (4 + 1) = 122304$（包括偏置的连接）
+  \item C3 层：这一层是卷积层。由于S2 层也有多组特征映射，需要一个连接表来定义不同层特征映射之间的依赖关系。LeNet-5 的连接表如图\ref{fig:6.5} 所示。这样的连接机制的基本假设是：C3层的最开始的$6$个特征映射依赖于S2层的特征映射的每$3$个连续子集。接下来的$6$个特征映射依赖于S2 层的特征映射的每$4$个连续子集。再接下来的3 个特征映射依赖于S2层的特征映射的每$4$个不连续子集。最后一个特征映射依赖于S2 层的所有特征映射。这样共有$60$个滤波器，大小是$5 \times 5 = 25$。得到$16$组大小为$10\times 10 = 100$ 的特征映射。C3 层的神经元个数为$16 \times 100 = 1600$。可训练参数个数为$60 \times 25 + 16 = 1516$。 连接数为$1516 \times 100 = 151600$。
+  \item S4 层：这一层是一个子采样层，由$2\times 2$邻域点次采样为$1$个点，得到$16$组$5\times 5$大小的特征映射。可训练参数个数为$16 \times 2 = 32$。连接数为$16 \times (4 + 1) = 2000$。
+  \item C5 层：是一个卷积层，得到$120$组大小为$1 \times 1$的特征映射。每个特征映射与S4层的全部特征映射相连。有$120 \times 16 = 1920$个滤波器，大小是$5 \times 5 = 25$。C5 层的神经元个数为$120$，可训练参数个数为$1920 \times 25 + 120 = 48120$。 连接数为$120 \times (16 \times 25+1)=48120$
+  \item F6层：是一个全连接层，有$84$个神经元，可训练参数个数为$84\times (120+1) = 10164$。连接数和可训练参数个数相同，为$10164$。
+  \item 输出层：输出层由10 个欧氏径向基函数（Radial Basis Function，RBF）函数组成。这里不再详述。
+\end{enumerate}
+
+
+\section{梯度计算}
+在全连接前馈神经网络中，目标函数关于第$l$ 层的神经元$z^{(l)}$的梯度为:
+\begin{gather}\label{6.16}
+  \delta ^{(l)}\equiv \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial \boldsymbol{z}^{(l)}} \\
+  =f'_l(\boldsymbol{z}^{(l)})\odot (W^{(l+1)})^T\delta^{(l+1)}
+\end{gather}
+
+在卷积神经网络中，每一个卷积层后都接着一个子采样层，然后不断重复。因此需要分别来看下卷积层和子采样层的梯度。
+\subsection{卷积层的梯度}
+我们假定卷积层为$l$层，子采样层为$l + 1$ 层。因为子采样层是下采样操作，$l + 1$层的一个神经元的误差项$\delta$对应于卷积层（上一层）的相应特征映射的一个区域。$l$层的第$k$个特征映射中的每个神经元都有一条边和$l + 1$层的第$k$个特征映射中的一个神经元相连。根据链式法则，第$l$层的一个特征映射的误差项$\delta^{(l,k)}$，只需要将$l + 1$层对应特征映射的误差项$\delta^{(l+1,k)}$进行上采样操作（和第$l$层的大小一样），再和$l$ 层特征映射的激活值偏导数逐元素相乘，再乘上权重$w^{(l+1,k))}$，就得到了$\delta^{(l,k)}$。
+
+第$l$层的第$k$个特征映射的误差项$\delta^{(l,k)}$的具体推导过程如下：
+\begin{gather}\label{6.18}
+  \delta^{(l,k)} \equiv \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial Z^{(l)}}\\
+  =\frac{\partial X^{(l,k)}}{\partial Z^{(l,k)}}\cdot \frac{\partial X^{(l+1,k)}}{\partial Z^{(l,k)}}\cdot\frac{\partial J(W,\boldsymbol{b};X,y)}{\partial Z^{(l+1,k)}}\\
+  =f'_l(\boldsymbol{z}^{(l)})\odot \left( \boldsymbol{up}(w^{(l+1,k)}\delta^{(l+1)}) \right)\\
+  =w^{(l+1,k)}\left( f'_l(\boldsymbol{z}^{(l)}) \odot \boldsymbol{up}(\delta^{(l+1)}) \right)
+\end{gather}
+其中，$\boldsymbol{up}$为上采样函数（Upsampling）。
+
+在得到第$l$层的第$k$个特征映射的误差项$\delta^{(l,k)}$，目标函数关于第$l$层的第$k$个特征映射神经元滤波器$W_{i,j}^{(l,k,p)}$ 的梯度:
+\begin{gather}\label{6.22}
+  \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial W_{i,j}^{(l,k)}} = \sum_{s=1}^{w_l}\sum_{t=1}^{h_j} \left( X_{s-i+u,t-j+v}^{(l-1,p)}\cdot(\delta^{(l,k)})_{s,t}\right)\\
+  =\sum_{s=1}^{w_l}\sum_{t=1}^{h_j} \left( X_{s-i+u,t-j+v}^{(l-1,p)}\cdot(\boldsymbol{rot180}(\delta^{(l,k)}))_{s,t}\right)
+\end{gather}
+
+式\ref{6.22}也刚好是卷积形式，因此目标函数关于第$l$层的第$k$个特征映射神经元滤波器$W^{(l,k,p)}$的梯度可以写为：
+\begin{equation}\label{6.24}
+  \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial W_{i,j}^{(l,k)}}=\boldsymbol{rot180}\left(  X^{(l-1,p)}\otimes \boldsymbol{rot180}((\delta^{(l,k)}))_{s,t}) \right)
+\end{equation}
+
+目标函数关于第$l$层的第$k$个特征映射的偏置$b^{(l)}$的梯度可以写为：
+\begin{equation}\label{6.25}
+  \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial b^{(l,k)}}=\sum_{i,j}(\delta^{(l,k)})_{i,j}
+\end{equation}
+\subsection{子采样层的梯度}
+我们假定子采样层为$l$层，$l+1$层为卷积层。因为子采样层是下采样操作，$l+1$层的一个神经元的误差项$\delta$对应于卷积层（上一层）的相应特征映射的一个区域。
+\begin{equation}\label{6.26}
+  X^{(l+1,k)}=\sum_{p,T_{p,k}=1}(W^{(l+1,k,p)}\otimes X^{(l,p)})+b^{(l+1,k)}
+\end{equation}
+
+第$l$层的第$k$个特征映射的误差项$\delta^{(l,k)}$的具体推导过程如下：
+\begin{gather}\label{6.27}
+  \delta^{(l,k)} \equiv \frac{\partial J(W,\boldsymbol{b};X,y)}{\partial Z^{(l,k)}}\\
+  =\frac{\partial X^{(l,k)}}{\partial Z^{(l,k)}}\cdot \frac{\partial X^{(l+1,k)}}{\partial Z^{(l,k)}}\cdot\frac{\partial J(W,\boldsymbol{b};X,y)}{\partial Z^{(l+1,k)}}\\
+  =f'_l(\boldsymbol{z}^{(l)})\odot\left( \sum_{p,T_{p,k}=1}(\delta^{(l+1,p)}\widetilde{\otimes}\boldsymbol{rot180}(W^{(l,k,p)})) \right)
+\end{gather}
+其中，$\widetilde{\otimes}$为宽卷积。
+
+式\ref{6.22}也刚好是卷积形式，因此目标函数关于第$l$层的第$k$个特征映射神经元滤波器$W^{(l,k,p)}$的梯度可以写为：
+\begin{equation}\label{6.30}
+  \frac{\partial J(W,\boldsymbol{b};X,y)}{\partial w^{(l,k)}}=\sum_{i,j}\left( \boldsymbol{down}(X^{(l-1,k)}\cdot \delta^{(l,k)}) \right)_{i,j}
+\end{equation}
+
+目标函数关于第$l$层的第$k$个特征映射的偏置$b^{(l)}$的梯度可以写为
+\begin{equation}\label{6.31}
+  \frac{\partial J(W,\boldsymbol{b};X,y)}{\partial b^{(l,k)}}=\sum_{i,j}(\delta^{(l.k)})_{i,j}
+\end{equation}
+\section{一个强大的CNN框架：CAFFE}
+Caffe，全称Convolutional Architecture for Fast Feature Embedding，是一个计算CNN相关算法的框架，并具有结构清晰，可读性高，运行快速的特点，http://caffe.berkeleyvision.org/。
+\subsection{Caffe的特点}
+  \subsubsection{Caffe相对与其他DL框架的优点和缺点}
+
+优点：
+  \begin{itemize}
+    \item 速度快。Google Protocol Buffer 数据标准为Caffe提升了效率。
+    \item 学术论文采用此模型较多。不确定是不是最多，但接触到的不少论文都与Caffe 有关（R-CNN，DSN，最近还有人用Caffe实现LSTM）。
+  \end{itemize}
+缺点：
+\begin{itemize}
+  \item 曾更新过重要函数接口。偶尔会出现接口变换的情况，很久前写的代码可能过了一段时间就不能和新版本很好地兼容。（现在更新速度放缓，接口逐步趋于稳定）。
+  \item 对于某些研究方向来说的人并不适合。这个需要对Caffe的结构有一定了解，（后面提到）。
+\end{itemize}
+\subsubsection{Caffe代码层次}
+学习Caffe需要从熟悉Blob，Layer，Net，Solver这样的几大类这个顺序开始学习的，这四个类复杂性从低到高，贯穿了整个Caffe。 把他们分为三个层次介绍:
+\begin{itemize}
+  \item Blob：是基础的数据结构，是用来保存学习到的参数以及网络传输过程中产生数据的类。
+  \item Layer：是网络的基本单元，由此派生出了各种层类。修改这部分的人主要是研究特征表达方向的。
+  \item Net：是网络的搭建，将Layer 所派生出层类组合成网络；Solver：是Net 的求解，修改这部分人主要会是研究DL 求解方向的。
+\end{itemize}
+\subsection{更进一步的特点}
+\subsubsection{Blob}
+Caffe支持CUDA，在数据级别上也做了一些优化，这部分最重要的是知道它主要是对protocol buffer所定义的数据结构的继承，Caffe也因此可以在尽可能小的内存占用下获得很高的效率。（追求性能的同时Caffe也牺牲了一些代码可读性）
+在更高一级的Layer中Blob用下面的形式表示学习到的参数：
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+vector<shared_ptr<Blob<Dtype> > > blobs_;
+
+\end{lstlisting}
+
+这里使用的是一个Blob的容器是因为某些Layer 包含多组学习参数，比如多个卷积核的卷积层。以及Layer所传递的数据形式，后面还会涉及到这里：
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+vector<Blob<Dtype>*> &bottom;
+vector<Blob<Dtype>*> *top;
+
+\end{lstlisting}
+\subsubsection{Layer}
+
+ \textbf{Layer的五个派生类型}
+
+Caffe十分强调网络的层次性，也就是说卷积操作，非线性变换（ReLU 等），Pooling，权值连接等全部都由某一种Layer来表示。具体来说分为5大类Layer：
+\begin{itemize}
+  \item \textbf{NeuronLayer}类 定义于neuron\_layers.hpp中，其派生类主要是元素级别的运算（比如Dropout运算，激活函数ReLu，Sigmoid等），运算均为同址计算（in-place computation，返回值覆盖原值而占用新的内存）。
+  \item \textbf{LossLayer类} 定义于loss\_layers.hpp中，其派生类会产生loss，只有这些层能够产生loss。
+  \item \textbf{数据层} 定义于data\_layer.hpp中，作为网络的最底层，主要实现数据格式的转换。
+  \item \textbf{特征表达层} 定义于vision\_layers.hpp （为什么叫vision 这个名字，我目前还不清楚），实现特征表达功能，更具体地说包含卷积操作，Pooling操作，他们基本都会产生新的内存占用（Pooling相对较小）。
+  \item \textbf{网络连接层和激活函数} 定义于common\_layers.hpp，Caffe提供了单个层与多个层的连接，并在这个头文件中声明。这里还包括了常用的全连接层InnerProductLayer 类。
+\end{itemize}
+
+\textbf{Layer的重要成员函数}
+
+在Layer内部，数据主要有两种传递方式，正向传导（Forward）和反向传导（Backward）。Forward和Backward有CPU和GPU（部分有）两种实现。Caffe中所有的Layer都要用这两种方法传递数据。
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+virtual void Forward(const vector<Blob<Dtype>*> &bottom,
+                     vector<Blob<Dtype>*> *top) = 0;
+virtual void Backward(const vector<Blob<Dtype>*> &top,
+                      const vector<bool> &propagate_down,
+                      vector<Blob<Dtype>*> *bottom) = 0;
+
+\end{lstlisting}
+
+Layer类派生出来的层类通过这实现这两个虚函数，产生了各式各样功能的层类。Forward是从根据bottom计算top的过程，Backward则相反（根据top计算bottom）。注意这里为什么用了一个包含Blob的容器（vector），对于大多数Layer来说输入和输出都各连接只有一个Layer，然而对于某些Layer存在一对多的情况，比如LossLayer和某些连接层。在网路结构定义文件（*.proto）中每一层的参数bottom和top数目就决定了vector中元素数目。
+
+layers \{
+
+  bottom: "decode1neuron"   // The first layer subconnected to this;
+
+  bottom: "flatdata"        // The second layer subconnected to this;
+
+  top: "l2\_error"           // The first layer upconnected to this;
+
+  name: "loss"              // Name of this layer;
+
+  type: EUCLIDEAN\_LOSS      // Type of this layer;
+
+  loss\_weight: 0
+
+\}
+\\
+
+\textbf{Layer的重要成员变量}
+
+\textbf{loss}
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+vector<Dtype> loss_;
+
+\end{lstlisting}
+每一层又有一个loss\_值，只不多大多数Layer 都是0，只有LossLayer才可能产生非0的loss\_。计算loss是会把所有层的loss\_相加
+
+\textbf{learnable parameters}
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+vector<shared_ptr<Blob<Dtype> > > blobs_;
+
+\end{lstlisting}
+Layer学习到的参数。
+
+\subsubsection{Net}
+Net用容器的形式将多个Layer有序地放在一起，其自身实现的功能主要是对逐层Layer进行初始化，以及提供Update( )的接口（更新网络参数），本身不能对参数进行有效地学习过程。
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+vector<shared_ptr<Layer<Dtype> > > layers_;
+
+\end{lstlisting}
+同样Net也有它自己的:
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+vector<Blob<Dtype>*>& Forward(const vector<Blob<Dtype>* > & bottom,Dtype* loss = NULL);
+void Net<Dtype>::Backward();
+
+\end{lstlisting}
+他们是对整个网络的前向和方向传导，各调用一次就可以计算出网络的loss。
+\subsubsection{Solver}
+这个类中包含一个Net的指针，主要是实现了训练模型参数所采用的优化算法，它所派生的类就可以对整个网络进行训练了。
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+shared_ptr<Net<Dtype> > net_;
+
+\end{lstlisting}
+
+不同的模型训练方法通过重载函数ComputeUpdateValue( )实现计算update参数的核心功能:
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+virtual void ComputeUpdateValue() = 0;
+
+\end{lstlisting}
+
+最后当进行整个网络训练过程（也就是运行Caffe训练某个模型）的时候，实际上是在运行caffe.cpp中的train( )函数，而这个函数实际上是实例化一个Solver对象，初始化后调用了Solver中的Solve( )方法。而这个Solve( )函数主要就是在迭代运行下面这两个函数，就是上面 介绍的函数。
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+ComputeUpdateValue();
+net_->Update();
+
+\end{lstlisting}
+
+\section{一些经典论文基于CAFFE的实验重现}
+\subsection{A Neural Algorithm of Artistic Style}
+2015年9月几位德国计算机神经网络科学家发表了篇论文\cite{gatys2015neural}声称可以让电脑模仿任何画家的风格作画，如图\ref{fig:6.6}，该论文的思路相当新颖，以至于在短短三个月内就有人将其商业化使用。
+
+究竟什么叫做风格？这很难给出一个数学上的定义，但有两点特性是可以确定的：
+一是风格的表达应当是局部的。receptive field越大，特征越接近语义，即"这个东西是什么"，而不是风格，当然也不能太小，因为风格这东西还是个比较复杂的模式(pattern)。
+二是全局共享同一个风格，如果各处都是不一样的，那就变成大杂烩，而不能称为具有某种风格。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/66.png}
+ \caption{Images that combine the content of a photograph with the style of several well-known artworks.}
+ \label{fig:6.6}
+\end{figure}
+说到这里，对卷积神经网络比较熟悉的可以想到，中层的卷积特征符合这两个特性。在我们还未明确什么是风格这个特征的时候，可以找一个比较大的网络(例如vgg)，将中层卷积特征的分布当做风格。
+
+这篇文章主要解决了两个问题：
+\begin{enumerate}
+  \item 如何能同时保证生成的图像还像原来的东西，即”这个东西原来是什么，现在还是什么“。语义(semantic)，处在神经网络的高层中。因此原图和结果图的高层语义特征之差应尽量小。
+  \item “风格”这个pattern到底是什么，文中的答案是所有卷积层的特征，这跟我们上边分析得到的“中层特征”不是很相符，高层特征会带来一些具体的物体，比如梵高星空中的大漩涡，窃以为这个具体的物体不叫风格。
+\end{enumerate}
+
+为了实现平移不变性，作者使用了所有空间位置上，特征的协方差矩阵来衡量特征的分布。通过减小原图和风格图的特征分布之间的差距，使得原图和风格图的风格尽量接近。
+
+上边提到了两个”减小“，对应着两个损失函数，通过优化，即可得到文中所示的结果。
+
+这篇工作是开创性的，即找到了新的应用，所以很值得肯定。但是并不能称作为革命性的成果。文章中的style reconstruction的loss的定义上面，这个作者并没有阐述他们的intuition，但是可以预见的是这个参数应该是纯粹经验性的。
+
+
+\section{进一步的阅读和总结}
+\chapter{递归神经网络RNN}
+前馈神经网络的输入和输出的维数都是固定的，不能任意改变。当处理序列数据时，前馈神经网络就无能力为了。因为序列数据是变长的。为了使得前馈神经网络能处理变长的序列数据，一种方法是使用延时神经网络（Time-Delay Neural Networks，TDNN）\cite{waibel1989phoneme}。
+
+\textbf{循环神经网络}（Recurrent Neural Network，RNN），也叫\textbf{递归神经网络}。这里为了区别与另外一种\textbf{递归神经网络}（Recursive Neural Network），我们称为循环神经网络。在前馈神经网络模型中，连接存在层与层之间，每层的节点之间是无连接的。
+
+循环神经网络通过使用带自反馈的神经元，能够处理任意长度的序列。循环神经网络比前馈神经网络更加符合生物神经网络的结构。循环神经网络已经被广泛应用在语音识别、语言模型以及自然语言生成等任务上。
+
+给定一个输入序列$\boldsymbol{x}^{(1:n)}= (\boldsymbol{x}^{(1)},\boldsymbol{x}^{(2)},...,\boldsymbol{x}^{(t)},\cdots ,\boldsymbol{x}^{(n)})$，循环神经网络通过下面公式更新带反馈边的隐藏层的\textbf{活性值}$\boldsymbol{h}(t)$：
+\begin{equation}\label{7.1}
+  \boldsymbol{h}_t =
+  \begin{cases}
+   0 & \text{if } t= 0 \\
+   f(\boldsymbol{h}_{t-1},\boldsymbol{x}_t)       & \text{if } otherwise
+  \end{cases}
+\end{equation}
+从数学上讲，式\ref{7.1}可以看成一个\textbf{动态系统}。动态系统是指系统的状态按照一定的规律随时间变化的系统。因此，活性值$\boldsymbol{h}_t$在很多文献上也称为\textbf{状态}。但这里的状态是数学上的概念，区别与我们在前馈网络中定义的神经元的状态。理论上循环神经网络可以近似任意的动态系统。图\ref{fig:7.1}给出了循环神经网络的示例。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/71.png}
+ \caption{RNN}
+ \label{fig:7.1}
+\end{figure}
+循环神经网络的参数训练可以通过随时间进行反向传播（Backpropagation Through Time，BPTT）算法\cite{werbos1990backpropagation}。但循环神经网络的一个最大问题是训练时梯度需要随着时间进行反向传播。当输入序列比较长时，会存在梯度爆炸和消失问题\cite{bengio1994learning,hochreiter1997long,hochreiter2001gradient}。 长短时记忆神经网络（long short term memory neural network，LSTM）\cite{hochreiter1997long}是训练神经网络的一个扩展。
+\section{简单的递归网络}
+我们先来看一个非常简单的循环神经网络，叫\textbf{简单循环网络}（Simple Recurrent Network，SRN）\cite{elman1990finding}。
+
+假设时刻$t$时，输入为$\boldsymbol{x}_t$，隐层状态（隐层神经元活性）为$\boldsymbol{h}_t$。$\boldsymbol{h}_t$不仅和当前时刻的输入相关，也和上一个时刻的隐层状态相关。
+
+一般我们使用如下函数：
+\begin{equation}\label{7.2}
+  \boldsymbol{h}_t=f(\boldsymbol{U}\boldsymbol{h}_{t-1}+\boldsymbol{W}\boldsymbol{x}_t+\boldsymbol{b})
+\end{equation}
+这里，$f$是非线性函数，通常为logistic函数或tanh函数。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/72.png}
+ \caption{Simple RNN expanded by time}
+ \label{fig:7.2}
+\end{figure}
+
+图\ref{fig:7.2}给出了按时间展开的循环神经网络。
+\subsection{梯度}
+循环神经网络的参数训练可以通过\textbf{随时间进行反向传播}（Backpropagation Through Time，BPTT）算法\cite{werbos1990backpropagation}。图\ref{fig:7.3}给出了随时间进行反向传播算法的示例。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/73.png}
+ \caption{RNN expanded by time}
+ \label{fig:7.3}
+\end{figure}
+
+假设循环神经网络在每个时刻$t$都有一个监督信息，损失为$J_t$。则整个序列的损失为$J=\sum_{t=1}^TJ_t$。
+
+损失$J$关于$U$的梯度为：
+\begin{gather}\label{7.3}
+  \frac{\partial J}{\partial U} =\sum_{t=1}^T\frac{\partial J_t}{\partial U}\\
+  =\sum_{t=1}^T\frac{\partial \boldsymbol{h}_t}{\partial U}\frac{\partial J_t}{\partial \boldsymbol{h}_t}
+\end{gather}
+其中，$\boldsymbol{h}_t$是关于$U$和$\boldsymbol{h}_{t-1}$的函数，而$\boldsymbol{h}_{t-1}$又是关于$U$和$\boldsymbol{h}_{t-2}$的函数。因此，我们可以用链式法则得到:
+\begin{equation}\label{7.5}
+  \frac{\partial J}{\partial U} =\sum_{t=1}^{T}\sum_{k=1}^{t}\frac{\partial \boldsymbol{h}_k}{\partial U}\frac{\partial \boldsymbol{h}_t}{\partial \boldsymbol{h}_k}\frac{\partial \boldsymbol{y}_t}{\partial \boldsymbol{h}_t}\frac{\partial J_t}{\partial \boldsymbol{y}_t}
+\end{equation}
+其中，
+\begin{gather}\label{7.6}
+  \frac{\partial \boldsymbol{h}_t}{\partial \boldsymbol{h}_k}=\prod_{i=k+1}^{t}\frac{\partial \boldsymbol{h}_i}{\partial \boldsymbol{h}_{i-1}} \\
+  =\prod_{i=k+1}^{t}U^T\boldsymbol{diag}[f'(h_{i-1})]
+\end{gather}
+因此，
+\begin{equation}\label{7.8}
+  \frac{\partial J}{\partial U} =\sum_{t=1}^{T}\sum_{k=1}^{t}\frac{\partial \boldsymbol{h}_k}{\partial U}  \left( \prod_{i=k+1}^{t}U^T\boldsymbol{diag}[f'(h_{i-1})] \right)    \frac{\partial \boldsymbol{y}_t}{\partial \boldsymbol{h}_t}\frac{\partial J_t}{\partial \boldsymbol{y}_t}
+\end{equation}
+
+我们定义$\gamma = ||U^T\boldsymbol{diag}[f'(h_{i-1})]||$，则在上面公式中的括号里面为$\gamma^{t-k}$。如果$\gamma > 1$，当$t-k \to \inf$时，$\gamma^{t-k}\to \infty$，会造成系统不稳定，也就是所谓的梯度爆炸问题；相反，如果$\gamma < 1$，当$t-k \to \infty$ 时，$\gamma^{t-k}\to 0$，会出现和深度前馈神经网络类似的梯度消失问题。
+
+在训练循环神经网络时，更经常出现的是梯度消失问题。因为我们一般情况下使用的非线性激活函数为logistic函数或tanh函数，其导数值都小于$1$。而权重矩阵$∥U^T∥$也不会太大。我们定义$||U^T|| \leq \gamma_u\leq 1$，$||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_f\leq 1$，则有:
+\begin{equation}\label{7.9}
+  ||\frac{\partial \boldsymbol{h}_i}{\partial \boldsymbol{h}_{i-1}}||\leq ||U^T|| \cdot ||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_u\gamma_f\leq 1
+\end{equation}
+经过$t - k$次传播之后，
+\begin{equation}\label{7.10}
+  ||\frac{\partial \boldsymbol{h}_i}{\partial \boldsymbol{h}_{i-1}}||\leq(\gamma_u\gamma_f)^{t-k}
+\end{equation}
+如果时间间隔$t - k$过大，$||\frac{\partial \boldsymbol{h}_i}{\partial \boldsymbol{h}_{i-1}}||$会趋向于0。
+
+因此，虽然简单循环网络从理论上可以建立长时间间隔的状态之间的依赖关系（Long-Term Dependencies），但是由于梯度爆炸或消失问题，实际上只能学习到短周期的依赖关系。这就是所谓的\textbf{长期依赖问题}。
+\subsection{改进方案}
+为了避免梯度爆炸或消失问题，关键是使得$U^T\boldsymbol{diag}[f'(h_{i-1})] = 1$。一种方式就是选取合适的参数，同时使用非饱和的激活函数。但这样的方式需要很多人工经验，同时限制了模型的广泛应用。
+
+还有一种方式就是改变模型，比如让$U = 1$，同时使用$f′(\boldsymbol{h}_{i-1}) = 1$。
+\begin{equation}\label{7.11}
+  \boldsymbol{h}_t=\boldsymbol{h}_{i-1}+\boldsymbol{W}\boldsymbol{g}(\boldsymbol{x}_t)
+\end{equation}
+$\boldsymbol{g}$是非线性激活函数。
+
+但这样的形式，丢失了神经元在反馈边上的非线性激活的性质。因此，一个更加有效的改进是引入一个新的状态$\boldsymbol{c}_t$专门来进行线性的反馈传递，同时在$\boldsymbol{c}_t$的信息非线性传递给$\boldsymbol{h}_t$。
+\begin{gather}\label{7.12}
+  \boldsymbol{c}_t=\boldsymbol{c}_{t-1}+\boldsymbol{W}\boldsymbol{g}(\boldsymbol{x}_t) \\
+  \boldsymbol{h}_t=\tanh{\boldsymbol{c}_t}
+\end{gather}
+
+但是，这样依然存在一定的问题。因为$\boldsymbol{c}_t$和$\boldsymbol{c}_{t-1}$是线性关系，同时不断累积$\boldsymbol{x}_t$的信息，会使得$\boldsymbol{c}_t$变得越来越大。为了解决这个问题，Hochreiter and Schmidhuber\cite{hochreiter1997long}提出一个非常好的解决方案，就是引入门机制（Gating Mechanism）来控制信息的累积速度，并可以选择遗忘之前累积的信息。这就是下面要介绍的\textbf{长短时记忆神经网络}。
+\section{长短时记忆神经网络：LSTM}
+
+\textbf{长短时记忆神经网络}（Long Short-Term Memory Neural Network，LSTM）\cite{hochreiter1997long}是循环神经网络的一个变体，可以有效地解决简单循环神经网络的梯度爆炸或消失问题。
+
+LSTM模型的关键是引入了一组记忆单元（Memory Units），允许网络可以学习何时遗忘历史信息，何时用新信息更新记忆单元。在时刻t时，记忆单元$\boldsymbol{c}_t$记录了到当前时刻为止的所有历史信息，并受三个“门”控制：输入门$\boldsymbol{i}_t$, 遗忘门$\boldsymbol{f}_t$和输出门$\boldsymbol{o}_t$. 三个门的元素的值在$[0,1]$之间。
+
+在时刻$t$时LSTM的更新方式如下：
+
+\begin{gather}\label{7.14}
+  \boldsymbol{i}_t=\sigma(W_i\boldsymbol{x}_t+U_i\boldsymbol{h}_{t-1}+V_i\boldsymbol{c}_{t-1}) \\
+  \boldsymbol{f}_t=\sigma(W_f\boldsymbol{x}_t+U_f\boldsymbol{h}_{t-1}+V_f\boldsymbol{c}_{t-1})\\
+  \boldsymbol{o}_t=\sigma(W_o\boldsymbol{x}_t+U_o\boldsymbol{h}_{t-1}+V_o\boldsymbol{c}_{t-1})\\
+  \widetilde{\boldsymbol{c}_t}=\tanh(W_c\boldsymbol{x}_t+U_c\boldsymbol{h}_{t-1})\\
+  \boldsymbol{c}_t=\boldsymbol{f}_t\odot \boldsymbol{c}_{t-1}+\boldsymbol{i}_t\odot \widetilde{\boldsymbol{c}_t}\\
+  \boldsymbol{h}_t=\boldsymbol{o}_t\odot\tanh{\boldsymbol{c}_t}
+\end{gather}
+这里，$\boldsymbol{x}_t$是当前时刻的输入，$\sigma$是logistic函数，$V_i$，$V_f$，$V_o$是对角矩阵。遗忘门$\boldsymbol{f}_t$控制每一个内存单元需要遗忘多少信息，输入门$\boldsymbol{i}_t$控制每一个内存单元加入多少新的信息，输出门$\boldsymbol{o}_t$控制每一个内存单元输出多少信息。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/74.png}
+ \caption{LSTM Structure Expamle}
+ \label{fig:7.4}
+\end{figure}
+
+图7.4给出了LSTM模型的计算结构。
+
+这样，LSTM可以学习到长周期的历史信息。
+
+LSTM已经被应用到很多的任务中，比如机器翻译\cite{sutskever2014sequence}等。
+\section{门限循环单元：GRU}
+门限循环单元（Gated Recurrent Unit，GRU）\cite{cho2014learning,chung2014empirical}是一种比LSTM更加简化的版本。在LSTM中，输入门和遗忘门是互补关系，因为同时用两个门比较冗余。GRU将输入门与和遗忘门合并成一个门：更新门（Update Gate），同时还合并了记忆单元和神经元活性。
+
+GRU模型中有两个门：更新门$\boldsymbol{z}$和重置门$\boldsymbol{r}$。更新门$\boldsymbol{z}$用来控制当前的状态需要遗忘多少历史信息和接受多少新信息。重置门$\boldsymbol{r}$用来控制候选状态中有多少信息是从历史信息中得到。
+
+GRU模型的更新方式如下：
+\begin{gather}\label{7.20}
+  \boldsymbol{r}_t=\sigma(\boldsymbol{W}_r)\boldsymbol{x}_t+\boldsymbol{U}_r \boldsymbol{h}_{t-1} \\
+  \boldsymbol{z}_t=\sigma(\boldsymbol{W}_z)\boldsymbol{x}_t+\boldsymbol{U}_z \boldsymbol{h}_{t-1}\\
+  \widetilde{\boldsymbol{h}_t}=\tanh(\boldsymbol{W}_c\boldsymbol{x}_t+\boldsymbol{U}(\boldsymbol{r}_z\odot\boldsymbol{h}_{t-1}))\\
+  \boldsymbol{h}_t=\boldsymbol{z}_t\odot\boldsymbol{h}_{t-1}+(1-\boldsymbol{z}_t)\odot\widetilde{\boldsymbol{h}_t}
+\end{gather}
+
+这里选择$\tanh$函数也是因为其导数有更大的值域。
+\section{一个强大的RNN框架：DeepNet}
+\section{一些经典论文基于DeepNet的实验重现}
+\section{进一步的阅读和总结}
+
+
+\bibliographystyle{plain}
+\bibliography{Lect}
+
+\end{document}
