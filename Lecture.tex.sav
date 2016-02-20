@@ -5,7 +5,6 @@
 \usepackage{amsthm}
 \usepackage{listings}
 \usepackage{color}
-\usepackage{booktabs}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -601,104 +600,6 @@ $x^{(t)},y^{(t)}$是第$t$次迭代选取的样本。
 \section{训练方法}
 \section{一些经验}
 \section{进一步的阅读和总结}
-\chapter{受限波尔兹曼机RBM}
-Restricted Boltzmann Machines (RBMs) is a popular unsupervised method in Deep Learning Architectures. Despite its popularity, it takes efforts to grasp the concept. This post aims at providing an introduction to RBMs, from a somewhat mathematical point of view. Most of the formulas here are from\cite{bengio2009learning}.
-\section{Roadmap}
-Boltzmann Machines is an energy-based model where the joint probability distribution is characterized by a scalar energy to each configuration of variables. Boltzmann machine is also a probabilistic graphical model using graph-based representation as the basis for encoding the distribution. Restricted Boltzmann Machines is a type of Boltzmann machine with constrained connections – only a certain type of connection is allowed.
-
-This post starts by introducing energy-based models, including the graphical representation of the model and its learning with gradient descent of log-likelihood. This post then discusses Boltzmann machines by placing a specific energy function in energy-based models. Restricted Boltzmann Machines are further discussed with the introduction of restrictions in Boltzmann Machines.
-\section{Notations}
-It is worthwhile to mention that there are three important notations in this post: $x$, $h$ and $y$. $x$ represents a list of input variables taking the form $x=\left \{ x_{1}, x_{2},\dots ,x_{N} \right \}$, where $x_{i}$ denotes the $i-th$ input variable. $h$ represents a list of hidden variables taking the form $h=\left \{ h_{1}, h_{2},\dots ,h_{N} \right \}$, where $h_{i}$ denotes the $i-th$ hidden variable. $y$ represents the label of a given input.
-
-As an example, for the problem of image recognition, $x$ are the images of interest where $x_{i}$ are the individual pixels from an image $x$. $h$ are the $hidden features/descriptors$ that serve as a high-level representations of image. Finally, $y$ are the labels of the images.
-
-\section{Energy-Based Models}
-Different from $predictive/supervised$ models, such as back-propagation neural networks, energy-based models capture the joint probability distribution  $P(\mathbf{x})$  of the configuration of input variables $\left \{ x_{1}, x_{2},\dots ,x_{N} \right \}$, rather than conditional probability of $P(y|\mathbf{x})$ .
-
-Energy-based models associate a scalar energy to each configuration of variables of interest. For each configuration, there is a corresponding energy associated with it, and this energy is directly associated with the probability for the model to be in this particular configuration. The probability distribution of energy-based models is defined as
-\begin{equation}\label{add1.1}
-    P(x)=\frac{e^{-Energy(x)}}{Z}
-\end{equation}
-
-This probability distribution favors “negative energy”, meaning configurations with low energy will have a high probability. Learning in energy-based models corresponds to modifying the energy function to reshape the energy space, so that the desired patterns in the model always lie in the lowest spots in the energy surface, so that it will have a high probability. RBMs is a form of Undirected Graphical Model which I will discuss in another post.
-\section{An Simple Example of Energy-Based Models}
-\begin{figure}[t]
- \centering
- \includegraphics{pics/add1.png}
- \caption{An Simple Example of Energy-Based Models}
- \label{fig:add1}
-\end{figure}
-Suppose we have a simple energy-based model with only two variables $a$  and $b$  (where $x=\left \{ a, b \right \})$, as well as a connection weight $w$. Here we define energy function $Energy(a,b)=-wab$. If $a$ and $b$ can only take binary values, and $w$ is $1$, the resulting energy function takes the form $Energy(a,b)=-ab$. The table below shows all possible configurations for $a$, $b$, $Energy(a,b)$ and the probability for each configuration.
-\begin{table}[htbp]
-\
-\begin{center}
-  \caption{\label{tab:Energy}$Energy(a,b)$ and the probability for each configuration}
- \begin{tabular}{lclcl}
-  \toprule
-  $a$ & $b$ & $-Energy(a,b)$ & $e^{-Energy(a,b)}$ & $P(a,b)$ \\
-  \midrule
- 0 & 0 & 0& 1 & $\frac{1}{3+e}$\\
- 0 & 1 & 0& 1 & $\frac{1}{3+e}$\\
- 1 & 0 & 0& 1 & $\frac{1}{3+e}$\\
- 1 & 1 & 1& e & $\frac{e}{3+e}$\\
-  \bottomrule
- \end{tabular}
-\end{center}
-
-\end{table}
-
-We can visualize the probability distribution using the graph below where the size of each circle represents the probability of each configuration.
-
-\begin{figure}[t]
- \centering
- \includegraphics{pics/add2.png}
- \caption{Model}
- \label{fig:add2}
-\end{figure}
-
-\section{Introducing Hidden Variables}
-When modelling a set of input features, we can use the input attributes as variables to learn the relationship between each other. However, directly modeling such variables seems to have less expressive power, hence, we introduce the concept of hidden variables (nonobserved variables), to better model the joint probability distribution. The hidden variables can be used to capture high level feature representations of the observed variables. The probability distribution and partition function are changed accordingly:
-\begin{equation}\label{add1.2}
-    P(x,h)=\frac{e^{-Energy(x,h)}}{Z}
-\end{equation}
-\begin{equation}\label{add1.3}
-    Z=\sum_{x}^{ }\sum_{h}^{ }e^{-Energy(x,h)}
-\end{equation}
-Since we are only interested in the distribution of visible variables, we want to model the marginal distribution over hidden variables that takes the form
-
-\begin{equation}\label{add1.4}
-  P(x)=\sum_{h}^{ }\frac{e^{-Energy(x,h)}}{Z}
-\end{equation}
-
-To simplify this formula, we defined free energy being the marginal energy of $x$ summing over $h$:
-\begin{equation}\label{add1.5}
-  FreeEnergy(x)=-ln\sum_{h}^{ }e^{-Energy(x,h)}
-\end{equation}
-Therefore we can rewrite the marginal probability distribution as:
-
-\begin{equation}\label{add1.6}
-  P(x)=\frac{e^{-FreeEnergy(x)}}{Z}
-\end{equation}
-\begin{equation}\label{add1.7}
-    Z=\sum_{x}e^{-FreeEnergy(x)}
-\end{equation}
-\section{Gradient Learning of Energy-based Models}
-We use log-likelihood gradient to train the model, and we use $\theta$ to represent parameters of the model.
-\begin{figure}[t]
- \centering
- \includegraphics{pics/add3.png}
- \caption{Gradient Learning of Energy-based Models}
- \label{fig:add3}
-\end{figure}
-
-Hence, the average log-likelihood gradient for a training set is:
-\begin{equation}\label{add1.8}
-    E_{\hat{P}}\left[ \frac{\partial \ln P(x)}{\partial\theta} \right]=-E_{\hat{P}}\left[ \frac{\partial FreeEnergy(x)}{\partial\theta} \right]+E_{P}\left[ \frac{\partial FreeEnergy(x)}{\partial\theta} \right]
-\end{equation}
-
-where $\hat{P}$ is the distribution over the training set, and  $P$ is the distribution over the model's current parameters. The resulting log-likelihood gradient tells us, as long as we are able to compute the derivative of free energy for the training examples, and the derivative of free energy for the model’s own distribution, we will be able to train the model tractably.
-
-
 \chapter{卷积神经网络CNN}
 
 \textbf{卷积神经网络}（Convolutional Neural Networks，CNN）是一种前馈神经网络。卷积神经网络是受生物学上\textbf{感受域}（Receptive Field）的机制而提出的。感受野主要是指听觉系统、本体感觉系统和视觉系统中神经元的一些性质。比如在视觉神经系统中，一个神经元的感受野是指视网膜上的特定区域，只有这个区域内的刺激才能够激活该神经元\cite{hubel1968receptive}。
@@ -746,7 +647,7 @@ where $\hat{P}$ is the distribution over the training set, and  $P$ is the distr
   a_i^{(l)}=f\left( \sum_{j-1}^{(l)}{w_j^{(l-1)}\cdot a_{i-j+m}^{(l-1)}}+b^{(l)} \right) \\
   =f\left( \boldsymbol{w}^{(l)}\cdot \boldsymbol{a}_{(i+m-1):i}^{(l-1)}+b_i \right)
 \end{gather}
-其中，$\boldsymbol{w}^{(l)}\in \mathbb{R}^m$为$m$维的滤波器，$\boldsymbol{a}_{(i+m-1):i}^{(l)}=[a_{(i+m-1)}^{(l)},\cdots ,a_{i}^{(l)}]^T$。 这里$a^{(l)}$的下标从1 开始，这里的卷积公式和原始的公式中的$\boldsymbol{a}$的下标有所不同。
+其中，$\boldsymbol{w}^{(l)}\in \mathbb{R}^m$为$m$维的滤波器，$\boldsymbol{a}_{(i+m-1):i}^{(l)}=[a_{(i+m-1)}^{(l)},\cdots ,a_{i}^{(l)}]^T$。 这里$a^{(l)}$的下标从1开始，这里的卷积公式和原始的公式中的$\boldsymbol{a}$的下标有所不同。
 
 上述公式也可以写成：
 \begin{equation}\label{6.5}
@@ -1134,7 +1035,7 @@ net_->Update();
 
 图\ref{fig:7.2}给出了按时间展开的循环神经网络。
 \subsection{梯度}
-循环神经网络的参数训练可以通过\textbf{随时间进行反向传播}（Backpropagation Through Time，BPTT）算法\cite{werbos1990backpropagation}。 图\ref{fig:7.3}给出了随时间进行反向传播算法的示例。
+循环神经网络的参数训练可以通过\textbf{随时间进行反向传播}（Backpropagation Through Time，BPTT）算法\cite{werbos1990backpropagation}。图\ref{fig:7.3}给出了随时间进行反向传播算法的示例。
 \begin{figure}[t]
  \centering
  \includegraphics{pics/73.png}
@@ -1165,7 +1066,7 @@ net_->Update();
 
 我们定义$\gamma = ||U^T\boldsymbol{diag}[f'(h_{i-1})]||$，则在上面公式中的括号里面为$\gamma^{t-k}$。如果$\gamma > 1$，当$t-k \to \inf$ 时，$\gamma^{t-k}\to \infty$，会造成系统不稳定，也就是所谓的梯度爆炸问题；相反，如果$\gamma < 1$，当$t-k \to \infty$ 时，$\gamma^{t-k}\to 0$，会出现和深度前馈神经网络类似的梯度消失问题。
 
-在训练循环神经网络时，更经常出现的是梯度消失问题。因为我们一般情况下使用的非线性激活函数为logistic函数或tanh函数，其导数值都小于$1$。 而权重矩阵$∥U^T∥$也不会太大。我们定义$||U^T|| \leq \gamma_u\leq 1$，$||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_f\leq 1$，则有:
+在训练循环神经网络时，更经常出现的是梯度消失问题。因为我们一般情况下使用的非线性激活函数为logistic函数或tanh函数，其导数值都小于$1$。而权重矩阵$∥U^T∥$也不会太大。我们定义$||U^T|| \leq \gamma_u\leq 1$，$||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_f\leq 1$，则有:
 \begin{equation}\label{7.9}
   ||\frac{\partial \boldsymbol{h}_i}{\partial \boldsymbol{h}_{i-1}}||\leq ||U^T|| \cdot ||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_u\gamma_f\leq 1
 \end{equation}
@@ -1177,7 +1078,7 @@ net_->Update();
 
 因此，虽然简单循环网络从理论上可以建立长时间间隔的状态之间的依赖关系（Long-Term Dependencies），但是由于梯度爆炸或消失问题，实际上只能学习到短周期的依赖关系。这就是所谓的\textbf{长期依赖问题}。
 \subsection{改进方案}
-为了避免梯度爆炸或消失问题，关键是使得$U^T\boldsymbol{diag}[f'(h_{i-1})] = 1$。 一种方式就是选取合适的参数，同时使用非饱和的激活函数。但这样的方式需要很多人工经验，同时限制了模型的广泛应用。
+为了避免梯度爆炸或消失问题，关键是使得$U^T\boldsymbol{diag}[f'(h_{i-1})] = 1$。一种方式就是选取合适的参数，同时使用非饱和的激活函数。但这样的方式需要很多人工经验，同时限制了模型的广泛应用。
 
 还有一种方式就是改变模型，比如让$U = 1$，同时使用$f′(\boldsymbol{h}_{i-1}) = 1$。
 \begin{equation}\label{7.11}
@@ -1191,7 +1092,7 @@ $\boldsymbol{g}$是非线性激活函数。
   \boldsymbol{h}_t=\tanh{\boldsymbol{c}_t}
 \end{gather}
 
-但是，这样依然存在一定的问题。因为$\boldsymbol{c}_t$和$\boldsymbol{c}_{t-1}$ 是线性关系，同时不断累积$\boldsymbol{x}_t$ 的信息，会使得$\boldsymbol{c}_t$变得越来越大。为了解决这个问题，Hochreiter and Schmidhuber\cite{hochreiter1997long}提出一个非常好的解决方案，就是引入门机制（Gating Mechanism）来控制信息的累积速度，并可以选择遗忘之前累积的信息。这就是下面要介绍的\textbf{长短时记忆神经网络}。
+但是，这样依然存在一定的问题。因为$\boldsymbol{c}_t$和$\boldsymbol{c}_{t-1}$是线性关系，同时不断累积$\boldsymbol{x}_t$ 的信息，会使得$\boldsymbol{c}_t$变得越来越大。为了解决这个问题，Hochreiter and Schmidhuber\cite{hochreiter1997long}提出一个非常好的解决方案，就是引入门机制（Gating Mechanism）来控制信息的累积速度，并可以选择遗忘之前累积的信息。这就是下面要介绍的\textbf{长短时记忆神经网络}。
 \section{长短时记忆神经网络：LSTM}
 
 \textbf{长短时记忆神经网络}（Long Short-Term Memory Neural Network，LSTM）\cite{hochreiter1997long}是循环神经网络的一个变体，可以有效地解决简单循环神经网络的梯度爆炸或消失问题。
@@ -1224,7 +1125,7 @@ LSTM已经被应用到很多的任务中，比如机器翻译\cite{sutskever2014sequence}等。
 \section{门限循环单元：GRU}
 门限循环单元（Gated Recurrent Unit，GRU）\cite{cho2014learning,chung2014empirical}是一种比LSTM更加简化的版本。在LSTM 中，输入门和遗忘门是互补关系，因为同时用两个门比较冗余。GRU将输入门与和遗忘门合并成一个门：更新门（Update Gate），同时还合并了记忆单元和神经元活性。
 
-GRU模型中有两个门：更新门$\boldsymbol{z}$ 和重置门$\boldsymbol{r}$。更新门$\boldsymbol{z}$用来控制当前的状态需要遗忘多少历史信息和接受多少新信息。重置门$\boldsymbol{r}$用来控制候选状态中有多少信息是从历史信息中得到。
+GRU模型中有两个门：更新门$\boldsymbol{z}$和重置门$\boldsymbol{r}$。更新门$\boldsymbol{z}$用来控制当前的状态需要遗忘多少历史信息和接受多少新信息。重置门$\boldsymbol{r}$用来控制候选状态中有多少信息是从历史信息中得到。
 
 GRU模型的更新方式如下：
 \begin{gather}\label{7.20}
