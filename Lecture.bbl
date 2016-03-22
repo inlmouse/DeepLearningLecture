@@ -45,6 +45,13 @@ Ian Goodfellow, Aaron Courville, and Yoshua Bengio.
 \newblock Deep learning.
 \newblock Book in preparation for MIT Press, 2015.
 
+\bibitem{he2015delving}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Delving deep into rectifiers: Surpassing human-level performance on
+  imagenet classification.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 1026--1034, 2015.
+
 \bibitem{hinton2012deep}
 Geoffrey Hinton, Li~Deng, Dong Yu, George~E Dahl, Abdel-rahman Mohamed, Navdeep
   Jaitly, Andrew Senior, Vincent Vanhoucke, Patrick Nguyen, Tara~N Sainath,

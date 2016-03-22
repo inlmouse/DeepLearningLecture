@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  20 FEB 2016 16:27
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.9.19)  22 MAR 2016 09:16
 entering extended mode
-**C:/Users/Glass/Documents/GitHub/DeepLearningLecture/Lecture.tex
-(C:/Users/Glass/Documents/GitHub/DeepLearningLecture/Lecture.tex
+**D:/Users/DELL/Documents/GitHub/DeepLearningLecture/Lecture.tex
+(D:/Users/DELL/Documents/GitHub/DeepLearningLecture/Lecture.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
 (D:\CTEX\MiKTeX\tex\latex\ctex\ctexbook.cls
@@ -410,15 +410,15 @@ Package: amsthm 2004/08/06 v2.20
 \lst@maxwidth=\dimen151
 
 (D:\CTEX\MiKTeX\tex\latex\listings\lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count186
 \lst@skipnumbers=\count187
 \lst@framebox=\box39
 )
 (D:\CTEX\MiKTeX\tex\latex\listings\listings.cfg
-File: listings.cfg 2007/02/22 1.4 listings configuration
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2007/02/22 1.4 (Carsten Heinz)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (D:\CTEX\MiKTeX\tex\latex\booktabs\booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
@@ -441,9 +441,9 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@thisrulewidth=\dimen164
 )
 (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.aux
+(D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.aux
 
 LaTeX Warning: Label `6.2' multiply defined.
 
@@ -560,7 +560,7 @@ File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
 ] [2
 
 ]
-(C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.toc
+(D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
 (D:\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd
@@ -573,11 +573,9 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
  family 'def' instead. on input line 21.
- [3] [4])
+ [3] [4] [5])
 \tf@toc=\write3
- [5] [6
-
-]
+ [6]
 µ⁄“ª’¬
 
 Underfull \hbox (badness 10000) in paragraph at lines 72--73
@@ -594,7 +592,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
-[7]
+[7
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
@@ -669,7 +669,7 @@ Overfull \hbox (54.74245pt too wide) in paragraph at lines 286--287
 
 [17
 
- <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/31.png>] [18]
+ <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/31.png>] [18]
 Missing character: There is no § in font cmr10!
 
 Underfull \hbox (badness 10000) in paragraph at lines 351--353
@@ -694,7 +694,7 @@ File: pics/32.png Graphic file (type png)
  <use pics/32.png>
 Package pdftex.def Info: pics/32.png used on input line 364.
 (pdftex.def)             Requested size: 282.30399pt x 88.07883pt.
- [20 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/32.png>]
+ [20 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/32.png>]
 Overfull \hbox (0.19733pt too wide) in paragraph at lines 381--382
 []\C19/rm/m/n/10.54/54 X \C19/rm/m/n/10.54/43 J \C19/rm/m/n/10.54/61 ò \C19/rm/
 m/n/10.54/42 á \C19/rm/m/n/10.54/37 C \C19/rm/m/n/10.54/48 ˛$\OML/cmm/m/it/10.5
@@ -727,7 +727,7 @@ Overfull \hbox (30.40158pt too wide) in paragraph at lines 394--395
  [][] 
  []
 
-[21 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/33.png>]
+[21 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/33.png>]
 <pics/35.png, id=178, 371.3875pt x 139.52126pt>
 File: pics/35.png Graphic file (type png)
  <use pics/35.png>
@@ -741,8 +741,8 @@ Overfull \hbox (26.38658pt too wide) in paragraph at lines 420--421
 
 Underfull \vbox (badness 1831) has occurred while \output is active []
 
- [22 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/34.png>] [23 <C:
-/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/35.png>]
+ [22 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/34.png>] [23 <D:/
+Users/DELL/Documents/GitHub/DeepLearningLecture/pics/35.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 456--457
 
  []
@@ -813,8 +813,8 @@ File: pics/add2.png Graphic file (type png)
  <use pics/add2.png>
 Package pdftex.def Info: pics/add2.png used on input line 654.
 (pdftex.def)             Requested size: 132.49466pt x 143.93738pt.
- [35 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/add1.png>] [36 <
-C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/add2.png>]
+ [35 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/add1.png>] [36 <D
+:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/add2.png>]
 <pics/add3.png, id=238, 448.67625pt x 236.885pt>
 File: pics/add3.png Graphic file (type png)
  <use pics/add3.png>
@@ -825,7 +825,7 @@ Overfull \hbox (103.67516pt too wide) in paragraph at lines 689--690
  [][] 
  []
 
-[37 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/add3.png>]
+[37 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/add3.png>]
 [38
 
 ]
@@ -848,7 +848,7 @@ File: pics/61.png Graphic file (type png)
  <use pics/61.png>
 Package pdftex.def Info: pics/61.png used on input line 737.
 (pdftex.def)             Requested size: 231.11287pt x 222.83195pt.
- [40 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/61.png>] [41]
+ [40 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/61.png>] [41]
 <pics/62.png, id=264, 361.35pt x 185.94469pt>
 File: pics/62.png Graphic file (type png)
  <use pics/62.png>
@@ -859,13 +859,13 @@ Overfull \hbox (16.34912pt too wide) in paragraph at lines 776--777
  [][] 
  []
 
-[42 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/62.png>]
+[42 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/62.png>]
 <pics/63.png, id=269, 201.75375pt x 71.51718pt>
 File: pics/63.png Graphic file (type png)
  <use pics/63.png>
 Package pdftex.def Info: pics/63.png used on input line 797.
 (pdftex.def)             Requested size: 201.75325pt x 71.517pt.
- [43 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/63.png>]
+ [43 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/63.png>]
 <pics/64.png, id=275, 426.09187pt x 114.4275pt>
 File: pics/64.png Graphic file (type png)
  <use pics/64.png>
@@ -881,16 +881,16 @@ File: pics/65.png Graphic file (type png)
  <use pics/65.png>
 Package pdftex.def Info: pics/65.png used on input line 842.
 (pdftex.def)             Requested size: 260.47249pt x 97.11256pt.
- [44 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/64.png>] [45 <C:
-/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/65.png>] [46] [47] [48]
+ [44 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/64.png>] [45 <D:/
+Users/DELL/Documents/GitHub/DeepLearningLecture/pics/65.png>] [46] [47] [48]
 (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
-File: lstlang1.sty 2004/09/05 1.3 listings language file
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (D:\CTEX\MiKTeX\tex\latex\listings\lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 945.
 
@@ -907,40 +907,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 1000--1002
 
  []
 
-[51] <pics/66.png, id=307, 344.78813pt x 440.39531pt>
-File: pics/66.png Graphic file (type png)
- <use pics/66.png>
-Package pdftex.def Info: pics/66.png used on input line 1075.
-(pdftex.def)             Requested size: 344.78728pt x 440.39423pt.
+[51] [52] (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) [53]
+Overfull \hbox (11.15518pt too wide) in paragraph at lines 1083--1085
+[]\OT1/cmr/m/n/10.54 Another pre-processing ap-proach sim-i-lar to the first on
+e is \OT1/cmr/bx/n/10.54 P-CA Whiten-
+ []
 
-[52] [53] [54 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/66.png>
+[54]
+Overfull \hbox (0.6981pt too wide) in paragraph at lines 1107--1109
+\OT1/cmr/m/n/10.54 weight-s will be pos-i-tive and half of them will be neg-a-t
+ive. A reasonable-
+ []
+
+[55] [56] [57] <pics/66.png, id=326, 344.78813pt x 440.39531pt>
+File: pics/66.png Graphic file (type png)
+
+<use pics/66.png>
+Package pdftex.def Info: pics/66.png used on input line 1149.
+(pdftex.def)             Requested size: 344.78728pt x 440.39423pt.
+ [58] [59] [60 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/66.png>
 ]
 µ⁄∞À’¬
-<pics/71.png, id=320, 179.92218pt x 169.38281pt>
+<pics/71.png, id=339, 179.92218pt x 169.38281pt>
 File: pics/71.png Graphic file (type png)
  <use pics/71.png>
-Package pdftex.def Info: pics/71.png used on input line 1113.
+Package pdftex.def Info: pics/71.png used on input line 1187.
 (pdftex.def)             Requested size: 179.92174pt x 169.38239pt.
- [55
+ [61
 
 ]
-<pics/72.png, id=325, 345.54094pt x 97.86563pt>
+<pics/72.png, id=344, 345.54094pt x 97.86563pt>
 File: pics/72.png Graphic file (type png)
  <use pics/72.png>
-Package pdftex.def Info: pics/72.png used on input line 1130.
+Package pdftex.def Info: pics/72.png used on input line 1204.
 (pdftex.def)             Requested size: 345.54008pt x 97.86537pt.
 
-Overfull \hbox (0.54008pt too wide) in paragraph at lines 1130--1131
+Overfull \hbox (0.54008pt too wide) in paragraph at lines 1204--1205
  [][] 
  []
 
-<pics/73.png, id=326, 343.2825pt x 94.85437pt>
+<pics/73.png, id=345, 343.2825pt x 94.85437pt>
 File: pics/73.png Graphic file (type png)
  <use pics/73.png>
-Package pdftex.def Info: pics/73.png used on input line 1140.
+Package pdftex.def Info: pics/73.png used on input line 1214.
 (pdftex.def)             Requested size: 343.28165pt x 94.85413pt.
 
-Overfull \hbox (16.2876pt too wide) in paragraph at lines 1137--1144
+Overfull \hbox (16.2876pt too wide) in paragraph at lines 1211--1218
 []\C19/rm/m/n/10.54/60 Ã \C19/rm/m/n/10.54/44 Ç \C19/rm/m/n/10.54/55   \C19/rm/
 m/n/10.54/46 ≤ \C19/rm/m/n/10.54/58  \C19/rm/m/n/10.54/49 ‰ \C19/rm/m/n/10.54/
 40  \C19/rm/m/n/10.54/37 Î \C19/rm/m/n/10.54/55 Í \C19/rm/m/n/10.54/60 ‘ \C19/
@@ -951,10 +965,10 @@ rm/m/n/10.54/48 ˆ \C19/rm/m/n/10.54/47 å \C19/rm/m/n/10.54/61 ± \C19/rm/m/n/10.
 0.54/37 ¬ |\C19/rm/m/n/10.54/26 £|\OT1/cmr/m/n/10.54 Backpropagation
  []
 
-[56 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/71.png>] [57 <C:/
-Users/Glass/Documents/GitHub/DeepLearningLecture/pics/72.png> <C:/Users/Glass/D
-ocuments/GitHub/DeepLearningLecture/pics/73.png>]
-Overfull \hbox (3.2012pt too wide) in paragraph at lines 1166--1167
+[62 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/71.png>] [63 <D:/U
+sers/DELL/Documents/GitHub/DeepLearningLecture/pics/72.png> <D:/Users/DELL/Docu
+ments/GitHub/DeepLearningLecture/pics/73.png>]
+Overfull \hbox (3.2012pt too wide) in paragraph at lines 1240--1241
 []\C19/rm/m/n/10.54/58 ∑ \C19/rm/m/n/10.54/50 Ç \C19/rm/m/n/10.54/40 Ω \C19/rm/
 m/n/10.54/61 ¬$\OML/cmm/m/it/10.54  \OT1/cmr/m/n/10.54 = \OMS/cmsy/m/n/10.54 j
 j\OML/cmm/m/it/10.54 U[][]\OT1/cmr/m/n/10.54 [\OML/cmm/m/it/10.54 f[]\OT1/cmr/m
@@ -966,46 +980,36 @@ rm/m/n/10.54/48 p \C19/rm/m/n/10.54/50 ° \C19/rm/m/n/10.54/58 è$\OML/cmm/m/it/1
 0.54 []$|\C19/rm/m/n/10.54/25 "|
  []
 
-[58]
-Overfull \hbox (1.69278pt too wide) in paragraph at lines 1194--1195
-\OT1/cmr/m/n/10.54 and Schmidhuber[[]]\C19/rm/m/n/10.54/57 J \C19/rm/m/n/10.54/
-38 — \C19/rm/m/n/10.54/61 ò \C19/rm/m/n/10.54/42 á \C19/rm/m/n/10.54/41 ö \C19/
-rm/m/n/10.54/38 ~ \C19/rm/m/n/10.54/43 – \C19/rm/m/n/10.54/40  \C19/rm/m/n/10.
-54/46 ) ˚ \C19/rm/m/n/10.54/41 ê \C19/rm/m/n/10.54/36 Y|\C19/rm/m/n/10.54/26 ß|
- \C19/rm/m/n/10.54/46 “ \C19/rm/m/n/10.54/55 ¥ \C19/rm/m/n/10.54/61 ⁄ \C19/rm/m
-/n/10.54/54 \ \C19/rm/m/n/10.54/50 Ä \C19/rm/m/n/10.54/44 ≈ \C19/rm/m/n/10.54/6
-4 õ |\C19/rm/m/n/10.54/26 £|\OT1/cmr/m/n/10.54 Gating
- []
-
-<pics/74.png, id=340, 324.46219pt x 231.86626pt>
+[64] <pics/74.png, id=359, 324.46219pt x 231.86626pt>
 File: pics/74.png Graphic file (type png)
  <use pics/74.png>
-Package pdftex.def Info: pics/74.png used on input line 1214.
+Package pdftex.def Info: pics/74.png used on input line 1288.
 (pdftex.def)             Requested size: 324.46138pt x 231.86568pt.
- [59]
+
+[65]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [60 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/74.png>]
-(C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.bbl [61] [62
+ [66 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/74.png>]
+(D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.bbl [67] [68
 
 ]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.54> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
 
-[63] [64]) [65]
-(C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.aux)
+[69] [70]) [71] (D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.aux
+)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12974 strings out of 495354
- 204869 string characters out of 3183859
- 303026 words of memory out of 3000000
- 15789 multiletter control sequences out of 15000+200000
+ 13152 strings out of 495354
+ 206744 string characters out of 3183859
+ 317937 words of memory out of 3000000
+ 15965 multiletter control sequences out of 15000+200000
  79086 words of font info for 268 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,22n,58p,871b,1730s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,22n,58p,1883b,1730s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
 imsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS
 /Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:
@@ -1059,9 +1063,9 @@ type1/public/amsfonts/cm/cmsy10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/CTEX/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmti12.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/symbol
 s/msbm10.pfb>
-Output written on Lecture.pdf (65 pages, 1984549 bytes).
+Output written on Lecture.pdf (71 pages, 2014573 bytes).
 PDF statistics:
- 732 PDF objects out of 1000 (max. 8388607)
+ 751 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

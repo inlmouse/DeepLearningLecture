@@ -72,15 +72,25 @@
 \contentsline {subsubsection}{Layer}{49}
 \contentsline {subsubsection}{Net}{51}
 \contentsline {subsubsection}{Solver}{52}
-\contentsline {section}{\numberline {7.7}一些经典论文基于CAFFE的实验重现}{52}
-\contentsline {subsection}{\numberline {7.7.1}A Neural Algorithm of Artistic Style}{52}
-\contentsline {section}{\numberline {7.8}进一步的阅读和总结}{53}
-\contentsline {chapter}{\numberline {第八章\hspace {0.3em}}递归神经网络RNN}{55}
-\contentsline {section}{\numberline {8.1}简单的递归网络}{56}
-\contentsline {subsection}{\numberline {8.1.1}梯度}{56}
-\contentsline {subsection}{\numberline {8.1.2}改进方案}{58}
-\contentsline {section}{\numberline {8.2}长短时记忆神经网络：LSTM}{59}
-\contentsline {section}{\numberline {8.3}门限循环单元：GRU}{60}
-\contentsline {section}{\numberline {8.4}一个强大的RNN框架：DeepNet}{61}
-\contentsline {section}{\numberline {8.5}一些经典论文基于DeepNet的实验重现}{61}
-\contentsline {section}{\numberline {8.6}进一步的阅读和总结}{61}
+\contentsline {section}{\numberline {7.7}一些关于CNN的技巧}{52}
+\contentsline {subsection}{\numberline {7.7.1}Data Augmentation}{52}
+\contentsline {subsection}{\numberline {7.7.2}Pre-Processing}{53}
+\contentsline {subsection}{\numberline {7.7.3}Initializations}{55}
+\contentsline {subsection}{\numberline {7.7.4}During Training}{57}
+\contentsline {subsection}{\numberline {7.7.5}Activation Functions}{58}
+\contentsline {subsection}{\numberline {7.7.6}Regularizations}{58}
+\contentsline {subsection}{\numberline {7.7.7}Insights from Figures}{58}
+\contentsline {subsection}{\numberline {7.7.8}Ensemble}{58}
+\contentsline {subsection}{\numberline {7.7.9}Miscellaneous}{58}
+\contentsline {section}{\numberline {7.8}一些经典论文基于CAFFE的实验重现}{58}
+\contentsline {subsection}{\numberline {7.8.1}A Neural Algorithm of Artistic Style}{58}
+\contentsline {section}{\numberline {7.9}进一步的阅读和总结}{59}
+\contentsline {chapter}{\numberline {第八章\hspace {0.3em}}递归神经网络RNN}{61}
+\contentsline {section}{\numberline {8.1}简单的递归网络}{62}
+\contentsline {subsection}{\numberline {8.1.1}梯度}{62}
+\contentsline {subsection}{\numberline {8.1.2}改进方案}{64}
+\contentsline {section}{\numberline {8.2}长短时记忆神经网络：LSTM}{65}
+\contentsline {section}{\numberline {8.3}门限循环单元：GRU}{66}
+\contentsline {section}{\numberline {8.4}一个强大的RNN框架：DeepNet}{67}
+\contentsline {section}{\numberline {8.5}一些经典论文基于DeepNet的实验重现}{67}
+\contentsline {section}{\numberline {8.6}进一步的阅读和总结}{67}
