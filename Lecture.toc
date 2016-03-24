@@ -8,89 +8,89 @@
 \contentsline {subsection}{\numberline {2.2.1}常见的矩阵}{12}
 \contentsline {subsection}{\numberline {2.2.2}矩阵的范数}{12}
 \contentsline {section}{\numberline {2.3}导数}{13}
-\contentsline {subsection}{\numberline {2.3.1}常见的向量导数}{13}
-\contentsline {subsection}{\numberline {2.3.2}导数法则}{13}
-\contentsline {section}{\numberline {2.4}常用函数}{14}
-\contentsline {subsection}{\numberline {2.4.1}logistic函数}{14}
-\contentsline {subsection}{\numberline {2.4.2}softmax函数}{15}
-\contentsline {section}{\numberline {2.5}一些练习}{16}
-\contentsline {section}{\numberline {2.6}进一步的阅读和总结}{16}
-\contentsline {chapter}{\numberline {第三章\hspace {0.3em}}机器学习概述}{17}
-\contentsline {section}{\numberline {3.1}机器学习概述}{17}
-\contentsline {subsection}{\numberline {3.1.1}损失函数}{19}
-\contentsline {subsection}{\numberline {3.1.2}补充问题：机器学习与信息论的关系}{20}
-\contentsline {subsection}{\numberline {3.1.3}机器学习算法的类型}{23}
-\contentsline {subsection}{\numberline {3.1.4}机器学习中的一些基本概念}{24}
-\contentsline {subsection}{\numberline {3.1.5}参数学习方法}{25}
-\contentsline {section}{\numberline {3.2}线性回归}{28}
-\contentsline {section}{\numberline {3.3}线性分类}{28}
-\contentsline {subsection}{\numberline {3.3.1}二类分类}{28}
-\contentsline {subsection}{\numberline {3.3.2}多类线性分类}{28}
-\contentsline {section}{\numberline {3.4}评价方法}{28}
-\contentsline {section}{\numberline {3.5}进一步的阅读和总结}{28}
-\contentsline {chapter}{\numberline {第四章\hspace {0.3em}}感知器}{29}
-\contentsline {section}{\numberline {4.1}二类感知器}{29}
-\contentsline {subsection}{\numberline {4.1.1}感知器学习算法}{29}
-\contentsline {subsection}{\numberline {4.1.2}线性感知器收敛性证明}{29}
-\contentsline {section}{\numberline {4.2}多类感知器}{29}
-\contentsline {subsection}{\numberline {4.2.1}多类感知器收敛性证明}{29}
-\contentsline {section}{\numberline {4.3}投票感知器}{29}
-\contentsline {section}{\numberline {4.4}进一步的阅读和总结}{29}
-\contentsline {chapter}{\numberline {第五章\hspace {0.3em}}人工神经网络}{31}
-\contentsline {section}{\numberline {5.1}神经元}{31}
-\contentsline {subsection}{\numberline {5.1.1}激活函数}{31}
-\contentsline {section}{\numberline {5.2}前馈神经网络}{31}
-\contentsline {subsection}{\numberline {5.2.1}前馈计算}{31}
-\contentsline {section}{\numberline {5.3}反向传播算法}{31}
-\contentsline {section}{\numberline {5.4}梯度消失问题}{31}
-\contentsline {section}{\numberline {5.5}训练方法}{31}
-\contentsline {section}{\numberline {5.6}一些经验}{31}
-\contentsline {section}{\numberline {5.7}进一步的阅读和总结}{31}
-\contentsline {chapter}{\numberline {第六章\hspace {0.3em}}受限波尔兹曼机RBM}{33}
-\contentsline {section}{\numberline {6.1}Roadmap}{33}
-\contentsline {section}{\numberline {6.2}Notations}{33}
-\contentsline {section}{\numberline {6.3}Energy-Based Models}{34}
-\contentsline {section}{\numberline {6.4}An Simple Example of Energy-Based Models}{35}
-\contentsline {section}{\numberline {6.5}Introducing Hidden Variables}{35}
-\contentsline {section}{\numberline {6.6}Gradient Learning of Energy-based Models}{37}
-\contentsline {chapter}{\numberline {第七章\hspace {0.3em}}卷积神经网络CNN}{39}
-\contentsline {section}{\numberline {7.1}卷积}{39}
-\contentsline {subsection}{\numberline {7.1.1}一维场合}{39}
-\contentsline {subsection}{\numberline {7.1.2}二维场合}{40}
-\contentsline {section}{\numberline {7.2}卷积层：用卷积代替全链接}{40}
-\contentsline {section}{\numberline {7.3}子采样层：池化}{43}
-\contentsline {section}{\numberline {7.4}CNN示例：LeNet-5}{44}
-\contentsline {section}{\numberline {7.5}梯度计算}{46}
-\contentsline {subsection}{\numberline {7.5.1}卷积层的梯度}{46}
-\contentsline {subsection}{\numberline {7.5.2}子采样层的梯度}{47}
-\contentsline {section}{\numberline {7.6}一个强大的CNN框架：CAFFE}{48}
-\contentsline {subsection}{\numberline {7.6.1}Caffe的特点}{48}
-\contentsline {subsubsection}{Caffe相对与其他DL框架的优点和缺点}{48}
-\contentsline {subsubsection}{Caffe代码层次}{48}
-\contentsline {subsection}{\numberline {7.6.2}更进一步的特点}{49}
-\contentsline {subsubsection}{Blob}{49}
-\contentsline {subsubsection}{Layer}{49}
-\contentsline {subsubsection}{Net}{51}
-\contentsline {subsubsection}{Solver}{52}
-\contentsline {section}{\numberline {7.7}一些关于CNN的技巧}{52}
-\contentsline {subsection}{\numberline {7.7.1}Data Augmentation}{52}
-\contentsline {subsection}{\numberline {7.7.2}Pre-Processing}{53}
-\contentsline {subsection}{\numberline {7.7.3}Initializations}{55}
-\contentsline {subsection}{\numberline {7.7.4}During Training}{57}
-\contentsline {subsection}{\numberline {7.7.5}Activation Functions}{58}
-\contentsline {subsection}{\numberline {7.7.6}Regularizations}{58}
-\contentsline {subsection}{\numberline {7.7.7}Insights from Figures}{58}
-\contentsline {subsection}{\numberline {7.7.8}Ensemble}{58}
-\contentsline {subsection}{\numberline {7.7.9}Miscellaneous}{58}
-\contentsline {section}{\numberline {7.8}一些经典论文基于CAFFE的实验重现}{58}
-\contentsline {subsection}{\numberline {7.8.1}A Neural Algorithm of Artistic Style}{58}
-\contentsline {section}{\numberline {7.9}进一步的阅读和总结}{59}
-\contentsline {chapter}{\numberline {第八章\hspace {0.3em}}递归神经网络RNN}{61}
-\contentsline {section}{\numberline {8.1}简单的递归网络}{62}
-\contentsline {subsection}{\numberline {8.1.1}梯度}{62}
-\contentsline {subsection}{\numberline {8.1.2}改进方案}{64}
-\contentsline {section}{\numberline {8.2}长短时记忆神经网络：LSTM}{65}
-\contentsline {section}{\numberline {8.3}门限循环单元：GRU}{66}
-\contentsline {section}{\numberline {8.4}一个强大的RNN框架：DeepNet}{67}
-\contentsline {section}{\numberline {8.5}一些经典论文基于DeepNet的实验重现}{67}
-\contentsline {section}{\numberline {8.6}进一步的阅读和总结}{67}
+\contentsline {subsection}{\numberline {2.3.1}常见的向量导数}{14}
+\contentsline {subsection}{\numberline {2.3.2}导数法则}{14}
+\contentsline {section}{\numberline {2.4}常用函数}{15}
+\contentsline {subsection}{\numberline {2.4.1}logistic函数}{16}
+\contentsline {subsection}{\numberline {2.4.2}softmax函数}{16}
+\contentsline {section}{\numberline {2.5}一些练习}{17}
+\contentsline {section}{\numberline {2.6}进一步的阅读和总结}{18}
+\contentsline {chapter}{\numberline {第三章\hspace {0.3em}}机器学习概述}{19}
+\contentsline {section}{\numberline {3.1}机器学习概述}{19}
+\contentsline {subsection}{\numberline {3.1.1}损失函数}{21}
+\contentsline {subsection}{\numberline {3.1.2}补充问题：机器学习与信息论的关系}{22}
+\contentsline {subsection}{\numberline {3.1.3}机器学习算法的类型}{25}
+\contentsline {subsection}{\numberline {3.1.4}机器学习中的一些基本概念}{26}
+\contentsline {subsection}{\numberline {3.1.5}参数学习方法}{27}
+\contentsline {section}{\numberline {3.2}线性回归}{30}
+\contentsline {section}{\numberline {3.3}线性分类}{30}
+\contentsline {subsection}{\numberline {3.3.1}二类分类}{30}
+\contentsline {subsection}{\numberline {3.3.2}多类线性分类}{30}
+\contentsline {section}{\numberline {3.4}评价方法}{30}
+\contentsline {section}{\numberline {3.5}进一步的阅读和总结}{30}
+\contentsline {chapter}{\numberline {第四章\hspace {0.3em}}感知器}{31}
+\contentsline {section}{\numberline {4.1}二类感知器}{31}
+\contentsline {subsection}{\numberline {4.1.1}感知器学习算法}{31}
+\contentsline {subsection}{\numberline {4.1.2}线性感知器收敛性证明}{31}
+\contentsline {section}{\numberline {4.2}多类感知器}{31}
+\contentsline {subsection}{\numberline {4.2.1}多类感知器收敛性证明}{31}
+\contentsline {section}{\numberline {4.3}投票感知器}{31}
+\contentsline {section}{\numberline {4.4}进一步的阅读和总结}{31}
+\contentsline {chapter}{\numberline {第五章\hspace {0.3em}}人工神经网络}{33}
+\contentsline {section}{\numberline {5.1}神经元}{33}
+\contentsline {subsection}{\numberline {5.1.1}激活函数}{33}
+\contentsline {section}{\numberline {5.2}前馈神经网络}{33}
+\contentsline {subsection}{\numberline {5.2.1}前馈计算}{33}
+\contentsline {section}{\numberline {5.3}反向传播算法}{33}
+\contentsline {section}{\numberline {5.4}梯度消失问题}{33}
+\contentsline {section}{\numberline {5.5}训练方法}{33}
+\contentsline {section}{\numberline {5.6}一些经验}{33}
+\contentsline {section}{\numberline {5.7}进一步的阅读和总结}{33}
+\contentsline {chapter}{\numberline {第六章\hspace {0.3em}}受限波尔兹曼机RBM}{35}
+\contentsline {section}{\numberline {6.1}Roadmap}{35}
+\contentsline {section}{\numberline {6.2}Notations}{35}
+\contentsline {section}{\numberline {6.3}Energy-Based Models}{36}
+\contentsline {section}{\numberline {6.4}An Simple Example of Energy-Based Models}{37}
+\contentsline {section}{\numberline {6.5}Introducing Hidden Variables}{37}
+\contentsline {section}{\numberline {6.6}Gradient Learning of Energy-based Models}{39}
+\contentsline {chapter}{\numberline {第七章\hspace {0.3em}}卷积神经网络CNN}{41}
+\contentsline {section}{\numberline {7.1}卷积}{41}
+\contentsline {subsection}{\numberline {7.1.1}一维场合}{41}
+\contentsline {subsection}{\numberline {7.1.2}二维场合}{42}
+\contentsline {section}{\numberline {7.2}卷积层：用卷积代替全链接}{42}
+\contentsline {section}{\numberline {7.3}子采样层：池化}{45}
+\contentsline {section}{\numberline {7.4}CNN示例：LeNet-5}{46}
+\contentsline {section}{\numberline {7.5}梯度计算}{48}
+\contentsline {subsection}{\numberline {7.5.1}卷积层的梯度}{48}
+\contentsline {subsection}{\numberline {7.5.2}子采样层的梯度}{49}
+\contentsline {section}{\numberline {7.6}一个强大的CNN框架：CAFFE}{50}
+\contentsline {subsection}{\numberline {7.6.1}Caffe的特点}{50}
+\contentsline {subsubsection}{Caffe相对与其他DL框架的优点和缺点}{50}
+\contentsline {subsubsection}{Caffe代码层次}{50}
+\contentsline {subsection}{\numberline {7.6.2}更进一步的特点}{51}
+\contentsline {subsubsection}{Blob}{51}
+\contentsline {subsubsection}{Layer}{51}
+\contentsline {subsubsection}{Net}{53}
+\contentsline {subsubsection}{Solver}{54}
+\contentsline {section}{\numberline {7.7}一些关于CNN的技巧}{54}
+\contentsline {subsection}{\numberline {7.7.1}Data Augmentation}{54}
+\contentsline {subsection}{\numberline {7.7.2}Pre-Processing}{55}
+\contentsline {subsection}{\numberline {7.7.3}Initializations}{57}
+\contentsline {subsection}{\numberline {7.7.4}During Training}{59}
+\contentsline {subsection}{\numberline {7.7.5}Activation Functions}{60}
+\contentsline {subsection}{\numberline {7.7.6}Regularizations}{60}
+\contentsline {subsection}{\numberline {7.7.7}Insights from Figures}{60}
+\contentsline {subsection}{\numberline {7.7.8}Ensemble}{60}
+\contentsline {subsection}{\numberline {7.7.9}Miscellaneous}{60}
+\contentsline {section}{\numberline {7.8}一些经典论文基于CAFFE的实验重现}{60}
+\contentsline {subsection}{\numberline {7.8.1}A Neural Algorithm of Artistic Style}{60}
+\contentsline {section}{\numberline {7.9}进一步的阅读和总结}{61}
+\contentsline {chapter}{\numberline {第八章\hspace {0.3em}}递归神经网络RNN}{63}
+\contentsline {section}{\numberline {8.1}简单的递归网络}{64}
+\contentsline {subsection}{\numberline {8.1.1}梯度}{64}
+\contentsline {subsection}{\numberline {8.1.2}改进方案}{66}
+\contentsline {section}{\numberline {8.2}长短时记忆神经网络：LSTM}{67}
+\contentsline {section}{\numberline {8.3}门限循环单元：GRU}{68}
+\contentsline {section}{\numberline {8.4}一个强大的RNN框架：DeepNet}{69}
+\contentsline {section}{\numberline {8.5}一些经典论文基于DeepNet的实验重现}{69}
+\contentsline {section}{\numberline {8.6}进一步的阅读和总结}{69}

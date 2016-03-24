@@ -145,22 +145,77 @@ $L_2$范数：
 
 \textbf{单位矩阵}是一种特殊的的对角矩阵，其主对角线元素为1，其余元素为0。$n$ 阶单位矩阵$I_n$，是一个$n \times n$的方形矩阵。可以记为$I_n=\boldsymbol{diag}(1,1,\cdots,1)$。
 \subsection{矩阵的范数}
+矩阵的范数定义除开满足非负性，齐次性和三角不等式外，还需满足\textbf{相容性}:
+\begin{equation}\label{compatibility}
+  \forall \boldsymbol{A},\boldsymbol{B}\in \mathbb{C}^{n\times n}, \exists || \boldsymbol{AB}||\leq ||\boldsymbol{A}||\cdot ||\boldsymbol{B}||
+\end{equation}
+
 矩阵的范数有很多种形式，这里我们定义其p-范数为：
 \begin{equation}\label{2.8}
   \begin{Vmatrix}\boldsymbol{A}\end{Vmatrix}_p=\left( \sum_{i=1}^{m}{\sum_{j=1}^{n}\begin{vmatrix}a_{ij}\end{vmatrix}^p}\right)^{\frac{1}{p}}
 \end{equation}
+当$p=2$时，该范数称为矩阵的\textbf{Frobenius范数}，简称\textbf{F范数}，记作$||\boldsymbol{A}||_F$
 
+F范数具有很好的\textbf{酉不变性}：
+
+$\forall$ 酉矩阵\footnote{
+\textbf{酉矩阵}: Unitary Matrix，means for any matrix $\boldsymbol{A}\in\mathbb{C}^{n\times n}$ which satisfied $\boldsymbol{A}^H\boldsymbol{A}=\boldsymbol{I}$.
+}
+$\boldsymbol{U}$ and $\boldsymbol{V}, \exists$
+\begin{equation}\label{UnitaryInvariance}
+  ||\boldsymbol{UA}||_F=||\boldsymbol{AV}||_F=||\boldsymbol{UAV}||_F=||\boldsymbol{A}||_F
+\end{equation}
+
+对矩阵$\boldsymbol{A}\in \mathbb{C}^{m\times n}$有以下是常用的7种范数：
+\begin{enumerate}
+  \item $m_1$范数：$||\boldsymbol{A}||_{m_1}=\sum_{i=1}^{m}\sum_{j=1}^{n}|a_{ij}|$
+  \item F范数\footnote{
+  Here, $\boldsymbol{A}^H$ means \textbf{Hermitian Matrix}(埃尔米特/厄米/自伴随矩阵): $\boldsymbol{A}^H=(\bar{a}_{ji})_{n\times n}$.
+  }
+  ：$||\boldsymbol{A}||_F=\sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n}|a_{ij}|^2}=\sqrt{tr(\boldsymbol{A}^H\boldsymbol{A})}$
+  \item M范数/最大范数：$||\boldsymbol{A}||_M=\max\{m,n\}\max_{i,j}|a_{ij}|$
+  \item G范数/几何平均范数：$||\boldsymbol{A}||_G=\sqrt{mn}\max_{i,j}|a_{ij}|$
+  \item 1范数/列和范数\footnote{
+  5$\sim$7的范数并不是按照这里给出的公式定义的，而是从属于某向量范数$||\cdot||_v$导出的矩阵范数:$||\boldsymbol{A}||=\max_{\bf{x}\neq\bf{0}}\frac{||\boldsymbol{Ax}||_v}{||\boldsymbol{x}||_v}$，简称\textbf{导出范数/从属范数}，且满足：$||\boldsymbol{I}||=1$.
+  }：$||\boldsymbol{A}||_1=\max_{j}\sum_{i=1}^m|a_{ij}|$
+  \item 2范数/谱范数：$||\boldsymbol{A}||_2=\sqrt{\boldsymbol{A}^H\boldsymbol{A}\text{的最大特征值}}$
+  \item $\infty$范数/行和范数：$||\boldsymbol{A}||_{\infty}=\max_{i}\sum_{j=1}^n|a_{ij}|$
+\end{enumerate}
+其中F范数和2范数是酉不变的；矩阵的$1,\infty,2$范数分别由向量的$1,\infty,2$范数导出的，从而与相应的向量范数相容；矩阵的2范数具有相当好的性质；以上证明留作习题。
 \section{导数}
-对于一个$p$维向量$\boldsymbol{x}\in \mathbb{R}^p$，函数$y=f(x)=f(x_1,x_2,\cdots,x_p)\in\mathbb{R}$，则$y$关于$\boldsymbol{x}$的导数为：
+首先：
+\begin{equation}\label{div}
+  \frac{d \boldsymbol{A}(x)}{dx}=(\frac{d a_{ij}(x)}{dx})_{m\times n}
+\end{equation}
+对于一个$p$维向量$\boldsymbol{x}\in \mathbb{R}^p$，函数$y=f(\boldsymbol{x})=f(x_1,x_2,\cdots,x_p)\in\mathbb{R}$，则$y$关于$\boldsymbol{x}$的导数为：
 \begin{equation}\label{2.9}
-  \nabla_xf(x)=\begin{pmatrix}\frac{\partial f(x)}{\partial x_1}\\ \vdots\\ \frac{\partial f(x)}{\partial x_p}\end{pmatrix}\in\mathbb{R}^p
+  \frac{df(\boldsymbol{x})}{d\boldsymbol{x}}=\text{grad}f=\begin{pmatrix}\frac{\partial f(\boldsymbol{x})}{\partial x_1}\\ \vdots\\ \frac{\partial f(\boldsymbol{x})}{\partial x_p}\end{pmatrix}\in\mathbb{R}^p
 \end{equation}
 
-对于一个$p$维向量$\boldsymbol{x}\in \mathbb{R}^p$，函数$y=f(x)=\left(f_1(x_1,\cdots,x_p), \cdots ,f_q(x_1,\cdots,x_p)\right)^T\in\mathbb{R}^q$，则$y$关于$\boldsymbol{x}$ 的导数为：
+对于一个$p$维向量$\boldsymbol{x}\in \mathbb{R}^p$，函数$y=\boldsymbol{f}(\boldsymbol{x})=\left(f_1(\boldsymbol{x}), \cdots , f_q(\boldsymbol{x})\right)^T\in\mathbb{R}^q$，则$y$关于$\boldsymbol{x}$ 的导数为：
 \begin{equation}\label{2.10}
-  \nabla_xf(x)=\begin{pmatrix}\frac{\partial f_1(x)}{\partial x_1} & \cdots & \frac{\partial f_1(x)}{\partial x_q}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_q(x)}{\partial x_1} & \cdots & \frac{\partial f_q(x)}{\partial x_p} \end{pmatrix}\in\mathbb{R}^{p\times q}
+  \frac{d\boldsymbol{f}(\boldsymbol{x})}{d\boldsymbol{x}}=\begin{pmatrix}\frac{\partial f_1(x)}{\partial x_1} & \cdots & \frac{\partial f_1(x)}{\partial x_p}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_q(x)}{\partial x_1} & \cdots & \frac{\partial f_q(x)}{\partial x_p} \end{pmatrix}\in\mathbb{R}^{p\times q}
 \end{equation}
+
+设矩阵值函数$\boldsymbol{F}(\boldsymbol{X})=(f_{ij}(\boldsymbol{X}))_{m\times n}$，其中$\boldsymbol{X}=(x_{ij})_{p\times q}$，那么：
+\begin{equation}\label{divmat}
+  \frac{d\boldsymbol{F}(\boldsymbol{X})}{d\boldsymbol{X}}=\begin{pmatrix}\frac{\partial \boldsymbol{F}}{\partial x_{11}} & \cdots & \frac{\partial \boldsymbol{F}}{\partial x_{1q}}\\ \vdots & \vdots & \vdots\\ \frac{\partial \boldsymbol{F}}{\partial x_{p1}} & \cdots & \frac{\partial \boldsymbol{F}}{\partial x_{pq}} \end{pmatrix}\in\mathbb{R}^{pm\times nq}
+\end{equation}
+其中：
+\begin{equation}\label{innerdivmat}
+  \frac{d\boldsymbol{F}(\boldsymbol{X})}{dx_{ij}}=\begin{pmatrix}\frac{\partial f_{11}}{\partial x_{ij}} & \cdots & \frac{\partial f_{1n}}{\partial x_{ij}}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_{m1}}{\partial x_{ij}} & \cdots & \frac{\partial f_{mn}}{\partial x_{ij}} \end{pmatrix}
+\end{equation}
+
 \subsection{常见的向量导数}
+\begin{equation}\label{ex1}
+  \frac{d\boldsymbol{a}^T\boldsymbol{x}}{d\boldsymbol{x}}=\frac{d\boldsymbol{x}^T\boldsymbol{a}}{d\boldsymbol{x}}=\boldsymbol{a}
+\end{equation}
+\begin{equation}\label{ex2}
+  \frac{d\text{tr}(\boldsymbol{AX})}{d\boldsymbol{X}}=\boldsymbol{A}^T
+\end{equation}
+\begin{equation}\label{ex3}
+  \frac{d\boldsymbol{x}^T\boldsymbol{Ax}}{d\boldsymbol{x}}=(\boldsymbol{A}^T+\boldsymbol{A})\boldsymbol{x}
+\end{equation}
 \begin{equation}\label{2.11}
   \frac{\partial A\boldsymbol{x}}{\partial\boldsymbol{x}}=A^T
 \end{equation}
@@ -265,6 +320,14 @@ softmax 函数是将多个标量映射为一个概率分布。
 
 \section{一些练习}
 矩阵求导的一些练习技巧和重要结论
+\begin{enumerate}
+  \item 证明：$\frac{d\det\boldsymbol{X}}{d\boldsymbol{X}}=(\det\boldsymbol{X})(\boldsymbol{X}^{-1})^T$；
+  \item 计算：$\frac{d\boldsymbol{x}^T}{d\boldsymbol{x}}$和$\frac{d\boldsymbol{x}}{d\boldsymbol{x}^T}$；
+  \item $\boldsymbol{a}=(a_1,a_2,a_3,a_4)^T$，$\boldsymbol{X}=(x_{ij})_{2\times 4}$，计算：$\frac{d(\boldsymbol{Xa})^T}{d\boldsymbol{X}}$和$\frac{d\boldsymbol{Xa}}{d\boldsymbol{X}}$；
+  \item 证明：$\frac{d\text{tr}(\boldsymbol{BX})}{d\boldsymbol{X}}=\frac{d\text{tr}(\boldsymbol{X}^T\boldsymbol{B}^T)}{d\boldsymbol{X}}=\boldsymbol{A}^T$；$\frac{d\text{tr}(\boldsymbol{X}^T\boldsymbol{AX})}{d\boldsymbol{X}}=(\boldsymbol{A}+\boldsymbol{A}^T)\boldsymbol{X}$；
+  \item $\boldsymbol{A}_{m\times n}$为常数矩阵，$\boldsymbol{F}(\boldsymbol{x})=\boldsymbol{x}^T\boldsymbol{A}$，计算：$\frac{d\boldsymbol{F}}{d\boldsymbol{x}}$
+\end{enumerate}
+
 \section{进一步的阅读和总结}
 详细的矩阵偏导数参考:{https://en.wikipedia.org/wiki/Matrix\_calculus}.
 
@@ -1074,7 +1137,7 @@ Now we have obtained a large number of training samples (images/crops), but plea
 
 The first and simple pre-processing approach is \textbf{zero-center} the data, and then \textbf{normalize} them, which is presented as two lines Python codes as follows:
 \lstset{language=python}
-\begin{lstlisting}[frame=single] 
+\begin{lstlisting}[frame=single]
 X -= np.mean(X, axis = 0) # zero-center
 X /= np.std(X, axis = 0) # normalize
 \end{lstlisting}
@@ -1082,7 +1145,7 @@ where, X is the input data (NumIns×NumDim). Another form of this pre-processing
 
 Another pre-processing approach similar to the first one is \textbf{PCA Whitening}. In this process, the data is first centered as described above. Then, you can compute the covariance matrix that tells us about the correlation structure in the data:
 \lstset{language=python}
-\begin{lstlisting}[frame=single] 
+\begin{lstlisting}[frame=single]
 X -= np.mean(X, axis = 0) # zero-center
 cov = np.dot(X.T, X) / X.shape[0] # compute the covariance matrix
 \end{lstlisting}
@@ -1104,18 +1167,18 @@ Please note that, we describe these pre-processing here just for completeness. I
 \subsection{Initializations}
 Now the data is ready. However, before you are beginning to train the network, you have to initialize its parameters.
 \begin{itemize}
-  \item All Zero Initialization: 
+  \item All Zero Initialization:
   In the ideal situation, with proper data normalization it is reasonable to assume that approximately half of the weights will be positive and half of them will be negative. A reasonable-sounding idea then might be to set all the initial weights to zero, which you expect to be the “best guess” in expectation. But, this turns out to be a mistake, because if every neuron in the network computes the same output, then they will also all compute the same gradients during back-propagation and undergo the exact same parameter updates. In other words, there is no source of asymmetry between neurons if their weights are initialized to be the same.
-  \item Initialization with Small Random Numbers: 
+  \item Initialization with Small Random Numbers:
   Thus, you still want the weights to be very close to zero, but not identically zero. In this way, you can random these neurons to small numbers which are very close to zero, and it is treated as symmetry breaking. The idea is that the neurons are all random and unique in the beginning, so they will compute distinct updates and integrate themselves as diverse parts of the full network. The implementation for weights might simply look like $weights\sim 0.001\times N(0,1)$, where $N(0,1)$ is a zero mean, unit standard deviation gaussian. It is also possible to use small numbers drawn from a uniform distribution, but this seems to have relatively little impact on the final performance in practice.
-  \item Calibrating the Variances: 
+  \item Calibrating the Variances:
   One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that you can normalize the variance of each neuron's output to 1 by scaling its weight vector by the square root of its fan-in (i.e., its number of inputs), which is as follows:
   \lstset{language=python}
   \begin{lstlisting}[frame=single]
   w = np.random.randn(n) / sqrt(n) # calibrating the variances with 1/sqrt(n)
   \end{lstlisting}
   where “randn” is the aforementioned Gaussian and “n” is the number of its inputs. This ensures that all neurons in the network initially have approximately the same output distribution and empirically improves the rate of convergence. The detailed derivations can be found from Page. 18 to 23 of the slides. Please note that, in the derivations, it does not consider the influence of ReLU neurons.
-  \item Current Recommendation: 
+  \item Current Recommendation:
   As aforementioned, the previous initialization by calibrating the variances of neurons is without considering ReLUs. A more recent paper on this topic by He et al. \cite{he2015delving} derives an initialization specifically for ReLUs, reaching the conclusion that the variance of neurons in the network should be $2.0/n$ as:
   \lstset{language=python}
   \begin{lstlisting}[frame=single]
