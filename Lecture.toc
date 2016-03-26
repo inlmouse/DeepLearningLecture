@@ -53,44 +53,51 @@
 \contentsline {section}{\numberline {6.4}An Simple Example of Energy-Based Models}{37}
 \contentsline {section}{\numberline {6.5}Introducing Hidden Variables}{37}
 \contentsline {section}{\numberline {6.6}Gradient Learning of Energy-based Models}{39}
-\contentsline {chapter}{\numberline {第七章\hspace {0.3em}}卷积神经网络CNN}{41}
-\contentsline {section}{\numberline {7.1}卷积}{41}
-\contentsline {subsection}{\numberline {7.1.1}一维场合}{41}
-\contentsline {subsection}{\numberline {7.1.2}二维场合}{42}
-\contentsline {section}{\numberline {7.2}卷积层：用卷积代替全链接}{42}
-\contentsline {section}{\numberline {7.3}子采样层：池化}{45}
-\contentsline {section}{\numberline {7.4}CNN示例：LeNet-5}{46}
-\contentsline {section}{\numberline {7.5}梯度计算}{48}
-\contentsline {subsection}{\numberline {7.5.1}卷积层的梯度}{48}
-\contentsline {subsection}{\numberline {7.5.2}子采样层的梯度}{49}
-\contentsline {section}{\numberline {7.6}一个强大的CNN框架：CAFFE}{50}
-\contentsline {subsection}{\numberline {7.6.1}Caffe的特点}{50}
-\contentsline {subsubsection}{Caffe相对与其他DL框架的优点和缺点}{50}
-\contentsline {subsubsection}{Caffe代码层次}{50}
-\contentsline {subsection}{\numberline {7.6.2}更进一步的特点}{51}
-\contentsline {subsubsection}{Blob}{51}
-\contentsline {subsubsection}{Layer}{51}
-\contentsline {subsubsection}{Net}{53}
-\contentsline {subsubsection}{Solver}{54}
-\contentsline {section}{\numberline {7.7}一些关于CNN的技巧}{54}
-\contentsline {subsection}{\numberline {7.7.1}Data Augmentation}{54}
-\contentsline {subsection}{\numberline {7.7.2}Pre-Processing}{55}
-\contentsline {subsection}{\numberline {7.7.3}Initializations}{57}
-\contentsline {subsection}{\numberline {7.7.4}During Training}{59}
-\contentsline {subsection}{\numberline {7.7.5}Activation Functions}{60}
-\contentsline {subsection}{\numberline {7.7.6}Regularizations}{60}
-\contentsline {subsection}{\numberline {7.7.7}Insights from Figures}{60}
-\contentsline {subsection}{\numberline {7.7.8}Ensemble}{60}
-\contentsline {subsection}{\numberline {7.7.9}Miscellaneous}{60}
-\contentsline {section}{\numberline {7.8}一些经典论文基于CAFFE的实验重现}{60}
-\contentsline {subsection}{\numberline {7.8.1}A Neural Algorithm of Artistic Style}{60}
-\contentsline {section}{\numberline {7.9}进一步的阅读和总结}{61}
-\contentsline {chapter}{\numberline {第八章\hspace {0.3em}}递归神经网络RNN}{63}
-\contentsline {section}{\numberline {8.1}简单的递归网络}{64}
-\contentsline {subsection}{\numberline {8.1.1}梯度}{64}
-\contentsline {subsection}{\numberline {8.1.2}改进方案}{66}
-\contentsline {section}{\numberline {8.2}长短时记忆神经网络：LSTM}{67}
-\contentsline {section}{\numberline {8.3}门限循环单元：GRU}{68}
-\contentsline {section}{\numberline {8.4}一个强大的RNN框架：DeepNet}{69}
-\contentsline {section}{\numberline {8.5}一些经典论文基于DeepNet的实验重现}{69}
-\contentsline {section}{\numberline {8.6}进一步的阅读和总结}{69}
+\contentsline {section}{\numberline {6.7}Boltzmann Machines}{40}
+\contentsline {section}{\numberline {6.8}Gradient Learning of Boltzmann Machines}{40}
+\contentsline {section}{\numberline {6.9}Gibbs Sampling for Conditional Probability}{41}
+\contentsline {section}{\numberline {6.10}Gibbs Sampling for Boltzmann Machines}{41}
+\contentsline {section}{\numberline {6.11}Restricted Boltzmann Machines}{41}
+\contentsline {section}{\numberline {6.12}Gibbs Sampling for Restricted Boltzmann Machines}{41}
+\contentsline {section}{\numberline {6.13}Contrastive Divergence}{41}
+\contentsline {chapter}{\numberline {第七章\hspace {0.3em}}卷积神经网络CNN}{43}
+\contentsline {section}{\numberline {7.1}卷积}{43}
+\contentsline {subsection}{\numberline {7.1.1}一维场合}{43}
+\contentsline {subsection}{\numberline {7.1.2}二维场合}{44}
+\contentsline {section}{\numberline {7.2}卷积层：用卷积代替全链接}{44}
+\contentsline {section}{\numberline {7.3}子采样层：池化}{47}
+\contentsline {section}{\numberline {7.4}CNN示例：LeNet-5}{48}
+\contentsline {section}{\numberline {7.5}梯度计算}{50}
+\contentsline {subsection}{\numberline {7.5.1}卷积层的梯度}{50}
+\contentsline {subsection}{\numberline {7.5.2}子采样层的梯度}{51}
+\contentsline {section}{\numberline {7.6}一个强大的CNN框架：CAFFE}{52}
+\contentsline {subsection}{\numberline {7.6.1}Caffe的特点}{52}
+\contentsline {subsubsection}{Caffe相对与其他DL框架的优点和缺点}{52}
+\contentsline {subsubsection}{Caffe代码层次}{52}
+\contentsline {subsection}{\numberline {7.6.2}更进一步的特点}{53}
+\contentsline {subsubsection}{Blob}{53}
+\contentsline {subsubsection}{Layer}{53}
+\contentsline {subsubsection}{Net}{55}
+\contentsline {subsubsection}{Solver}{56}
+\contentsline {section}{\numberline {7.7}一些关于CNN的技巧}{56}
+\contentsline {subsection}{\numberline {7.7.1}Data Augmentation}{56}
+\contentsline {subsection}{\numberline {7.7.2}Pre-Processing}{57}
+\contentsline {subsection}{\numberline {7.7.3}Initializations}{59}
+\contentsline {subsection}{\numberline {7.7.4}During Training}{61}
+\contentsline {subsection}{\numberline {7.7.5}Activation Functions}{62}
+\contentsline {subsection}{\numberline {7.7.6}Regularizations}{62}
+\contentsline {subsection}{\numberline {7.7.7}Insights from Figures}{62}
+\contentsline {subsection}{\numberline {7.7.8}Ensemble}{62}
+\contentsline {subsection}{\numberline {7.7.9}Miscellaneous}{62}
+\contentsline {section}{\numberline {7.8}一些经典论文基于CAFFE的实验重现}{62}
+\contentsline {subsection}{\numberline {7.8.1}A Neural Algorithm of Artistic Style}{62}
+\contentsline {section}{\numberline {7.9}进一步的阅读和总结}{63}
+\contentsline {chapter}{\numberline {第八章\hspace {0.3em}}递归神经网络RNN}{65}
+\contentsline {section}{\numberline {8.1}简单的递归网络}{66}
+\contentsline {subsection}{\numberline {8.1.1}梯度}{66}
+\contentsline {subsection}{\numberline {8.1.2}改进方案}{68}
+\contentsline {section}{\numberline {8.2}长短时记忆神经网络：LSTM}{69}
+\contentsline {section}{\numberline {8.3}门限循环单元：GRU}{70}
+\contentsline {section}{\numberline {8.4}一个强大的RNN框架：DeepNet}{71}
+\contentsline {section}{\numberline {8.5}一些经典论文基于DeepNet的实验重现}{71}
+\contentsline {section}{\numberline {8.6}进一步的阅读和总结}{71}

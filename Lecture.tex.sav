@@ -5,6 +5,7 @@
 \usepackage{amsthm}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{booktabs}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -46,7 +47,7 @@
 \begin{titlepage}
 	\centering
 	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
-	{\scshape\LARGE Glasssix Science and Technology Civilization CO.,LTD\par}
+	{\scshape\LARGE Project Ghost in the Shell\par}
 	\vspace{1cm}
 	{\scshape\Large Unfinished Technical Documents\par}
 	\vspace{1.5cm}
@@ -54,10 +55,10 @@
     \vspace{1.5cm}
 	{\huge\bfseries Éñ¾­ÍøÂçÓëÉî¶ÈÑ§Ï°±Ê¼Ç\par}
 	\vspace{2cm}
-	{\Large\itshape inlmouse\\ Shiyu Chen\par}
+	{\Large\itshape inlmouse\par}
 	\vfill
 	supervised by\par
-	Glasssix AI Technology
+	Dr. X. Hu
 
 	\vfill
 
@@ -144,22 +145,77 @@ $L_2$·¶Êı£º
 
 \textbf{µ¥Î»¾ØÕó}ÊÇÒ»ÖÖÌØÊâµÄµÄ¶Ô½Ç¾ØÕó£¬ÆäÖ÷¶Ô½ÇÏßÔªËØÎª1£¬ÆäÓàÔªËØÎª0¡£$n$ ½×µ¥Î»¾ØÕó$I_n$£¬ÊÇÒ»¸ö$n \times n$µÄ·½ĞÎ¾ØÕó¡£¿ÉÒÔ¼ÇÎª$I_n=\boldsymbol{diag}(1,1,\cdots,1)$¡£
 \subsection{¾ØÕóµÄ·¶Êı}
+¾ØÕóµÄ·¶Êı¶¨Òå³ı¿ªÂú×ã·Ç¸ºĞÔ£¬Æë´ÎĞÔºÍÈı½Ç²»µÈÊ½Íâ£¬»¹ĞèÂú×ã\textbf{ÏàÈİĞÔ}:
+\begin{equation}\label{compatibility}
+  \forall \boldsymbol{A},\boldsymbol{B}\in \mathbb{C}^{n\times n}, \exists || \boldsymbol{AB}||\leq ||\boldsymbol{A}||\cdot ||\boldsymbol{B}||
+\end{equation}
+
 ¾ØÕóµÄ·¶ÊıÓĞºÜ¶àÖÖĞÎÊ½£¬ÕâÀïÎÒÃÇ¶¨ÒåÆäp-·¶ÊıÎª£º
 \begin{equation}\label{2.8}
   \begin{Vmatrix}\boldsymbol{A}\end{Vmatrix}_p=\left( \sum_{i=1}^{m}{\sum_{j=1}^{n}\begin{vmatrix}a_{ij}\end{vmatrix}^p}\right)^{\frac{1}{p}}
 \end{equation}
+µ±$p=2$Ê±£¬¸Ã·¶Êı³ÆÎª¾ØÕóµÄ\textbf{Frobenius·¶Êı}£¬¼ò³Æ\textbf{F·¶Êı}£¬¼Ç×÷$||\boldsymbol{A}||_F$
 
+F·¶Êı¾ßÓĞºÜºÃµÄ\textbf{ÓÏ²»±äĞÔ}£º
+
+$\forall$ ÓÏ¾ØÕó\footnote{
+\textbf{ÓÏ¾ØÕó}: Unitary Matrix£¬means for any matrix $\boldsymbol{A}\in\mathbb{C}^{n\times n}$ which satisfied $\boldsymbol{A}^H\boldsymbol{A}=\boldsymbol{I}$.
+}
+$\boldsymbol{U}$ and $\boldsymbol{V}, \exists$
+\begin{equation}\label{UnitaryInvariance}
+  ||\boldsymbol{UA}||_F=||\boldsymbol{AV}||_F=||\boldsymbol{UAV}||_F=||\boldsymbol{A}||_F
+\end{equation}
+
+¶Ô¾ØÕó$\boldsymbol{A}\in \mathbb{C}^{m\times n}$ ÓĞÒÔÏÂÊÇ³£ÓÃµÄ7ÖÖ·¶Êı£º
+\begin{enumerate}
+  \item $m_1$·¶Êı£º$||\boldsymbol{A}||_{m_1}=\sum_{i=1}^{m}\sum_{j=1}^{n}|a_{ij}|$
+  \item F·¶Êı\footnote{
+  Here, $\boldsymbol{A}^H$ means \textbf{Hermitian Matrix}(°£¶ûÃ×ÌØ/¶òÃ×/×Ô°éËæ¾ØÕó): $\boldsymbol{A}^H=(\bar{a}_{ji})_{n\times n}$.
+  }
+  £º$||\boldsymbol{A}||_F=\sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n}|a_{ij}|^2}=\sqrt{tr(\boldsymbol{A}^H\boldsymbol{A})}$
+  \item M·¶Êı/×î´ó·¶Êı£º$||\boldsymbol{A}||_M=\max\{m,n\}\max_{i,j}|a_{ij}|$
+  \item G·¶Êı/¼¸ºÎÆ½¾ù·¶Êı£º$||\boldsymbol{A}||_G=\sqrt{mn}\max_{i,j}|a_{ij}|$
+  \item 1·¶Êı/ÁĞºÍ·¶Êı\footnote{
+  5$\sim$7µÄ·¶Êı²¢²»ÊÇ°´ÕÕÕâÀï¸ø³öµÄ¹«Ê½¶¨ÒåµÄ£¬¶øÊÇ´ÓÊôÓÚÄ³ÏòÁ¿·¶Êı$||\cdot||_v$µ¼³öµÄ¾ØÕó·¶Êı:$||\boldsymbol{A}||=\max_{\bf{x}\neq\bf{0}}\frac{||\boldsymbol{Ax}||_v}{||\boldsymbol{x}||_v}$£¬¼ò³Æ\textbf{µ¼³ö·¶Êı/´ÓÊô·¶Êı}£¬ÇÒÂú×ã£º$||\boldsymbol{I}||=1$.
+  }£º$||\boldsymbol{A}||_1=\max_{j}\sum_{i=1}^m|a_{ij}|$
+  \item 2·¶Êı/Æ×·¶Êı£º$||\boldsymbol{A}||_2=\sqrt{\boldsymbol{A}^H\boldsymbol{A}\text{µÄ×î´óÌØÕ÷Öµ}}$
+  \item $\infty$·¶Êı/ĞĞºÍ·¶Êı£º$||\boldsymbol{A}||_{\infty}=\max_{i}\sum_{j=1}^n|a_{ij}|$
+\end{enumerate}
+ÆäÖĞF·¶ÊıºÍ2·¶ÊıÊÇÓÏ²»±äµÄ£»¾ØÕóµÄ$1,\infty,2$·¶Êı·Ö±ğÓÉÏòÁ¿µÄ$1,\infty,2$·¶Êıµ¼³öµÄ£¬´Ó¶øÓëÏàÓ¦µÄÏòÁ¿·¶ÊıÏàÈİ£»¾ØÕóµÄ2·¶Êı¾ßÓĞÏàµ±ºÃµÄĞÔÖÊ£»ÒÔÉÏÖ¤Ã÷Áô×÷Ï°Ìâ¡£
 \section{µ¼Êı}
-¶ÔÓÚÒ»¸ö$p$Î¬ÏòÁ¿$\boldsymbol{x}\in \mathbb{R}^p$£¬º¯Êı$y=f(x)=f(x_1,x_2,\cdots,x_p)\in\mathbb{R}$£¬Ôò$y$¹ØÓÚ$\boldsymbol{x}$µÄµ¼ÊıÎª£º
+Ê×ÏÈ£º
+\begin{equation}\label{div}
+  \frac{d \boldsymbol{A}(x)}{dx}=(\frac{d a_{ij}(x)}{dx})_{m\times n}
+\end{equation}
+¶ÔÓÚÒ»¸ö$p$Î¬ÏòÁ¿$\boldsymbol{x}\in \mathbb{R}^p$£¬º¯Êı$y=f(\boldsymbol{x})=f(x_1,x_2,\cdots,x_p)\in\mathbb{R}$£¬Ôò$y$¹ØÓÚ$\boldsymbol{x}$µÄµ¼ÊıÎª£º
 \begin{equation}\label{2.9}
-  \nabla_xf(x)=\begin{pmatrix}\frac{\partial f(x)}{\partial x_1}\\ \vdots\\ \frac{\partial f(x)}{\partial x_p}\end{pmatrix}\in\mathbb{R}^p
+  \frac{df(\boldsymbol{x})}{d\boldsymbol{x}}=\text{grad}f=\begin{pmatrix}\frac{\partial f(\boldsymbol{x})}{\partial x_1}\\ \vdots\\ \frac{\partial f(\boldsymbol{x})}{\partial x_p}\end{pmatrix}\in\mathbb{R}^p
 \end{equation}
 
-¶ÔÓÚÒ»¸ö$p$Î¬ÏòÁ¿$\boldsymbol{x}\in \mathbb{R}^p$£¬º¯Êı$y=f(x)=\left(f_1(x_1,\cdots,x_p), \cdots ,f_q(x_1,\cdots,x_p)\right)^T\in\mathbb{R}^q$£¬Ôò$y$¹ØÓÚ$\boldsymbol{x}$ µÄµ¼ÊıÎª£º
+¶ÔÓÚÒ»¸ö$p$Î¬ÏòÁ¿$\boldsymbol{x}\in \mathbb{R}^p$£¬º¯Êı$y=\boldsymbol{f}(\boldsymbol{x})=\left(f_1(\boldsymbol{x}), \cdots , f_q(\boldsymbol{x})\right)^T\in\mathbb{R}^q$£¬Ôò$y$¹ØÓÚ$\boldsymbol{x}$ µÄµ¼ÊıÎª£º
 \begin{equation}\label{2.10}
-  \nabla_xf(x)=\begin{pmatrix}\frac{\partial f_1(x)}{\partial x_1} & \cdots & \frac{\partial f_1(x)}{\partial x_q}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_q(x)}{\partial x_1} & \cdots & \frac{\partial f_q(x)}{\partial x_p} \end{pmatrix}\in\mathbb{R}^{p\times q}
+  \frac{d\boldsymbol{f}(\boldsymbol{x})}{d\boldsymbol{x}}=\begin{pmatrix}\frac{\partial f_1(x)}{\partial x_1} & \cdots & \frac{\partial f_1(x)}{\partial x_p}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_q(x)}{\partial x_1} & \cdots & \frac{\partial f_q(x)}{\partial x_p} \end{pmatrix}\in\mathbb{R}^{p\times q}
 \end{equation}
+
+Éè¾ØÕóÖµº¯Êı$\boldsymbol{F}(\boldsymbol{X})=(f_{ij}(\boldsymbol{X}))_{m\times n}$£¬ÆäÖĞ$\boldsymbol{X}=(x_{ij})_{p\times q}$£¬ÄÇÃ´£º
+\begin{equation}\label{divmat}
+  \frac{d\boldsymbol{F}(\boldsymbol{X})}{d\boldsymbol{X}}=\begin{pmatrix}\frac{\partial \boldsymbol{F}}{\partial x_{11}} & \cdots & \frac{\partial \boldsymbol{F}}{\partial x_{1q}}\\ \vdots & \vdots & \vdots\\ \frac{\partial \boldsymbol{F}}{\partial x_{p1}} & \cdots & \frac{\partial \boldsymbol{F}}{\partial x_{pq}} \end{pmatrix}\in\mathbb{R}^{pm\times nq}
+\end{equation}
+ÆäÖĞ£º
+\begin{equation}\label{innerdivmat}
+  \frac{d\boldsymbol{F}(\boldsymbol{X})}{dx_{ij}}=\begin{pmatrix}\frac{\partial f_{11}}{\partial x_{ij}} & \cdots & \frac{\partial f_{1n}}{\partial x_{ij}}\\ \vdots & \vdots & \vdots\\ \frac{\partial f_{m1}}{\partial x_{ij}} & \cdots & \frac{\partial f_{mn}}{\partial x_{ij}} \end{pmatrix}
+\end{equation}
+
 \subsection{³£¼ûµÄÏòÁ¿µ¼Êı}
+\begin{equation}\label{ex1}
+  \frac{d\boldsymbol{a}^T\boldsymbol{x}}{d\boldsymbol{x}}=\frac{d\boldsymbol{x}^T\boldsymbol{a}}{d\boldsymbol{x}}=\boldsymbol{a}
+\end{equation}
+\begin{equation}\label{ex2}
+  \frac{d\text{tr}(\boldsymbol{AX})}{d\boldsymbol{X}}=\boldsymbol{A}^T
+\end{equation}
+\begin{equation}\label{ex3}
+  \frac{d\boldsymbol{x}^T\boldsymbol{Ax}}{d\boldsymbol{x}}=(\boldsymbol{A}^T+\boldsymbol{A})\boldsymbol{x}
+\end{equation}
 \begin{equation}\label{2.11}
   \frac{\partial A\boldsymbol{x}}{\partial\boldsymbol{x}}=A^T
 \end{equation}
@@ -264,6 +320,14 @@ softmax º¯ÊıÊÇ½«¶à¸ö±êÁ¿Ó³ÉäÎªÒ»¸ö¸ÅÂÊ·Ö²¼¡£
 
 \section{Ò»Ğ©Á·Ï°}
 ¾ØÕóÇóµ¼µÄÒ»Ğ©Á·Ï°¼¼ÇÉºÍÖØÒª½áÂÛ
+\begin{enumerate}
+  \item Ö¤Ã÷£º$\frac{d\det\boldsymbol{X}}{d\boldsymbol{X}}=(\det\boldsymbol{X})(\boldsymbol{X}^{-1})^T$£»
+  \item ¼ÆËã£º$\frac{d\boldsymbol{x}^T}{d\boldsymbol{x}}$ ºÍ$\frac{d\boldsymbol{x}}{d\boldsymbol{x}^T}$£»
+  \item $\boldsymbol{a}=(a_1,a_2,a_3,a_4)^T$£¬$\boldsymbol{X}=(x_{ij})_{2\times 4}$£¬¼ÆËã£º$\frac{d(\boldsymbol{Xa})^T}{d\boldsymbol{X}}$ ºÍ$\frac{d\boldsymbol{Xa}}{d\boldsymbol{X}}$£»
+  \item Ö¤Ã÷£º$\frac{d\text{tr}(\boldsymbol{BX})}{d\boldsymbol{X}}=\frac{d\text{tr}(\boldsymbol{X}^T\boldsymbol{B}^T)}{d\boldsymbol{X}}=\boldsymbol{A}^T$£»$\frac{d\text{tr}(\boldsymbol{X}^T\boldsymbol{AX})}{d\boldsymbol{X}}=(\boldsymbol{A}+\boldsymbol{A}^T)\boldsymbol{X}$£»
+  \item $\boldsymbol{A}_{m\times n}$Îª³£Êı¾ØÕó£¬$\boldsymbol{F}(\boldsymbol{x})=\boldsymbol{x}^T\boldsymbol{A}$£¬¼ÆËã£º$\frac{d\boldsymbol{F}}{d\boldsymbol{x}}$
+\end{enumerate}
+
 \section{½øÒ»²½µÄÔÄ¶ÁºÍ×Ü½á}
 ÏêÏ¸µÄ¾ØÕóÆ«µ¼Êı²Î¿¼:{https://en.wikipedia.org/wiki/Matrix\_calculus}.
 
@@ -286,7 +350,7 @@ softmax º¯ÊıÊÇ½«¶à¸ö±êÁ¿Ó³ÉäÎªÒ»¸ö¸ÅÂÊ·Ö²¼¡£
  \caption{»úÆ÷Ñ§Ï°ÏµÍ³Ê¾ÒâÍ¼}
  \label{fig:3.1}
 \end{figure}
-ÕâÀï£¬$\hat{y}$ÊÇÄ£ĞÍÊä³ö£¬$\theta$Îª¾ö²ßº¯ÊıµÄ²ÎÊı£¬$\phi(x)$ ±íÊ¾Ñù±¾$x$¶ÔÓ¦µÄÌØÕ÷±íÊ¾¡£ÒòÎª$x$²»Ò»¶¨¶¼ÊÇÊıÖµĞÍµÄÊäÈë£¬Òò´ËĞèÒªÍ¨¹ı$\phi(x)$½«$x$×ª»»ÎªÊıÖµĞÍµÄÊäÈë¡£Èç¹ûÎÒÃÇ¼ÙÉè$x$ ÊÇÒÑ¾­´¦ÀíºÃµÄ±êÁ¿»òÏòÁ¿£¬¹«Ê½\ref{3.1}Ò²¿ÉÒÔÖ±½ÓĞ´Îª:
+ÕâÀï£¬$\hat{y}$ÊÇÄ£ĞÍÊä³ö£¬$\theta$Îª¾ö²ßº¯ÊıµÄ²ÎÊı£¬$\phi(x)$ ±íÊ¾Ñù±¾$x$¶ÔÓ¦µÄÌØÕ÷±íÊ¾¡£ÒòÎª$x$²»Ò»¶¨¶¼ÊÇÊıÖµĞÍµÄÊäÈë£¬Òò´ËĞèÒªÍ¨¹ı$\phi(x)$ ½«$x$×ª»»ÎªÊıÖµĞÍµÄÊäÈë¡£Èç¹ûÎÒÃÇ¼ÙÉè$x$ ÊÇÒÑ¾­´¦ÀíºÃµÄ±êÁ¿»òÏòÁ¿£¬¹«Ê½\ref{3.1}Ò²¿ÉÒÔÖ±½ÓĞ´Îª:
 \begin{equation}\label{3.2}
   \hat{y}=f(x,\theta)
 \end{equation}
@@ -312,7 +376,7 @@ softmax º¯ÊıÊÇ½«¶à¸ö±êÁ¿Ó³ÉäÎªÒ»¸ö¸ÅÂÊ·Ö²¼¡£
 \end{gather}
 ÕâÀï£¬${\| \theta \|}_2^2$ÊÇ$L_2$·¶ÊıµÄ\textbf{ÕıÔò»¯Ïî}£¬ÓÃÀ´¼õÉÙ²ÎÊı¿Õ¼ä£¬±ÜÃâ¹ıÄâºÏ¡£ÓÃ$\lambda$À´¿ØÖÆÕıÔò»¯µÄÇ¿¶È¡£
 
-ÕıÔò»¯ÏîÒ²¿ÉÒÔÊ¹ÓÃÆäËüº¯Êı£¬±ÈÈç$L_1$·¶Êı¡£$L_1$·¶ÊıµÄÒıÈëÍ¨³£»áÊ¹µÃ²ÎÊıÓĞÒ»¶¨Ï¡ÊèĞÔ£¬Òò´ËÔÚºÜ¶àËã·¨ÖĞÒ²¾­³£Ê¹ÓÃ¡£ÔÚBayes ¹À¼ÆµÄ½Ç¶ÈÀ´½²£¬ÕıÔò»¯ÊÇ¼ÙÉèÁË²ÎÊıµÄÏÈÑé·Ö²¼£¬²»ÍêÈ«ÒÀÀµÑµÁ·Êı¾İ¡£
+ÕıÔò»¯ÏîÒ²¿ÉÒÔÊ¹ÓÃÆäËüº¯Êı£¬±ÈÈç$L_1$·¶Êı¡£$L_1$ ·¶ÊıµÄÒıÈëÍ¨³£»áÊ¹µÃ²ÎÊıÓĞÒ»¶¨Ï¡ÊèĞÔ£¬Òò´ËÔÚºÜ¶àËã·¨ÖĞÒ²¾­³£Ê¹ÓÃ¡£ÔÚBayes ¹À¼ÆµÄ½Ç¶ÈÀ´½²£¬ÕıÔò»¯ÊÇ¼ÙÉèÁË²ÎÊıµÄÏÈÑé·Ö²¼£¬²»ÍêÈ«ÒÀÀµÑµÁ·Êı¾İ¡£
 \subsection{ËğÊ§º¯Êı}
 Ò»¸öÊµÀı$(x, y)$£¬ÕæÊµÄ¿±êÊÇ$y$£¬»úÆ÷Ñ§Ï°Ä£ĞÍµÄÔ¤²âÎª$f(x, \theta)$¡£ Èç¹ûÔ¤²â´íÎóÊ±£¨$f(x, \theta) \not= y£©$£¬ÎÒÃÇĞèÒª¶¨ÒåÒ»¸ö¶ÈÁ¿º¯ÊıÀ´¶¨Á¿µØ¼ÆËã´íÎóµÄ³Ì¶È¡£³£¼ûµÄËğÊ§º¯ÊıÓĞÈçÏÂ¼¸Àà£º
 
@@ -440,7 +504,7 @@ $y_i$ Ò²Ò²¿ÉÒÔ¿´³ÉÊÇÕæÊµÀà±ğµÄ·Ö²¼£¬ÕâÑù¹«Ê½\ref{3.11}Ç¡ºÃÊÇ½»²æìØµÄĞÎÊ½¡£Òò´Ë£¬
 \begin{equation}\label{3.14}
   L(\hat(y),y)=I(f(x,\theta)=y)
 \end{equation}
-ÕâÀï$f(x, \theta)$µÄÊä³öÒ²ÊÇÀëÉ¢Öµ£¬$I(\cdot)$ ÊÇÌØÕ÷º¯Êı.ÁíÒ»ÖÖ³£ÓÃµÄ·½Ê½ÊÇÈÃ$f_i(x, \theta)$È¥¹À¼Æ¸ø¶¨$x$µÄÇé¿öÏÂµÚ$i$ ¸öÀà±ğµÄÌõ¼ş¸ÅÂÊ$P(y = i|x)$¡£ËğÊ§º¯Êı¶¨ÒåÎª¸º¶ÔÊıËÆÈ»º¯Êı¡£
+ÕâÀï$f(x, \theta)$µÄÊä³öÒ²ÊÇÀëÉ¢Öµ£¬$I(\cdot)$ ÊÇÌØÕ÷º¯Êı.ÁíÒ»ÖÖ³£ÓÃµÄ·½Ê½ÊÇÈÃ$f_i(x, \theta)$ È¥¹À¼Æ¸ø¶¨$x$µÄÇé¿öÏÂµÚ$i$ ¸öÀà±ğµÄÌõ¼ş¸ÅÂÊ$P(y = i|x)$¡£ËğÊ§º¯Êı¶¨ÒåÎª¸º¶ÔÊıËÆÈ»º¯Êı¡£
 
 ÔÚ·ÖÀàÎÊÌâÖĞ£¬Í¨¹ıÑ§Ï°µÃµ½µÄ¾ö²ßº¯Êı$f(x, \theta)$Ò²½Ğ·ÖÀàÆ÷¡£
 
@@ -546,7 +610,7 @@ $x^{(t)},y^{(t)}$ÊÇµÚ$t$´Îµü´úÑ¡È¡µÄÑù±¾¡£
 
 Ëæ×Åµü´ú´ÎÊıµÄÔö¼Ó£¬Ìİ¶ÈÖğ½¥ËõĞ¡¡£
 
-\textbf{AdaDelta} Ëã·¨\cite{zeiler2012adadelta} ÓÃÖ¸ÊıË¥¼õµÄÒÆ¶¯Æ½¾ùÀ´ÀÛ»ıÀúÊ·µÄÌİ¶ÈĞÅÏ¢¡£µÚ$t$´Îµü´úµÄÌİ¶ÈµÄÆÚÍû$E(g^2)_t$ Îª£º
+\textbf{AdaDelta} Ëã·¨\cite{zeiler2012adadelta} ÓÃÖ¸ÊıË¥¼õµÄÒÆ¶¯Æ½¾ùÀ´ÀÛ»ıÀúÊ·µÄÌİ¶ÈĞÅÏ¢¡£µÚ$t$ ´Îµü´úµÄÌİ¶ÈµÄÆÚÍû$E(g^2)_t$ Îª£º
 \begin{equation}\label{3.23}
   E(g^2)_t=\rho E(g^2)_{t-1}+(1-\rho g_t^2)
 \end{equation}
@@ -600,6 +664,112 @@ $x^{(t)},y^{(t)}$ÊÇµÚ$t$´Îµü´úÑ¡È¡µÄÑù±¾¡£
 \section{ÑµÁ··½·¨}
 \section{Ò»Ğ©¾­Ñé}
 \section{½øÒ»²½µÄÔÄ¶ÁºÍ×Ü½á}
+\chapter{ÊÜÏŞ²¨¶û×ÈÂü»úRBM}
+Restricted Boltzmann Machines (RBMs) is a popular unsupervised method in Deep Learning Architectures. Despite its popularity, it takes efforts to grasp the concept. This post aims at providing an introduction to RBMs, from a somewhat mathematical point of view. Most of the formulas here are from\cite{bengio2009learning}.
+\section{Roadmap}
+Boltzmann Machines is an energy-based model where the joint probability distribution is characterized by a scalar energy to each configuration of variables. Boltzmann machine is also a probabilistic graphical model using graph-based representation as the basis for encoding the distribution. Restricted Boltzmann Machines is a type of Boltzmann machine with constrained connections ¨C only a certain type of connection is allowed.
+
+This post starts by introducing energy-based models, including the graphical representation of the model and its learning with gradient descent of log-likelihood. This post then discusses Boltzmann machines by placing a specific energy function in energy-based models. Restricted Boltzmann Machines are further discussed with the introduction of restrictions in Boltzmann Machines.
+\section{Notations}
+It is worthwhile to mention that there are three important notations in this post: $x$, $h$ and $y$. $x$ represents a list of input variables taking the form $x=\left \{ x_{1}, x_{2},\dots ,x_{N} \right \}$, where $x_{i}$ denotes the $i-th$ input variable. $h$ represents a list of hidden variables taking the form $h=\left \{ h_{1}, h_{2},\dots ,h_{N} \right \}$, where $h_{i}$ denotes the $i-th$ hidden variable. $y$ represents the label of a given input.
+
+As an example, for the problem of image recognition, $x$ are the images of interest where $x_{i}$ are the individual pixels from an image $x$. $h$ are the $hidden features/descriptors$ that serve as a high-level representations of image. Finally, $y$ are the labels of the images.
+
+\section{Energy-Based Models}
+Different from $predictive/supervised$ models, such as back-propagation neural networks, energy-based models capture the joint probability distribution  $P(\mathbf{x})$  of the configuration of input variables $\left \{ x_{1}, x_{2},\dots ,x_{N} \right \}$, rather than conditional probability of $P(y|\mathbf{x})$ .
+
+Energy-based models associate a scalar energy to each configuration of variables of interest. For each configuration, there is a corresponding energy associated with it, and this energy is directly associated with the probability for the model to be in this particular configuration. The probability distribution of energy-based models is defined as
+\begin{equation}\label{add1.1}
+    P(x)=\frac{e^{-Energy(x)}}{Z}
+\end{equation}
+
+This probability distribution favors ¡°negative energy¡±, meaning configurations with low energy will have a high probability. Learning in energy-based models corresponds to modifying the energy function to reshape the energy space, so that the desired patterns in the model always lie in the lowest spots in the energy surface, so that it will have a high probability. RBMs is a form of Undirected Graphical Model which I will discuss in another post.
+\section{An Simple Example of Energy-Based Models}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/add1.png}
+ \caption{An Simple Example of Energy-Based Models}
+ \label{fig:add1}
+\end{figure}
+Suppose we have a simple energy-based model with only two variables $a$  and $b$  (where $x=\left \{ a, b \right \})$, as well as a connection weight $w$. Here we define energy function $Energy(a,b)=-wab$. If $a$ and $b$ can only take binary values, and $w$ is $1$, the resulting energy function takes the form $Energy(a,b)=-ab$. The table below shows all possible configurations for $a$, $b$, $Energy(a,b)$ and the probability for each configuration.
+\begin{table}[htbp]
+\
+\begin{center}
+  \caption{\label{tab:Energy}$Energy(a,b)$ and the probability for each configuration}
+ \begin{tabular}{lclcl}
+  \toprule
+  $a$ & $b$ & $-Energy(a,b)$ & $e^{-Energy(a,b)}$ & $P(a,b)$ \\
+  \midrule
+ 0 & 0 & 0& 1 & $\frac{1}{3+e}$\\
+ 0 & 1 & 0& 1 & $\frac{1}{3+e}$\\
+ 1 & 0 & 0& 1 & $\frac{1}{3+e}$\\
+ 1 & 1 & 1& e & $\frac{e}{3+e}$\\
+  \bottomrule
+ \end{tabular}
+\end{center}
+
+\end{table}
+
+We can visualize the probability distribution using the graph below where the size of each circle represents the probability of each configuration.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/add2.png}
+ \caption{Model}
+ \label{fig:add2}
+\end{figure}
+
+\section{Introducing Hidden Variables}
+When modelling a set of input features, we can use the input attributes as variables to learn the relationship between each other. However, directly modeling such variables seems to have less expressive power, hence, we introduce the concept of hidden variables (nonobserved variables), to better model the joint probability distribution. The hidden variables can be used to capture high level feature representations of the observed variables. The probability distribution and partition function are changed accordingly:
+\begin{equation}\label{add1.2}
+    P(x,h)=\frac{e^{-Energy(x,h)}}{Z}
+\end{equation}
+\begin{equation}\label{add1.3}
+    Z=\sum_{x}^{ }\sum_{h}^{ }e^{-Energy(x,h)}
+\end{equation}
+Since we are only interested in the distribution of visible variables, we want to model the marginal distribution over hidden variables that takes the form
+
+\begin{equation}\label{add1.4}
+  P(x)=\sum_{h}^{ }\frac{e^{-Energy(x,h)}}{Z}
+\end{equation}
+
+To simplify this formula, we defined free energy being the marginal energy of $x$ summing over $h$:
+\begin{equation}\label{add1.5}
+  FreeEnergy(x)=-ln\sum_{h}^{ }e^{-Energy(x,h)}
+\end{equation}
+Therefore we can rewrite the marginal probability distribution as:
+
+\begin{equation}\label{add1.6}
+  P(x)=\frac{e^{-FreeEnergy(x)}}{Z}
+\end{equation}
+\begin{equation}\label{add1.7}
+    Z=\sum_{x}e^{-FreeEnergy(x)}
+\end{equation}
+\section{Gradient Learning of Energy-based Models}
+We use log-likelihood gradient to train the model, and we use $\theta$ to represent parameters of the model.
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/add3.png}
+ \caption{Gradient Learning of Energy-based Models}
+ \label{fig:add3}
+\end{figure}
+
+Hence, the average log-likelihood gradient for a training set is:
+\begin{equation}\label{add1.8}
+    E_{\hat{P}}\left[ \frac{\partial \ln P(x)}{\partial\theta} \right]=-E_{\hat{P}}\left[ \frac{\partial FreeEnergy(x)}{\partial\theta} \right]+E_{P}\left[ \frac{\partial FreeEnergy(x)}{\partial\theta} \right]
+\end{equation}
+
+where $\hat{P}$ is the distribution over the training set, and  $P$ is the distribution over the model's current parameters. The resulting log-likelihood gradient tells us, as long as we are able to compute the derivative of free energy for the training examples, and the derivative of free energy for the model¡¯s own distribution, we will be able to train the model tractably.
+\subsection{Boltzmann Machines}
+Boltzmann machine is a type of energy-based model, we get a Boltzmann machine when applying the energy function below in the previous section:
+\begin{equation}\label{BME}
+  Energy(x,h)=-b^Tx-c^Th-h^TWx-x^TUx-h^TVh
+\end{equation}
+where $b$ is the bias for visible variables, $c$ is the bias for hidden variables, $W$ is the connection weights between hidden variables and visible variables, $U$ is the connection weights within visible variables and $V$ is the connection weights within hidden variables. This energy function is simply a fully connected graph with weights on each connection.
+\subsection{Gradient Learning of Boltzmann Machines}
+The gradient of log-likelihood can be written as:
+
+Since the \frac{\partial Energy(x,h)}{\partial \theta} is easy to compute (which is simply the connection weights), the result of this gradient tells us, as long as we are able to compute the probability of hidden variables given visible variables, and the joint probability of hidden and visible variables (for the current constraints in the model), we will be able to learn the model tractably. Now the question comes to, how to compute the conditional and joint probability. That is, how to sample from P(x\vert h) and P(x,h).
 \chapter{¾í»ıÉñ¾­ÍøÂçCNN}
 
 \textbf{¾í»ıÉñ¾­ÍøÂç}£¨Convolutional Neural Networks£¬CNN£©ÊÇÒ»ÖÖÇ°À¡Éñ¾­ÍøÂç¡£¾í»ıÉñ¾­ÍøÂçÊÇÊÜÉúÎïÑ§ÉÏ\textbf{¸ĞÊÜÓò}£¨Receptive Field£©µÄ»úÖÆ¶øÌá³öµÄ¡£¸ĞÊÜÒ°Ö÷ÒªÊÇÖ¸Ìı¾õÏµÍ³¡¢±¾Ìå¸Ğ¾õÏµÍ³ºÍÊÓ¾õÏµÍ³ÖĞÉñ¾­ÔªµÄÒ»Ğ©ĞÔÖÊ¡£±ÈÈçÔÚÊÓ¾õÉñ¾­ÏµÍ³ÖĞ£¬Ò»¸öÉñ¾­ÔªµÄ¸ĞÊÜÒ°ÊÇÖ¸ÊÓÍøÄ¤ÉÏµÄÌØ¶¨ÇøÓò£¬Ö»ÓĞÕâ¸öÇøÓòÄÚµÄ´Ì¼¤²ÅÄÜ¹»¼¤»î¸ÃÉñ¾­Ôª\cite{hubel1968receptive}¡£
@@ -647,7 +817,7 @@ $x^{(t)},y^{(t)}$ÊÇµÚ$t$´Îµü´úÑ¡È¡µÄÑù±¾¡£
   a_i^{(l)}=f\left( \sum_{j-1}^{(l)}{w_j^{(l-1)}\cdot a_{i-j+m}^{(l-1)}}+b^{(l)} \right) \\
   =f\left( \boldsymbol{w}^{(l)}\cdot \boldsymbol{a}_{(i+m-1):i}^{(l-1)}+b_i \right)
 \end{gather}
-ÆäÖĞ£¬$\boldsymbol{w}^{(l)}\in \mathbb{R}^m$Îª$m$Î¬µÄÂË²¨Æ÷£¬$\boldsymbol{a}_{(i+m-1):i}^{(l)}=[a_{(i+m-1)}^{(l)},\cdots ,a_{i}^{(l)}]^T$¡£ ÕâÀï$a^{(l)}$µÄÏÂ±ê´Ó1¿ªÊ¼£¬ÕâÀïµÄ¾í»ı¹«Ê½ºÍÔ­Ê¼µÄ¹«Ê½ÖĞµÄ$\boldsymbol{a}$µÄÏÂ±êÓĞËù²»Í¬¡£
+ÆäÖĞ£¬$\boldsymbol{w}^{(l)}\in \mathbb{R}^m$Îª$m$Î¬µÄÂË²¨Æ÷£¬$\boldsymbol{a}_{(i+m-1):i}^{(l)}=[a_{(i+m-1)}^{(l)},\cdots ,a_{i}^{(l)}]^T$¡£ ÕâÀï$a^{(l)}$µÄÏÂ±ê´Ó1 ¿ªÊ¼£¬ÕâÀïµÄ¾í»ı¹«Ê½ºÍÔ­Ê¼µÄ¹«Ê½ÖĞµÄ$\boldsymbol{a}$µÄÏÂ±êÓĞËù²»Í¬¡£
 
 ÉÏÊö¹«Ê½Ò²¿ÉÒÔĞ´³É£º
 \begin{equation}\label{6.5}
@@ -748,10 +918,10 @@ $\boldsymbol{down}(X^l)$ÊÇÖ¸×Ó²ÉÑùºóµÄÌØÕ÷Ó³Éä¡£
 \begin{enumerate}
   \item ÊäÈë²ã£ºÊäÈëÍ¼Ïñ´óĞ¡Îª$32 \times 32 = 1024$¡£
   \item C1²ã£ºÕâÒ»²ãÊÇ¾í»ı²ã¡£ÂË²¨Æ÷µÄ´óĞ¡ÊÇ$5\times 5 = 25$£¬¹²ÓĞ$6$¸öÂË²¨Æ÷¡£µÃµ½$6$×é´óĞ¡Îª$28 \times 28 = 784$µÄÌØÕ÷Ó³Éä¡£Òò´Ë£¬C1²ãµÄÉñ¾­Ôª¸öÊıÎª$6 \times 784 = 4704$¡£¿ÉÑµÁ·²ÎÊı¸öÊıÎª$6 \times 25 + 6 = 156$¡£Á¬½ÓÊıÎª$156 \times 784 = 122304$£¨°üÀ¨Æ«ÖÃÔÚÄÚ£¬ÏÂÍ¬£©¡£
-  \item S2 ²ã£ºÕâÒ»²ãÎª×Ó²ÉÑù²ã¡£ÓÉC1²ãÃ¿×éÌØÕ÷Ó³ÉäÖĞµÄ$2\times 2$ÁÚÓòµã´Î²ÉÑùÎª$1$¸öµã£¬Ò²¾ÍÊÇ$4$¸öÊıµÄÆ½¾ù¡£ÕâÒ»²ãµÄÉñ¾­Ôª¸öÊıÎª$14 \times 14 = 196$¡£¿ÉÑµÁ·²ÎÊı¸öÊıÎª$6 \times (1 + 1) = 12$¡£Á¬½ÓÊıÎª$6 \times 196 \times (4 + 1) = 122304$£¨°üÀ¨Æ«ÖÃµÄÁ¬½Ó£©
+  \item S2 ²ã£ºÕâÒ»²ãÎª×Ó²ÉÑù²ã¡£ÓÉC1²ãÃ¿×éÌØÕ÷Ó³ÉäÖĞµÄ$2\times 2$ ÁÚÓòµã´Î²ÉÑùÎª$1$¸öµã£¬Ò²¾ÍÊÇ$4$¸öÊıµÄÆ½¾ù¡£ÕâÒ»²ãµÄÉñ¾­Ôª¸öÊıÎª$14 \times 14 = 196$¡£¿ÉÑµÁ·²ÎÊı¸öÊıÎª$6 \times (1 + 1) = 12$¡£Á¬½ÓÊıÎª$6 \times 196 \times (4 + 1) = 122304$£¨°üÀ¨Æ«ÖÃµÄÁ¬½Ó£©
   \item C3 ²ã£ºÕâÒ»²ãÊÇ¾í»ı²ã¡£ÓÉÓÚS2 ²ãÒ²ÓĞ¶à×éÌØÕ÷Ó³Éä£¬ĞèÒªÒ»¸öÁ¬½Ó±íÀ´¶¨Òå²»Í¬²ãÌØÕ÷Ó³ÉäÖ®¼äµÄÒÀÀµ¹ØÏµ¡£LeNet-5 µÄÁ¬½Ó±íÈçÍ¼\ref{fig:6.5} ËùÊ¾¡£ÕâÑùµÄÁ¬½Ó»úÖÆµÄ»ù±¾¼ÙÉèÊÇ£ºC3²ãµÄ×î¿ªÊ¼µÄ$6$¸öÌØÕ÷Ó³ÉäÒÀÀµÓÚS2²ãµÄÌØÕ÷Ó³ÉäµÄÃ¿$3$¸öÁ¬Ğø×Ó¼¯¡£½ÓÏÂÀ´µÄ$6$¸öÌØÕ÷Ó³ÉäÒÀÀµÓÚS2 ²ãµÄÌØÕ÷Ó³ÉäµÄÃ¿$4$¸öÁ¬Ğø×Ó¼¯¡£ÔÙ½ÓÏÂÀ´µÄ3 ¸öÌØÕ÷Ó³ÉäÒÀÀµÓÚS2²ãµÄÌØÕ÷Ó³ÉäµÄÃ¿$4$¸ö²»Á¬Ğø×Ó¼¯¡£×îºóÒ»¸öÌØÕ÷Ó³ÉäÒÀÀµÓÚS2 ²ãµÄËùÓĞÌØÕ÷Ó³Éä¡£ÕâÑù¹²ÓĞ$60$¸öÂË²¨Æ÷£¬´óĞ¡ÊÇ$5 \times 5 = 25$¡£µÃµ½$16$×é´óĞ¡Îª$10\times 10 = 100$ µÄÌØÕ÷Ó³Éä¡£C3 ²ãµÄÉñ¾­Ôª¸öÊıÎª$16 \times 100 = 1600$¡£¿ÉÑµÁ·²ÎÊı¸öÊıÎª$60 \times 25 + 16 = 1516$¡£ Á¬½ÓÊıÎª$1516 \times 100 = 151600$¡£
   \item S4 ²ã£ºÕâÒ»²ãÊÇÒ»¸ö×Ó²ÉÑù²ã£¬ÓÉ$2\times 2$ÁÚÓòµã´Î²ÉÑùÎª$1$¸öµã£¬µÃµ½$16$×é$5\times 5$´óĞ¡µÄÌØÕ÷Ó³Éä¡£¿ÉÑµÁ·²ÎÊı¸öÊıÎª$16 \times 2 = 32$¡£Á¬½ÓÊıÎª$16 \times (4 + 1) = 2000$¡£
-  \item C5 ²ã£ºÊÇÒ»¸ö¾í»ı²ã£¬µÃµ½$120$×é´óĞ¡Îª$1 \times 1$µÄÌØÕ÷Ó³Éä¡£Ã¿¸öÌØÕ÷Ó³ÉäÓëS4²ãµÄÈ«²¿ÌØÕ÷Ó³ÉäÏàÁ¬¡£ÓĞ$120 \times 16 = 1920$ ¸öÂË²¨Æ÷£¬´óĞ¡ÊÇ$5 \times 5 = 25$¡£C5 ²ãµÄÉñ¾­Ôª¸öÊıÎª$120$£¬¿ÉÑµÁ·²ÎÊı¸öÊıÎª$1920 \times 25 + 120 = 48120$¡£ Á¬½ÓÊıÎª$120 \times (16 \times 25+1)=48120$
+  \item C5 ²ã£ºÊÇÒ»¸ö¾í»ı²ã£¬µÃµ½$120$×é´óĞ¡Îª$1 \times 1$µÄÌØÕ÷Ó³Éä¡£Ã¿¸öÌØÕ÷Ó³ÉäÓëS4 ²ãµÄÈ«²¿ÌØÕ÷Ó³ÉäÏàÁ¬¡£ÓĞ$120 \times 16 = 1920$ ¸öÂË²¨Æ÷£¬´óĞ¡ÊÇ$5 \times 5 = 25$¡£C5 ²ãµÄÉñ¾­Ôª¸öÊıÎª$120$£¬¿ÉÑµÁ·²ÎÊı¸öÊıÎª$1920 \times 25 + 120 = 48120$¡£ Á¬½ÓÊıÎª$120 \times (16 \times 25+1)=48120$
   \item F6²ã£ºÊÇÒ»¸öÈ«Á¬½Ó²ã£¬ÓĞ$84$¸öÉñ¾­Ôª£¬¿ÉÑµÁ·²ÎÊı¸öÊıÎª$84\times (120+1) = 10164$¡£Á¬½ÓÊıºÍ¿ÉÑµÁ·²ÎÊı¸öÊıÏàÍ¬£¬Îª$10164$¡£
   \item Êä³ö²ã£ºÊä³ö²ãÓÉ10 ¸öÅ·ÊÏ¾¶Ïò»ùº¯Êı£¨Radial Basis Function£¬RBF£©º¯Êı×é³É¡£ÕâÀï²»ÔÙÏêÊö¡£
 \end{enumerate}
@@ -768,7 +938,7 @@ $\boldsymbol{down}(X^l)$ÊÇÖ¸×Ó²ÉÑùºóµÄÌØÕ÷Ó³Éä¡£
 \subsection{¾í»ı²ãµÄÌİ¶È}
 ÎÒÃÇ¼Ù¶¨¾í»ı²ãÎª$l$²ã£¬×Ó²ÉÑù²ãÎª$l + 1$ ²ã¡£ÒòÎª×Ó²ÉÑù²ãÊÇÏÂ²ÉÑù²Ù×÷£¬$l + 1$²ãµÄÒ»¸öÉñ¾­ÔªµÄÎó²îÏî$\delta$¶ÔÓ¦ÓÚ¾í»ı²ã£¨ÉÏÒ»²ã£©µÄÏàÓ¦ÌØÕ÷Ó³ÉäµÄÒ»¸öÇøÓò¡£$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäÖĞµÄÃ¿¸öÉñ¾­Ôª¶¼ÓĞÒ»Ìõ±ßºÍ$l + 1$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäÖĞµÄÒ»¸öÉñ¾­ÔªÏàÁ¬¡£¸ù¾İÁ´Ê½·¨Ôò£¬µÚ$l$²ãµÄÒ»¸öÌØÕ÷Ó³ÉäµÄÎó²îÏî$\delta^{(l,k)}$£¬Ö»ĞèÒª½«$l + 1$²ã¶ÔÓ¦ÌØÕ÷Ó³ÉäµÄÎó²îÏî$\delta^{(l+1,k)}$½øĞĞÉÏ²ÉÑù²Ù×÷£¨ºÍµÚ$l$²ãµÄ´óĞ¡Ò»Ñù£©£¬ÔÙºÍ$l$ ²ãÌØÕ÷Ó³ÉäµÄ¼¤»îÖµÆ«µ¼ÊıÖğÔªËØÏà³Ë£¬ÔÙ³ËÉÏÈ¨ÖØ$w^{(l+1,k))}$£¬¾ÍµÃµ½ÁË$\delta^{(l,k)}$¡£
 
-µÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäµÄÎó²îÏî$\delta^{(l,k)}$µÄ¾ßÌåÍÆµ¼¹ı³ÌÈçÏÂ£º
+µÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäµÄÎó²îÏî$\delta^{(l,k)}$ µÄ¾ßÌåÍÆµ¼¹ı³ÌÈçÏÂ£º
 \begin{gather}\label{6.18}
   \delta^{(l,k)} \equiv \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial Z^{(l)}}\\
   =\frac{\partial X^{(l,k)}}{\partial Z^{(l,k)}}\cdot \frac{\partial X^{(l+1,k)}}{\partial Z^{(l,k)}}\cdot\frac{\partial J(W,\boldsymbol{b};X,y)}{\partial Z^{(l+1,k)}}\\
@@ -783,7 +953,7 @@ $\boldsymbol{down}(X^l)$ÊÇÖ¸×Ó²ÉÑùºóµÄÌØÕ÷Ó³Éä¡£
   =\sum_{s=1}^{w_l}\sum_{t=1}^{h_j} \left( X_{s-i+u,t-j+v}^{(l-1,p)}\cdot(\boldsymbol{rot180}(\delta^{(l,k)}))_{s,t}\right)
 \end{gather}
 
-Ê½\ref{6.22}Ò²¸ÕºÃÊÇ¾í»ıĞÎÊ½£¬Òò´ËÄ¿±êº¯Êı¹ØÓÚµÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäÉñ¾­ÔªÂË²¨Æ÷$W^{(l,k,p)}$µÄÌİ¶È¿ÉÒÔĞ´Îª£º
+Ê½\ref{6.22}Ò²¸ÕºÃÊÇ¾í»ıĞÎÊ½£¬Òò´ËÄ¿±êº¯Êı¹ØÓÚµÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäÉñ¾­ÔªÂË²¨Æ÷$W^{(l,k,p)}$ µÄÌİ¶È¿ÉÒÔĞ´Îª£º
 \begin{equation}\label{6.24}
   \frac{\partial J(W,\boldsymbol{b};\boldsymbol{x},y)}{\partial W_{i,j}^{(l,k)}}=\boldsymbol{rot180}\left(  X^{(l-1,p)}\otimes \boldsymbol{rot180}((\delta^{(l,k)}))_{s,t}) \right)
 \end{equation}
@@ -798,7 +968,7 @@ $\boldsymbol{down}(X^l)$ÊÇÖ¸×Ó²ÉÑùºóµÄÌØÕ÷Ó³Éä¡£
   X^{(l+1,k)}=\sum_{p,T_{p,k}=1}(W^{(l+1,k,p)}\otimes X^{(l,p)})+b^{(l+1,k)}
 \end{equation}
 
-µÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäµÄÎó²îÏî$\delta^{(l,k)}$µÄ¾ßÌåÍÆµ¼¹ı³ÌÈçÏÂ£º
+µÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäµÄÎó²îÏî$\delta^{(l,k)}$ µÄ¾ßÌåÍÆµ¼¹ı³ÌÈçÏÂ£º
 \begin{gather}\label{6.27}
   \delta^{(l,k)} \equiv \frac{\partial J(W,\boldsymbol{b};X,y)}{\partial Z^{(l,k)}}\\
   =\frac{\partial X^{(l,k)}}{\partial Z^{(l,k)}}\cdot \frac{\partial X^{(l+1,k)}}{\partial Z^{(l,k)}}\cdot\frac{\partial J(W,\boldsymbol{b};X,y)}{\partial Z^{(l+1,k)}}\\
@@ -806,7 +976,7 @@ $\boldsymbol{down}(X^l)$ÊÇÖ¸×Ó²ÉÑùºóµÄÌØÕ÷Ó³Éä¡£
 \end{gather}
 ÆäÖĞ£¬$\widetilde{\otimes}$Îª¿í¾í»ı¡£
 
-Ê½\ref{6.22}Ò²¸ÕºÃÊÇ¾í»ıĞÎÊ½£¬Òò´ËÄ¿±êº¯Êı¹ØÓÚµÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäÉñ¾­ÔªÂË²¨Æ÷$W^{(l,k,p)}$µÄÌİ¶È¿ÉÒÔĞ´Îª£º
+Ê½\ref{6.22}Ò²¸ÕºÃÊÇ¾í»ıĞÎÊ½£¬Òò´ËÄ¿±êº¯Êı¹ØÓÚµÚ$l$²ãµÄµÚ$k$¸öÌØÕ÷Ó³ÉäÉñ¾­ÔªÂË²¨Æ÷$W^{(l,k,p)}$ µÄÌİ¶È¿ÉÒÔĞ´Îª£º
 \begin{equation}\label{6.30}
   \frac{\partial J(W,\boldsymbol{b};X,y)}{\partial w^{(l,k)}}=\sum_{i,j}\left( \boldsymbol{down}(X^{(l-1,k)}\cdot \delta^{(l,k)}) \right)_{i,j}
 \end{equation}
@@ -863,7 +1033,7 @@ CaffeÊ®·ÖÇ¿µ÷ÍøÂçµÄ²ã´ÎĞÔ£¬Ò²¾ÍÊÇËµ¾í»ı²Ù×÷£¬·ÇÏßĞÔ±ä»»£¨ReLU µÈ£©£¬Pooling£¬È¨Ö
 \begin{itemize}
   \item \textbf{NeuronLayer}Àà ¶¨ÒåÓÚneuron\_layers.hppÖĞ£¬ÆäÅÉÉúÀàÖ÷ÒªÊÇÔªËØ¼¶±ğµÄÔËËã£¨±ÈÈçDropoutÔËËã£¬¼¤»îº¯ÊıReLu£¬SigmoidµÈ£©£¬ÔËËã¾ùÎªÍ¬Ö·¼ÆËã£¨in-place computation£¬·µ»ØÖµ¸²¸ÇÔ­Öµ¶øÕ¼ÓÃĞÂµÄÄÚ´æ£©¡£
   \item \textbf{LossLayerÀà} ¶¨ÒåÓÚloss\_layers.hppÖĞ£¬ÆäÅÉÉúÀà»á²úÉúloss£¬Ö»ÓĞÕâĞ©²ãÄÜ¹»²úÉúloss¡£
-  \item \textbf{Êı¾İ²ã} ¶¨ÒåÓÚdata\_layer.hppÖĞ£¬×÷ÎªÍøÂçµÄ×îµ×²ã£¬Ö÷ÒªÊµÏÖÊı¾İ¸ñÊ½µÄ×ª»»¡£
+  \item \textbf{Êı¾İ²ã} ¶¨ÒåÓÚdata\_layer.hpp ÖĞ£¬×÷ÎªÍøÂçµÄ×îµ×²ã£¬Ö÷ÒªÊµÏÖÊı¾İ¸ñÊ½µÄ×ª»»¡£
   \item \textbf{ÌØÕ÷±í´ï²ã} ¶¨ÒåÓÚvision\_layers.hpp £¨ÎªÊ²Ã´½Ğvision Õâ¸öÃû×Ö£¬ÎÒÄ¿Ç°»¹²»Çå³ş£©£¬ÊµÏÖÌØÕ÷±í´ï¹¦ÄÜ£¬¸ü¾ßÌåµØËµ°üº¬¾í»ı²Ù×÷£¬Pooling²Ù×÷£¬ËûÃÇ»ù±¾¶¼»á²úÉúĞÂµÄÄÚ´æÕ¼ÓÃ£¨PoolingÏà¶Ô½ÏĞ¡£©¡£
   \item \textbf{ÍøÂçÁ¬½Ó²ãºÍ¼¤»îº¯Êı} ¶¨ÒåÓÚcommon\_layers.hpp£¬CaffeÌá¹©ÁËµ¥¸ö²ãÓë¶à¸ö²ãµÄÁ¬½Ó£¬²¢ÔÚÕâ¸öÍ·ÎÄ¼şÖĞÉùÃ÷¡£ÕâÀï»¹°üÀ¨ÁË³£ÓÃµÄÈ«Á¬½Ó²ãInnerProductLayer Àà¡£
 \end{itemize}
@@ -910,7 +1080,7 @@ layers \{
 vector<Dtype> loss_;
 
 \end{lstlisting}
-Ã¿Ò»²ãÓÖÓĞÒ»¸öloss\_Öµ£¬Ö»²»¶à´ó¶àÊıLayer ¶¼ÊÇ0£¬Ö»ÓĞLossLayer²Å¿ÉÄÜ²úÉú·Ç0µÄloss\_¡£¼ÆËãlossÊÇ»á°ÑËùÓĞ²ãµÄloss\_Ïà¼Ó
+Ã¿Ò»²ãÓÖÓĞÒ»¸öloss\_Öµ£¬Ö»²»¶à´ó¶àÊıLayer ¶¼ÊÇ0£¬Ö»ÓĞLossLayer²Å¿ÉÄÜ²úÉú·Ç0µÄloss\_¡£¼ÆËãloss ÊÇ»á°ÑËùÓĞ²ãµÄloss\_Ïà¼Ó
 
 \textbf{learnable parameters}
 \lstset{language=C++}
@@ -963,7 +1133,81 @@ ComputeUpdateValue();
 net_->Update();
 
 \end{lstlisting}
+\section{Ò»Ğ©¹ØÓÚCNNµÄ¼¼ÇÉ}
+\subsection{Data Augmentation}
+Since deep networks need to be trained on a huge number of training images to achieve satisfactory performance, if the original image data set contains limited training images, it is better to do data augmentation to boost the performance. Also, data augmentation becomes the thing must to do when training a deep network.
+\begin{itemize}
+  \item There are many ways to do data augmentation, such as the popular horizontally flipping, random crops and color jittering. Moreover, you could try combinations of multiple different processing, e.g., doing the rotation and random scaling at the same time. In addition, you can try to raise saturation and value (S and V components of the HSV color space) of all pixels to a power between 0.25 and 4 (same for all pixels within a patch), multiply these values by a factor between 0.7 and 1.4, and add to them a value between -0.1 and 0.1. Also, you could add a value between $[-0.1, 0.1]$ to the hue (H component of HSV) of all pixels in the image/patch.
+  \item Krizhevsky et al. \cite{krizhevsky2012imagenet} proposed \textbf{fancy PCA} when training the famous Alex-Net in 2012. Fancy PCA alters the intensities of the RGB channels in training images. In practice, you can firstly perform PCA on the set of RGB pixel values throughout your training images. And then, for each training image, just add the following quantity to each RGB image pixel (i.e., $I_{xy}=[I_{xy}^R,I_{xy}^G,I_{xy}^B]^T): [\bf{p}_1,\bf{p}_2,\bf{p}_3][\alpha_1 \lambda_1,\alpha_2 \lambda_2,\alpha_3 \lambda_3]^T$ where, $\bf{p}_i$ and $\lambda_i$ are the i-th eigenvector and eigenvalue of the 3 times 3 covariance matrix of RGB pixel values, respectively, and $\alpha_i$ is a random variable drawn from a Gaussian with mean zero and standard deviation 0.1. Please note that, each $\alpha_i$ is drawn only once for all the pixels of a particular training image until that image is used for training again. That is to say, when the model meets the same training image again, it will randomly produce another $\alpha_i$ for data augmentation. In \cite{krizhevsky2012imagenet}, they claimed that ¡°fancy PCA could approximately capture an important property of natural images, namely, that object identity is invariant to changes in the intensity and color of the illumination¡±. To the classification performance, this scheme reduced the top-1 error rate by over 1\% in the competition of ImageNet 2012.
+\end{itemize}
+\subsection{Pre-Processing}
+Now we have obtained a large number of training samples (images/crops), but please do not hurry. Actually, it is necessary to do pre-processing on these images/crops. In this section, we will introduce several approaches for pre-processing.
 
+The first and simple pre-processing approach is \textbf{zero-center} the data, and then \textbf{normalize} them, which is presented as two lines Python codes as follows:
+\lstset{language=python}
+\begin{lstlisting}[frame=single]
+X -= np.mean(X, axis = 0) # zero-center
+X /= np.std(X, axis = 0) # normalize
+\end{lstlisting}
+where, X is the input data (NumIns¡ÁNumDim). Another form of this pre-processing normalizes each dimension so that the min and max along the dimension is -1 and 1 respectively. It only makes sense to apply this pre-processing if you have a reason to believe that different input features have different scales (or units), but they should be of approximately equal importance to the learning algorithm. In case of images, the relative scales of pixels are already approximately equal (and in range from 0 to 255), so it is not strictly necessary to perform this additional pre-processing step.
+
+Another pre-processing approach similar to the first one is \textbf{PCA Whitening}. In this process, the data is first centered as described above. Then, you can compute the covariance matrix that tells us about the correlation structure in the data:
+\lstset{language=python}
+\begin{lstlisting}[frame=single]
+X -= np.mean(X, axis = 0) # zero-center
+cov = np.dot(X.T, X) / X.shape[0] # compute the covariance matrix
+\end{lstlisting}
+After that, you decorrelate the data by projecting the original (but zero-centered) data into the eigenbasis:
+\lstset{language=python}
+\begin{lstlisting}[frame=single]
+U,S,V = np.linalg.svd(cov) # compute the SVD factorization of the data covariance matrix
+Xrot = np.dot(X, U) # decorrelate the data
+\end{lstlisting}
+The last transformation is whitening, which takes the data in the eigenbasis and divides every dimension by the eigenvalue to normalize the scale:
+\lstset{language=python}
+\begin{lstlisting}[frame=single]
+Xwhite = Xrot / np.sqrt(S + 1e-5) # divide by the eigenvalues (which are square roots of the singular values)
+\end{lstlisting}
+Note that here it adds 1e-5 (or a small constant) to prevent division by zero. One weakness of this transformation is that it can greatly exaggerate the noise in the data, since it stretches all dimensions (including the irrelevant dimensions of tiny variance that are mostly noise) to be of equal size in the input. This can in practice be mitigated by stronger smoothing (i.e., increasing 1e-5 to be a larger number).
+
+Please note that, we describe these pre-processing here just for completeness. In practice, these transformations are not used with Convolutional Neural Networks. However, it is also very important to zero-center the data, and it is common to see normalization of every pixel as well.
+
+\subsection{Initializations}
+Now the data is ready. However, before you are beginning to train the network, you have to initialize its parameters.
+\begin{itemize}
+  \item All Zero Initialization:
+  In the ideal situation, with proper data normalization it is reasonable to assume that approximately half of the weights will be positive and half of them will be negative. A reasonable-sounding idea then might be to set all the initial weights to zero, which you expect to be the ¡°best guess¡± in expectation. But, this turns out to be a mistake, because if every neuron in the network computes the same output, then they will also all compute the same gradients during back-propagation and undergo the exact same parameter updates. In other words, there is no source of asymmetry between neurons if their weights are initialized to be the same.
+  \item Initialization with Small Random Numbers:
+  Thus, you still want the weights to be very close to zero, but not identically zero. In this way, you can random these neurons to small numbers which are very close to zero, and it is treated as symmetry breaking. The idea is that the neurons are all random and unique in the beginning, so they will compute distinct updates and integrate themselves as diverse parts of the full network. The implementation for weights might simply look like $weights\sim 0.001\times N(0,1)$, where $N(0,1)$ is a zero mean, unit standard deviation gaussian. It is also possible to use small numbers drawn from a uniform distribution, but this seems to have relatively little impact on the final performance in practice.
+  \item Calibrating the Variances:
+  One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that you can normalize the variance of each neuron's output to 1 by scaling its weight vector by the square root of its fan-in (i.e., its number of inputs), which is as follows:
+  \lstset{language=python}
+  \begin{lstlisting}[frame=single]
+  w = np.random.randn(n) / sqrt(n) # calibrating the variances with 1/sqrt(n)
+  \end{lstlisting}
+  where ¡°randn¡± is the aforementioned Gaussian and ¡°n¡± is the number of its inputs. This ensures that all neurons in the network initially have approximately the same output distribution and empirically improves the rate of convergence. The detailed derivations can be found from Page. 18 to 23 of the slides. Please note that, in the derivations, it does not consider the influence of ReLU neurons.
+  \item Current Recommendation:
+  As aforementioned, the previous initialization by calibrating the variances of neurons is without considering ReLUs. A more recent paper on this topic by He et al. \cite{he2015delving} derives an initialization specifically for ReLUs, reaching the conclusion that the variance of neurons in the network should be $2.0/n$ as:
+  \lstset{language=python}
+  \begin{lstlisting}[frame=single]
+  w = np.random.randn(n) * sqrt(2.0/n) # current recommendation
+  \end{lstlisting}
+  which is the current recommendation for use in practice, as discussed in \cite{he2015delving}.
+\end{itemize}
+\subsection{During Training}
+\begin{itemize}
+  \item Filters and pooling size:
+   During training, the size of input images prefers to be power-of-2, such as 32 (e.g., CIFAR-10), 64, 224 (e.g., common used ImageNet), 384 or 512, etc. Moreover, it is important to employ a small filter (e.g., $3\times 3$) and small strides (e.g., 1) with zeros-padding, which not only reduces the number of parameters, but improves the accuracy rates of the whole deep network. Meanwhile, a special case mentioned above, i.e., $3\times 3$ filters with stride 1, could preserve the spatial size of images/feature maps. For the pooling layers, the common used pooling size is of $2\times 2$.
+  \item Learning rate:
+   In addition, we recommended to divide the gradients by mini batch size. Thus, you should not always change the learning rates (LR), if you change the mini batch size. For obtaining an appropriate LR, utilizing the validation set is an effective way. Usually, a typical value of LR in the beginning of your training is 0.1. In practice, if you see that you stopped making progress on the validation set, divide the LR by 2 (or by 5), and keep going, which might give you a surprise.
+  \item Fine-tune on pre-trained models:
+   Nowadays, many state-of-the-arts deep networks are released by famous research groups, i.e., Caffe Model Zoo and VGG Group. Thanks to the wonderful generalization abilities of pre-trained deep models, you could employ these pre-trained models for your own applications directly. For further improving the classification performance on your data set, a very simple yet effective approach is to fine-tune the pre-trained models on your own data. As shown in following table, the two most important factors are the size of the new data set (small or big), and its similarity to the original data set. Different strategies of fine-tuning can be utilized in different situations. For instance, a good case is that your new data set is very similar to the data used for training pre-trained models. In that case, if you have very little data, you can just train a linear classifier on the features extracted from the top layers of pre-trained models. If your have quite a lot of data at hand, please fine-tune a few top layers of pre-trained models with a small learning rate. However, if your own data set is quite different from the data used in pre-trained models but with enough training images, a large number of layers should be fine-tuned on your data also with a small learning rate for improving performance. However, if your data set not only contains little data, but is very different from the data used in pre-trained models, you will be in trouble. Since the data is limited, it seems better to only train a linear classifier. Since the data set is very different, it might not be best to train the classifier from the top of the network, which contains more dataset-specific features. Instead, it might work better to train the SVM classifier on activations/features from somewhere earlier in the network.
+\end{itemize}
+\subsection{Activation Functions}
+\subsection{Regularizations}
+\subsection{Insights from Figures}
+\subsection{Ensemble}
+\subsection{Miscellaneous}
 \section{Ò»Ğ©¾­µäÂÛÎÄ»ùÓÚCAFFEµÄÊµÑéÖØÏÖ}
 \subsection{A Neural Algorithm of Artistic Style}
 2015Äê9ÔÂ¼¸Î»µÂ¹ú¼ÆËã»úÉñ¾­ÍøÂç¿ÆÑ§¼Ò·¢±íÁËÆªÂÛÎÄ\cite{gatys2015neural}Éù³Æ¿ÉÒÔÈÃµçÄÔÄ£·ÂÈÎºÎ»­¼ÒµÄ·ç¸ñ×÷»­£¬ÈçÍ¼\ref{fig:6.6}£¬¸ÃÂÛÎÄµÄË¼Â·Ïàµ±ĞÂÓ±£¬ÒÔÖÁÓÚÔÚ¶Ì¶ÌÈı¸öÔÂÄÚ¾ÍÓĞÈË½«ÆäÉÌÒµ»¯Ê¹ÓÃ¡£
@@ -1025,7 +1269,7 @@ net_->Update();
 \begin{equation}\label{7.2}
   \boldsymbol{h}_t=f(\boldsymbol{U}\boldsymbol{h}_{t-1}+\boldsymbol{W}\boldsymbol{x}_t+\boldsymbol{b})
 \end{equation}
-ÕâÀï£¬$f$ÊÇ·ÇÏßĞÔº¯Êı£¬Í¨³£Îªlogisticº¯Êı»òtanhº¯Êı¡£
+ÕâÀï£¬$f$ÊÇ·ÇÏßĞÔº¯Êı£¬Í¨³£Îªlogisticº¯Êı»òtanh º¯Êı¡£
 \begin{figure}[t]
  \centering
  \includegraphics{pics/72.png}
@@ -1035,7 +1279,7 @@ net_->Update();
 
 Í¼\ref{fig:7.2}¸ø³öÁË°´Ê±¼äÕ¹¿ªµÄÑ­»·Éñ¾­ÍøÂç¡£
 \subsection{Ìİ¶È}
-Ñ­»·Éñ¾­ÍøÂçµÄ²ÎÊıÑµÁ·¿ÉÒÔÍ¨¹ı\textbf{ËæÊ±¼ä½øĞĞ·´Ïò´«²¥}£¨Backpropagation Through Time£¬BPTT£©Ëã·¨\cite{werbos1990backpropagation}¡£Í¼\ref{fig:7.3}¸ø³öÁËËæÊ±¼ä½øĞĞ·´Ïò´«²¥Ëã·¨µÄÊ¾Àı¡£
+Ñ­»·Éñ¾­ÍøÂçµÄ²ÎÊıÑµÁ·¿ÉÒÔÍ¨¹ı\textbf{ËæÊ±¼ä½øĞĞ·´Ïò´«²¥}£¨Backpropagation Through Time£¬BPTT£©Ëã·¨\cite{werbos1990backpropagation}¡£ Í¼\ref{fig:7.3}¸ø³öÁËËæÊ±¼ä½øĞĞ·´Ïò´«²¥Ëã·¨µÄÊ¾Àı¡£
 \begin{figure}[t]
  \centering
  \includegraphics{pics/73.png}
@@ -1066,7 +1310,7 @@ net_->Update();
 
 ÎÒÃÇ¶¨Òå$\gamma = ||U^T\boldsymbol{diag}[f'(h_{i-1})]||$£¬ÔòÔÚÉÏÃæ¹«Ê½ÖĞµÄÀ¨ºÅÀïÃæÎª$\gamma^{t-k}$¡£Èç¹û$\gamma > 1$£¬µ±$t-k \to \inf$ Ê±£¬$\gamma^{t-k}\to \infty$£¬»áÔì³ÉÏµÍ³²»ÎÈ¶¨£¬Ò²¾ÍÊÇËùÎ½µÄÌİ¶È±¬Õ¨ÎÊÌâ£»Ïà·´£¬Èç¹û$\gamma < 1$£¬µ±$t-k \to \infty$ Ê±£¬$\gamma^{t-k}\to 0$£¬»á³öÏÖºÍÉî¶ÈÇ°À¡Éñ¾­ÍøÂçÀàËÆµÄÌİ¶ÈÏûÊ§ÎÊÌâ¡£
 
-ÔÚÑµÁ·Ñ­»·Éñ¾­ÍøÂçÊ±£¬¸ü¾­³£³öÏÖµÄÊÇÌİ¶ÈÏûÊ§ÎÊÌâ¡£ÒòÎªÎÒÃÇÒ»°ãÇé¿öÏÂÊ¹ÓÃµÄ·ÇÏßĞÔ¼¤»îº¯ÊıÎªlogisticº¯Êı»òtanhº¯Êı£¬Æäµ¼ÊıÖµ¶¼Ğ¡ÓÚ$1$¡£¶øÈ¨ÖØ¾ØÕó$¡ÎU^T¡Î$Ò²²»»áÌ«´ó¡£ÎÒÃÇ¶¨Òå$||U^T|| \leq \gamma_u\leq 1$£¬$||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_f\leq 1$£¬ÔòÓĞ:
+ÔÚÑµÁ·Ñ­»·Éñ¾­ÍøÂçÊ±£¬¸ü¾­³£³öÏÖµÄÊÇÌİ¶ÈÏûÊ§ÎÊÌâ¡£ÒòÎªÎÒÃÇÒ»°ãÇé¿öÏÂÊ¹ÓÃµÄ·ÇÏßĞÔ¼¤»îº¯ÊıÎªlogisticº¯Êı»òtanhº¯Êı£¬Æäµ¼ÊıÖµ¶¼Ğ¡ÓÚ$1$¡£ ¶øÈ¨ÖØ¾ØÕó$¡ÎU^T¡Î$Ò²²»»áÌ«´ó¡£ÎÒÃÇ¶¨Òå$||U^T|| \leq \gamma_u\leq 1$£¬$||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_f\leq 1$£¬ÔòÓĞ:
 \begin{equation}\label{7.9}
   ||\frac{\partial \boldsymbol{h}_i}{\partial \boldsymbol{h}_{i-1}}||\leq ||U^T|| \cdot ||\boldsymbol{diag}[f'(h_{i-1})]|| \leq \gamma_u\gamma_f\leq 1
 \end{equation}
@@ -1078,7 +1322,7 @@ net_->Update();
 
 Òò´Ë£¬ËäÈ»¼òµ¥Ñ­»·ÍøÂç´ÓÀíÂÛÉÏ¿ÉÒÔ½¨Á¢³¤Ê±¼ä¼ä¸ôµÄ×´Ì¬Ö®¼äµÄÒÀÀµ¹ØÏµ£¨Long-Term Dependencies£©£¬µ«ÊÇÓÉÓÚÌİ¶È±¬Õ¨»òÏûÊ§ÎÊÌâ£¬Êµ¼ÊÉÏÖ»ÄÜÑ§Ï°µ½¶ÌÖÜÆÚµÄÒÀÀµ¹ØÏµ¡£Õâ¾ÍÊÇËùÎ½µÄ\textbf{³¤ÆÚÒÀÀµÎÊÌâ}¡£
 \subsection{¸Ä½ø·½°¸}
-ÎªÁË±ÜÃâÌİ¶È±¬Õ¨»òÏûÊ§ÎÊÌâ£¬¹Ø¼üÊÇÊ¹µÃ$U^T\boldsymbol{diag}[f'(h_{i-1})] = 1$¡£Ò»ÖÖ·½Ê½¾ÍÊÇÑ¡È¡ºÏÊÊµÄ²ÎÊı£¬Í¬Ê±Ê¹ÓÃ·Ç±¥ºÍµÄ¼¤»îº¯Êı¡£µ«ÕâÑùµÄ·½Ê½ĞèÒªºÜ¶àÈË¹¤¾­Ñé£¬Í¬Ê±ÏŞÖÆÁËÄ£ĞÍµÄ¹ã·ºÓ¦ÓÃ¡£
+ÎªÁË±ÜÃâÌİ¶È±¬Õ¨»òÏûÊ§ÎÊÌâ£¬¹Ø¼üÊÇÊ¹µÃ$U^T\boldsymbol{diag}[f'(h_{i-1})] = 1$¡£ Ò»ÖÖ·½Ê½¾ÍÊÇÑ¡È¡ºÏÊÊµÄ²ÎÊı£¬Í¬Ê±Ê¹ÓÃ·Ç±¥ºÍµÄ¼¤»îº¯Êı¡£µ«ÕâÑùµÄ·½Ê½ĞèÒªºÜ¶àÈË¹¤¾­Ñé£¬Í¬Ê±ÏŞÖÆÁËÄ£ĞÍµÄ¹ã·ºÓ¦ÓÃ¡£
 
 »¹ÓĞÒ»ÖÖ·½Ê½¾ÍÊÇ¸Ä±äÄ£ĞÍ£¬±ÈÈçÈÃ$U = 1$£¬Í¬Ê±Ê¹ÓÃ$f¡ä(\boldsymbol{h}_{i-1}) = 1$¡£
 \begin{equation}\label{7.11}
@@ -1092,7 +1336,7 @@ $\boldsymbol{g}$ÊÇ·ÇÏßĞÔ¼¤»îº¯Êı¡£
   \boldsymbol{h}_t=\tanh{\boldsymbol{c}_t}
 \end{gather}
 
-µ«ÊÇ£¬ÕâÑùÒÀÈ»´æÔÚÒ»¶¨µÄÎÊÌâ¡£ÒòÎª$\boldsymbol{c}_t$ºÍ$\boldsymbol{c}_{t-1}$ÊÇÏßĞÔ¹ØÏµ£¬Í¬Ê±²»¶ÏÀÛ»ı$\boldsymbol{x}_t$ µÄĞÅÏ¢£¬»áÊ¹µÃ$\boldsymbol{c}_t$±äµÃÔ½À´Ô½´ó¡£ÎªÁË½â¾öÕâ¸öÎÊÌâ£¬Hochreiter and Schmidhuber\cite{hochreiter1997long}Ìá³öÒ»¸ö·Ç³£ºÃµÄ½â¾ö·½°¸£¬¾ÍÊÇÒıÈëÃÅ»úÖÆ£¨Gating Mechanism£©À´¿ØÖÆĞÅÏ¢µÄÀÛ»ıËÙ¶È£¬²¢¿ÉÒÔÑ¡ÔñÒÅÍüÖ®Ç°ÀÛ»ıµÄĞÅÏ¢¡£Õâ¾ÍÊÇÏÂÃæÒª½éÉÜµÄ\textbf{³¤¶ÌÊ±¼ÇÒäÉñ¾­ÍøÂç}¡£
+µ«ÊÇ£¬ÕâÑùÒÀÈ»´æÔÚÒ»¶¨µÄÎÊÌâ¡£ÒòÎª$\boldsymbol{c}_t$ºÍ$\boldsymbol{c}_{t-1}$ ÊÇÏßĞÔ¹ØÏµ£¬Í¬Ê±²»¶ÏÀÛ»ı$\boldsymbol{x}_t$ µÄĞÅÏ¢£¬»áÊ¹µÃ$\boldsymbol{c}_t$±äµÃÔ½À´Ô½´ó¡£ÎªÁË½â¾öÕâ¸öÎÊÌâ£¬Hochreiter and Schmidhuber\cite{hochreiter1997long}Ìá³öÒ»¸ö·Ç³£ºÃµÄ½â¾ö·½°¸£¬¾ÍÊÇÒıÈëÃÅ»úÖÆ£¨Gating Mechanism£©À´¿ØÖÆĞÅÏ¢µÄÀÛ»ıËÙ¶È£¬²¢¿ÉÒÔÑ¡ÔñÒÅÍüÖ®Ç°ÀÛ»ıµÄĞÅÏ¢¡£Õâ¾ÍÊÇÏÂÃæÒª½éÉÜµÄ\textbf{³¤¶ÌÊ±¼ÇÒäÉñ¾­ÍøÂç}¡£
 \section{³¤¶ÌÊ±¼ÇÒäÉñ¾­ÍøÂç£ºLSTM}
 
 \textbf{³¤¶ÌÊ±¼ÇÒäÉñ¾­ÍøÂç}£¨Long Short-Term Memory Neural Network£¬LSTM£©\cite{hochreiter1997long}ÊÇÑ­»·Éñ¾­ÍøÂçµÄÒ»¸ö±äÌå£¬¿ÉÒÔÓĞĞ§µØ½â¾ö¼òµ¥Ñ­»·Éñ¾­ÍøÂçµÄÌİ¶È±¬Õ¨»òÏûÊ§ÎÊÌâ¡£
@@ -1123,9 +1367,9 @@ LSTMÄ£ĞÍµÄ¹Ø¼üÊÇÒıÈëÁËÒ»×é¼ÇÒäµ¥Ôª£¨Memory Units£©£¬ÔÊĞíÍøÂç¿ÉÒÔÑ§Ï°ºÎÊ±ÒÅÍüÀúÊ·
 
 LSTMÒÑ¾­±»Ó¦ÓÃµ½ºÜ¶àµÄÈÎÎñÖĞ£¬±ÈÈç»úÆ÷·­Òë\cite{sutskever2014sequence}µÈ¡£
 \section{ÃÅÏŞÑ­»·µ¥Ôª£ºGRU}
-ÃÅÏŞÑ­»·µ¥Ôª£¨Gated Recurrent Unit£¬GRU£©\cite{cho2014learning,chung2014empirical}ÊÇÒ»ÖÖ±ÈLSTM¸ü¼Ó¼ò»¯µÄ°æ±¾¡£ÔÚLSTM ÖĞ£¬ÊäÈëÃÅºÍÒÅÍüÃÅÊÇ»¥²¹¹ØÏµ£¬ÒòÎªÍ¬Ê±ÓÃÁ½¸öÃÅ±È½ÏÈßÓà¡£GRU½«ÊäÈëÃÅÓëºÍÒÅÍüÃÅºÏ²¢³ÉÒ»¸öÃÅ£º¸üĞÂÃÅ£¨Update Gate£©£¬Í¬Ê±»¹ºÏ²¢ÁË¼ÇÒäµ¥ÔªºÍÉñ¾­Ôª»îĞÔ¡£
+ÃÅÏŞÑ­»·µ¥Ôª£¨Gated Recurrent Unit£¬GRU£©\cite{cho2014learning,chung2014empirical}ÊÇÒ»ÖÖ±ÈLSTM¸ü¼Ó¼ò»¯µÄ°æ±¾¡£ÔÚLSTM ÖĞ£¬ÊäÈëÃÅºÍÒÅÍüÃÅÊÇ»¥²¹¹ØÏµ£¬ÒòÎªÍ¬Ê±ÓÃÁ½¸öÃÅ±È½ÏÈßÓà¡£GRU ½«ÊäÈëÃÅÓëºÍÒÅÍüÃÅºÏ²¢³ÉÒ»¸öÃÅ£º¸üĞÂÃÅ£¨Update Gate£©£¬Í¬Ê±»¹ºÏ²¢ÁË¼ÇÒäµ¥ÔªºÍÉñ¾­Ôª»îĞÔ¡£
 
-GRUÄ£ĞÍÖĞÓĞÁ½¸öÃÅ£º¸üĞÂÃÅ$\boldsymbol{z}$ºÍÖØÖÃÃÅ$\boldsymbol{r}$¡£¸üĞÂÃÅ$\boldsymbol{z}$ÓÃÀ´¿ØÖÆµ±Ç°µÄ×´Ì¬ĞèÒªÒÅÍü¶àÉÙÀúÊ·ĞÅÏ¢ºÍ½ÓÊÜ¶àÉÙĞÂĞÅÏ¢¡£ÖØÖÃÃÅ$\boldsymbol{r}$ÓÃÀ´¿ØÖÆºòÑ¡×´Ì¬ÖĞÓĞ¶àÉÙĞÅÏ¢ÊÇ´ÓÀúÊ·ĞÅÏ¢ÖĞµÃµ½¡£
+GRUÄ£ĞÍÖĞÓĞÁ½¸öÃÅ£º¸üĞÂÃÅ$\boldsymbol{z}$ ºÍÖØÖÃÃÅ$\boldsymbol{r}$¡£¸üĞÂÃÅ$\boldsymbol{z}$ÓÃÀ´¿ØÖÆµ±Ç°µÄ×´Ì¬ĞèÒªÒÅÍü¶àÉÙÀúÊ·ĞÅÏ¢ºÍ½ÓÊÜ¶àÉÙĞÂĞÅÏ¢¡£ÖØÖÃÃÅ$\boldsymbol{r}$ÓÃÀ´¿ØÖÆºòÑ¡×´Ì¬ÖĞÓĞ¶àÉÙĞÅÏ¢ÊÇ´ÓÀúÊ·ĞÅÏ¢ÖĞµÃµ½¡£
 
 GRUÄ£ĞÍµÄ¸üĞÂ·½Ê½ÈçÏÂ£º
 \begin{gather}\label{7.20}
