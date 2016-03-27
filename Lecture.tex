@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{booktabs}
+\usepackage[]{algorithm2e}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -269,7 +270,7 @@ $\boldsymbol{U}$ and $\boldsymbol{V}, \exists$
  \end{pmatrix}=\boldsymbol{diag}(f'(\boldsymbol{x}))
 \end{equation}
 
-\subsection{logistic函数}
+\subsection{logistic/sigmoid函数}
 logistic函数经常用来将一个实数空间的数映射到$(0, 1)$ 区间,记为$\sigma(x)$:
 \begin{equation}\label{2.20}
   \sigma(x)=\frac{1}{1+\exp(-x)}
@@ -722,28 +723,28 @@ We can visualize the probability distribution using the graph below where the si
 \section{Introducing Hidden Variables}
 When modelling a set of input features, we can use the input attributes as variables to learn the relationship between each other. However, directly modeling such variables seems to have less expressive power, hence, we introduce the concept of hidden variables (nonobserved variables), to better model the joint probability distribution. The hidden variables can be used to capture high level feature representations of the observed variables. The probability distribution and partition function are changed accordingly:
 \begin{equation}\label{add1.2}
-    P(x,h)=\frac{e^{-Energy(x,h)}}{Z}
+    P(\boldsymbol{x},\boldsymbol{h})=\frac{e^{-Energy(\boldsymbol{x},\boldsymbol{h})}}{Z}
 \end{equation}
 \begin{equation}\label{add1.3}
-    Z=\sum_{x}^{ }\sum_{h}^{ }e^{-Energy(x,h)}
+    Z=\sum_{\boldsymbol{x}}^{ }\sum_{\boldsymbol{h}}^{ }e^{-Energy(\boldsymbol{x},\boldsymbol{h})}
 \end{equation}
 Since we are only interested in the distribution of visible variables, we want to model the marginal distribution over hidden variables that takes the form
 
 \begin{equation}\label{add1.4}
-  P(x)=\sum_{h}^{ }\frac{e^{-Energy(x,h)}}{Z}
+  P(\boldsymbol{x})=\sum_{\boldsymbol{h}}^{ }\frac{e^{-Energy(\boldsymbol{x},\boldsymbol{h})}}{Z}
 \end{equation}
 
 To simplify this formula, we defined free energy being the marginal energy of $x$ summing over $h$:
 \begin{equation}\label{add1.5}
-  FreeEnergy(x)=-ln\sum_{h}^{ }e^{-Energy(x,h)}
+  FreeEnergy(\boldsymbol{x})=-ln\sum_{\boldsymbol{h}}^{ }e^{-Energy(\boldsymbol{x},\boldsymbol{h})}
 \end{equation}
 Therefore we can rewrite the marginal probability distribution as:
 
 \begin{equation}\label{add1.6}
-  P(x)=\frac{e^{-FreeEnergy(x)}}{Z}
+  P(\boldsymbol{x})=\frac{e^{-FreeEnergy(\boldsymbol{x})}}{Z}
 \end{equation}
 \begin{equation}\label{add1.7}
-    Z=\sum_{x}e^{-FreeEnergy(x)}
+    Z=\sum_{x}e^{-FreeEnergy(\boldsymbol{x})}
 \end{equation}
 \section{Gradient Learning of Energy-based Models}
 We use log-likelihood gradient to train the model, and we use $\theta$ to represent parameters of the model.
@@ -756,22 +757,22 @@ We use log-likelihood gradient to train the model, and we use $\theta$ to repres
 
 Hence, the average log-likelihood gradient for a training set is:
 \begin{equation}\label{add1.8}
-    E_{\hat{P}}\left[ \frac{\partial \ln P(x)}{\partial\theta} \right]=-E_{\hat{P}}\left[ \frac{\partial FreeEnergy(x)}{\partial\theta} \right]+E_{P}\left[ \frac{\partial FreeEnergy(x)}{\partial\theta} \right]
+    E_{\hat{P}}\left[ \frac{\partial \ln P(\boldsymbol{x})}{\partial\theta} \right]=-E_{\hat{P}}\left[ \frac{\partial FreeEnergy(\boldsymbol{x})}{\partial\theta} \right]+E_{P}\left[ \frac{\partial FreeEnergy(\boldsymbol{x})}{\partial\theta} \right]
 \end{equation}
 
-where $\hat{P}$ is the distribution over the training set, and  $P$ is the distribution over the model's current parameters. The resulting log-likelihood gradient tells us, as long as we are able to compute the derivative of free energy for the training examples, and the derivative of free energy for the model’s own distribution, we will be able to train the model tractably.
+where $\hat{P}$ is the distribution over the training set, and  $P$ is the distribution over the model's current parameters. The resulting log-likelihood gradient tells us, as long as we are able to compute the derivative of free energy for the training examples, and the derivative of free energy for the model's own distribution, we will be able to train the model tractably.
 \section{Boltzmann Machines}
 Boltzmann machine is a type of energy-based model, we get a Boltzmann machine when applying the energy function below in the previous section:
 \begin{equation}\label{BME}
-  Energy(x,h)=-b^Tx-c^Th-h^TWx-x^TUx-h^TVh
+  Energy(\boldsymbol{x},\boldsymbol{h})=-\boldsymbol{b}^T\boldsymbol{x}-\boldsymbol{c}^T\boldsymbol{h}-\boldsymbol{h}^T\boldsymbol{Wx}-\boldsymbol{x}^T\boldsymbol{Ux}-\boldsymbol{h}^T\boldsymbol{Vh}
 \end{equation}
 where $b$ is the bias for visible variables, $c$ is the bias for hidden variables, $W$ is the connection weights between hidden variables and visible variables, $U$ is the connection weights within visible variables and $V$ is the connection weights within hidden variables. This energy function is simply a fully connected graph with weights on each connection.
 \section{Gradient Learning of Boltzmann Machines}
 The gradient of log-likelihood can be written as:
 \begin{equation}\label{LLG}
-  \frac{\partial \log P(\boldsymbol{x})}{\partial \theta}=-\sum_{\boldsymbol{h}}P(\boldsymbol{x}\vert \boldsymbol{h})\frac{\partial Energy(\boldsymbol{x},\boldsymbol{h})}{\partial \theta} + \sum_{\tilde{\boldsymbol{x}},\boldsymbol{h}} P(\tilde{\boldsymbol{x}}, \boldsymbol{h})\frac{\partial Energy(\tilde{\boldsymbol{x}}, \boldsymbol{h})}{\partial \theta}
+  \frac{\partial \ln P(\boldsymbol{x})}{\partial \theta}=-\sum_{\boldsymbol{h}}P(\boldsymbol{x}\vert \boldsymbol{h})\frac{\partial Energy(\boldsymbol{x},\boldsymbol{h})}{\partial \theta} + \sum_{\tilde{\boldsymbol{x}},\boldsymbol{h}} P(\tilde{\boldsymbol{x}}, \boldsymbol{h})\frac{\partial Energy(\tilde{\boldsymbol{x}}, \boldsymbol{h})}{\partial \theta}
 \end{equation}
-Since the $\frac{\partial Energy(x,h)}{\partial \theta}$ is easy to compute (which is simply the connection weights), the result of this gradient tells us, as long as we are able to compute the probability of hidden variables given visible variables, and the joint probability of hidden and visible variables (for the current constraints in the model), we will be able to learn the model tractably. Now the question comes to, how to compute the conditional and joint probability. That is, how to sample from $P(x\vert h)$ and $P(x,h)$.
+Since the $\frac{\partial Energy(\boldsymbol{x},\boldsymbol{h})}{\partial \theta}$ is easy to compute (which is simply the connection weights), the result of this gradient tells us, as long as we are able to compute the probability of hidden variables given visible variables, and the joint probability of hidden and visible variables (for the current constraints in the model), we will be able to learn the model tractably. Now the question comes to, how to compute the conditional and joint probability. That is, how to sample from $P(\boldsymbol{x}\vert \boldsymbol{h})$ and $P(\boldsymbol{x},\boldsymbol{h})$.
 
 \section{Gibbs Sampling for Conditional Probability}
 Gibbs sampling of the joint distribution of $N$ variables $X_{1}...X_{N}$ is done through a sequence of $N$ sampling sub-steps of the form:
@@ -781,15 +782,129 @@ Gibbs sampling of the joint distribution of $N$ variables $X_{1}...X_{N}$ is don
 
 which means, the sample of one variable comes from the conditional probability given all other variables. We can compute the conditional probability of one node given all the other nodes easily:
 \begin{gather*}
-  P(h_i=1 \tilde x) \\
+  P(h_i=1 \vert \boldsymbol{x}) \\
   ......=sigmoid(d_i+A^T_ix)
 \end{gather*}
 
 This conditional probability is the same form as the activation function of neural networks. In Gibbs sampling, one sample step is to sample all the $N$ variables once. After the number of sample steps goes to $\infty$, the sample distribution will converge to $P(X)$.
 \section{Gibbs Sampling for Boltzmann Machines}
+To sample $P(x\vert h)$ and $P(x,h)$ in Boltzmann machine, we need to compute two Gibbs chains. For $P(x\vert h)$, we clamp the visible nodes $(x)$ to sample $h$, which is the conditional probability. For $P(x,h)$, we let all the variables run free, to sample the distribution of the model itself. This method for training Boltzmann machine is computationally expensive, because we need to run two Gibbs chains, and each of them will need to run a large number of steps to get a good estimate of the probability. Now, we introduce the idea of Restricted Boltzmann Machine and how it speeds up learning.
 \section{Restricted Boltzmann Machines}
+Restricted Boltzmann machine is a type of Boltzmann machine, without interconnections within hidden nodes and visible nodes. The energy function is defined as
+\begin{equation*}
+  Energy(x,h)=-{b}^Tx-{c}^Th-{h}^TWx
+\end{equation*}
+
+The conditional probability of hidden variables given visible variables are:
+\begin{gather*}
+  P(h\vert x) \\
+  ......=\prod_iP(h_i\vert x)
+\end{gather*}
+This conditional probability indicates the probability for each hidden variable given all the visible variables are independent, so that we can get the joint probability directly. This also indicates that, each hidden node can be seen as an expert, and we are using the \textbf{product of experts}\footnote{
+\textbf{product of experts}(专家乘积模型??): To be simple, it means that $P(\boldsymbol{x})$ is able to written as the following form\cite{hinton2002training,welling2007product}:
+\begin{gather*}
+  P(\boldsymbol{x})=\sum_{\boldsymbol{h}}P(\boldsymbol{x},\boldsymbol{h})=\frac{1}{Z}\sum_{\boldsymbol{h}}\exp[-E(\boldsymbol{x},\boldsymbol{h})]\\
+  =\frac{1}{Z}\sum_{\boldsymbol{h}}\exp[\sum_{i=1}^{n_x}b_ix_i+\sum_{j=1}^{n_h}c_jh_j+\sum_{i=1}^{n_x}\sum_{j=1}^{n_h}h_jw_{ji}x_i]\\
+  =\frac{1}{Z}\sum_{h_1}\cdots\sum_{h_{n_h}}\exp[\sum_{i=1}^{n_x}b_ix_i+\sum_{j=1}^{n_h}c_jh_j+\sum_{i=1}^{n_x}\sum_{j=1}^{n_h}h_jw_{ji}x_i]\\
+  =\frac{1}{Z}\sum_{h_1}\cdots\sum_{h_{n_h}}\exp(\sum_{i=1}^{n_x}b_ix_i)\exp[\sum_{j=1}^{n_h}h_j\cdot(c_j+\sum_{i=1}^{n_x}w_{ji}x_i)]\\
+  =\frac{1}{Z}\exp(\sum_{i=1}^{n_x}b_ix_i)\sum_{h_1}\cdots\sum_{h_{n_h}}\prod_{j=1}^{n_h}\exp[h_j(c_j+\sum_{i=1}^{n_x}w_{ji}x_i)]\\
+  =\frac{1}{Z}\exp(\sum_{i=1}^{n_x}b_ix_i)\sum_{h_1}\exp[h_1(c_1+\sum_{i=1}^{n_x}w_{1i}x_i)]\cdots\sum_{h_{n_h}}\exp[h_{n_h}(c_{n_h}+\sum_{i=1}^{n_x}w_{n_hi}x_i)]\\
+  =\frac{1}{Z}\exp(\sum_{i=1}^{n_x}b_ix_i)\prod_{j=1}^{n_h}\sum_{h_j}\exp[h_j(c_j+\sum_{i=1}^{n_x}w_{ji}x_i)]\\
+  =\frac{1}{Z}\prod_{i=1}^{n_x}\exp(b_ix_i)\prod_{j=1}^{n_h}\left(\exp[0\cdot(c_j+\sum_{i=1}^{n_x}w_{ji}x_i)]+\exp[1\cdot(c_j+\sum_{i=1}^{n_x}w_{ji}x_i)]\right)\\
+  =\frac{1}{Z}\prod_{i=1}^{n_x}\exp(b_ix_i)\prod_{j=1}^{n_h}[1+\exp(c_j+\sum_{i=1}^{n_x}w_{ji}x_i)]\\
+\end{gather*}
+} to model the joint distribution. This formula also applies for $P(x\vert h)$.
 \section{Gibbs Sampling for Restricted Boltzmann Machines}
+For the Gibbs sampling in Boltzmann machine, it is very slow because we need to take a lot of sub-steps to get only one Gibbs chin. But for Restricted Boltzmann machine, since all the hidden variables are independent given visible variables and all the visible variables are independent given hidden variables, we can just take one step to complete one Gibbs chin. So that we can easily get the conditional probability. For the joint probability, we use a hybrid Monte-Carlo method, an MCMC method involving a number of free-energy gradient computation sub-steps for each step of the Markov chain. For $k$ Gibbs steps:
+\begin{gather*}
+  x_{0}\sim \hat{P}(x)\\
+  h_{0}\sim P(h\vert x_{0})\\
+  x_{1}\sim P(x\vert h_{0})\\
+  h_{1}\sim P(h\vert x_{1})\\
+  \dots \\
+   x_{k} \sim P(x|h_{k-1})
+\end{gather*}
+
 \section{Contrastive Divergence}
+Compared with the Gibbs sampling in Boltzmann machine, the above method to sample in Restricted Boltzmann machine is much more effective. However, runing the MCMC chain is still quite expensive. The idea of k-step Contrastive Divergence is to stop the MCMC chain after k steps. This method saved a lot of computational complexity. One way to interpret the Contrastive Divergence is that, after a few MCMC steps, we will know in which direction the error is heading towards, so that instead of waiting for the error becoming larger and larger, we can simply stop the chain the update the network.
+
+
+The idea of k-step contrastive divergence learning (CD-k) is quite simple:Instead of approximating the second term in the log-likelihood gradient by a sample from the RBM-distribution (which would require to run a Markov chain until the stationary distribution is reached), a Gibbs chain is run for only $k$ steps (and usually $k=1$).The Gibbs chain is initialized with a training example  of the training set and yields the sample  after k steps. Each step t consists of sampling  from  and sampling  from  subsequently.The gradient w.r.t.  of the log-likelihood for one training pattern  is then approximated by:
+\begin{equation}\label{CDk}
+  CD_k(\bold{\theta},\bold{x}^{(0)})=-\sum_{\bold{h}}p(\bold{h}|\bold{x}^{(0)})
+\frac{\partial E(\bold{x}^{(0)},\bold{h})}
+{\partial \bold{\theta}}
++
+\sum_{\bold{h}}p(\bold{h}|\bold{x}^{(k)})
+\frac{\partial E(\bold{x}^{(k)},\bold{h})}
+{\partial \bold{\theta}}
+\end{equation}
+首先，那个Sampling，就是:
+
+sample  $h_i^{(t)} \sim   p(h_i|\bold{x}^{(t)})$
+
+sample $x_j^{(t+1)} \sim p(x_j|\bold{h}^{(t)})$
+
+
+这个sample是这样的\footnote{详见http://blog.csdn.net/itplus/article/details/19408143}：首先，我们的$h_i$只会取$0$或者$1$ 两个状态，为了方便起见，这里按照进行采样，那么在采样的时候遵循以下步骤：
+\begin{enumerate}
+  \item 计算$p(h_i = 1|\bold{x}^{(t)})$，得到的概率值，记为$p$
+  \item 生成一个$[0,1)$的随机数，记为$p^*$
+  \item 如果$p^* < p$，则$h_i^{(t)}=1$，反之为$0$
+\end{enumerate}
+
+对$x_j^{(t+1)}$的采样也是一样。
+
+\begin{algorithm}[H]
+ \KwData{$RBM(X_1,...,X_m,H_1,...,H_n)$, training batch $S$}
+ \KwResult{Gradient Approximation $\Delta w_{ij}$, $\Delta b_j$ and $\Delta c_i$ for $i=1,...,n$ and $j=1,...,m$}
+ %initialization\;
+ \ForAll{the $\bold{x} \in S$}{
+  $\bold{x}^{(0)} \leftarrow \bold{x}$\;
+  	\For {$t = 0, ..., k - 1$}{
+		\For {$i = 1, ..., n$}{
+              sample $h_t^{(t)} \sim p(h_i|\bold{x}^{(t)})$\;
+              .\;
+              .\;}}
+        \For {$j = 1, ..., m$}{
+              sample $x_j^{(t+1)} \sim p(x_j|\bold{h}^{(t)})$\;
+		.\;
+		.\;}
+	\For {$i = 1,...,n$}{
+		\For {$j = 1,..., m$}{
+			$\Delta w_{ij} \leftarrow \Delta w_{ij} + p(H_i = 1 | \bold{x} ^{(0)}) \cdot x_j^{(0)} - p(H_i = 1 | \bold{x}^{(k)}) \cdot x_j^{(k)}$\;}}
+	\For {$j = 1, ..., m$}{
+			$\Delta b_{j} \leftarrow \Delta b_j + x_j^{(0)} - x_j^{(k)}$\;}
+	\For {$i = 1, ..., n$}{
+			$\Delta c_{i} \leftarrow \Delta c_{i} + p (H_i = 1 | \bold{x}^{(0)}) - p(H_i = 1 \bold{x}^{(k)})$\;}
+
+ }
+ \caption{k-step contrastive divergence}
+\end{algorithm}
+\section{Gibbs Sampling和Markov Chain以及MCMC的关系}
+首先，Gibbs Sampling是根据邻居的状态进行采样的，Gibbs Sampling是沿着转移矩阵$P=\{p_{xy}\}$进行转移的，这就是为什么一次只转移一个轴（一次只采样一个变量）。而之前的MCMC那一坨东西只是为了说明，对于我们的Gibbs Distribution $p(\bold{h},\bold{x})=\frac{1}{Z}e^{-E(\bold{h},\bold{x})}$ ，总会存在一个Transition Matrix P，使得$p$为其stationary distribution （是否收敛于stationary distribution 取决于转移矩阵Transition Matrix）。而这个Transition Matrix的构造以此证明了这一点——对RMBs这种图拓扑结构来说，总会存在一个Transition Matrix P（这里的这个P是个矩阵），使得概率函数$p$为其stationary distribution。 因此我们按照Transition Matrix中的Transition Probability做转移，才可以得到符合分布的一个样本\footnote{https://en.wikipedia.org/wiki/Gibbs\_sampling}。Gibbs Sampling是沿着Markov Chain做转移\footnote{详见http://www.52nlp.cn/lda-math-mcmc-\%E5\%92\%8C-gibbs-sampling2}，请好好体会一下这句话。
+
+
+\section{CD Algorithm是如何对原来的分布$p$进行优化的}
+首先，根据$\bold{x}^{(0)}$对$\bold{h}^{(0)}$进行采样，然后根据$\ bold{h}^{(0)}$对$\bold{x}^{(1)}$进行采样，这样就保证了“采样-拟合-再采样-再他妈拟合”—— 对于CD-1 来说这个过程只有“采样-拟合”。
+
+换言之，对$\bold{x}^{(0)}$来说，$\bold{h}^{(0)}$会使得分布函数变成更符合$\bold{x}^{(0)}$的情况，而不是状态初始时的$\bold{h}^{*}$（$\bold{h}$ 是随机初始化的，具体见文献\footnote{详见https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf Section 3}）。
+
+然后根据$\bold{h}^{(0)}$生成的样本$\bold{x}^{(1)}$又会使得联合分布函数在上表现得更好。
+
+联合分布函数是在针对$\bold{h}^{(0)}$的采样和对$\ bold{x}^{(k)}$的拟合中不断变好的。
+
+因为随着对$\bold{h}^{(0)}$的采样，联合分布函数$p$会改变，因为对应energy function里的$\bold{h}$变了（$\bold{h}$的每一个分量在采出$\ bold{h}^{(0)}$分量$h_j^{(0)}$的样本时，对应分量$h_j$就会变为$h_j^{(0)} $的取值\footnote{详见https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf}）。
+
+
+而$\bold{x}^{(k)}$的拟合中，虽然没有直接改变联合分布函数$p$，但是接下来的花样梯度近似大赛中，联合分布函数$p$会改变。
+
+换言之，对联合分布函数$p$的改善来源于根据真实数据$\bold{x}^{(0)}$拟合出的比之前$\bold{h}$更合理的$\bold{h}^{(0)}$
+
+根据更合理的$\bold{h}^{(0)}$采样出的近似真实数据$\bold{x}^{(k)}$的拟合—— 这个拟合体现在梯度的近似上。一点一点概率函数就被修改的更好了。
+
+这TM肯定有详细的数学证明但是我看不动了以后再说。
+
 \chapter{卷积神经网络CNN}
 \textbf{卷积神经网络}（Convolutional Neural Networks，CNN）是一种前馈神经网络。卷积神经网络是受生物学上\textbf{感受域}（Receptive Field）的机制而提出的。感受野主要是指听觉系统、本体感觉系统和视觉系统中神经元的一些性质。比如在视觉神经系统中，一个神经元的感受野是指视网膜上的特定区域，只有这个区域内的刺激才能够激活该神经元\cite{hubel1968receptive}。
 

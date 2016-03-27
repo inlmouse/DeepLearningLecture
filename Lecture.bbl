@@ -60,6 +60,11 @@ Geoffrey Hinton, Li~Deng, Dong Yu, George~E Dahl, Abdel-rahman Mohamed, Navdeep
   shared views of four research groups.
 \newblock {\em Signal Processing Magazine, IEEE}, 29(6):82--97, 2012.
 
+\bibitem{hinton2002training}
+Geoffrey~E Hinton.
+\newblock Training products of experts by minimizing contrastive divergence.
+\newblock {\em Neural computation}, 14(8):1771--1800, 2002.
+
 \bibitem{hinton2006reducing}
 Geoffrey~E Hinton and Ruslan~R Salakhutdinov.
 \newblock Reducing the dimensionality of data with neural networks.
@@ -136,6 +141,11 @@ Alexander Waibel, Toshiyuki Hanazawa, Geoffrey Hinton, Kiyohiro Shikano, and
 \newblock Phoneme recognition using time-delay neural networks.
 \newblock {\em Acoustics, Speech and Signal Processing, IEEE Transactions on},
   37(3):328--339, 1989.
+
+\bibitem{welling2007product}
+Max Welling.
+\newblock Product of experts.
+\newblock {\em Scholarpedia}, 2(10):3879, 2007.
 
 \bibitem{werbos1990backpropagation}
 Paul~J Werbos.

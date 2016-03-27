@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.9.19)  27 MAR 2016 02:04
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.9.19)  28 MAR 2016 03:41
 entering extended mode
 **D:/Users/DELL/Documents/GitHub/DeepLearningLecture/Lecture.tex
 (D:/Users/DELL/Documents/GitHub/DeepLearningLecture/Lecture.tex
@@ -440,7 +440,63 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count191
 \@thisrulewidth=\dimen164
 )
-(D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
+(D:\CTEX\MiKTeX\tex\latex\algorithm2e\algorithm2e.sty
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count192
+
+(D:\CTEX\MiKTeX\tex\latex\base\ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip55
+
+(D:\CTEX\MiKTeX\tex\latex\tools\xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+(D:\CTEX\MiKTeX\tex\latex\ltxmisc\relsize.sty
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 5.1 -- october 19 2015 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (christophe.fiorio@umontpellier.fr)
+********************************************************
+\skiptotal=\skip56
+\skiplinenumber=\skip57
+\skiprule=\skip58
+\skiphlne=\skip59
+\skiptext=\skip60
+\skiplength=\skip61
+\algomargin=\skip62
+\skipalgocfslide=\skip63
+\algowidth=\dimen165
+\inoutsize=\dimen166
+\inoutindent=\dimen167
+\interspacetitleruled=\dimen168
+\interspacealgoruled=\dimen169
+\interspacetitleboxruled=\dimen170
+\algocf@ruledwidth=\skip64
+\algocf@inoutbox=\box40
+\algocf@inputbox=\box41
+\AlCapSkip=\skip65
+\AlCapHSkip=\skip66
+\algoskipindent=\skip67
+\algocf@nlbox=\box42
+\algocf@hangingbox=\box43
+\algocf@untilbox=\box44
+\algocf@skipuntil=\skip68
+\algocf@capbox=\box45
+\algoheightruledefault=\skip69
+\algoheightrule=\skip70
+\algotitleheightruledefault=\skip71
+\algotitleheightrule=\skip72
+\c@algocfline=\count193
+\c@algocfproc=\count194
+\c@algocf=\count195
+\algocf@algoframe=\box46
+\algocf@algobox=\box47
+) (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.aux
@@ -448,99 +504,100 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 LaTeX Warning: Label `6.2' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
  (D:\CTEX\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count192
-\scratchdimen=\dimen165
-\scratchbox=\box40
-\nofMPsegments=\count193
-\nofMParguments=\count194
+\scratchcounter=\count196
+\scratchdimen=\dimen171
+\scratchbox=\box48
+\nofMPsegments=\count197
+\nofMParguments=\count198
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count195
-\MPscratchDim=\dimen166
-\MPnumerator=\count196
-\makeMPintoPDFobject=\count197
+\MPscratchCnt=\count199
+\MPscratchDim=\dimen172
+\MPnumerator=\count200
+\makeMPintoPDFobject=\count201
 \everyMPtoPDFconversion=\toks28
 )
-\c@lstlisting=\count198
+Normal \count register pool exhausted, switching to extended pool.
+\c@lstlisting=\count277
  (D:\CTEX\MiKTeX\tex\latex\cjk\standard.bdg
 File: standard.bdg 2008/12/29 4.8.2
 )
@@ -550,7 +607,7 @@ File: extended.enc 2008/12/29 4.8.2
 (D:\CTEX\MiKTeX\tex\latex\cjk\extended.chr
 File: extended.chr 2008/12/29 4.8.2
 )
-LaTeX Font Info:    Try loading font information for C19+rm on input line 56.
+LaTeX Font Info:    Try loading font information for C19+rm on input line 57.
 
 (D:\CTEX\MiKTeX\tex\latex\ctex\fd\c19rm.fd
 File: c19rm.fd 2007/05/06 v0.8a ctex font definition file
@@ -578,34 +635,34 @@ Package CJKpunct Info: punctuation spaces for family 'zhsong' do not exist. Use
  [6]
 µ⁄“ª’¬
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 [7
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
@@ -618,15 +675,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 µ⁄∂˛’¬
 [11] [12] [13]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 229.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 230.
 
  (D:\CTEX\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.54> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 229.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 230.
  [14] [15]
-Overfull \hbox (19.81152pt too wide) in paragraph at lines 282--284
+Overfull \hbox (19.81152pt too wide) in paragraph at lines 283--285
 []\OT1/cmr/m/n/10.54 softmax \C19/rm/m/n/10.54/43 º \C19/rm/m/n/10.54/55 Í ¥ \C
 19/rm/m/n/10.54/45 Ú \C19/rm/m/n/10.54/40 ı \C19/rm/m/n/10.54/42 á \C19/rm/m/n/
 10.54/37 I \C19/rm/m/n/10.54/48 ˛ \C19/rm/m/n/10.54/62 N \C19/rm/m/n/10.54/55 
@@ -638,7 +695,7 @@ Overfull \hbox (19.81152pt too wide) in paragraph at lines 282--284
  []
 
 [16]
-Overfull \hbox (0.93462pt too wide) in paragraph at lines 332--333
+Overfull \hbox (0.93462pt too wide) in paragraph at lines 333--334
 []\C19/rm/m/n/10.54/59 ç [ \C19/rm/m/n/10.54/40  \C19/rm/m/n/10.54/46 › \C19/r
 m/m/n/10.54/64 
  \C19/rm/m/n/10.54/52 † \C19/rm/m/n/10.54/40  \C19/rm/m/n/10.54/55 Í \C19/rm/m
@@ -651,10 +708,10 @@ g/wiki/Matrix[]calculus.
 <pics/31.png, id=158, 399.74344pt x 69.25874pt>
 File: pics/31.png Graphic file (type png)
  <use pics/31.png>
-Package pdftex.def Info: pics/31.png used on input line 349.
+Package pdftex.def Info: pics/31.png used on input line 350.
 (pdftex.def)             Requested size: 399.74245pt x 69.25856pt.
 
-Overfull \hbox (54.74245pt too wide) in paragraph at lines 349--350
+Overfull \hbox (54.74245pt too wide) in paragraph at lines 350--351
  [][] 
  []
 
@@ -663,12 +720,12 @@ Overfull \hbox (54.74245pt too wide) in paragraph at lines 349--350
  <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/31.png>] [20]
 Missing character: There is no § in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--416
+Underfull \hbox (badness 10000) in paragraph at lines 415--417
 
  []
 
 [21]
-Overfull \hbox (13.4453pt too wide) in paragraph at lines 417--419
+Overfull \hbox (13.4453pt too wide) in paragraph at lines 418--420
 []\OT1/cmr/bx/n/10.54 Hinge\C19/rm/bx/n/10.54/56 õ \C19/rm/bx/n/10.54/55 î \C19
 /rm/bx/n/10.54/43 º \C19/rm/bx/n/10.54/55 Í\OT1/cmr/m/n/10.54 (Hinge Loss Func-
 tion) \C19/rm/m/n/10.54/40 È \C19/rm/m/n/10.54/62 u \C19/rm/m/n/10.54/48 ¸ a \C
@@ -679,14 +736,14 @@ n/10.54 (\OML/cmm/m/it/10.54 x; \OT1/cmr/m/n/10.54 )$
  []
 
 Package CJKpunct Info: punctuation spaces for family 'zhhei' do not exist. Use 
-family 'def' instead. on input line 423.
+family 'def' instead. on input line 424.
 <pics/32.png, id=176, 282.30469pt x 88.07906pt>
 File: pics/32.png Graphic file (type png)
  <use pics/32.png>
-Package pdftex.def Info: pics/32.png used on input line 427.
+Package pdftex.def Info: pics/32.png used on input line 428.
 (pdftex.def)             Requested size: 282.30399pt x 88.07883pt.
  [22 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/32.png>]
-Overfull \hbox (0.19733pt too wide) in paragraph at lines 444--445
+Overfull \hbox (0.19733pt too wide) in paragraph at lines 445--446
 []\C19/rm/m/n/10.54/54 X \C19/rm/m/n/10.54/43 J \C19/rm/m/n/10.54/61 ò \C19/rm/
 m/n/10.54/42 á \C19/rm/m/n/10.54/37 C \C19/rm/m/n/10.54/48 ˛$\OML/cmm/m/it/10.5
 4 T$\C19/rm/m/n/10.54/63 3 \C19/rm/m/n/10.54/57 ⁄ \C19/rm/m/n/10.54/45 O \C19/r
@@ -701,20 +758,20 @@ ML/cmm/m/it/10.54 t\OT1/cmr/m/n/10.54 ) = (\OML/cmm/m/it/10.54 p[]; [] ; p[]\OT
 <pics/33.png, id=184, 348.30125pt x 174.6525pt>
 File: pics/33.png Graphic file (type png)
  <use pics/33.png>
-Package pdftex.def Info: pics/33.png used on input line 451.
+Package pdftex.def Info: pics/33.png used on input line 452.
 (pdftex.def)             Requested size: 348.3004pt x 174.65207pt.
 
-Overfull \hbox (3.3004pt too wide) in paragraph at lines 451--452
+Overfull \hbox (3.3004pt too wide) in paragraph at lines 452--453
  [][] 
  []
 
 <pics/34.png, id=185, 375.4025pt x 123.46124pt>
 File: pics/34.png Graphic file (type png)
  <use pics/34.png>
-Package pdftex.def Info: pics/34.png used on input line 457.
+Package pdftex.def Info: pics/34.png used on input line 458.
 (pdftex.def)             Requested size: 375.40158pt x 123.46092pt.
 
-Overfull \hbox (30.40158pt too wide) in paragraph at lines 457--458
+Overfull \hbox (30.40158pt too wide) in paragraph at lines 458--459
  [][] 
  []
 
@@ -722,10 +779,10 @@ Overfull \hbox (30.40158pt too wide) in paragraph at lines 457--458
 <pics/35.png, id=190, 371.3875pt x 139.52126pt>
 File: pics/35.png Graphic file (type png)
  <use pics/35.png>
-Package pdftex.def Info: pics/35.png used on input line 483.
+Package pdftex.def Info: pics/35.png used on input line 484.
 (pdftex.def)             Requested size: 371.38658pt x 139.5209pt.
 
-Overfull \hbox (26.38658pt too wide) in paragraph at lines 483--484
+Overfull \hbox (26.38658pt too wide) in paragraph at lines 484--485
  [][] 
  []
 
@@ -734,47 +791,47 @@ Underfull \vbox (badness 1831) has occurred while \output is active []
 
  [24 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/34.png>] [25 <D:/
 Users/DELL/Documents/GitHub/DeepLearningLecture/pics/35.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--523
+Underfull \hbox (badness 10000) in paragraph at lines 522--524
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--526
+Underfull \hbox (badness 10000) in paragraph at lines 525--527
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--529
+Underfull \hbox (badness 10000) in paragraph at lines 528--530
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 530--532
+Underfull \hbox (badness 10000) in paragraph at lines 531--533
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 537--539
+Underfull \hbox (badness 10000) in paragraph at lines 538--540
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 540--542
+Underfull \hbox (badness 10000) in paragraph at lines 541--543
 
  []
 
 [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 591--592
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 593--595
+Underfull \hbox (badness 10000) in paragraph at lines 594--596
 
  []
 
@@ -793,7 +850,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 593--595
 [35] <pics/add1.png, id=236, 232.87pt x 80.3pt>
 File: pics/add1.png Graphic file (type png)
  <use pics/add1.png>
-Package pdftex.def Info: pics/add1.png used on input line 690.
+Package pdftex.def Info: pics/add1.png used on input line 691.
 (pdftex.def)             Requested size: 232.86942pt x 80.29979pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -802,17 +859,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <pics/add2.png, id=240, 132.495pt x 143.93774pt>
 File: pics/add2.png Graphic file (type png)
  <use pics/add2.png>
-Package pdftex.def Info: pics/add2.png used on input line 717.
+Package pdftex.def Info: pics/add2.png used on input line 718.
 (pdftex.def)             Requested size: 132.49466pt x 143.93738pt.
  [37 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/add1.png>] [38 <D
 :/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/add2.png>]
 <pics/add3.png, id=250, 448.67625pt x 236.885pt>
 File: pics/add3.png Graphic file (type png)
  <use pics/add3.png>
-Package pdftex.def Info: pics/add3.png used on input line 752.
+Package pdftex.def Info: pics/add3.png used on input line 753.
 (pdftex.def)             Requested size: 448.67516pt x 236.88441pt.
 
-Overfull \hbox (103.67516pt too wide) in paragraph at lines 752--753
+Overfull \hbox (103.67516pt too wide) in paragraph at lines 753--754
  [][] 
  []
 
@@ -820,12 +877,27 @@ Overfull \hbox (103.67516pt too wide) in paragraph at lines 752--753
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [40]
-[41] [42
+Underfull \vbox (badness 3039) has occurred while \output is active []
+
+ [41]
+[42] [43]
+
+Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
+d on input line 834.
+
+
+Underfull \vbox (badness 1442) has occurred while \output is active []
+
+ [44]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [45]
+[46] [47] [48
 
 ]
 µ⁄∆ﬂ’¬
 
-Overfull \hbox (1.38213pt too wide) in paragraph at lines 801--802
+Overfull \hbox (1.38213pt too wide) in paragraph at lines 916--917
 []\C19/rm/m/n/10.54/61 ò \C19/rm/m/n/10.54/58 ë \C19/rm/m/n/10.54/46 Ú \C19/rm/
 m/n/10.54/44 » \C19/rm/m/n/10.54/46 ≤ \C19/rm/m/n/10.54/38 ~ \C19/rm/m/n/10.54/
 62 ^ \C19/rm/m/n/10.54/63 3 \C19/rm/m/n/10.54/60 & \C19/rm/m/n/10.54/43 “ \C19/
@@ -837,46 +909,46 @@ C19/rm/m/n/10.54/42 á \C19/rm/m/n/10.54/55 — \C19/rm/m/n/10.54/54 \ \C19/rm/m/n
 n$|\C19/rm/m/n/10.54/26 ß|
  []
 
-[43] <pics/61.png, id=269, 231.11343pt x 222.8325pt>
+[49] <pics/61.png, id=292, 231.11343pt x 222.8325pt>
 File: pics/61.png Graphic file (type png)
  <use pics/61.png>
-Package pdftex.def Info: pics/61.png used on input line 827.
+Package pdftex.def Info: pics/61.png used on input line 942.
 (pdftex.def)             Requested size: 231.11287pt x 222.83195pt.
- [44 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/61.png>] [45]
-<pics/62.png, id=280, 361.35pt x 185.94469pt>
+ [50 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/61.png>] [51]
+<pics/62.png, id=303, 361.35pt x 185.94469pt>
 File: pics/62.png Graphic file (type png)
  <use pics/62.png>
-Package pdftex.def Info: pics/62.png used on input line 866.
+Package pdftex.def Info: pics/62.png used on input line 981.
 (pdftex.def)             Requested size: 361.34912pt x 185.94421pt.
 
-Overfull \hbox (16.34912pt too wide) in paragraph at lines 866--867
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 981--982
  [][] 
  []
 
-[46 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/62.png>]
-<pics/63.png, id=285, 201.75375pt x 71.51718pt>
+[52 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/62.png>]
+<pics/63.png, id=308, 201.75375pt x 71.51718pt>
 File: pics/63.png Graphic file (type png)
  <use pics/63.png>
-Package pdftex.def Info: pics/63.png used on input line 887.
+Package pdftex.def Info: pics/63.png used on input line 1002.
 (pdftex.def)             Requested size: 201.75325pt x 71.517pt.
- [47 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/63.png>]
-<pics/64.png, id=290, 426.09187pt x 114.4275pt>
+ [53 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/63.png>]
+<pics/64.png, id=313, 426.09187pt x 114.4275pt>
 File: pics/64.png Graphic file (type png)
  <use pics/64.png>
-Package pdftex.def Info: pics/64.png used on input line 926.
+Package pdftex.def Info: pics/64.png used on input line 1041.
 (pdftex.def)             Requested size: 426.09082pt x 114.42722pt.
 
-Overfull \hbox (81.09082pt too wide) in paragraph at lines 926--927
+Overfull \hbox (81.09082pt too wide) in paragraph at lines 1041--1042
  [][] 
  []
 
-<pics/65.png, id=291, 260.47313pt x 97.11281pt>
+<pics/65.png, id=314, 260.47313pt x 97.11281pt>
 File: pics/65.png Graphic file (type png)
  <use pics/65.png>
-Package pdftex.def Info: pics/65.png used on input line 932.
+Package pdftex.def Info: pics/65.png used on input line 1047.
 (pdftex.def)             Requested size: 260.47249pt x 97.11256pt.
- [48 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/64.png>] [49 <D:/
-Users/DELL/Documents/GitHub/DeepLearningLecture/pics/65.png>] [50] [51] [52]
+ [54 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/64.png>] [55 <D:/
+Users/DELL/Documents/GitHub/DeepLearningLecture/pics/65.png>] [56] [57] [58]
 (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -886,71 +958,71 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (D:\CTEX\MiKTeX\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1035
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1150
 .
 
 (D:\CTEX\MiKTeX\tex\latex\base\omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7.53> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1035.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1150.
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7.53> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1043.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1158.
 
- [53] [54]
-Underfull \hbox (badness 10000) in paragraph at lines 1090--1092
+ [59] [60]
+Underfull \hbox (badness 10000) in paragraph at lines 1205--1207
 
  []
 
-[55] [56] (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
+[61] [62] (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [57]
-Overfull \hbox (11.15518pt too wide) in paragraph at lines 1173--1175
+) [63]
+Overfull \hbox (11.15518pt too wide) in paragraph at lines 1288--1290
 []\OT1/cmr/m/n/10.54 Another pre-processing ap-proach sim-i-lar to the first on
 e is \OT1/cmr/bx/n/10.54 P-CA Whiten-
  []
 
-[58]
-Overfull \hbox (0.6981pt too wide) in paragraph at lines 1197--1199
+[64]
+Overfull \hbox (0.6981pt too wide) in paragraph at lines 1312--1314
 \OT1/cmr/m/n/10.54 weight-s will be pos-i-tive and half of them will be neg-a-t
 ive. A reasonable-
  []
 
-[59] [60] [61] <pics/66.png, id=342, 344.78813pt x 440.39531pt>
+[65] [66] [67] <pics/66.png, id=365, 344.78813pt x 440.39531pt>
 File: pics/66.png Graphic file (type png)
 
 <use pics/66.png>
-Package pdftex.def Info: pics/66.png used on input line 1239.
+Package pdftex.def Info: pics/66.png used on input line 1354.
 (pdftex.def)             Requested size: 344.78728pt x 440.39423pt.
- [62] [63] [64 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/66.png>
+ [68] [69] [70 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/66.png>
 ]
 µ⁄∞À’¬
-<pics/71.png, id=355, 179.92218pt x 169.38281pt>
+<pics/71.png, id=378, 179.92218pt x 169.38281pt>
 File: pics/71.png Graphic file (type png)
  <use pics/71.png>
-Package pdftex.def Info: pics/71.png used on input line 1277.
+Package pdftex.def Info: pics/71.png used on input line 1392.
 (pdftex.def)             Requested size: 179.92174pt x 169.38239pt.
- [65
+ [71
 
 ]
-<pics/72.png, id=359, 345.54094pt x 97.86563pt>
+<pics/72.png, id=382, 345.54094pt x 97.86563pt>
 File: pics/72.png Graphic file (type png)
  <use pics/72.png>
-Package pdftex.def Info: pics/72.png used on input line 1294.
+Package pdftex.def Info: pics/72.png used on input line 1409.
 (pdftex.def)             Requested size: 345.54008pt x 97.86537pt.
 
-Overfull \hbox (0.54008pt too wide) in paragraph at lines 1294--1295
+Overfull \hbox (0.54008pt too wide) in paragraph at lines 1409--1410
  [][] 
  []
 
-<pics/73.png, id=360, 343.2825pt x 94.85437pt>
+<pics/73.png, id=383, 343.2825pt x 94.85437pt>
 File: pics/73.png Graphic file (type png)
  <use pics/73.png>
-Package pdftex.def Info: pics/73.png used on input line 1304.
+Package pdftex.def Info: pics/73.png used on input line 1419.
 (pdftex.def)             Requested size: 343.28165pt x 94.85413pt.
 
-Overfull \hbox (16.2876pt too wide) in paragraph at lines 1301--1308
+Overfull \hbox (16.2876pt too wide) in paragraph at lines 1416--1423
 []\C19/rm/m/n/10.54/60 Ã \C19/rm/m/n/10.54/44 Ç \C19/rm/m/n/10.54/55   \C19/rm/
 m/n/10.54/46 ≤ \C19/rm/m/n/10.54/58  \C19/rm/m/n/10.54/49 ‰ \C19/rm/m/n/10.54/
 40  \C19/rm/m/n/10.54/37 Î \C19/rm/m/n/10.54/55 Í \C19/rm/m/n/10.54/60 ‘ \C19/
@@ -961,10 +1033,10 @@ rm/m/n/10.54/48 ˆ \C19/rm/m/n/10.54/47 å \C19/rm/m/n/10.54/61 ± \C19/rm/m/n/10.
 0.54/37 ¬ |\C19/rm/m/n/10.54/26 £|\OT1/cmr/m/n/10.54 Backpropagation
  []
 
-[66 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/71.png>] [67 <D:/U
+[72 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/71.png>] [73 <D:/U
 sers/DELL/Documents/GitHub/DeepLearningLecture/pics/72.png> <D:/Users/DELL/Docu
 ments/GitHub/DeepLearningLecture/pics/73.png>]
-Overfull \hbox (3.2012pt too wide) in paragraph at lines 1330--1331
+Overfull \hbox (3.2012pt too wide) in paragraph at lines 1445--1446
 []\C19/rm/m/n/10.54/58 ∑ \C19/rm/m/n/10.54/50 Ç \C19/rm/m/n/10.54/40 Ω \C19/rm/
 m/n/10.54/61 ¬$\OML/cmm/m/it/10.54  \OT1/cmr/m/n/10.54 = \OMS/cmsy/m/n/10.54 j
 j\OML/cmm/m/it/10.54 U[][]\OT1/cmr/m/n/10.54 [\OML/cmm/m/it/10.54 f[]\OT1/cmr/m
@@ -976,94 +1048,100 @@ rm/m/n/10.54/48 p \C19/rm/m/n/10.54/50 ° \C19/rm/m/n/10.54/58 è$\OML/cmm/m/it/1
 0.54 []$|\C19/rm/m/n/10.54/25 "|
  []
 
-[68] <pics/74.png, id=375, 324.46219pt x 231.86626pt>
+[74] <pics/74.png, id=398, 324.46219pt x 231.86626pt>
 File: pics/74.png Graphic file (type png)
  <use pics/74.png>
-Package pdftex.def Info: pics/74.png used on input line 1378.
+Package pdftex.def Info: pics/74.png used on input line 1493.
 (pdftex.def)             Requested size: 324.46138pt x 231.86568pt.
 
-[69]
+[75]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [70 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/74.png>]
-(D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.bbl [71] [72
+ [76 <D:/Users/DELL/Documents/GitHub/DeepLearningLecture/pics/74.png>]
+(D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.bbl [77] [78
 
 ]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.54> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
 
-[73] [74]) [75] (D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.aux
+[79] [80]) [81] (D:\Users\DELL\Documents\GitHub\DeepLearningLecture\Lecture.aux
 )
 
 LaTeX Warning: There were multiply-defined labels.
 
- ) 
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 1061 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 13199 strings out of 495354
- 207473 string characters out of 3183859
- 318056 words of memory out of 3000000
- 16012 multiletter control sequences out of 15000+200000
- 85351 words of font info for 289 fonts, out of 3000000 for 9000
+ 14218 strings out of 495354
+ 223644 string characters out of 3183859
+ 346077 words of memory out of 3000000
+ 17011 multiletter control sequences out of 15000+200000
+ 89996 words of font info for 307 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,22n,58p,1883b,1730s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
-imsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS
-/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:
-/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun
-.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Font
-s/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WIND
-OWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf>
-<C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sim
-sun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/F
-onts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/W
-INDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.t
-tc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/
+ 36i,22n,58p,1883b,3282s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/W
+INDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.t
+tc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/
 simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOW
-S/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C
-:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsu
-n.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fon
-ts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WIN
-DOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc
+S/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C
+:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhe
+i.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fon
+ts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WIN
+DOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc
 ><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/si
-mhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/
+msun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/
 Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/
-WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.
-ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts
-/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDO
+WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.
+ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts
+/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDO
 WS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><
 C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sims
-un.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fo
-nts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WI
-NDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.tt
+un.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fo
+nts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WI
+NDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.tt
 c><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
 imsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS
 /Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:
-/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun
-.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Font
-s/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WIND
-OWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf>
-<C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><D:/CTEX/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmbx10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb><D:/CT
-EX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><D:/CTEX/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmcsc10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mex10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/CTEX/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/CTEX/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmmi7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.
-pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><D:/CTEX/MiK
-TeX/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><D:/CTEX/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/CTEX/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmsl10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D
-:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/CTEX/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmti10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/CTEX/
-MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/CTEX/MiKTeX/fonts/typ
-e1/public/amsfonts/symbols/msbm7.pfb>
-Output written on Lecture.pdf (75 pages, 2042935 bytes).
+/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun
+.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Font
+s/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WIND
+OWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc>
+<C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sim
+sun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/F
+onts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/W
+INDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.t
+tc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/
+simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOW
+S/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C
+:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhe
+i.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fon
+ts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WIN
+DOWS/Fonts/simhei.ttf><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/CTEX/MiKTeX/font
+s/type1/public/amsfonts/cm/cmbx5.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmbx7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/C
+TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/CTEX/MiKTeX/fonts/type
+1/public/amsfonts/cmextra/cmex8.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/CT
+EX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/CTEX/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
+ib10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><D:/CTE
+X/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><D:/CTEX/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr12.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/CTEX/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/CTEX/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsl10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/CTEX/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmsy7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmti10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/
+CTEX/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/CTEX/MiKTeX/font
+s/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on Lecture.pdf (81 pages, 2115134 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
+ 808 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
