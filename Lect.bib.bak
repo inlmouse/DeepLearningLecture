@@ -26,6 +26,13 @@
   Publisher                = {IEEE}
 }
 
+@Article{bishop2006pattern,
+  Title                    = {Pattern Recognition},
+  Author                   = {Bishop, Christopher M},
+  Journal                  = {Machine Learning},
+  Year                     = {2006}
+}
+
 @Article{cho2014learning,
   Title                    = {Learning phrase representations using rnn encoder-decoder for statistical machine translation},
   Author                   = {Cho, Kyunghyun and Van Merri{\"e}nboer, Bart and Gulcehre, Caglar and Bahdanau, Dzmitry and Bougares, Fethi and Schwenk, Holger and Bengio, Yoshua},
@@ -68,6 +75,14 @@
   Author                   = {Gatys, Leon A and Ecker, Alexander S and Bethge, Matthias},
   Journal                  = {arXiv preprint arXiv:1508.06576},
   Year                     = {2015}
+}
+
+@InProceedings{glorot2010understanding,
+  Title                    = {Understanding the difficulty of training deep feedforward neural networks},
+  Author                   = {Glorot, Xavier and Bengio, Yoshua},
+  Booktitle                = {International conference on artificial intelligence and statistics},
+  Year                     = {2010},
+  Pages                    = {249--256}
 }
 
 @Unpublished{Goodfellow-et-al-2015-Book,
@@ -249,6 +264,16 @@
   Volume                   = {37},
 
   Publisher                = {IEEE}
+}
+
+@Article{welling2007product,
+  Title                    = {Product of experts},
+  Author                   = {Welling, Max},
+  Journal                  = {Scholarpedia},
+  Year                     = {2007},
+  Number                   = {10},
+  Pages                    = {3879},
+  Volume                   = {2}
 }
 
 @Article{werbos1990backpropagation,

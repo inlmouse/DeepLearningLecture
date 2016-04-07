@@ -12,6 +12,9 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
   basicstyle=\footnotesize,        % the size of the fonts that are used for the code
@@ -319,6 +322,41 @@ softmax 函数是将多个标量映射为一个概率分布。
   \end{split}\\[6pt]
 \end{gather}
 
+\subsection{Rectifier函数(ReLU)}
+In the context of artificial neural networks, the rectifier is an activation function defined as
+\begin{equation*}
+  R(x) = \max(0, x)
+\end{equation*}
+
+This is also known as a ramp function\footnote{
+其具有很好的性质：
+\begin{itemize}
+  \item 单位阶跃函数乘以x：
+  $R\left( x \right) := xH\left( x \right)$
+  \item 单位阶跃函数和其本身的卷积：
+  $R\left( x \right) := H\left( x \right) * H\left( x \right)$
+  \item 单位阶跃函数的积分：
+  $R(x) := \int_{-\infty}^{x} H(\xi)\,\mathrm{d}\xi$
+  \item 麦考利括弧：
+  $R(x) := \langle x\rangle$
+\end{itemize}
+}, and it is analogous to half-wave rectification in electrical engineering. This activation function has been argued to be more biologically plausible than the widely used logistic sigmoid and its more practical counterpart, the hyperbolic tangent. The rectifier is, as of 2015, the most popular activation function for deep neural networks.
+
+A unit employing the rectifier is also called a \textbf{rectified linear unit (ReLU)}\footnote{
+其解析性质也十分优秀：
+\begin{itemize}
+  \item 傅里叶变换：$ \mathcal{F}\left\{ R(x) \right\}(f)   =   \int_{-\infty}^{\infty}R(x) e^{-2\pi ifx}dx   =   \frac{i\delta '(f)}{4\pi}-\frac{1}{4\pi^{2}f^{2}}$.
+  \item 单边拉普拉斯变换：$ \mathcal{L}\left\{ R\left( x \right)\right\} (s) = \int_{0}^{\infty} e^{-sx}R(x)dx = \frac{1}{s^2}$.
+  \item 迭代不变性：$ R \left( R \left( x \right) \right) = R \left( x \right) $.
+\end{itemize}
+}.
+
+A smooth approximation to the rectifier is the analytic function
+\begin{equation*}
+  f(x) = \ln(1 + e^x)
+\end{equation*}
+
+which is called the \textbf{softplus function}. The derivative of softplus is $f'(x) = e^x / (e^x+1) = 1 / (1 + e^{-x})=\sigma(x)$
 \section{一些练习}
 矩阵求导的一些练习技巧和重要结论
 \begin{enumerate}
@@ -363,7 +401,7 @@ softmax 函数是将多个标量映射为一个概率分布。
 
 这里，风险函数$R(\theta)$是在已知的训练样本（经验数据）上计算得来的，因此被称之为\textbf{经验风险}。用对参数求经验风险来逐渐逼近理想的期望风险的最小值，就是我们常说的\textbf{经验风险最小化原则}（Empirical Risk Minimization）。这样，我们的目标就是变成了找到一个参数$\theta^{*}$使得经验风险最小。
 \begin{equation}\label{3.4}
-  \theta^{*}=\arg\min_{\theta}R(\theta)
+  \theta^{*}=\argmin_{\theta}R(\theta)\footnote{Given a function, $f\colon X \rightarrow Y$, the argmax over some subset, $S$, of $X$ is defined by $\underset{x\in S\subseteq X}{\operatorname{arg\,max}}\, f(x) := \{x \mid x\in S \wedge \forall y \in S : f(y) \le f(x)\}$. Obviously, $\underset{x}{\operatorname{arg\,max}}\, f(x) := \{x \mid \forall y : f(y) \le f(x)\}$.}
 \end{equation}
 
 因为用来训练的样本往往是真实数据的一个很小的子集或者包含一定的噪声数据，不能很好地反映全部数据的真实分布。经验风险最小化原则很容易导致模型在训练集上错误率很低，但是在未知数据上错误率很高。这就是所谓的\textbf{过拟合}（Overfit）。过拟合问题往往是由于训练数据少和噪声等原因造成的。过拟合的标准定义为：给定一个假设空间$H$，一个假设$h$属于$H$，如果存在其他的假设$\bar{h}$属于$H$, 使得在训练样例上$h$的损失比$\bar{h}$ 小，但在整个实例分布上$\bar{h}$比$h$的损失小，那么就说假设$h$ 过度拟合训练数据\cite{mitchell1998introduction}。
@@ -372,12 +410,15 @@ softmax 函数是将多个标量映射为一个概率分布。
 
 为了解决过拟合问题，一般在经验风险最小化的原则上上加参数的\textbf{正则化}（Regularization），也叫\textbf{结构风险最小化原则}（Structure Risk Minimization）。
 \begin{gather}\label{3.5}
-  \theta^{*}=\arg\min_{\theta}R(\theta)+\lambda {\| \theta \|}_2^2\\
-  =\arg\min_{\theta}\frac{1}{N}\sum_{i=1}^{N}L(y^{(i)},\theta) +\lambda {\| \theta \|}_2^2
+  \theta^{*}=\argmin_{\theta}R(\theta)+\lambda {\| \theta \|}_2^2\\
+  =\argmin_{\theta}\frac{1}{N}\sum_{i=1}^{N}L(y^{(i)},\theta) +\lambda {\| \theta \|}_2^2
 \end{gather}
 这里，${\| \theta \|}_2^2$是$L_2$范数的\textbf{正则化项}，用来减少参数空间，避免过拟合。用$\lambda$来控制正则化的强度。
 
-正则化项也可以使用其它函数，比如$L_1$范数。$L_1$ 范数的引入通常会使得参数有一定稀疏性，因此在很多算法中也经常使用。在Bayes 估计的角度来讲，正则化是假设了参数的先验分布，不完全依赖训练数据。
+正则化项也可以使用其它函数，比如$L_1$范数。$L_1$ 范数的引入通常会使得参数有一定稀疏性，因此在很多算法中也经常使用\footnote{
+在机器学习算法中，我们常常将原始数据集分为三部分：training data、validation data，testing data。这个validation data是什么？它其实就是用来避免过拟合的，在训练过程中，我们通常用它来确定一些超参数（比如根据validation data上的accuracy来确定early stopping的epoch大小、根据validation data确定learning rate等等）。那为啥不直接在testing data上做这些呢？因为如果在testing data做这些，那么随着训练的进行，我们的网络实际上就是在一点一点地overfitting我们的testing data，导致最后得到的testing accuracy没有任何参考意义。因此，training data的作用是计算梯度更新权重，validation data如上所述，testing data 则给出一个accuracy以判断网络的好坏。
+避免过拟合的方法有很多：early stopping、数据集扩增（Data augmentation）、正则化（Regularization）包括L1、L2（L2 regularization也叫weight decay），dropout。
+}。在Bayes 估计的角度来讲，正则化是假设了参数的先验分布，不完全依赖训练数据。
 \subsection{损失函数}
 一个实例$(x, y)$，真实目标是$y$，机器学习模型的预测为$f(x, \theta)$。 如果预测错误时（$f(x, \theta) \not= y）$，我们需要定义一个度量函数来定量地计算错误的程度。常见的损失函数有如下几类：
 
@@ -656,12 +697,122 @@ $x^{(t)},y^{(t)}$是第$t$次迭代选取的样本。
 \section{投票感知器}
 \section{进一步的阅读和总结}
 \chapter{人工神经网络}
+人工神经网络1943年，心理学家W.S.McCulloch和数理逻辑学家W.Pitts建立了神经网络和数学模型，称为MP 模型。他们通过MP模型提出了神经元的形式化数学描述和网络结构方法，证明了单个神经元能执行逻辑功能，从而开创了人工神经网络研究的时代。1949年，心理学家提出了突触联系强度可变的设想。60年代，人工神经网络得到了进一步发展，更完善的神经网络模型被提出人工神经网络人工神经网络，其中包括感知器和自适应线性元件等。
+
+前馈神经网络也经常称为\textbf{多层感知器}（Multilayer Perceptron，MLP）。但多层感知器的叫法并不是否合理，因为前馈神经网络其实是由多层的logistic回归模型（连续的非线性函数）组成，而不是有多层的感知器（不连续的非线性函数）组成\cite{bishop2006pattern}。人工神经网络（Artificial Neural Network，即ANN），是20世纪80 年代以来人工智能领域兴起的研究热点。它从信息处理角度对人脑神经元网络进行抽象，建立某种简单模型，按不同的连接方式组成不同的网络。在工程与学术界也常直接简称为神经网络或类神经网络。神经网络是一种运算模型，由大量的节点（或称神经元）之间相互联接构成。每个节点代表一种特定的输出函数，称为激励函数（activation function）。每两个节点间的连接都代表一个对于通过该连接信号的加权值，称之为权重，这相当于人工神经网络的记忆。网络的输出则依网络的连接方式，权重值和激励函数的不同而不同。而网络自身通常都是对自然界某种算法或者函数的逼近，也可能是对一种逻辑策略的表达。最近十多年来，人工神经网络的研究工作不断深入，已经取得了很大的进展，其在模式识别、智能机器人、自动控制、预测估计、生物、医学、经济等领域已成功地解决了许多现代计算机难以解决的实际问题，表现出了良好的智能特性。
+
+人工神经网络模型主要考虑网络连接的拓扑结构、神经元的特征、学习规则等。目前，已有近40种神经网络模型，其中有反传网络、感知器、自组织映射、Hopfield 网络、波耳兹曼机、适应谐振理论等。根据连接的拓扑结构，神经网络模型可以分为：
+\begin{itemize}
+  \item 前向网络：
+  网络中各个神经元接受前一级的输入，并输出到下一级，网络中没有反馈，可以用一个有向无环路图表示。这种网络实现信号从输入空间到输出空间的变换，它的信息处理能力来自于简单非线性函数的多次复合。网络结构简单，易于实现。反传网络是一种典型的前向网络。
+  \item 反馈网络：
+  网络内神经元间有反馈，可以用一个无向的完备图表示。这种神经网络的信息处理是状态的变换，可以用动力学系统理论处理。系统的稳定性与联想记忆功能有密切关系。Hopfield网络、波耳兹曼机均属于这种类型。
+\end{itemize}
 \section{神经元}
+人工神经元（Neuron）是构成人工神经网络的基本单元。人工神经元和感知器非常类似，也是模拟生物神经元特性，接受一组输入信号并产出输出。生物神经元有一个阀值，当神经元所获得的输入信号的积累效果超过阀值时，它就处于兴奋状态；否则，应该处于抑制状态。
+
+人工神经元使用一个非线性的激活函数，输出一个活性值。假定神经元接受$n$个输入$\boldsymbol{x} = (x_1,x_2,\cdots ,x_n)$，用状态$z$表示一个神经元所获得的输入信号$x$的加权和，输出为该神经元的活性值$a$。 具体定如下：
+\begin{equation*}
+  z=\boldsymbol{w}^T\boldsymbol{x}+b
+\end{equation*}
+\begin{equation*}
+  a=f(z)
+\end{equation*}
+其中，$\boldsymbol{w}$是$n$维的权重向量，$b$是偏置。典型的激活函数$f$ 有sigmoid型函数、非线性斜面函数等。
+
+人工神经元的结构如图\ref{fig:5.1}所示。如果我们设激活函数$f$为0或1的阶跃函数，人工神经元就是感知器。
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/51.png}
+ \caption{Neuron}
+ \label{fig:5.1}
+\end{figure}
 \subsection{激活函数}
+为了增强网络的表达能力，我们需要引入连续的非线性激活函数（Activation Function）。因为连续非线性激活函数可以可导的，所以可以用最优化的方法来求解。传统神经网络中最常用的激活函数分别是sigmoid型函数。sigmoid型函数是指一类S型曲线函数，常用的sigmoid型函数有logistic函数$\sigma(x)$和tanh函数。
+
+在第二章的常用函数中已经叙述了他们的定义和一些简单性质。
+\begin{equation*}
+  \tanh(x)=\frac{\exp{(x)}-\exp{(-x)}}{\exp{(x)}+\exp{(-x)}}=2\sigma(2x)-1
+\end{equation*}
+tanh函数可以看作是放大并平移的logistic函数.
+
+sigmoid型函数对中间区域的信号有增益，对两侧区的信号有抑制。这样的特点也和生物神经元类似，对一些输入有兴奋作用，另一些输入（两侧区）有抑制作用。和感知器的阶跃激活函数$(-1/1,0/1)$相比，sigmoid型函数更符合生物神经元的特性，同时也有更好的数学性质很好。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/52.png}
+ \caption{Activation Function}
+ \label{fig:5.2}
+\end{figure}
+\subsection{激活函数的表达能力}
+如果每层都是完全线性的激活函数，会导致神经网络退化成LR，一般不会选择这种激活函数，虽然其表达能力虽然同LR一致，然而训练过程高度非线性，完全异于LR，用于非常初期的深层网络训练理论研究是有帮助的。
+
+每层都是sigmoid，这样会带来训练饱和问题\cite{glorot2010understanding}，你可以笼统认为饱和就是trap 在某个区间上，该区间对提升性能毫无帮助。按照原始文章引举的说法，sigmoid的二次导数等于$\sigma(1-\sigma)(1-2\sigma)$，输入为零的时候，二次导数为零（曲率为零，hessian带奇点），相当于损失函数曲面上有个大平原，导致训练迟缓。
+
+然而这个理论太简单粗暴了，深层网络的损失函数出现大平原不是激活函数二次导数为不为零这么简单的事情。
+
+为了理解这种大平原的出现，我们可以用另外一个直观粗浅地方式理解饱和，该方法笼统来说，如果参数W潜在的解空间越大，训练越难找到极小。 按照如下方式计算潜在解空间，假设你的输入x都被rescale到0-1之间，你计算信息熵$-\sum x_i \log x_i$，发现输入$x=0.5$附近的区间拥有最大的自由度（自由活动空间大小约等于exp(熵)），到了sigmoid 中，相当于要求Wx 为零。更一般来说，计算输入为高斯时$x \sim  N (0.5, \sigma)$，使得Wx 等于k的W解空间大小，可以如下计算：$\int \delta(Wx-k)\rho_{gauss}(x)dWdx$，$\delta(.)$是狄拉克函数，对于sigmoid来说，k等于零，上面的积分无穷大（W垂直x便可，有无限解）。对于relu来说，k不等于零，积分结果为有限值$C_n k^{n-1}$，n为x 的维度，$C_n$同k无关。sigmoid的解空间远超relu。导致分类问题中，sigmoid在0.5 附近的区间过大，每层都花大量时间搜索，训练没法提升。越深层的网络，越难以跳出，这是熵垒（俗称大平原），用于区别单纯局部极小带来的训练阻碍（坑王之王）。
+
+tanh解空间也比sigmoid小，当然上面为了展示思路，理论过于简化了，没法比较tanh和relu，实际上解空间是 exp(信息熵) x（解空间大小），x可以在不是0.5处取极值，实际这样做tanh的解空间还是比relu大不少，推导过程如下。
+
+假设输入$\boldsymbol{x}\in\mathbb{R}^n$满足分布$\rho(\boldsymbol{x})$，输出为$s=\boldsymbol{W}\boldsymbol{x}$。固定$s$下，\textbf{单个输出节点的W平均解空间大小应该如下表示为:}
+\begin{equation*}
+  \int \delta(\boldsymbol{W} \cdot \boldsymbol{x}-s)\rho(\boldsymbol{x})d\boldsymbol{x}d\boldsymbol{W}
+\end{equation*}
+$\delta(.)$是狄拉克函数。然而这个积分会出现无穷大，我们需要一个限定，合理的限定是假设权重平方等于某个固定值$\boldsymbol{W}^2=R^2$，\textbf{实际上跑一个隐层巨大的网络，所有权重的平方和就是接近固定值（就是协方差，因为均值为零）}。受限的W平均解空间大小为：
+\begin{equation*}
+  \int \delta(\boldsymbol{W}^2-R^2) \delta(\boldsymbol{W} \cdot \boldsymbol{x}-s)\rho(\boldsymbol{x})d\boldsymbol{x}d\boldsymbol{W}
+\end{equation*}
+
+先计算$\boldsymbol{W}$积分，计算这个积分要换到n维球座标，需要利用狄拉克函数的一些性质：
+\begin{gather*}
+  \int \delta(\boldsymbol{W}^2-R^2) \delta(\boldsymbol{W}|\boldsymbol{x}|\cos(\theta)-s) \boldsymbol{W}^{n-1} d\boldsymbol{W} d\Omega_{n-1} \\
+  =\frac{R^{n-3}}{|\boldsymbol{x}|} \int \delta(\cos(\theta)-\frac{s}{R|\boldsymbol{x}|})d\Omega_{n-1}\\
+  =\frac{R^{n-3}}{|\boldsymbol{x}|} \int \delta(\cos(\theta)-\frac{s}{R|\boldsymbol{x}|}) \sin(\theta)^{n-3} d\cos(\theta) d\Omega_{n-2}\\
+  =\frac{R^{n-3}}{|\boldsymbol{x}|} S_{n-2} \left(\sqrt{1-\left(\frac{s}{R|\boldsymbol{x}|}\right)^{2}}\right)^{n-3}
+\end{gather*}
+
+$S_{n-2}$是$n-2$维球面面积，综合起来是，$\boldsymbol{W}$平均解空间大小：
+\begin{equation*}
+  \int \frac{R^{n-3}}{|\boldsymbol{x}|} S_{n-2} \left(\sqrt{1-\left(\frac{s}{R|\boldsymbol{x}|}\right)^{2}}\right)^{n-3} \rho(\boldsymbol{x}) d\boldsymbol{x}
+\end{equation*}
+
+下面考虑s输出到一个激活函数$A$上，得到$A(s)$，这个激活函数本身有个信息容度，我们用exp（信息熵）表示：$\exp(-A(s) \log A(s))$，经过激活函数后，最终的有效解空间是“信息容度”乘上$W$解空间大小。
+\begin{equation*}
+  \int \frac{R^{n-3}}{|\boldsymbol{x}|} S_{n-2} \left(\sqrt{1-\left(\frac{s}{R|\boldsymbol{x}|}\right)^{2}}\right)^{n-3} \rho(\boldsymbol{x}) d\boldsymbol{x} \; \exp(-A(s) \log A(s))
+\end{equation*}
+
+利用介值定理，上式正比于：
+\begin{equation*}
+  \left(\sqrt{1-\alpha s^2}\right)^{n-3} \; \exp(-A(s) \log A(s))
+\end{equation*}
+
+假设输出节点独立无关，然后考虑n个输出节点，\textbf{总的解空间大小为单个空间大小的连乘}，也就是n次方：
+\begin{equation*}
+  \left( \left(\sqrt{1-\alpha s^2}\right)^{n-3} \; \exp(-A(s) \log A(s)) \right) ^{n}
+\end{equation*}
+
+画出s从0-1的图像，分别是sigmoid（红色曲线），relu（蓝色曲线），tanh （绿色曲线），注意到tanh是双边对称的，单个输出节点的大小需要额外乘以2，我们取alpha=0.1，n取20，如图\ref{fig:5.3}（横轴是输出，纵轴是固定输出下解空间大小）
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/53.png}
+ \caption{$s$-Volume}
+ \label{fig:5.3}
+\end{figure}
+
+可以这样直观理解，exp指数贡献巨大，故此上式主要贡献在$A(s)=0.5$处取得此时，对于sigmoid来说，$s=0$，对于relu来说，$s=0.5$，这样根号里面的项对于sigmoid来说恒等于1，而对于relu来说，恒小于1。当输入n非常大的时候（100够大了），relu的积分贡献远小于sigmoid函数，或者说sigmoid函数的解空间远超relu。tanh也是远超过relu的.
+
+sigmoid的好处并不是在训练上的，而是你的模型如果牵涉到许多概率问题，比如DBN，RNN，LSTM中的一些gate，就不能将sigmoid换成relu了，这样概率表达都错了。
+
+relu型的，如上所述用于缓和饱和问题。而且还有部分缓和梯度衰减的作用，不像sigmoid一样，relu没有一个梯度衰减的尾巴，强度上不封顶。使得反向传播过程只有权值的乘积带来梯度的衰减。然而，一些网络可能需要clip 掉梯度，避免不封顶的爆炸梯度回传。
+
+稀疏度问题，relu的稀疏机理同dropout机理不一样，dropout等效于动态L2规范带来的稀疏，是通过打压W来实现稀疏的。relu稀疏是因为如果输入为零，输出也会为零，这样多层输入输出更加贴近于原始高维数据层的稀疏度，毕竟输入信息本来就是高度稀疏的。
 \section{前馈神经网络}
 \subsection{前馈计算}
 \section{反向传播算法}
 \section{梯度消失问题}
+
 \section{训练方法}
 \section{一些经验}
 \section{进一步的阅读和总结}
@@ -882,19 +1033,19 @@ sample $x_j^{(t+1)} \sim p(x_j|\bold{h}^{(t)})$
  \caption{k-step contrastive divergence}
 \end{algorithm}
 \section{Gibbs Sampling和Markov Chain以及MCMC的关系}
-首先，Gibbs Sampling是根据邻居的状态进行采样的，Gibbs Sampling是沿着转移矩阵$P=\{p_{xy}\}$进行转移的，这就是为什么一次只转移一个轴（一次只采样一个变量）。而之前的MCMC那一坨东西只是为了说明，对于我们的Gibbs Distribution $p(\bold{h},\bold{x})=\frac{1}{Z}e^{-E(\bold{h},\bold{x})}$ ，总会存在一个Transition Matrix P，使得$p$为其stationary distribution （是否收敛于stationary distribution 取决于转移矩阵Transition Matrix）。而这个Transition Matrix的构造以此证明了这一点——对RMBs这种图拓扑结构来说，总会存在一个Transition Matrix P（这里的这个P是个矩阵），使得概率函数$p$为其stationary distribution。 因此我们按照Transition Matrix中的Transition Probability做转移，才可以得到符合分布的一个样本\footnote{https://en.wikipedia.org/wiki/Gibbs\_sampling}。Gibbs Sampling是沿着Markov Chain做转移\footnote{详见http://www.52nlp.cn/lda-math-mcmc-\%E5\%92\%8C-gibbs-sampling2}，请好好体会一下这句话。
+首先，Gibbs Sampling是根据邻居的状态进行采样的，Gibbs Sampling是沿着转移矩阵$P=\{p_{xy}\}$进行转移的，这就是为什么一次只转移一个轴（一次只采样一个变量）。而之前的MCMC那一坨东西只是为了说明，对于我们的Gibbs Distribution $p(\bold{h},\bold{x})=\frac{1}{Z}e^{-E(\bold{h},\bold{x})}$ ，总会存在一个Transition Matrix P，使得$p$为其stationary distribution （是否收敛于stationary distribution 取决于转移矩阵Transition Matrix）。而这个Transition Matrix的构造以此证明了这一点—— 对RMBs这种图拓扑结构来说，总会存在一个Transition Matrix P（这里的这个P是个矩阵），使得概率函数$p$ 为其stationary distribution。 因此我们按照Transition Matrix 中的Transition Probability做转移，才可以得到符合分布的一个样本\footnote{https://en.wikipedia.org/wiki/Gibbs\_sampling}。Gibbs Sampling是沿着Markov Chain做转移\footnote{详见http://www.52nlp.cn/lda-math-mcmc-\%E5\%92\%8C-gibbs-sampling2}，请好好体会一下这句话。
 
 
 \section{CD Algorithm是如何对原来的分布$p$进行优化的}
 首先，根据$\bold{x}^{(0)}$对$\bold{h}^{(0)}$进行采样，然后根据$\ bold{h}^{(0)}$对$\bold{x}^{(1)}$进行采样，这样就保证了“采样-拟合-再采样-再他妈拟合”—— 对于CD-1 来说这个过程只有“采样-拟合”。
 
-换言之，对$\bold{x}^{(0)}$来说，$\bold{h}^{(0)}$会使得分布函数变成更符合$\bold{x}^{(0)}$的情况，而不是状态初始时的$\bold{h}^{*}$（$\bold{h}$ 是随机初始化的，具体见文献\footnote{详见https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf Section 3}）。
+换言之，对$\bold{x}^{(0)}$来说，$\bold{h}^{(0)}$ 会使得分布函数变成更符合$\bold{x}^{(0)}$的情况，而不是状态初始时的$\bold{h}^{*}$（$\bold{h}$ 是随机初始化的，具体见文献\footnote{详见https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf Section 3}）。
 
 然后根据$\bold{h}^{(0)}$生成的样本$\bold{x}^{(1)}$又会使得联合分布函数在上表现得更好。
 
 联合分布函数是在针对$\bold{h}^{(0)}$的采样和对$\ bold{x}^{(k)}$的拟合中不断变好的。
 
-因为随着对$\bold{h}^{(0)}$的采样，联合分布函数$p$会改变，因为对应energy function里的$\bold{h}$变了（$\bold{h}$的每一个分量在采出$\ bold{h}^{(0)}$分量$h_j^{(0)}$的样本时，对应分量$h_j$就会变为$h_j^{(0)} $的取值\footnote{详见https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf}）。
+因为随着对$\bold{h}^{(0)}$的采样，联合分布函数$p$会改变，因为对应energy function里的$\bold{h}$ 变了（$\bold{h}$的每一个分量在采出$\ bold{h}^{(0)}$分量$h_j^{(0)}$的样本时，对应分量$h_j$就会变为$h_j^{(0)} $的取值\footnote{详见https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf}）。
 
 
 而$\bold{x}^{(k)}$的拟合中，虽然没有直接改变联合分布函数$p$，但是接下来的花样梯度近似大赛中，联合分布函数$p$会改变。
@@ -1052,7 +1203,7 @@ $\boldsymbol{down}(X^l)$是指子采样后的特征映射。
 \begin{enumerate}
   \item 输入层：输入图像大小为$32 \times 32 = 1024$。
   \item C1层：这一层是卷积层。滤波器的大小是$5\times 5 = 25$，共有$6$个滤波器。得到$6$组大小为$28 \times 28 = 784$的特征映射。因此，C1层的神经元个数为$6 \times 784 = 4704$。可训练参数个数为$6 \times 25 + 6 = 156$。连接数为$156 \times 784 = 122304$ （包括偏置在内，下同）。
-  \item S2 层：这一层为子采样层。由C1层每组特征映射中的$2\times 2$ 邻域点次采样为$1$ 个点，也就是$4$个数的平均。这一层的神经元个数为$14 \times 14 = 196$。可训练参数个数为$6 \times (1 + 1) = 12$。连接数为$6 \times 196 \times (4 + 1) = 122304$ （包括偏置的连接）
+  \item S2 层：这一层为子采样层。由C1层每组特征映射中的$2\times 2$ 邻域点次采样为$1$ 个点，也就是$4$个数的平均。这一层的神经元个数为$14 \times 14 = 196$。 可训练参数个数为$6 \times (1 + 1) = 12$。连接数为$6 \times 196 \times (4 + 1) = 122304$ （包括偏置的连接）
   \item C3 层：这一层是卷积层。由于S2 层也有多组特征映射，需要一个连接表来定义不同层特征映射之间的依赖关系。LeNet-5 的连接表如图\ref{fig:6.5} 所示。这样的连接机制的基本假设是：C3层的最开始的$6$个特征映射依赖于S2层的特征映射的每$3$个连续子集。接下来的$6$个特征映射依赖于S2 层的特征映射的每$4$个连续子集。再接下来的3 个特征映射依赖于S2层的特征映射的每$4$个不连续子集。最后一个特征映射依赖于S2 层的所有特征映射。这样共有$60$ 个滤波器，大小是$5 \times 5 = 25$。得到$16$组大小为$10\times 10 = 100$ 的特征映射。C3 层的神经元个数为$16 \times 100 = 1600$。 可训练参数个数为$60 \times 25 + 16 = 1516$。 连接数为$1516 \times 100 = 151600$。
   \item S4 层：这一层是一个子采样层，由$2\times 2$邻域点次采样为$1$ 个点，得到$16$组$5\times 5$大小的特征映射。可训练参数个数为$16 \times 2 = 32$。连接数为$16 \times (4 + 1) = 2000$。
   \item C5 层：是一个卷积层，得到$120$组大小为$1 \times 1$的特征映射。每个特征映射与S4 层的全部特征映射相连。有$120 \times 16 = 1920$ 个滤波器，大小是$5 \times 5 = 25$。C5 层的神经元个数为$120$，可训练参数个数为$1920 \times 25 + 120 = 48120$。 连接数为$120 \times (16 \times 25+1)=48120$
