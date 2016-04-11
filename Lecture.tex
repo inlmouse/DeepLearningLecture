@@ -411,14 +411,80 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
 ÎªÁË½â¾ö¹ýÄâºÏÎÊÌâ£¬Ò»°ãÔÚ¾­Ñé·çÏÕ×îÐ¡»¯µÄÔ­ÔòÉÏÉÏ¼Ó²ÎÊýµÄ\textbf{ÕýÔò»¯}£¨Regularization£©£¬Ò²½Ð\textbf{½á¹¹·çÏÕ×îÐ¡»¯Ô­Ôò}£¨Structure Risk Minimization£©¡£
 \begin{gather}\label{3.5}
   \theta^{*}=\argmin_{\theta}R(\theta)+\lambda {\| \theta \|}_2^2\\
-  =\argmin_{\theta}\frac{1}{N}\sum_{i=1}^{N}L(y^{(i)},\theta) +\lambda {\| \theta \|}_2^2
+  =\argmin_{\theta}\frac{1}{N}\sum_{i=1}^{N}L(y^{(i)},f(x^{(i)}, \theta)) +\lambda {\| \theta \|}_2^2
 \end{gather}
 ÕâÀï£¬${\| \theta \|}_2^2$ÊÇ$L_2$·¶ÊýµÄ\textbf{ÕýÔò»¯Ïî}£¬ÓÃÀ´¼õÉÙ²ÎÊý¿Õ¼ä£¬±ÜÃâ¹ýÄâºÏ¡£ÓÃ$\lambda$À´¿ØÖÆÕýÔò»¯µÄÇ¿¶È¡£
-
-ÕýÔò»¯ÏîÒ²¿ÉÒÔÊ¹ÓÃÆäËüº¯Êý£¬±ÈÈç$L_1$·¶Êý¡£$L_1$ ·¶ÊýµÄÒýÈëÍ¨³£»áÊ¹µÃ²ÎÊýÓÐÒ»¶¨Ï¡ÊèÐÔ£¬Òò´ËÔÚºÜ¶àËã·¨ÖÐÒ²¾­³£Ê¹ÓÃ\footnote{
+%\marginpar{margin text}
+ÕýÔò»¯ÏîÒ²¿ÉÒÔÊ¹ÓÃÆäËüº¯Êý£¬±ÈÈç$L_1$·¶Êý¡£$L_1$ ·¶ÊýµÄÒýÈëÍ¨³£»áÊ¹µÃ²ÎÊýÓÐÒ»¶¨Ï¡ÊèÐÔ£¬Òò´ËÔÚºÜ¶àËã·¨ÖÐÒ²¾­³£Ê¹ÓÃ¡£ÔÚBayes ¹À¼ÆµÄ½Ç¶ÈÀ´½²£¬ÕýÔò»¯ÊÇ¼ÙÉèÁË²ÎÊýµÄÏÈÑé·Ö²¼£¬²»ÍêÈ«ÒÀÀµÑµÁ·Êý¾Ý¡£
+\subsection{²¹³äÎÊÌâ£ºÕýÔò»¯}
 ÔÚ»úÆ÷Ñ§Ï°Ëã·¨ÖÐ£¬ÎÒÃÇ³£³£½«Ô­Ê¼Êý¾Ý¼¯·ÖÎªÈý²¿·Ö£ºtraining data¡¢validation data£¬testing data¡£Õâ¸övalidation dataÊÇÊ²Ã´£¿ËüÆäÊµ¾ÍÊÇÓÃÀ´±ÜÃâ¹ýÄâºÏµÄ£¬ÔÚÑµÁ·¹ý³ÌÖÐ£¬ÎÒÃÇÍ¨³£ÓÃËüÀ´È·¶¨Ò»Ð©³¬²ÎÊý£¨±ÈÈç¸ù¾Ývalidation dataÉÏµÄaccuracyÀ´È·¶¨early stoppingµÄepoch´óÐ¡¡¢¸ù¾Ývalidation dataÈ·¶¨learning rateµÈµÈ£©¡£ÄÇÎªÉ¶²»Ö±½ÓÔÚtesting dataÉÏ×öÕâÐ©ÄØ£¿ÒòÎªÈç¹ûÔÚtesting data×öÕâÐ©£¬ÄÇÃ´Ëæ×ÅÑµÁ·µÄ½øÐÐ£¬ÎÒÃÇµÄÍøÂçÊµ¼ÊÉÏ¾ÍÊÇÔÚÒ»µãÒ»µãµØoverfittingÎÒÃÇµÄtesting data£¬µ¼ÖÂ×îºóµÃµ½µÄtesting accuracyÃ»ÓÐÈÎºÎ²Î¿¼ÒâÒå¡£Òò´Ë£¬training dataµÄ×÷ÓÃÊÇ¼ÆËãÌÝ¶È¸üÐÂÈ¨ÖØ£¬validation dataÈçÉÏËùÊö£¬testing data Ôò¸ø³öÒ»¸öaccuracyÒÔÅÐ¶ÏÍøÂçµÄºÃ»µ¡£
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/Regu1.jpg}
+ \caption{Overfit}
+ \label{fig:Regu1}
+\end{figure}
+
 ±ÜÃâ¹ýÄâºÏµÄ·½·¨ÓÐºÜ¶à£ºearly stopping¡¢Êý¾Ý¼¯À©Ôö£¨Data augmentation£©¡¢ÕýÔò»¯£¨Regularization£©°üÀ¨L1¡¢L2£¨L2 regularizationÒ²½Ðweight decay£©£¬dropout¡£
-}¡£ÔÚBayes ¹À¼ÆµÄ½Ç¶ÈÀ´½²£¬ÕýÔò»¯ÊÇ¼ÙÉèÁË²ÎÊýµÄÏÈÑé·Ö²¼£¬²»ÍêÈ«ÒÀÀµÑµÁ·Êý¾Ý¡£
+
+\begin{itemize}
+  \item \textbf{$L_0/L_1$ Regularization(Weight Decay)}:\\
+  ¸ù¾ÝÊ½\ref{3.5}¿ÉÖª£¬ÆäÖÐµÚÒ»Ïî$L(y^{(i)},f(x^{(i)}, \theta))$ ºâÁ¿ÎÒÃÇµÄÄ£ÐÍ£¨·ÖÀà»òÕß»Ø¹é£©¶ÔµÚi¸öÑù±¾µÄÔ¤²âÖµ$f(x^{(i)}, \theta)$ºÍÕæÊµµÄ±êÇ©$y^{(i)}$Ö®Ç°µÄÎó²î¡£ÒòÎªÎÒÃÇµÄÄ£ÐÍÊÇÒªÄâºÏÎÒÃÇµÄÑµÁ·Ñù±¾µÄÂï£¬ËùÒÔÎÒÃÇÒªÇóÕâÒ»Ïî×îÐ¡£¬Ò²¾ÍÊÇÒªÇóÎÒÃÇµÄÄ£ÐÍ¾¡Á¿µÄÄâºÏÎÒÃÇµÄÑµÁ·Êý¾Ý¡£µ«ÕýÈçÉÏÃæËµÑÔ£¬ÎÒÃÇ²»½öÒª±£Ö¤ÑµÁ·Îó²î×îÐ¡£¬ÎÒÃÇ¸üÏ£ÍûÎÒÃÇµÄÄ£ÐÍ²âÊÔÎó²îÐ¡£¬ËùÒÔÎÒÃÇÐèÒª¼ÓÉÏµÚ¶þÏî£¬Ò²¾ÍÊÇ¶Ô²ÎÊý$\theta$µÄ¹æÔò»¯º¯Êý$\Omega(\theta)$È¥Ô¼ÊøÎÒÃÇµÄÄ£ÐÍ¾¡Á¿µÄ¼òµ¥¡£\\
+  ÆäÊµ´ó²¿·ÖÎÞ·Ç¾ÍÊÇ±ä»»ÕâÁ½Ïî¶øÒÑ¡£¶ÔÓÚµÚÒ»ÏîLossº¯Êý£¬Èç¹ûÊÇSquare loss£¬ÄÇ¾ÍÊÇ×îÐ¡¶þ³ËÁË£»Èç¹ûÊÇHinge Loss£¬ÄÇ¾ÍÊÇSVM£»Èç¹ûÊÇexp-Loss£¬ÄÇ¾ÍÊÇBoosting£»Èç¹ûÊÇlog-Loss£¬ÄÇ¾ÍÊÇLogistic Regression¡­¡­²»Í¬µÄlossº¯Êý£¬¾ßÓÐ²»Í¬µÄÄâºÏÌØÐÔ£¬Õâ¸öÒ²µÃ¾Í¾ßÌåÎÊÌâ¾ßÌå·ÖÎöµÄ¡£µ«ÕâÀï£¬ÎÒÃÇÏÈ²»¾¿lossº¯ÊýµÄÎÊÌâ£¬ÎÒÃÇ°ÑÄ¿¹â×ªÏò¡°¹æÔòÏî$\Omega(\theta)$¡±¡£\\
+  ¹æÔò»¯º¯Êý$\Omega(\theta)$Ò²ÓÐºÜ¶àÖÖÑ¡Ôñ£¬Ò»°ãÊÇÄ£ÐÍ¸´ÔÓ¶ÈµÄµ¥µ÷µÝÔöº¯Êý£¬Ä£ÐÍÔ½¸´ÔÓ£¬¹æÔò»¯Öµ¾ÍÔ½´ó¡£±ÈÈç£¬¹æÔò»¯Ïî¿ÉÒÔÊÇÄ£ÐÍ²ÎÊýÏòÁ¿µÄ·¶Êý¡£È»¶ø£¬²»Í¬µÄÑ¡Ôñ¶Ô²ÎÊýwµÄÔ¼Êø²»Í¬£¬È¡µÃµÄÐ§¹ûÒ²²»Í¬£¬µ«ÔÚÂÛÎÄÖÐ³£¼ûµÄ¶¼¾Û¼¯ÔÚ£ºÁã·¶Êý¡¢Ò»·¶Êý¡¢¶þ·¶Êý¡¢¼£·¶Êý¡¢Frobenius·¶ÊýºÍºË·¶ÊýµÈµÈ¡£\\
+  $L_0$·¶ÊýÊÇÖ¸ÏòÁ¿ÖÐ·Ç0µÄÔªËØµÄ¸öÊý¡£Èç¹ûÎÒÃÇÓÃ$L_0$·¶ÊýÀ´¹æÔò»¯Ò»¸ö²ÎÊý¾ØÕó$\boldsymbol{W}$µÄ»°£¬¾ÍÊÇÏ£Íû$\boldsymbol{W}$µÄ´ó²¿·ÖÔªËØ¶¼ÊÇ0¡£»»¾ä»°Ëµ£¬ÈÃ²ÎÊý$\boldsymbol{W}$ÊÇÏ¡Êè\footnote{¡°Ñ¹Ëõ¸ÐÖª¡±ºÍ¡°Ï¡Êè±àÂë¡±µÄ¡°Ï¡Êè¡±¾ÍÊÇÕâÑùÀ´ÊµÏÖµÄ¡£}µ«Ï¡Êè´ó¶à¶¼Í¨¹ý$L_1$·¶Êý($||W||_1$)À´ÊµÏÖµÄ£¬ÒòÎª¶þÕßÔÚÊýÑ§ÉÏÓÐÏàµ±µÄ¹ØÁª¡£\\
+  $L_1$·¶ÊýÊÇÖ¸ÏòÁ¿ÖÐ¸÷¸öÔªËØ¾ø¶ÔÖµÖ®ºÍ£¬Ò²ÓÐ¸öÃÀ³Æ½Ð¡°Ï¡Êè¹æÔòËã×Ó¡±£¨Lasso regularization£©£¬ËüÊÇ$L_0$·¶ÊýµÄ×îÓÅÍ¹½üËÆ¡£Êµ¼ÊÉÏ£¬ÈÎºÎµÄ¹æÔò»¯Ëã×Ó£¬Èç¹ûËûÔÚ$\boldsymbol{W}_i=0$µÄµØ·½²»¿ÉÎ¢£¬²¢ÇÒ¿ÉÒÔ·Ö½âÎªÒ»¸ö¡°ÇóºÍ¡±µÄÐÎÊ½£¬ÄÇÃ´Õâ¸ö¹æÔò»¯Ëã×Ó¾Í¿ÉÒÔÊµÏÖÏ¡Êè¡£ÕâËµÊÇÕâÃ´Ëµ£¬$\boldsymbol{W}$µÄ$L_1$·¶ÊýÊÇ¾ø¶ÔÖµ£¬$|\boldsymbol{W}|$ÔÚ$\boldsymbol{W}=0$´¦ÊÇ²»¿ÉÎ¢£¬µ«Õâ»¹ÊÇ²»¹»Ö±¹Û¡£ÒòÎª$L_0$·¶ÊýºÜÄÑÓÅ»¯Çó½â£¨NPÄÑÎÊÌâ£©£¬¶þÊÇ$L_1$·¶ÊýÊÇ$L_0$·¶ÊýµÄ×îÓÅÍ¹½üËÆ£¬¶øÇÒËü±È$L_0$·¶ÊýÒªÈÝÒ×ÓÅ»¯Çó½â¡£\\
+  \begin{equation*}
+    \min||\boldsymbol{x}||_0~~s.t. \boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}\overset{\text{¸ÅÂÊÎª1µÄ}}{\underset{}{\iff}}\min||\boldsymbol{x}||_1~~s.t. \boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}
+  \end{equation*}
+  ²ÎÊýÏ¡ÊèµÄºÃ´¦Ö÷ÒªÓÐÒÔÏÂÁ½µã£º
+  \begin{enumerate}
+    \item ÌØÕ÷Ñ¡Ôñ(Feature Selection)
+    \item ¿É½âÊÍÐÔ(Interpretability)
+  \end{enumerate}
+  \item \textbf{$L_2$ Regularization(Weight Decay)}:\\
+  ³ýÁË$L_1$·¶Êý£¬»¹ÓÐÒ»ÖÖ¸üÊÜÇàÃÐµÄ¹æÔò»¯·¶ÊýÊÇ$L_2$·¶Êý: $||\boldsymbol{W}||_2$¡£ËüÒ²²»Ñ·ÓÚ$L_1$·¶Êý£¬ÔÚ»Ø¹éÀïÃæ£¬ÓÐÈË°ÑÓÐËüµÄ»Ø¹é½Ð¡°Áë»Ø¹é¡±£¨Ridge Regression£©£¬ÓÐÈËÒ²½ÐËü¡°È¨ÖµË¥¼õweight decay¡±¡£ÕâÓÃµÄºÜ¶à°É£¬ÒòÎªËüµÄÇ¿´ó¹¦Ð§ÊÇ¸ÄÉÆ»úÆ÷Ñ§Ï°ÀïÃæÒ»¸ö·Ç³£ÖØÒªµÄÎÊÌâ£º¹ýÄâºÏ¡£\\
+  $L_2$·¶ÊýÊÇÖ¸ÏòÁ¿¸÷ÔªËØµÄÆ½·½ºÍÈ»ºóÇóÆ½·½¸ù¡£ÎÒÃÇÈÃL2·¶ÊýµÄ¹æÔòÏî$||\boldsymbol{W}||_2$×îÐ¡£¬¿ÉÒÔÊ¹µÃWµÄÃ¿¸öÔªËØ¶¼ºÜÐ¡£¬¶¼½Ó½üÓÚ0£¬µ«Óë$L_1$·¶Êý²»Í¬£¬Ëü²»»áÈÃËüµÈÓÚ0£¬¶øÊÇ½Ó½üÓÚ0£¬ÕâÀïÊÇÓÐºÜ´óµÄÇø±ð¡£¶øÔ½Ð¡µÄ²ÎÊýËµÃ÷Ä£ÐÍÔ½¼òµ¥£¬Ô½¼òµ¥µÄÄ£ÐÍÔòÔ½²»ÈÝÒ×²úÉú¹ýÄâºÏÏÖÏó¡£ÏÞÖÆÁË²ÎÊýºÜÐ¡£¬Êµ¼ÊÉÏ¾ÍÏÞÖÆÁË¶àÏîÊ½Ä³Ð©·ÖÁ¿µÄÓ°ÏìºÜÐ¡£¬ÕâÑù¾ÍÏàµ±ÓÚ¼õÉÙ²ÎÊý¸öÊý¡£\\
+  ³ýÁË·ÀÖ¹¹ýÄâºÏºÍÌáÉýÄ£ÐÍµÄ·º»¯ÄÜÁ¦µÄÎÊÌâÍâ£¬$L_2$·¶Êý»¹ÄÜ¹»ÔÚ¼ÆËãÓÅ»¯µÄ½Ç¶ÈÉÏ¶Ô´¦Àí condition number\footnote{
+  Ê×ÏÈ¼Ù¶¨Ö»´æÔÚ$\boldsymbol{b}$µÄÈÅ¶¯$\delta\boldsymbol{b}$£¬$\boldsymbol{A}$ÎÈ¶¨£¬¿¼²ì$\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}$µÄ½âÎö½âÏòÁ¿$\boldsymbol{x}+\delta\boldsymbol{x}$£¬¼´£º
+  \begin{equation*}
+    \boldsymbol{A}(\boldsymbol{x}+\delta\boldsymbol{x})=\boldsymbol{b}+\delta\boldsymbol{b}
+  \end{equation*}
+  Çó½âµÃ£º
+  \begin{equation*}
+    \delta\boldsymbol{x}=\boldsymbol{A}^{-1}\delta\boldsymbol{b}
+  \end{equation*}
+  ÓÉÏòÁ¿·¶ÊýÐÔÖÊ£º
+  \begin{equation*}
+    ||\delta\boldsymbol{x}||_2\leq||\boldsymbol{A}^{-1}||_2\cdot||\delta\boldsymbol{b}||_2
+  \end{equation*}
+  Í¬ÀíÏÔÈ»£º
+  \begin{equation*}
+    ||\boldsymbol{b}||_2\leq||\boldsymbol{A}||_2\cdot||\boldsymbol{x}||_2
+  \end{equation*}
+  ÓÚÊÇ£º
+  \begin{equation*}
+    \frac{||\delta\boldsymbol{x}||_2}{||\boldsymbol{x}||_2}\leq||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\frac{||\delta\boldsymbol{b}||_2}{||\boldsymbol{b}||_2}
+  \end{equation*}
+  
+  È»ºó¿¼²ì$\delta\boldsymbol{A}$µÄÓ°Ïì£º
+  \begin{equation*}
+    (\boldsymbol{A}+\delta\boldsymbol{A})(\boldsymbol{x}+\delta\boldsymbol{x})=\boldsymbol{b}
+  \end{equation*}
+  Í¬ÀíÏÔÈ»£º
+  \begin{equation*}
+    \frac{||\delta\boldsymbol{x}||_2}{||\boldsymbol{x}||_2+||\delta\boldsymbol{x}||_2}\leq||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\frac{||\delta\boldsymbol{A}||_2}{||\boldsymbol{A}||_2}
+  \end{equation*}
+  
+  ÓÚÊÇ¿ÉÖª½âÏòÁ¿µÄÏà¶ÔÎó²îÓ¦Õý±ÈÓÚ$||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\equiv\text{cond}(\boldsymbol{A})\equiv\kappa(\boldsymbol{A})$£¬³Æcondition number£¨¾ØÕóµÄÌõ¼þÊý£©¡£
+  
+  ¶ÔÓÚ³¬¶¨·½³Ì£¨$\boldsymbol{A}\in\mathbb{C}^{m\times n}(m>n)$£©£¬±ØÓÐ×îÐ¡¶þ³Ë½â$\boldsymbol{x}=(\boldsymbol{A}^H\boldsymbol{A})^{-1}\boldsymbol{A}^H\boldsymbol{b}$¡£ÈÝÒ×Ö¤Ã÷£¨ÄãÐÅÃ´£¿£©$\text{cond}(\boldsymbol{A}^H\boldsymbol{A})=\text{cond}^2(\boldsymbol{A})$¡£Ìõ¼þÊýÊÇÆ½·½¹ØÏµÔö´óµÄ£¬Í¬Ê±ÎÈ¶¨ÐÔ·´±ÈÓÚÌõ¼þÊý¡£
+  }²»ºÃµÄÇé¿öÏÂ¾ØÕóÇóÄæºÜÀ§ÄÑµÄÎÊÌâ¡£\\
+  \item 3
+  \item 4
+  \item 5
+\end{itemize}
 \subsection{ËðÊ§º¯Êý}
 Ò»¸öÊµÀý$(x, y)$£¬ÕæÊµÄ¿±êÊÇ$y$£¬»úÆ÷Ñ§Ï°Ä£ÐÍµÄÔ¤²âÎª$f(x, \theta)$¡£ Èç¹ûÔ¤²â´íÎóÊ±£¨$f(x, \theta) \not= y£©$£¬ÎÒÃÇÐèÒª¶¨ÒåÒ»¸ö¶ÈÁ¿º¯ÊýÀ´¶¨Á¿µØ¼ÆËã´íÎóµÄ³Ì¶È¡£³£¼ûµÄËðÊ§º¯ÊýÓÐÈçÏÂ¼¸Àà£º
 
@@ -697,7 +763,7 @@ $x^{(t)},y^{(t)}$ÊÇµÚ$t$´Îµü´úÑ¡È¡µÄÑù±¾¡£
 \section{Í¶Æ±¸ÐÖªÆ÷}
 \section{½øÒ»²½µÄÔÄ¶ÁºÍ×Ü½á}
 \chapter{ÈË¹¤Éñ¾­ÍøÂç}
-ÈË¹¤Éñ¾­ÍøÂç1943Äê£¬ÐÄÀíÑ§¼ÒW.S.McCullochºÍÊýÀíÂß¼­Ñ§¼ÒW.Pitts½¨Á¢ÁËÉñ¾­ÍøÂçºÍÊýÑ§Ä£ÐÍ£¬³ÆÎªMP Ä£ÐÍ¡£ËûÃÇÍ¨¹ýMPÄ£ÐÍÌá³öÁËÉñ¾­ÔªµÄÐÎÊ½»¯ÊýÑ§ÃèÊöºÍÍøÂç½á¹¹·½·¨£¬Ö¤Ã÷ÁËµ¥¸öÉñ¾­ÔªÄÜÖ´ÐÐÂß¼­¹¦ÄÜ£¬´Ó¶ø¿ª´´ÁËÈË¹¤Éñ¾­ÍøÂçÑÐ¾¿µÄÊ±´ú¡£1949Äê£¬ÐÄÀíÑ§¼ÒÌá³öÁËÍ»´¥ÁªÏµÇ¿¶È¿É±äµÄÉèÏë¡£60Äê´ú£¬ÈË¹¤Éñ¾­ÍøÂçµÃµ½ÁË½øÒ»²½·¢Õ¹£¬¸üÍêÉÆµÄÉñ¾­ÍøÂçÄ£ÐÍ±»Ìá³öÈË¹¤Éñ¾­ÍøÂçÈË¹¤Éñ¾­ÍøÂç£¬ÆäÖÐ°üÀ¨¸ÐÖªÆ÷ºÍ×ÔÊÊÓ¦ÏßÐÔÔª¼þµÈ¡£
+ÈË¹¤Éñ¾­ÍøÂç1943Äê£¬ÐÄÀíÑ§¼ÒW.S.McCulloch ºÍÊýÀíÂß¼­Ñ§¼ÒW.Pitts½¨Á¢ÁËÉñ¾­ÍøÂçºÍÊýÑ§Ä£ÐÍ£¬³ÆÎªMP Ä£ÐÍ¡£ËûÃÇÍ¨¹ýMPÄ£ÐÍÌá³öÁËÉñ¾­ÔªµÄÐÎÊ½»¯ÊýÑ§ÃèÊöºÍÍøÂç½á¹¹·½·¨£¬Ö¤Ã÷ÁËµ¥¸öÉñ¾­ÔªÄÜÖ´ÐÐÂß¼­¹¦ÄÜ£¬´Ó¶ø¿ª´´ÁËÈË¹¤Éñ¾­ÍøÂçÑÐ¾¿µÄÊ±´ú¡£1949Äê£¬ÐÄÀíÑ§¼ÒÌá³öÁËÍ»´¥ÁªÏµÇ¿¶È¿É±äµÄÉèÏë¡£60Äê´ú£¬ÈË¹¤Éñ¾­ÍøÂçµÃµ½ÁË½øÒ»²½·¢Õ¹£¬¸üÍêÉÆµÄÉñ¾­ÍøÂçÄ£ÐÍ±»Ìá³öÈË¹¤Éñ¾­ÍøÂçÈË¹¤Éñ¾­ÍøÂç£¬ÆäÖÐ°üÀ¨¸ÐÖªÆ÷ºÍ×ÔÊÊÓ¦ÏßÐÔÔª¼þµÈ¡£
 
 Ç°À¡Éñ¾­ÍøÂçÒ²¾­³£³ÆÎª\textbf{¶à²ã¸ÐÖªÆ÷}£¨Multilayer Perceptron£¬MLP£©¡£µ«¶à²ã¸ÐÖªÆ÷µÄ½Ð·¨²¢²»ÊÇ·ñºÏÀí£¬ÒòÎªÇ°À¡Éñ¾­ÍøÂçÆäÊµÊÇÓÉ¶à²ãµÄlogistic»Ø¹éÄ£ÐÍ£¨Á¬ÐøµÄ·ÇÏßÐÔº¯Êý£©×é³É£¬¶ø²»ÊÇÓÐ¶à²ãµÄ¸ÐÖªÆ÷£¨²»Á¬ÐøµÄ·ÇÏßÐÔº¯Êý£©×é³É\cite{bishop2006pattern}¡£ÈË¹¤Éñ¾­ÍøÂç£¨Artificial Neural Network£¬¼´ANN£©£¬ÊÇ20ÊÀ¼Í80 Äê´úÒÔÀ´ÈË¹¤ÖÇÄÜÁìÓòÐËÆðµÄÑÐ¾¿ÈÈµã¡£Ëü´ÓÐÅÏ¢´¦Àí½Ç¶È¶ÔÈËÄÔÉñ¾­ÔªÍøÂç½øÐÐ³éÏó£¬½¨Á¢Ä³ÖÖ¼òµ¥Ä£ÐÍ£¬°´²»Í¬µÄÁ¬½Ó·½Ê½×é³É²»Í¬µÄÍøÂç¡£ÔÚ¹¤³ÌÓëÑ§Êõ½çÒ²³£Ö±½Ó¼ò³ÆÎªÉñ¾­ÍøÂç»òÀàÉñ¾­ÍøÂç¡£Éñ¾­ÍøÂçÊÇÒ»ÖÖÔËËãÄ£ÐÍ£¬ÓÉ´óÁ¿µÄ½Úµã£¨»ò³ÆÉñ¾­Ôª£©Ö®¼äÏà»¥Áª½Ó¹¹³É¡£Ã¿¸ö½Úµã´ú±íÒ»ÖÖÌØ¶¨µÄÊä³öº¯Êý£¬³ÆÎª¼¤Àøº¯Êý£¨activation function£©¡£Ã¿Á½¸ö½Úµã¼äµÄÁ¬½Ó¶¼´ú±íÒ»¸ö¶ÔÓÚÍ¨¹ý¸ÃÁ¬½ÓÐÅºÅµÄ¼ÓÈ¨Öµ£¬³ÆÖ®ÎªÈ¨ÖØ£¬ÕâÏàµ±ÓÚÈË¹¤Éñ¾­ÍøÂçµÄ¼ÇÒä¡£ÍøÂçµÄÊä³öÔòÒÀÍøÂçµÄÁ¬½Ó·½Ê½£¬È¨ÖØÖµºÍ¼¤Àøº¯ÊýµÄ²»Í¬¶ø²»Í¬¡£¶øÍøÂç×ÔÉíÍ¨³£¶¼ÊÇ¶Ô×ÔÈ»½çÄ³ÖÖËã·¨»òÕßº¯ÊýµÄ±Æ½ü£¬Ò²¿ÉÄÜÊÇ¶ÔÒ»ÖÖÂß¼­²ßÂÔµÄ±í´ï¡£×î½üÊ®¶àÄêÀ´£¬ÈË¹¤Éñ¾­ÍøÂçµÄÑÐ¾¿¹¤×÷²»¶ÏÉîÈë£¬ÒÑ¾­È¡µÃÁËºÜ´óµÄ½øÕ¹£¬ÆäÔÚÄ£Ê½Ê¶±ð¡¢ÖÇÄÜ»úÆ÷ÈË¡¢×Ô¶¯¿ØÖÆ¡¢Ô¤²â¹À¼Æ¡¢ÉúÎï¡¢Ò½Ñ§¡¢¾­¼ÃµÈÁìÓòÒÑ³É¹¦µØ½â¾öÁËÐí¶àÏÖ´ú¼ÆËã»úÄÑÒÔ½â¾öµÄÊµ¼ÊÎÊÌâ£¬±íÏÖ³öÁËÁ¼ºÃµÄÖÇÄÜÌØÐÔ¡£
 
@@ -711,7 +777,7 @@ $x^{(t)},y^{(t)}$ÊÇµÚ$t$´Îµü´úÑ¡È¡µÄÑù±¾¡£
 \section{Éñ¾­Ôª}
 ÈË¹¤Éñ¾­Ôª£¨Neuron£©ÊÇ¹¹³ÉÈË¹¤Éñ¾­ÍøÂçµÄ»ù±¾µ¥Ôª¡£ÈË¹¤Éñ¾­ÔªºÍ¸ÐÖªÆ÷·Ç³£ÀàËÆ£¬Ò²ÊÇÄ£ÄâÉúÎïÉñ¾­ÔªÌØÐÔ£¬½ÓÊÜÒ»×éÊäÈëÐÅºÅ²¢²ú³öÊä³ö¡£ÉúÎïÉñ¾­ÔªÓÐÒ»¸ö·§Öµ£¬µ±Éñ¾­ÔªËù»ñµÃµÄÊäÈëÐÅºÅµÄ»ýÀÛÐ§¹û³¬¹ý·§ÖµÊ±£¬Ëü¾Í´¦ÓÚÐË·Ü×´Ì¬£»·ñÔò£¬Ó¦¸Ã´¦ÓÚÒÖÖÆ×´Ì¬¡£
 
-ÈË¹¤Éñ¾­ÔªÊ¹ÓÃÒ»¸ö·ÇÏßÐÔµÄ¼¤»îº¯Êý£¬Êä³öÒ»¸ö»îÐÔÖµ¡£¼Ù¶¨Éñ¾­Ôª½ÓÊÜ$n$¸öÊäÈë$\boldsymbol{x} = (x_1,x_2,\cdots ,x_n)$£¬ÓÃ×´Ì¬$z$±íÊ¾Ò»¸öÉñ¾­ÔªËù»ñµÃµÄÊäÈëÐÅºÅ$x$µÄ¼ÓÈ¨ºÍ£¬Êä³öÎª¸ÃÉñ¾­ÔªµÄ»îÐÔÖµ$a$¡£ ¾ßÌå¶¨ÈçÏÂ£º
+ÈË¹¤Éñ¾­ÔªÊ¹ÓÃÒ»¸ö·ÇÏßÐÔµÄ¼¤»îº¯Êý£¬Êä³öÒ»¸ö»îÐÔÖµ¡£¼Ù¶¨Éñ¾­Ôª½ÓÊÜ$n$¸öÊäÈë$\boldsymbol{x} = (x_1,x_2,\cdots ,x_n)$£¬ÓÃ×´Ì¬$z$±íÊ¾Ò»¸öÉñ¾­ÔªËù»ñµÃµÄÊäÈëÐÅºÅ$x$ µÄ¼ÓÈ¨ºÍ£¬Êä³öÎª¸ÃÉñ¾­ÔªµÄ»îÐÔÖµ$a$¡£ ¾ßÌå¶¨ÈçÏÂ£º
 \begin{equation*}
   z=\boldsymbol{w}^T\boldsymbol{x}+b
 \end{equation*}
@@ -755,7 +821,7 @@ sigmoidÐÍº¯Êý¶ÔÖÐ¼äÇøÓòµÄÐÅºÅÓÐÔöÒæ£¬¶ÔÁ½²àÇøµÄÐÅºÅÓÐÒÖÖÆ¡£ÕâÑùµÄÌØµãÒ²ºÍÉúÎïÉñ¾
 
 tanh½â¿Õ¼äÒ²±ÈsigmoidÐ¡£¬µ±È»ÉÏÃæÎªÁËÕ¹Ê¾Ë¼Â·£¬ÀíÂÛ¹ýÓÚ¼ò»¯ÁË£¬Ã»·¨±È½ÏtanhºÍrelu£¬Êµ¼ÊÉÏ½â¿Õ¼äÊÇ exp(ÐÅÏ¢ìØ) x£¨½â¿Õ¼ä´óÐ¡£©£¬x¿ÉÒÔÔÚ²»ÊÇ0.5´¦È¡¼«Öµ£¬Êµ¼ÊÕâÑù×ötanhµÄ½â¿Õ¼ä»¹ÊÇ±Èrelu´ó²»ÉÙ£¬ÍÆµ¼¹ý³ÌÈçÏÂ¡£
 
-¼ÙÉèÊäÈë$\boldsymbol{x}\in\mathbb{R}^n$Âú×ã·Ö²¼$\rho(\boldsymbol{x})$£¬Êä³öÎª$s=\boldsymbol{W}\boldsymbol{x}$¡£¹Ì¶¨$s$ÏÂ£¬\textbf{µ¥¸öÊä³ö½ÚµãµÄWÆ½¾ù½â¿Õ¼ä´óÐ¡Ó¦¸ÃÈçÏÂ±íÊ¾Îª:}
+¼ÙÉèÊäÈë$\boldsymbol{x}\in\mathbb{R}^n$Âú×ã·Ö²¼$\rho(\boldsymbol{x})$£¬Êä³öÎª$s=\boldsymbol{W}\boldsymbol{x}$¡£¹Ì¶¨$s$ ÏÂ£¬\textbf{µ¥¸öÊä³ö½ÚµãµÄWÆ½¾ù½â¿Õ¼ä´óÐ¡Ó¦¸ÃÈçÏÂ±íÊ¾Îª:}
 \begin{equation*}
   \int \delta(\boldsymbol{W} \cdot \boldsymbol{x}-s)\rho(\boldsymbol{x})d\boldsymbol{x}d\boldsymbol{W}
 \end{equation*}
@@ -1033,10 +1099,10 @@ sample $x_j^{(t+1)} \sim p(x_j|\bold{h}^{(t)})$
  \caption{k-step contrastive divergence}
 \end{algorithm}
 \section{Gibbs SamplingºÍMarkov ChainÒÔ¼°MCMCµÄ¹ØÏµ}
-Ê×ÏÈ£¬Gibbs SamplingÊÇ¸ù¾ÝÁÚ¾ÓµÄ×´Ì¬½øÐÐ²ÉÑùµÄ£¬Gibbs SamplingÊÇÑØ×Å×ªÒÆ¾ØÕó$P=\{p_{xy}\}$½øÐÐ×ªÒÆµÄ£¬Õâ¾ÍÊÇÎªÊ²Ã´Ò»´ÎÖ»×ªÒÆÒ»¸öÖá£¨Ò»´ÎÖ»²ÉÑùÒ»¸ö±äÁ¿£©¡£¶øÖ®Ç°µÄMCMCÄÇÒ»Ûç¶«Î÷Ö»ÊÇÎªÁËËµÃ÷£¬¶ÔÓÚÎÒÃÇµÄGibbs Distribution $p(\bold{h},\bold{x})=\frac{1}{Z}e^{-E(\bold{h},\bold{x})}$ £¬×Ü»á´æÔÚÒ»¸öTransition Matrix P£¬Ê¹µÃ$p$ÎªÆästationary distribution £¨ÊÇ·ñÊÕÁ²ÓÚstationary distribution È¡¾öÓÚ×ªÒÆ¾ØÕóTransition Matrix£©¡£¶øÕâ¸öTransition MatrixµÄ¹¹ÔìÒÔ´ËÖ¤Ã÷ÁËÕâÒ»µã¡ª¡ª ¶ÔRMBsÕâÖÖÍ¼ÍØÆË½á¹¹À´Ëµ£¬×Ü»á´æÔÚÒ»¸öTransition Matrix P£¨ÕâÀïµÄÕâ¸öPÊÇ¸ö¾ØÕó£©£¬Ê¹µÃ¸ÅÂÊº¯Êý$p$ ÎªÆästationary distribution¡£ Òò´ËÎÒÃÇ°´ÕÕTransition Matrix ÖÐµÄTransition Probability×ö×ªÒÆ£¬²Å¿ÉÒÔµÃµ½·ûºÏ·Ö²¼µÄÒ»¸öÑù±¾\footnote{https://en.wikipedia.org/wiki/Gibbs\_sampling}¡£Gibbs SamplingÊÇÑØ×ÅMarkov Chain×ö×ªÒÆ\footnote{Ïê¼ûhttp://www.52nlp.cn/lda-math-mcmc-\%E5\%92\%8C-gibbs-sampling2}£¬ÇëºÃºÃÌå»áÒ»ÏÂÕâ¾ä»°¡£
+Ê×ÏÈ£¬Gibbs SamplingÊÇ¸ù¾ÝÁÚ¾ÓµÄ×´Ì¬½øÐÐ²ÉÑùµÄ£¬Gibbs SamplingÊÇÑØ×Å×ªÒÆ¾ØÕó$P=\{p_{xy}\}$½øÐÐ×ªÒÆµÄ£¬Õâ¾ÍÊÇÎªÊ²Ã´Ò»´ÎÖ»×ªÒÆÒ»¸öÖá£¨Ò»´ÎÖ»²ÉÑùÒ»¸ö±äÁ¿£©¡£¶øÖ®Ç°µÄMCMCÄÇÒ»Ûç¶«Î÷Ö»ÊÇÎªÁËËµÃ÷£¬¶ÔÓÚÎÒÃÇµÄGibbs Distribution $p(\bold{h},\bold{x})=\frac{1}{Z}e^{-E(\bold{h},\bold{x})}$ £¬×Ü»á´æÔÚÒ»¸öTransition Matrix P£¬Ê¹µÃ$p$ ÎªÆästationary distribution £¨ÊÇ·ñÊÕÁ²ÓÚstationary distribution È¡¾öÓÚ×ªÒÆ¾ØÕóTransition Matrix£©¡£¶øÕâ¸öTransition MatrixµÄ¹¹ÔìÒÔ´ËÖ¤Ã÷ÁËÕâÒ»µã¡ª¡ª ¶ÔRMBsÕâÖÖÍ¼ÍØÆË½á¹¹À´Ëµ£¬×Ü»á´æÔÚÒ»¸öTransition Matrix P£¨ÕâÀïµÄÕâ¸öPÊÇ¸ö¾ØÕó£©£¬Ê¹µÃ¸ÅÂÊº¯Êý$p$ ÎªÆästationary distribution¡£ Òò´ËÎÒÃÇ°´ÕÕTransition Matrix ÖÐµÄTransition Probability×ö×ªÒÆ£¬²Å¿ÉÒÔµÃµ½·ûºÏ·Ö²¼µÄÒ»¸öÑù±¾\footnote{https://en.wikipedia.org/wiki/Gibbs\_sampling}¡£Gibbs SamplingÊÇÑØ×ÅMarkov Chain×ö×ªÒÆ\footnote{Ïê¼ûhttp://www.52nlp.cn/lda-math-mcmc-\%E5\%92\%8C-gibbs-sampling2}£¬ÇëºÃºÃÌå»áÒ»ÏÂÕâ¾ä»°¡£
 
 
-\section{CD AlgorithmÊÇÈçºÎ¶ÔÔ­À´µÄ·Ö²¼$p$½øÐÐÓÅ»¯µÄ}
+\section{CD AlgorithmÊÇÈçºÎ¶ÔÔ­À´µÄ·Ö²¼$p$ ½øÐÐÓÅ»¯µÄ}
 Ê×ÏÈ£¬¸ù¾Ý$\bold{x}^{(0)}$¶Ô$\bold{h}^{(0)}$½øÐÐ²ÉÑù£¬È»ºó¸ù¾Ý$\ bold{h}^{(0)}$¶Ô$\bold{x}^{(1)}$½øÐÐ²ÉÑù£¬ÕâÑù¾Í±£Ö¤ÁË¡°²ÉÑù-ÄâºÏ-ÔÙ²ÉÑù-ÔÙËûÂèÄâºÏ¡±¡ª¡ª ¶ÔÓÚCD-1 À´ËµÕâ¸ö¹ý³ÌÖ»ÓÐ¡°²ÉÑù-ÄâºÏ¡±¡£
 
 »»ÑÔÖ®£¬¶Ô$\bold{x}^{(0)}$À´Ëµ£¬$\bold{h}^{(0)}$ »áÊ¹µÃ·Ö²¼º¯Êý±ä³É¸ü·ûºÏ$\bold{x}^{(0)}$µÄÇé¿ö£¬¶ø²»ÊÇ×´Ì¬³õÊ¼Ê±µÄ$\bold{h}^{*}$£¨$\bold{h}$ ÊÇËæ»ú³õÊ¼»¯µÄ£¬¾ßÌå¼ûÎÄÏ×\footnote{Ïê¼ûhttps://www.cs.toronto.edu/~hinton/absps/guideTR.pdf Section 3}£©¡£
@@ -1144,7 +1210,7 @@ $\otimes$±íÊ¾¾í»ýÔËËã¡£
 
 ÕâÑù£¬ÎÒÃÇÔÚµÚ$l+1$²ã¾ÍµÃµ½$n_l$×éÌØÕ÷Ó³Éä£¬Ã¿Ò»×éÌØÕ÷Ó³ÉäµÄ´óÐ¡Îª$m_l = w_{l-1}-u+1\times h_{l-1}-v +1$£¬×ÜµÄÉñ¾­Ôª¸öÊýÎª$n_l \times m_l$¡£ Í¼\ref{fig:6.2} ¸ø³öÁËÊ½\ref{6.8}µÄ¿ÉÊÓ»¯Ó³Éä¹ØÏµ¡£
 
-\textbf{Á¬½Ó±í}£º  Ê½\ref{6.8}ÖÐ£¬µÚ$l-1$ ²ãµÄËùÓÐÌØÕ÷Ó³Éä¶¼¾­¹ýÂË²¨Æ÷µÃµ½Ò»¸öµÚ$l$ ²ãµÄÒ»×éÌØÕ÷Ó³Éä$X^{(l,k)}$¡£Ò²¾ÍÊÇËµ£¬µÚ$l$ ²ãµÄÃ¿Ò»×éÌØÕ÷Ó³Éä¶¼ÒÀÀµÓÚµÚ$l$²ãµÄËùÓÐÌØÕ÷Ó³Éä£¬Ïàµ±ÓÚ²»Í¬²ãµÄÌØÕ÷Ó³ÉäÖ®¼äÊÇÈ«Á¬½ÓµÄ¹ØÏµ¡£Êµ¼ÊÉÏ£¬ÕâÖÖÈ«Á¬½Ó¹ØÏµ²»ÊÇ±ØÐëµÄ¡£ÎÒÃÇ¿ÉÒÔÈÃµÚ$l$ ²ãµÄÃ¿Ò»×éÌØÕ÷Ó³Éä¶¼ÒÀÀµÓÚÇ°Ò»²ãµÄÉÙÊý¼¸×éÌØÕ÷Ó³Éä¡£ÕâÑù£¬ÎÒÃÇ¶¨ÒåÒ»¸ö\textbf{Á¬½Ó±í}$T$ À´ÃèÊö²»Í¬²ãµÄÌØÕ÷Ó³ÉäÖ®¼äµÄÁ¬½Ó¹ØÏµ¡£Èç¹ûµÚ$l$ ²ãµÄµÚ$k$×éÌØÕ÷Ó³ÉäÒÀÀµÓÚÇ°Ò»²ãµÄµÚ$p$ ×éÌØÕ÷Ó³Éä£¬Ôò$T_{p,k}=1$£¬·ñÔòÎª$0$¡£
+\textbf{Á¬½Ó±í}£º  Ê½\ref{6.8}ÖÐ£¬µÚ$l-1$ ²ãµÄËùÓÐÌØÕ÷Ó³Éä¶¼¾­¹ýÂË²¨Æ÷µÃµ½Ò»¸öµÚ$l$ ²ãµÄÒ»×éÌØÕ÷Ó³Éä$X^{(l,k)}$¡£Ò²¾ÍÊÇËµ£¬µÚ$l$ ²ãµÄÃ¿Ò»×éÌØÕ÷Ó³Éä¶¼ÒÀÀµÓÚµÚ$l$²ãµÄËùÓÐÌØÕ÷Ó³Éä£¬Ïàµ±ÓÚ²»Í¬²ãµÄÌØÕ÷Ó³ÉäÖ®¼äÊÇÈ«Á¬½ÓµÄ¹ØÏµ¡£Êµ¼ÊÉÏ£¬ÕâÖÖÈ«Á¬½Ó¹ØÏµ²»ÊÇ±ØÐëµÄ¡£ÎÒÃÇ¿ÉÒÔÈÃµÚ$l$ ²ãµÄÃ¿Ò»×éÌØÕ÷Ó³Éä¶¼ÒÀÀµÓÚÇ°Ò»²ãµÄÉÙÊý¼¸×éÌØÕ÷Ó³Éä¡£ÕâÑù£¬ÎÒÃÇ¶¨ÒåÒ»¸ö\textbf{Á¬½Ó±í}$T$ À´ÃèÊö²»Í¬²ãµÄÌØÕ÷Ó³ÉäÖ®¼äµÄÁ¬½Ó¹ØÏµ¡£Èç¹ûµÚ$l$ ²ãµÄµÚ$k$ ×éÌØÕ÷Ó³ÉäÒÀÀµÓÚÇ°Ò»²ãµÄµÚ$p$ ×éÌØÕ÷Ó³Éä£¬Ôò$T_{p,k}=1$£¬·ñÔòÎª$0$¡£
 \begin{equation}\label{6.9}
   X^{(l,k)}=f\left( \sum_{p=1, T_{p,k}=1}(W^{(l,k,p)} \otimes X^{(l-1,p)})+b^{(l,k)} \right)
 \end{equation}
