@@ -429,16 +429,115 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
 避免过拟合的方法有很多：early stopping、数据集扩增（Data augmentation）、正则化（Regularization）包括L1、L2（L2 regularization也叫weight decay），dropout。
 
 \begin{itemize}
-  \item \textbf{L0/1/2 Regularization(Weight Decay)}:\\
+  \item \textbf{$L_0/L_1$ Regularization(Weight Decay)}:\\
   根据式\ref{3.5}可知，其中第一项$L(y^{(i)},f(x^{(i)}, \theta))$ 衡量我们的模型（分类或者回归）对第i个样本的预测值$f(x^{(i)}, \theta)$和真实的标签$y^{(i)}$之前的误差。因为我们的模型是要拟合我们的训练样本的嘛，所以我们要求这一项最小，也就是要求我们的模型尽量的拟合我们的训练数据。但正如上面说言，我们不仅要保证训练误差最小，我们更希望我们的模型测试误差小，所以我们需要加上第二项，也就是对参数$\theta$的规则化函数$\Omega(\theta)$去约束我们的模型尽量的简单。\\
   其实大部分无非就是变换这两项而已。对于第一项Loss函数，如果是Square loss，那就是最小二乘了；如果是Hinge Loss，那就是SVM；如果是exp-Loss，那就是Boosting；如果是log-Loss，那就是Logistic Regression……不同的loss函数，具有不同的拟合特性，这个也得就具体问题具体分析的。但这里，我们先不究loss函数的问题，我们把目光转向“规则项$\Omega(\theta)$”。\\
   规则化函数$\Omega(\theta)$也有很多种选择，一般是模型复杂度的单调递增函数，模型越复杂，规则化值就越大。比如，规则化项可以是模型参数向量的范数。然而，不同的选择对参数w的约束不同，取得的效果也不同，但在论文中常见的都聚集在：零范数、一范数、二范数、迹范数、Frobenius范数和核范数等等。\\
   $L_0$范数是指向量中非0的元素的个数。如果我们用$L_0$范数来规则化一个参数矩阵$\boldsymbol{W}$的话，就是希望$\boldsymbol{W}$的大部分元素都是0。换句话说，让参数$\boldsymbol{W}$是稀疏\footnote{“压缩感知”和“稀疏编码”的“稀疏”就是这样来实现的。}但稀疏大多都通过$L_1$范数($||W||_1$)来实现的，因为二者在数学上有相当的关联。\\
-  $L_1$范数是指向量中各个元素绝对值之和，也有个美称叫“稀疏规则算子”（Lasso regularization），它是$L_0$范数的最优凸近似。实际上，任何的规则化算子，如果他在$\boldsymbol{W}_i=0$的地方不可微，并且可以分解为一个“求和”的形式，那么这个规则化算子就可以实现稀疏。这说是这么说，$\boldsymbol{W}$的$L_1$范数是绝对值，$|\boldsymbol{W}|$在$\boldsymbol{W}=0$处是不可微，但这还是不够直观。因为$L_0$范数很难优化求解（NP难问题），二是L1范数是L0范数的最优凸近似，而且它比$L_0$范数要容易优化求解。\\
+  $L_1$范数是指向量中各个元素绝对值之和，也有个美称叫“稀疏规则算子”（Lasso regularization），它是$L_0$范数的最优凸近似。实际上，任何的规则化算子，如果他在$\boldsymbol{W}_i=0$的地方不可微，并且可以分解为一个“求和”的形式，那么这个规则化算子就可以实现稀疏。这说是这么说，$\boldsymbol{W}$的$L_1$范数是绝对值，$|\boldsymbol{W}|$在$\boldsymbol{W}=0$处是不可微，但这还是不够直观。因为$L_0$范数很难优化求解（NP难问题），二是$L_1$范数是$L_0$范数的最优凸近似，而且它比$L_0$范数要容易优化求解。\\
+  \begin{equation*}
+    \min||\boldsymbol{x}||_0~~s.t. \boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}\overset{\text{概率为1的}}{\underset{}{\iff}}\min||\boldsymbol{x}||_1~~s.t. \boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}
+  \end{equation*}
+  参数稀疏的好处主要有以下两点：
+  \begin{enumerate}
+    \item 特征选择(Feature Selection)
+    \item 可解释性(Interpretability)
+  \end{enumerate}
+  \item \textbf{$L_2$ Regularization(Weight Decay)}:\\
+  除了$L_1$范数，还有一种更受青眯的规则化范数是$L_2$范数: $||\boldsymbol{W}||_2$。它也不逊于$L_1$范数，在回归里面，有人把有它的回归叫“岭回归”（Ridge Regression），有人也叫它“权值衰减weight decay”。这用的很多吧，因为它的强大功效是改善机器学习里面一个非常重要的问题：过拟合。\\
+  $L_2$范数是指向量各元素的平方和然后求平方根。我们让L2范数的规则项$||\boldsymbol{W}||_2$最小，可以使得W的每个元素都很小，都接近于0，但与$L_1$范数不同，它不会让它等于0，而是接近于0，这里是有很大的区别。而越小的参数说明模型越简单，越简单的模型则越不容易产生过拟合现象。限制了参数很小，实际上就限制了多项式某些分量的影响很小，这样就相当于减少参数个数。\\
+  除了防止过拟合和提升模型的泛化能力的问题外，$L_2$范数还能够在计算优化的角度上对处理 condition number\footnote{
+  首先假定只存在$\boldsymbol{b}$的扰动$\delta\boldsymbol{b}$，$\boldsymbol{A}$稳定，考察$\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}$的解析解向量$\boldsymbol{x}+\delta\boldsymbol{x}$，即：
+  \begin{equation*}
+    \boldsymbol{A}(\boldsymbol{x}+\delta\boldsymbol{x})=\boldsymbol{b}+\delta\boldsymbol{b}
+  \end{equation*}
+  求解得：
+  \begin{equation*}
+    \delta\boldsymbol{x}=\boldsymbol{A}^{-1}\delta\boldsymbol{b}
+  \end{equation*}
+  由向量范数性质：
+  \begin{equation*}
+    ||\delta\boldsymbol{x}||_2\leq||\boldsymbol{A}^{-1}||_2\cdot||\delta\boldsymbol{b}||_2
+  \end{equation*}
+  同理显然：
+  \begin{equation*}
+    ||\boldsymbol{b}||_2\leq||\boldsymbol{A}||_2\cdot||\boldsymbol{x}||_2
+  \end{equation*}
+  于是：
+  \begin{equation*}
+    \frac{||\delta\boldsymbol{x}||_2}{||\boldsymbol{x}||_2}\leq||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\frac{||\delta\boldsymbol{b}||_2}{||\boldsymbol{b}||_2}
+  \end{equation*}
 
-  \item 2
-  \item 3
-  \item 4
+  然后考察$\delta\boldsymbol{A}$的影响：
+  \begin{equation*}
+    (\boldsymbol{A}+\delta\boldsymbol{A})(\boldsymbol{x}+\delta\boldsymbol{x})=\boldsymbol{b}
+  \end{equation*}
+  同理显然：
+  \begin{equation*}
+    \frac{||\delta\boldsymbol{x}||_2}{||\boldsymbol{x}||_2+||\delta\boldsymbol{x}||_2}\leq||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\frac{||\delta\boldsymbol{A}||_2}{||\boldsymbol{A}||_2}
+  \end{equation*}
+
+  于是可知解向量的相对误差应正比于$||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\equiv\text{cond}(\boldsymbol{A})\equiv\kappa(\boldsymbol{A})$，称condition number（矩阵的条件数）。
+
+  对于超定方程（$\boldsymbol{A}\in\mathbb{C}^{m\times n}(m>n)$），必有最小二乘解$\boldsymbol{x}=(\boldsymbol{A}^H\boldsymbol{A})^{-1}\boldsymbol{A}^H\boldsymbol{b}$。容易证明（你信么？）$\text{cond}(\boldsymbol{A}^H\boldsymbol{A})=\text{cond}^2(\boldsymbol{A})$。条件数是平方关系增大的，同时稳定性反比于条件数。
+  }不好的情况下矩阵求逆很困难的问题。condition number是一个矩阵（或者它所描述的线性系统）的稳定性或者敏感度的度量，如果一个矩阵的condition number在1附近，那么它就是well-conditioned的，如果远大于1，那么它就是ill-conditioned的，如果一个系统是ill-conditioned的，它的输出结果就不具有相当的置信度。\\
+  从优化或者数值计算的角度来说，$L_2$范数有助于处理 condition number不好的情况下矩阵求逆很困难的问题。因为目标函数如果是二次的，对于线性回归来说，那实际上是有解析解的，求导并令导数等于零即可得到最优解为：
+  \begin{equation*}
+    \boldsymbol{W}=(\boldsymbol{X}^H\boldsymbol{X})^{-1}\boldsymbol{X}^H\boldsymbol{y}
+  \end{equation*}
+  然而，如果当我们的样本X的数目比每个样本的维度还要小的时候，矩阵$\boldsymbol{X}^H\boldsymbol{X}$将会不是满秩的，所以$\boldsymbol{W}$无法直接计算。或者更确切地说，将会有无穷多个解（因为我们方程组的个数小于未知数的个数）。也就是说，我们的数据不足以确定一个解，如果我们从所有可行解里随机选一个的话，很可能并不是真正好的解，即是出现过拟合。\\
+  但如果加上L2规则项，就变成了下面这种情况，就可以直接求逆了：
+  \begin{equation*}
+    \boldsymbol{W}=(\boldsymbol{X}^H\boldsymbol{X}+\lambda\boldsymbol{I})^{-1}\boldsymbol{X}^H\boldsymbol{y}
+  \end{equation*}
+  这个规则项的引入则可以改善condition number.
+  
+  如果使用迭代优化的算法，condition number 太大仍然会导致问题：它会拖慢迭代的收敛速度，而规则项从优化的角度来看，实际上是将目标函数变成$\lambda$-strongly convex\footnote{
+  A differentiable function $f$ is called \textbf{$\lambda$-strongly convex} with parameter $\lambda > 0$ if the following inequality holds for all points x, y in its domain:
+  \begin{equation*}
+    ( \nabla f(x) - \nabla f(y) )^T (x-y) \ge \lambda \|x-y\|_2^2 
+  \end{equation*}
+  or, more generally,
+  \begin{equation*}
+    \langle \nabla f(x) - \nabla f(y),  (x-y) \rangle \ge \lambda \|x-y\|^2
+  \end{equation*}
+  where $\|\cdot\|$ is any norm.
+  }（$\lambda$强凸）的，也即可以在迭代中避免大平原的情况.
+  \item \textbf{Dropout}：\\
+  L1、L2正则化是通过修改代价函数来实现的，而Dropout则是通过修改神经网络本身来实现的，它是在训练网络时用的一种技巧。它的流程如图\ref{fig:Regu2}：\\
+  假设我们要训练上图这个网络，在训练开始时，我们随机地“删除”一半的隐层单元，视它们为不存在;保持输入输出层不变，按照BP算法更新上图神经网络中的权值（虚线连接的单元不更新，因为它们被“临时删除”了）。\\
+  以上就是一次迭代的过程，在第二次迭代中，也用同样的方法，只不过这次删除的那一半隐层单元，跟上一次删除掉的肯定是不一样的，因为我们每一次迭代都是“随机”地去删掉一半。第三次、第四次……都是这样，直至训练结束。\\
+  以上就是Dropout，它为什么有助于防止过拟合呢？可以简单地这样解释，运用了dropout的训练过程，相当于训练了很多个只有半数隐层单元的神经网络（后面简称为“半数网络”），每一个这样的半数网络，都可以给出一个分类结果，这些结果有的是正确的，有的是错误的。随着训练的进行，大部分半数网络都可以给出正确的分类结果，那么少数的错误分类结果就不会对最终结果造成大的影响。
+  %更加深入地理解，可以看看Hinton和Alex两牛2012的论文《ImageNet Classification with Deep Convolutional Neural Networks》
+
+  \begin{figure}[t]
+ \centering
+ \includegraphics{pics/Regu2.jpg}
+ \caption{Dropout}
+ \label{fig:Regu2}
+ \end{figure}
+  \item \textbf{数据集扩增（Data Augmentation）}：\\
+  在深度学习方法中，更多的训练数据，意味着可以用更深的网络，训练出更好的模型。\\
+  既然这样，收集更多的数据不就行啦？如果能够收集更多可以用的数据，当然好。但是很多时候，收集更多的数据意味着需要耗费更多的人力物力，有弄过人工标注的同学就知道，效率特别低，简直是粗活。\\
+  所以，可以在原始数据上做些改动，得到更多的数据，以图片数据集举例，可以做各种变换，如：\\
+  \begin{enumerate}
+    \item 
+    \item 
+    \item 
+    \item 
+  \end{enumerate}
+	* 将原始图片旋转一个小角度
+
+	* 添加随机噪声
+
+	* 一些有弹性的畸变（elastic distortions），论文《Best practices for convolutional neural networks applied to visual document analysis》对MNIST做了各种变种扩增。
+
+	* 截取（crop）原始图片的一部分。比如DeepID中，从一副人脸图中，截取出了100个小patch作为训练数据，极大地增加了数据集。感兴趣的可以看《Deep learning face representation from predicting 10,000 classes》.
+
+
+更多数据意味着什么？
+用50000个MNIST的样本训练SVM得出的accuracy94.48%，用5000个MNIST的样本训练NN得出accuracy为93.24%，所以更多的数据可以使算法表现得更好。在机器学习中，算法本身并不能决出胜负，不能武断地说这些算法谁优谁劣，因为数据对算法性能的影响很大。
+
   \item 5
 \end{itemize}
 \subsection{损失函数}
@@ -710,6 +809,7 @@ $x^{(t)},y^{(t)}$是第$t$次迭代选取的样本。
 \subsection{多类线性分类}
 \section{评价方法}
 \section{进一步的阅读和总结}
+为更加深入地理解Dropout，可以翻阅论文：《ImageNet Classification with Deep Convolutional Neural Networks》
 \chapter{感知器}
 \section{二类感知器}
 \subsection{感知器学习算法}

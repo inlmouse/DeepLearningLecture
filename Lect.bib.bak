@@ -1,5 +1,16 @@
-% This file was created with JabRef 2.10.
 % Encoding: GBK
+
+@Article{bengio1994learning,
+  Title                    = {Learning long-term dependencies with gradient descent is difficult},
+  Author                   = {Bengio, Yoshua and Simard, Patrice and Frasconi, Paolo},
+  Journal                  = {Neural Networks, IEEE Transactions on},
+  Year                     = {1994},
+  Number                   = {2},
+  Pages                    = {157--166},
+  Volume                   = {5},
+
+  Publisher                = {IEEE}
+}
 
 
 @Article{bengio2009learning,
@@ -12,18 +23,6 @@
   Volume                   = {2},
 
   Publisher                = {Now Publishers Inc.}
-}
-
-@Article{bengio1994learning,
-  Title                    = {Learning long-term dependencies with gradient descent is difficult},
-  Author                   = {Bengio, Yoshua and Simard, Patrice and Frasconi, Paolo},
-  Journal                  = {Neural Networks, IEEE Transactions on},
-  Year                     = {1994},
-  Number                   = {2},
-  Pages                    = {157--166},
-  Volume                   = {5},
-
-  Publisher                = {IEEE}
 }
 
 @Article{bishop2006pattern,
@@ -102,18 +101,6 @@
   Pages                    = {1026--1034}
 }
 
-@Article{hinton2012deep,
-  Title                    = {Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups},
-  Author                   = {Hinton, Geoffrey and Deng, Li and Yu, Dong and Dahl, George E and Mohamed, Abdel-rahman and Jaitly, Navdeep and Senior, Andrew and Vanhoucke, Vincent and Nguyen, Patrick and Sainath, Tara N and others},
-  Journal                  = {Signal Processing Magazine, IEEE},
-  Year                     = {2012},
-  Number                   = {6},
-  Pages                    = {82--97},
-  Volume                   = {29},
-
-  Publisher                = {IEEE}
-}
-
 @Article{hinton2002training,
   Title                    = {Training products of experts by minimizing contrastive divergence},
   Author                   = {Hinton, Geoffrey E},
@@ -138,13 +125,16 @@
   Publisher                = {American Association for the Advancement of Science}
 }
 
-@Misc{hochreiter2001gradient,
-  Title                    = {Gradient flow in recurrent nets: the difficulty of learning long-term dependencies},
+@Article{hinton2012deep,
+  Title                    = {Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups},
+  Author                   = {Hinton, Geoffrey and Deng, Li and Yu, Dong and Dahl, George E and Mohamed, Abdel-rahman and Jaitly, Navdeep and Senior, Andrew and Vanhoucke, Vincent and Nguyen, Patrick and Sainath, Tara N and others},
+  Journal                  = {Signal Processing Magazine, IEEE},
+  Year                     = {2012},
+  Number                   = {6},
+  Pages                    = {82--97},
+  Volume                   = {29},
 
-  Author                   = {Hochreiter, Sepp and Bengio, Yoshua and Frasconi, Paolo and Schmidhuber, J{\"u}rgen},
-  Year                     = {2001},
-
-  Publisher                = {A field guide to dynamical recurrent neural networks. IEEE Press}
+  Publisher                = {IEEE}
 }
 
 @Article{hochreiter1997long,
@@ -157,6 +147,15 @@
   Volume                   = {9},
 
   Publisher                = {MIT Press}
+}
+
+@Misc{hochreiter2001gradient,
+  Title                    = {Gradient flow in recurrent nets: the difficulty of learning long-term dependencies},
+
+  Author                   = {Hochreiter, Sepp and Bengio, Yoshua and Frasconi, Paolo and Schmidhuber, J{\"u}rgen},
+  Year                     = {2001},
+
+  Publisher                = {A field guide to dynamical recurrent neural networks. IEEE Press}
 }
 
 @InProceedings{hu2015information,
@@ -244,6 +243,15 @@
   Year                     = {1988},
   Pages                    = {3},
   Volume                   = {5}
+}
+
+@InProceedings{simard2003best,
+  author =       {Simard, Patrice Y and Steinkraus, Dave and Platt, John C},
+  title =        {Best practices for convolutional neural networks applied to visual document analysis},
+  booktitle =    {null},
+  year =         {2003},
+  pages =        {958},
+  organization = {IEEE}
 }
 
 @InProceedings{sutskever2014sequence,

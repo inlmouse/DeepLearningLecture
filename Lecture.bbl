@@ -141,6 +141,18 @@ David~E Rumelhart, Geoffrey~E Hinton, and Ronald~J Williams.
 \newblock Learning representations by back-propagating errors.
 \newblock {\em Cognitive modeling}, 5:3, 1988.
 
+\bibitem{simard2003best}
+Patrice~Y Simard, Dave Steinkraus, and John~C Platt.
+\newblock Best practices for convolutional neural networks applied to visual
+  document analysis.
+\newblock In {\em null}, page 958. IEEE, 2003.
+
+\bibitem{sun2014deep}
+Yi~Sun, Xiaogang Wang, and Xiaoou Tang.
+\newblock Deep learning face representation from predicting 10,000 classes.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1891--1898, 2014.
+
 \bibitem{sutskever2014sequence}
 Ilya Sutskever, Oriol Vinyals, and Quoc~VV Le.
 \newblock Sequence to sequence learning with neural networks.
