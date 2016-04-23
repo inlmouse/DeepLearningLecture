@@ -1409,7 +1409,8 @@ Caffe£¬È«³ÆConvolutional Architecture for Fast Feature Embedding£¬ÊÇÒ»¸ö¼ÆËãCNNÏ
 \begin{itemize}
   \item Blob£ºÊÇ»ù´¡µÄÊı¾İ½á¹¹£¬ÊÇÓÃÀ´±£´æÑ§Ï°µ½µÄ²ÎÊıÒÔ¼°ÍøÂç´«Êä¹ı³ÌÖĞ²úÉúÊı¾İµÄÀà¡£
   \item Layer£ºÊÇÍøÂçµÄ»ù±¾µ¥Ôª£¬ÓÉ´ËÅÉÉú³öÁË¸÷ÖÖ²ãÀà¡£ĞŞ¸ÄÕâ²¿·ÖµÄÈËÖ÷ÒªÊÇÑĞ¾¿ÌØÕ÷±í´ï·½ÏòµÄ¡£
-  \item Net£ºÊÇÍøÂçµÄ´î½¨£¬½«Layer ËùÅÉÉú³ö²ãÀà×éºÏ³ÉÍøÂç£»Solver£ºÊÇNet µÄÇó½â£¬ĞŞ¸ÄÕâ²¿·ÖÈËÖ÷Òª»áÊÇÑĞ¾¿DL Çó½â·½ÏòµÄ¡£
+  \item Net£ºÊÇÍøÂçµÄ´î½¨£¬½«Layer ËùÅÉÉú³ö²ãÀà×éºÏ³ÉÍøÂç£»
+  \item Solver£ºÊÇNet µÄÇó½â£¬ĞŞ¸ÄÕâ²¿·ÖÈËÖ÷Òª»áÊÇÑĞ¾¿DL Çó½â·½ÏòµÄ¡£
 \end{itemize}
 \subsection{¸ü½øÒ»²½µÄÌØµã}
 \subsubsection{Blob}
@@ -1798,10 +1799,84 @@ GRUÄ£ĞÍµÄ¸üĞÂ·½Ê½ÈçÏÂ£º
 \appendixpage
 \addcontentsline{toc}{chapter}{Appendices}\markboth{APPENDICES}{¸½Â¼}
 \begin{subappendices}
-\chapter{Ñ§Ï°ÀíÂÛµÄÍ³¼Æ»úÀí--Statistical Mechanics of Learning}
+\chapter{Ñ§Ï°ÀíÂÛµÄÍ³¼Æ»úÀí}
+ÕâÒ»²¿·Ö(Statistical Mechanics of Learning)ÎÒÃÇ½«½éÉÜÒ»Ğ©Í³¼ÆÑ§ÉÏµÄÔ­ÀíºÍ·½·¨£¬ÒÔ¼°Õâ·½·¨ÔÚÉñ¾­ÍøÂçÖĞµÄÁ¿»¯ÑĞ¾¿¡£\textbf{¸Ã¸½Â¼µÄÀí½âĞèÒªÏàµ±²¿·ÖµÄÊıÑ§ÖªÊ¶£¬Ñ¡ÔñÔÄ¶Á}¡£
+
 \section{Ò»Ğ©Ô¼¶¨}
+ÊıÑ§ÉÏµÄ·ÖÎö¿ÉÄÜÖ»ÄÜ¶ÔÒ»Ğ©¼«¶ËµÄ½á¹¹×àĞ§¡£ÕâÀïÎÒÃÇ¹ØĞÄÁ½ÖÖÉñ¾­ÍøÂç£ºµÚÒ»ÖÖ¼«¶ËÇé¿öÊÇÈ«»¥ÁªÈçÍ¼\ref{fig:app1}.b£¬Æä¶¯Ì¬½á¹¹ÊÇ¸ß¸´·¢µÄ£¬²¢ÇÒÆä½á¹û½«ÊÇÉñ¾­Ôª²»Í¬»î¶¯Ä£Ê½µÄ»ìãçĞòÁĞ£»ÁíÒ»ÖÖ¼«¶ËÇé¿ö³ÆÎªÇ°À¡Éñ¾­ÍøÂç(feed-forward neural network, FFN)ÈçÍ¼\ref{fig:app1}.c£¬ÆäÉñ¾­Ôª¿ÉÒÔ±»ÅÅĞòÎªlayers $l=1,\cdots,L$£¬Ê¹µÃÔÚ$l$²ãµÄÃ¿¸öÉñ¾­Ôª½ö»áÊÕµ½À´×Ô$l-1$²ãÉñ¾­ÔªµÄinput²¢½ö»áÇ°À¡¸ø$l+1$²ãµÄÉñ¾­Ôª¡£µÚÒ»²ã$l=1$³ÆÊäÈë²ã£¬×îºóÒ»²ã$l=L$³ÆÊä³ö²ã£¬ÆäÓà$1<l<L$³ÆÒş²ã¡£
+
+ÓÉÓÚÈ±Ê§·´À¡»ØÂ·£¬Æä¶¯Ì¬ĞÔÄÜ½«»áÏàµ±¼òµ¥£ºÊäÈë½«Í¨¹ıÁ¬Ğø¹ı³ÌÓ³Éäµ½Êä³ö²ã¡£Òò´Ë£¬»á±íÏÖ³ö´ÓÊäÈëµ½Êä³ö±êÇ©µÄ·ÖÀàĞÔ£¬Í¨¹ıÊä³ö²ãµÄ²»Í¬ÅäÖÃ¡£Õâ¸ö½á¹¹ÊÇ·Ç³£ÊÊºÏ×÷ÎªÑ§Ï°Ö®ÓÃ£¬×îÌØÊâµÄ¾ÍÊÇ¸ĞÖªÆ÷¡£
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app1.png}
+ \caption{²»Í¬ÀàĞÍµÄÉñ¾­ÍøÂç£ºa)ÆÕÊÊ½á¹¹£¬b)È«Á´½ÓÎüÒıÉñ¾­ÍøÂç£¬c)´øÒ»¸öÒş²ãµÄ·´À¡Éñ¾­ÍøÂç£¬d)µ¥²ã¸ĞÖªÆ÷}
+ \label{fig:app1}
+\end{figure}
 \subsection{Annealed Analysis of Gibbs Learning}
+¶ÔÊäÈë$\boldsymbol{S}$µ½¸ĞÖªÆ÷$\boldsymbol{J}$µÄclassification $sgn(\boldsymbol{JS})$£¬ÕâÀï¸ø³öÒ»¸ö¼¸ºÎÉÏµÄ½âÊÍ£º
+\begin{equation*}
+  sgn(\boldsymbol{JS}) =
+  \begin{cases}
+    1       & \langle\boldsymbol{J},\boldsymbol{S}\rangle>\pi/2\\
+    -1  & \langle\boldsymbol{J},\boldsymbol{S}\rangle<\pi/2\\
+  \end{cases}
+\end{equation*}
+ÕâÀï£¬$1,-1$±»³ÆÎª\textbf{¾ö²ß±ß½ç}£¬¿ÉÒÔÀí½âÎª×ÔÊäÈëµÄ°ëÆ½Ãæ·ÖÀà£»Ò²ÊÇÓÉÓÚÕâ¸öÔ­Òò£¬Èç¹û¿ÉÒÔÍ¨¹ıÒ»¸ö¸ĞÖªÆ÷ÊµÏÖµÄ·ÖÀà±»³ÆÎª\textbf{ÏßĞÔ¿É·Ö}µÄ¡£
+
+ÏÔÈ»£¬$\boldsymbol{J},\boldsymbol{S}$µÄlength¶Ô·ÖÀàÃ»ÓĞÓ°Ïì¡£Îª±ÜÃâ²»Í¬µÄñîºÏ£¨length£©µÄÏòÁ¿±»¹éÎªÏàÍ¬·ÖÀàµÄ¿ÉÄÜĞÔ£¬¶ÔÈ¨ÖØºÍÊäÈë¾ù×öÕıÔò»¯£º
+\begin{equation*}
+  \boldsymbol{J}^2=\sum_{i=1}^NJ_i^2=N~~~\text{and}~~~\boldsymbol{S}^2=\sum_{i=1}^NS_i^2=N
+\end{equation*}
+Æä´ú±íµÄ¼¸ºÎÒâÒåÎª$\boldsymbol{J},\boldsymbol{S}$Ö¸Ïò°ë¾¶Îª$\sqrt{N}$µÄ$N$Î¬³¬ÇòÃæ¡£
+
+Îª±È½Ï¶ş¸ĞÖªÆ÷µÄ·ÖÀàĞÔÄÜ£ºteacher perceptron$\boldsymbol{T}$ and student perceptron $\boldsymbol{J}$£¬ÎÒÃÇ½²ÏàÍ¬µÄÊäÈëÍ¨¹ı¶şÕßÓ³Éäµ½Ò»¸öÆ½ÃæÉÏÈçÍ¼\ref{fig:app2}¡£ÏÔ¶øÒ×¼ûµÄÒõÓ°²¿·ÖÊÇÎóÊ¶ÇøÓò¡£Èç¹ûÊäÈëµÄÑ¡ÔñÊÇËæ»úµÄ£¬ÄÇÃ´ÎóÊ¶µÄ¸ÅÂÊ¿ÉÒÔ¾«È·µÄ±íÊöÎªgeneralization error $\varepsilon$¡£ÓÉÓÚ·ÖÀàÏßÊÇ´¹Ö±ÓÚÏòÁ¿$\boldsymbol{T}~\text{and}~\boldsymbol{J}$µÄ£¬ÏÔÈ»$\varepsilon=\theta/\pi$£¬ÕâÀï$\theta$ÊÇÏòÁ¿$\boldsymbol{T}~\text{and}~\boldsymbol{J}$µÄ¼Ğ½Ç¡£ÓÚÊÇgeneralization error $\varepsilon$Õı±ÈÓÚÏòÁ¿ÔÚ$N$Î¬³¬ÇòÃæÉÏµÄ¼¸ºÎ¾àÀë£¨²âµØÏß¾à£©¡£Îª·½±ã£¬ÎÒÃÇÒıÈëteacher-student overlap:
+\begin{equation*}
+  R=\frac{\boldsymbol{JT}}{N}
+\end{equation*}
+È»¶øÓÉÓÚ£º$\frac{\boldsymbol{JT}}{N}=\frac{\boldsymbol{JT}}{|\boldsymbol{J}|\cdot|\boldsymbol{T}|}=\cos\langle\boldsymbol{J},\boldsymbol{T}\rangle=\cos\theta$£¬generalization error¿ÉÒÔĞ´Îª:
+\begin{equation*}
+  \varepsilon=\frac{1}{\pi}\arccos R
+\end{equation*}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app2.png}
+ \caption{Projection of the input space to the plane spanned by the coupling vectors of teacher and student. Patterns with projection in the shaded region are classified wrongly by student.}
+ \label{fig:app2}
+\end{figure}
+
+ÏÖÔÚÎÒÃÇ¿¼ÂÇÒ»¸ö²ßÂÔÒÔÆÚÔÚÑ§Ï°ÖĞĞŞ¸´studentµÄ´íÎó¡£¿¼ÂÇñîºÏÏòÁ¿$\boldsymbol{J}$±íÕ÷ÁËexampleÍêÈ«¹éÎªteacher£¬±»\textbf{¼æÈİ}µÄstudentsËù×é³ÉµÄ¼¸ºÎ³ÆÎª\textbf{version space}¡£ÎÒÃÇÒªÇógeneralization errorÔÚverison spaceÉÏËæ»ú·Ö²¼¡£Õâ¸ö¼òµ¥µÄ·½·¨(prescription)³ÆÎª\textbf{Gibbs Learning}¡£ÆäÑ§Ï°¹æÔòµÄ½á¹û±»·¢ÏÖ¿ÉÒÔÌØÕ÷»¯Ò»¸ö±»¼æÈİÑ§ÉúµÄµäĞÍ±íÏÖ(\textbf{the typical performance of a compatible student})¡£
+
+ÔÚGibbs LearningµÄ¿ò¼ÜÏÂ£¬generalization error½«»áËæÑµÁ·¼¯µÄ¹æÄ£µÄÉÏÉı¶øÏÂ½µ£¨ÓÉÓÚÔ½À´Ô½¶àµÄ$\boldsymbol{J}$±»ÈÏÎª²»¼æÈİµ¼ÖÂµÄversion spaceµÄËõĞ¡£©¡£Èç¹ûÎÒÃÇ¿ÉÒÔÁ¿»¯Ò»¸öñîºÏÏòÁ¿µÄ¡°´æ»î¼¸ÂÊ¡±£¬µ±Ò»¸öĞÂexample±»$\boldsymbol{J}$±íÕ÷µÄÊ±ºò£¬ÎÒÃÇ¿ÉÒÔµÃµ½ÔÚÑµÁ·¹ı³ÌÖĞgeneralization errorµÄÆ½¾ù±íÏÖ¡£ÏÔÈ»£¬¸ù¾İÉÏÃæoverlapµÄ¶¨Òå£¬¶ÔÃ¿¸ö$\boldsymbol{J}$µÄ´æ»î¼¸ÂÊÎª$1-\arccos R/\pi=1-\varepsilon$¡£¶¨Òå$\Omega_0(\varepsilon)$ÎªÑµÁ·Ç°ËùÓĞñîºÏÏòÁ¿$\boldsymbol{J}$µÄÌå»ı£¬ÓÉÓÚÃ¿´ÎÑµÁ·ÊÇ¶ÀÁ¢µÄ£¬ÄÇÃ´ÔÚµÚ$p$´ÎÑµÁ·ºóËùÄÜ¼æÈİstudentµÄÆ½¾ùÌå»ıÎª£º
+\begin{equation*}
+  \Omega_p(\varepsilon)=\Omega_0(\varepsilon)(1-\varepsilon)^p
+\end{equation*}
+
+ÏÔÈ»\footnote{
+ÕâÀï»ı·ÖµÄ¼ÆËãÊ¹ÓÃÁË$\delta$º¯ÊıµÄÖ¸Êı¼«ÏŞÊ½¶¨Òå£º
+\begin{equation*}
+  \delta(x) = \lim_{a\to 0}\frac{1}{a \sqrt{\pi}} \mathrm{e}^{-x^2/a^2}
+\end{equation*}
+ÒÔÏÂ±í´ïÊ½Ò²¿É´ú±íµÒÀ­¿Ë$\delta$º¯Êı£º
+\begin{gather*}
+  \delta(x)=\lim_{\alpha\to 0^+}\frac{1}{\pi}\frac{\alpha}{\alpha^2+x^2} \\
+  \delta(x)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}e^{ikx}dk \\
+  \delta(x)=\lim_{k\to\infty}\frac{1}{\pi}\frac{\sin{kx}}{x}
+\end{gather*}
+}£º
+\begin{equation*}
+  \Omega_0(\varepsilon)=\int d\boldsymbol{J}\delta(\boldsymbol{J}^2-N)\delta(\frac{\boldsymbol{JT}}{N}-\cos(\pi\varepsilon))\underset{N\to\infty}{\sim} \exp\{\frac{N}{2}[1+\ln2+\ln\sin^2(\pi\varepsilon)]\}
+\end{equation*}
+¼Ç£º$p=\alpha N$:
+\begin{equation*}
+  \Omega_p(\varepsilon)\underset{N\to\infty}{\sim} \exp\{N[\frac{1}{2}(1+\ln(2\pi))+\frac{1}{2}\ln\sin^2(\pi\varepsilon)+\alpha\ln(1-\varepsilon)]\}
+\end{equation*}
 \subsection{The Annealed Approximation in Statistical Mechanics}
+
+\section{The Gardner Analysis}
+\section{Learning by Minimizing Cost Functions}
+\section{Noisy Teachers}
+\section{Variations of Preceptron Learning}
 \end{subappendices}
 
 

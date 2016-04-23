@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  12 APR 2016 23:12
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  23 APR 2016 16:45
 entering extended mode
 **C:/Users/Glass/Documents/GitHub/DeepLearningLecture/Lecture.tex
 (C:/Users/Glass/Documents/GitHub/DeepLearningLecture/Lecture.tex
@@ -1081,30 +1081,30 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 (D:\CTEX\MiKTeX\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1420
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1421
 .
 
 (D:\CTEX\MiKTeX\tex\latex\base\omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7.53> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1420.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1421.
 
  [71] [72]
-Underfull \hbox (badness 10000) in paragraph at lines 1475--1477
+Underfull \hbox (badness 10000) in paragraph at lines 1476--1478
 
  []
 
 [73] [74] (D:\CTEX\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 ) [75]
-Overfull \hbox (11.15518pt too wide) in paragraph at lines 1558--1560
+Overfull \hbox (11.15518pt too wide) in paragraph at lines 1559--1561
 []\OT1/cmr/m/n/10.54 Another pre-processing ap-proach sim-i-lar to the first on
 e is \OT1/cmr/bx/n/10.54 P-CA Whiten-
  []
 
 [76]
-Overfull \hbox (0.6981pt too wide) in paragraph at lines 1582--1584
+Overfull \hbox (0.6981pt too wide) in paragraph at lines 1583--1585
 \OT1/cmr/m/n/10.54 weight-s will be pos-i-tive and half of them will be neg-a-t
 ive. A reasonable-
  []
@@ -1113,7 +1113,7 @@ ive. A reasonable-
 File: pics/66.png Graphic file (type png)
 
 <use pics/66.png>
-Package pdftex.def Info: pics/66.png used on input line 1624.
+Package pdftex.def Info: pics/66.png used on input line 1625.
 (pdftex.def)             Requested size: 344.78728pt x 440.39423pt.
  [80] [81] [82 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/66.png
 >]
@@ -1121,7 +1121,7 @@ Package pdftex.def Info: pics/66.png used on input line 1624.
 <pics/71.png, id=424, 179.92218pt x 169.38281pt>
 File: pics/71.png Graphic file (type png)
  <use pics/71.png>
-Package pdftex.def Info: pics/71.png used on input line 1662.
+Package pdftex.def Info: pics/71.png used on input line 1663.
 (pdftex.def)             Requested size: 179.92174pt x 169.38239pt.
  [83
 
@@ -1129,20 +1129,20 @@ Package pdftex.def Info: pics/71.png used on input line 1662.
 <pics/72.png, id=428, 345.54094pt x 97.86563pt>
 File: pics/72.png Graphic file (type png)
  <use pics/72.png>
-Package pdftex.def Info: pics/72.png used on input line 1679.
+Package pdftex.def Info: pics/72.png used on input line 1680.
 (pdftex.def)             Requested size: 345.54008pt x 97.86537pt.
 
-Overfull \hbox (0.54008pt too wide) in paragraph at lines 1679--1680
+Overfull \hbox (0.54008pt too wide) in paragraph at lines 1680--1681
  [][] 
  []
 
 <pics/73.png, id=429, 343.2825pt x 94.85437pt>
 File: pics/73.png Graphic file (type png)
  <use pics/73.png>
-Package pdftex.def Info: pics/73.png used on input line 1689.
+Package pdftex.def Info: pics/73.png used on input line 1690.
 (pdftex.def)             Requested size: 343.28165pt x 94.85413pt.
 
-Overfull \hbox (16.2876pt too wide) in paragraph at lines 1686--1693
+Overfull \hbox (16.2876pt too wide) in paragraph at lines 1687--1694
 []\C19/rm/m/n/10.54/60 Ã \C19/rm/m/n/10.54/44 Ç \C19/rm/m/n/10.54/55   \C19/rm/
 m/n/10.54/46 ≤ \C19/rm/m/n/10.54/58  \C19/rm/m/n/10.54/49 ‰ \C19/rm/m/n/10.54/
 40  \C19/rm/m/n/10.54/37 Î \C19/rm/m/n/10.54/55 Í \C19/rm/m/n/10.54/60 ‘ \C19/
@@ -1156,7 +1156,7 @@ rm/m/n/10.54/48 ˆ \C19/rm/m/n/10.54/47 å \C19/rm/m/n/10.54/61 ± \C19/rm/m/n/10.
 [84 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/71.png>] [85 <C:/
 Users/Glass/Documents/GitHub/DeepLearningLecture/pics/72.png> <C:/Users/Glass/D
 ocuments/GitHub/DeepLearningLecture/pics/73.png>]
-Overfull \hbox (3.2012pt too wide) in paragraph at lines 1715--1716
+Overfull \hbox (3.2012pt too wide) in paragraph at lines 1716--1717
 []\C19/rm/m/n/10.54/58 ∑ \C19/rm/m/n/10.54/50 Ç \C19/rm/m/n/10.54/40 Ω \C19/rm/
 m/n/10.54/61 ¬$\OML/cmm/m/it/10.54  \OT1/cmr/m/n/10.54 = \OMS/cmsy/m/n/10.54 j
 j\OML/cmm/m/it/10.54 U[][]\OT1/cmr/m/n/10.54 [\OML/cmm/m/it/10.54 f[]\OT1/cmr/m
@@ -1171,7 +1171,7 @@ rm/m/n/10.54/48 p \C19/rm/m/n/10.54/50 ° \C19/rm/m/n/10.54/58 è$\OML/cmm/m/it/1
 [86] <pics/74.png, id=444, 324.46219pt x 231.86626pt>
 File: pics/74.png Graphic file (type png)
  <use pics/74.png>
-Package pdftex.def Info: pics/74.png used on input line 1763.
+Package pdftex.def Info: pics/74.png used on input line 1764.
 (pdftex.def)             Requested size: 324.46138pt x 231.86568pt.
 
 [87]
@@ -1188,25 +1188,53 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.54> not available
 
 ] [96]
 µ⁄æ≈’¬
+<pics/app1.png, id=477, 316.18124pt x 271.0125pt>
+File: pics/app1.png Graphic file (type png)
+ <use pics/app1.png>
+Package pdftex.def Info: pics/app1.png used on input line 1812.
+(pdftex.def)             Requested size: 316.18047pt x 271.01183pt.
+ [97
 
-Overfull \hbox (4.39267pt too wide) in paragraph at lines 1804--1804
+]
+Underfull \vbox (badness 3668) has occurred while \output is active []
+
+ [98 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/app1.png>]
+<pics/app2.png, id=486, 216.05719pt x 216.05719pt>
+File: pics/app2.png Graphic file (type png)
+ <use pics/app2.png>
+Package pdftex.def Info: pics/app2.png used on input line 1843.
+(pdftex.def)             Requested size: 216.05664pt x 216.05664pt.
+
+Overfull \hbox (14.2587pt too wide) in paragraph at lines 1850--1851
+\C19/rm/m/n/10.54/60 |\C19/rm/m/n/10.54/26 §||\C19/rm/m/n/10.54/25 "| \C19/rm/
+m/n/10.54/54 X \C19/rm/m/n/10.54/43 J \C19/rm/m/n/10.54/58 ∑ \C19/rm/m/n/10.54/
+50 Ç \C19/rm/m/n/10.54/47 å \C19/rm/m/n/10.54/61 ± \C19/rm/m/n/10.54/48 ˛ \C19/
+rm/m/n/10.54/44 z \C19/rm/m/n/10.54/61 ò \C19/rm/m/n/10.54/42 á \C19/rm/m/n/10.
+54/84 Õ \C19/rm/m/n/10.54/43 ‹ \C19/rm/m/n/10.54/59 ï \C19/rm/m/n/10.54/48 ˛ \C
+19/rm/m/n/10.54/40  |\C19/rm/m/n/10.54/25 /|\C19/rm/m/n/10.54/39  \C19/rm/m/n
+/10.54/44 π \C19/rm/m/n/10.54/45 A \C19/rm/m/n/10.54/49 «|\C19/rm/m/n/10.54/25 
+0||\C19/rm/m/n/10.54/26 ß| \C19/rm/m/n/10.54/40  \C19/rm/m/n/10.54/61 ò \C19/r
+m/m/n/10.54/42 á \C19/rm/m/n/10.54/60 #\OT1/cmr/m/n/10.54 example\C19/rm/m/n/10
+.54/37 $[]$L
+ []
+
+[99 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/app2.png>]
+Overfull \hbox (4.39267pt too wide) in paragraph at lines 1874--1874
 []\OT1/cmr/bx/n/12.05 The An-nealed Ap-prox-i-ma-tion in S-ta-tis-ti-cal Me-cha
 n-
  []
 
-[97
-
-] (C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.aux)
+[100] (C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14609 strings out of 495354
- 227483 string characters out of 3183859
- 355839 words of memory out of 3000000
- 17393 multiletter control sequences out of 15000+200000
- 93576 words of font info for 319 fonts, out of 3000000 for 9000
+ 14647 strings out of 495354
+ 228160 string characters out of 3183859
+ 354861 words of memory out of 3000000
+ 17429 multiletter control sequences out of 15000+200000
+ 93873 words of font info for 320 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,22n,58p,1884b,1730s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
@@ -1266,9 +1294,9 @@ c/amsfonts/cm/cmsy7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.p
 fb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/CTEX/MiKTeX/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb><D:/CTEX/MiKTeX/fonts/type1/public
 /amsfonts/symbols/msbm7.pfb>
-Output written on Lecture.pdf (97 pages, 2299368 bytes).
+Output written on Lecture.pdf (100 pages, 2354468 bytes).
 PDF statistics:
- 867 PDF objects out of 1000 (max. 8388607)
+ 880 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

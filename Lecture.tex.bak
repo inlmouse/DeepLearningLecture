@@ -7,10 +7,13 @@
 \usepackage{color}
 \usepackage{booktabs}
 \usepackage[]{algorithm2e}
+\usepackage{appendix}
+%\usepackage{titlesec}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
+
 
 \newcommand{\argmax}{\mathop{\rm arg~max}\limits}
 \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
@@ -432,7 +435,7 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
   \item \textbf{$L_0/L_1$ Regularization(Weight Decay)}:\\
   ¸ù¾İÊ½\ref{3.5}¿ÉÖª£¬ÆäÖĞµÚÒ»Ïî$L(y^{(i)},f(x^{(i)}, \theta))$ ºâÁ¿ÎÒÃÇµÄÄ£ĞÍ£¨·ÖÀà»òÕß»Ø¹é£©¶ÔµÚi¸öÑù±¾µÄÔ¤²âÖµ$f(x^{(i)}, \theta)$ºÍÕæÊµµÄ±êÇ©$y^{(i)}$Ö®Ç°µÄÎó²î¡£ÒòÎªÎÒÃÇµÄÄ£ĞÍÊÇÒªÄâºÏÎÒÃÇµÄÑµÁ·Ñù±¾µÄÂï£¬ËùÒÔÎÒÃÇÒªÇóÕâÒ»Ïî×îĞ¡£¬Ò²¾ÍÊÇÒªÇóÎÒÃÇµÄÄ£ĞÍ¾¡Á¿µÄÄâºÏÎÒÃÇµÄÑµÁ·Êı¾İ¡£µ«ÕıÈçÉÏÃæËµÑÔ£¬ÎÒÃÇ²»½öÒª±£Ö¤ÑµÁ·Îó²î×îĞ¡£¬ÎÒÃÇ¸üÏ£ÍûÎÒÃÇµÄÄ£ĞÍ²âÊÔÎó²îĞ¡£¬ËùÒÔÎÒÃÇĞèÒª¼ÓÉÏµÚ¶şÏî£¬Ò²¾ÍÊÇ¶Ô²ÎÊı$\theta$µÄ¹æÔò»¯º¯Êı$\Omega(\theta)$È¥Ô¼ÊøÎÒÃÇµÄÄ£ĞÍ¾¡Á¿µÄ¼òµ¥¡£\\
   ÆäÊµ´ó²¿·ÖÎŞ·Ç¾ÍÊÇ±ä»»ÕâÁ½Ïî¶øÒÑ¡£¶ÔÓÚµÚÒ»ÏîLossº¯Êı£¬Èç¹ûÊÇSquare loss£¬ÄÇ¾ÍÊÇ×îĞ¡¶ş³ËÁË£»Èç¹ûÊÇHinge Loss£¬ÄÇ¾ÍÊÇSVM£»Èç¹ûÊÇexp-Loss£¬ÄÇ¾ÍÊÇBoosting£»Èç¹ûÊÇlog-Loss£¬ÄÇ¾ÍÊÇLogistic Regression¡­¡­²»Í¬µÄlossº¯Êı£¬¾ßÓĞ²»Í¬µÄÄâºÏÌØĞÔ£¬Õâ¸öÒ²µÃ¾Í¾ßÌåÎÊÌâ¾ßÌå·ÖÎöµÄ¡£µ«ÕâÀï£¬ÎÒÃÇÏÈ²»¾¿lossº¯ÊıµÄÎÊÌâ£¬ÎÒÃÇ°ÑÄ¿¹â×ªÏò¡°¹æÔòÏî$\Omega(\theta)$¡±¡£\\
-  ¹æÔò»¯º¯Êı$\Omega(\theta)$Ò²ÓĞºÜ¶àÖÖÑ¡Ôñ£¬Ò»°ãÊÇÄ£ĞÍ¸´ÔÓ¶ÈµÄµ¥µ÷µİÔöº¯Êı£¬Ä£ĞÍÔ½¸´ÔÓ£¬¹æÔò»¯Öµ¾ÍÔ½´ó¡£±ÈÈç£¬¹æÔò»¯Ïî¿ÉÒÔÊÇÄ£ĞÍ²ÎÊıÏòÁ¿µÄ·¶Êı¡£È»¶ø£¬²»Í¬µÄÑ¡Ôñ¶Ô²ÎÊıwµÄÔ¼Êø²»Í¬£¬È¡µÃµÄĞ§¹ûÒ²²»Í¬£¬µ«ÔÚÂÛÎÄÖĞ³£¼ûµÄ¶¼¾Û¼¯ÔÚ£ºÁã·¶Êı¡¢Ò»·¶Êı¡¢¶ş·¶Êı¡¢¼£·¶Êı¡¢Frobenius·¶ÊıºÍºË·¶ÊıµÈµÈ¡£\\
+  ¹æÔò»¯º¯Êı$\Omega(\theta)$Ò²ÓĞºÜ¶àÖÖÑ¡Ôñ£¬Ò»°ãÊÇÄ£ĞÍ¸´ÔÓ¶ÈµÄµ¥µ÷µİÔöº¯Êı£¬Ä£ĞÍÔ½¸´ÔÓ£¬¹æÔò»¯Öµ¾ÍÔ½´ó¡£±ÈÈç£¬¹æÔò»¯Ïî¿ÉÒÔÊÇÄ£ĞÍ²ÎÊıÏòÁ¿µÄ·¶Êı¡£È»¶ø£¬²»Í¬µÄÑ¡Ôñ¶Ô²ÎÊıwµÄÔ¼Êø²»Í¬£¬È¡µÃµÄĞ§¹ûÒ²²»Í¬£¬µ«ÔÚÂÛÎÄÖĞ³£¼ûµÄ¶¼¾Û¼¯ÔÚ£ºÁã·¶Êı¡¢Ò»·¶Êı¡¢¶ş·¶Êı¡¢¼£·¶Êı¡¢Frobenius ·¶ÊıºÍºË·¶ÊıµÈµÈ¡£\\
   $L_0$·¶ÊıÊÇÖ¸ÏòÁ¿ÖĞ·Ç0µÄÔªËØµÄ¸öÊı¡£Èç¹ûÎÒÃÇÓÃ$L_0$·¶ÊıÀ´¹æÔò»¯Ò»¸ö²ÎÊı¾ØÕó$\boldsymbol{W}$µÄ»°£¬¾ÍÊÇÏ£Íû$\boldsymbol{W}$µÄ´ó²¿·ÖÔªËØ¶¼ÊÇ0¡£»»¾ä»°Ëµ£¬ÈÃ²ÎÊı$\boldsymbol{W}$ÊÇÏ¡Êè\footnote{¡°Ñ¹Ëõ¸ĞÖª¡±ºÍ¡°Ï¡Êè±àÂë¡±µÄ¡°Ï¡Êè¡±¾ÍÊÇÕâÑùÀ´ÊµÏÖµÄ¡£}µ«Ï¡Êè´ó¶à¶¼Í¨¹ı$L_1$·¶Êı($||W||_1$)À´ÊµÏÖµÄ£¬ÒòÎª¶şÕßÔÚÊıÑ§ÉÏÓĞÏàµ±µÄ¹ØÁª¡£\\
   $L_1$·¶ÊıÊÇÖ¸ÏòÁ¿ÖĞ¸÷¸öÔªËØ¾ø¶ÔÖµÖ®ºÍ£¬Ò²ÓĞ¸öÃÀ³Æ½Ğ¡°Ï¡Êè¹æÔòËã×Ó¡±£¨Lasso regularization£©£¬ËüÊÇ$L_0$·¶ÊıµÄ×îÓÅÍ¹½üËÆ¡£Êµ¼ÊÉÏ£¬ÈÎºÎµÄ¹æÔò»¯Ëã×Ó£¬Èç¹ûËûÔÚ$\boldsymbol{W}_i=0$µÄµØ·½²»¿ÉÎ¢£¬²¢ÇÒ¿ÉÒÔ·Ö½âÎªÒ»¸ö¡°ÇóºÍ¡±µÄĞÎÊ½£¬ÄÇÃ´Õâ¸ö¹æÔò»¯Ëã×Ó¾Í¿ÉÒÔÊµÏÖÏ¡Êè¡£ÕâËµÊÇÕâÃ´Ëµ£¬$\boldsymbol{W}$µÄ$L_1$·¶ÊıÊÇ¾ø¶ÔÖµ£¬$|\boldsymbol{W}|$ÔÚ$\boldsymbol{W}=0$´¦ÊÇ²»¿ÉÎ¢£¬µ«Õâ»¹ÊÇ²»¹»Ö±¹Û¡£ÒòÎª$L_0$·¶ÊıºÜÄÑÓÅ»¯Çó½â£¨NPÄÑÎÊÌâ£©£¬¶şÊÇ$L_1$·¶ÊıÊÇ$L_0$·¶ÊıµÄ×îÓÅÍ¹½üËÆ£¬¶øÇÒËü±È$L_0$·¶ÊıÒªÈİÒ×ÓÅ»¯Çó½â¡£\\
   \begin{equation*}
@@ -445,9 +448,9 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
   \end{enumerate}
   \item \textbf{$L_2$ Regularization(Weight Decay)}:\\
   ³ıÁË$L_1$·¶Êı£¬»¹ÓĞÒ»ÖÖ¸üÊÜÇàÃĞµÄ¹æÔò»¯·¶ÊıÊÇ$L_2$·¶Êı: $||\boldsymbol{W}||_2$¡£ËüÒ²²»Ñ·ÓÚ$L_1$·¶Êı£¬ÔÚ»Ø¹éÀïÃæ£¬ÓĞÈË°ÑÓĞËüµÄ»Ø¹é½Ğ¡°Áë»Ø¹é¡±£¨Ridge Regression£©£¬ÓĞÈËÒ²½ĞËü¡°È¨ÖµË¥¼õweight decay¡±¡£ÕâÓÃµÄºÜ¶à°É£¬ÒòÎªËüµÄÇ¿´ó¹¦Ğ§ÊÇ¸ÄÉÆ»úÆ÷Ñ§Ï°ÀïÃæÒ»¸ö·Ç³£ÖØÒªµÄÎÊÌâ£º¹ıÄâºÏ¡£\\
-  $L_2$·¶ÊıÊÇÖ¸ÏòÁ¿¸÷ÔªËØµÄÆ½·½ºÍÈ»ºóÇóÆ½·½¸ù¡£ÎÒÃÇÈÃL2·¶ÊıµÄ¹æÔòÏî$||\boldsymbol{W}||_2$×îĞ¡£¬¿ÉÒÔÊ¹µÃWµÄÃ¿¸öÔªËØ¶¼ºÜĞ¡£¬¶¼½Ó½üÓÚ0£¬µ«Óë$L_1$·¶Êı²»Í¬£¬Ëü²»»áÈÃËüµÈÓÚ0£¬¶øÊÇ½Ó½üÓÚ0£¬ÕâÀïÊÇÓĞºÜ´óµÄÇø±ğ¡£¶øÔ½Ğ¡µÄ²ÎÊıËµÃ÷Ä£ĞÍÔ½¼òµ¥£¬Ô½¼òµ¥µÄÄ£ĞÍÔòÔ½²»ÈİÒ×²úÉú¹ıÄâºÏÏÖÏó¡£ÏŞÖÆÁË²ÎÊıºÜĞ¡£¬Êµ¼ÊÉÏ¾ÍÏŞÖÆÁË¶àÏîÊ½Ä³Ğ©·ÖÁ¿µÄÓ°ÏìºÜĞ¡£¬ÕâÑù¾ÍÏàµ±ÓÚ¼õÉÙ²ÎÊı¸öÊı¡£\\
+  $L_2$·¶ÊıÊÇÖ¸ÏòÁ¿¸÷ÔªËØµÄÆ½·½ºÍÈ»ºóÇóÆ½·½¸ù¡£ÎÒÃÇÈÃL2·¶ÊıµÄ¹æÔòÏî$||\boldsymbol{W}||_2$×îĞ¡£¬¿ÉÒÔÊ¹µÃW µÄÃ¿¸öÔªËØ¶¼ºÜĞ¡£¬¶¼½Ó½üÓÚ0£¬µ«Óë$L_1$ ·¶Êı²»Í¬£¬Ëü²»»áÈÃËüµÈÓÚ0£¬¶øÊÇ½Ó½üÓÚ0£¬ÕâÀïÊÇÓĞºÜ´óµÄÇø±ğ¡£¶øÔ½Ğ¡µÄ²ÎÊıËµÃ÷Ä£ĞÍÔ½¼òµ¥£¬Ô½¼òµ¥µÄÄ£ĞÍÔòÔ½²»ÈİÒ×²úÉú¹ıÄâºÏÏÖÏó¡£ÏŞÖÆÁË²ÎÊıºÜĞ¡£¬Êµ¼ÊÉÏ¾ÍÏŞÖÆÁË¶àÏîÊ½Ä³Ğ©·ÖÁ¿µÄÓ°ÏìºÜĞ¡£¬ÕâÑù¾ÍÏàµ±ÓÚ¼õÉÙ²ÎÊı¸öÊı¡£\\
   ³ıÁË·ÀÖ¹¹ıÄâºÏºÍÌáÉıÄ£ĞÍµÄ·º»¯ÄÜÁ¦µÄÎÊÌâÍâ£¬$L_2$·¶Êı»¹ÄÜ¹»ÔÚ¼ÆËãÓÅ»¯µÄ½Ç¶ÈÉÏ¶Ô´¦Àí condition number\footnote{
-  Ê×ÏÈ¼Ù¶¨Ö»´æÔÚ$\boldsymbol{b}$µÄÈÅ¶¯$\delta\boldsymbol{b}$£¬$\boldsymbol{A}$ÎÈ¶¨£¬¿¼²ì$\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}$µÄ½âÎö½âÏòÁ¿$\boldsymbol{x}+\delta\boldsymbol{x}$£¬¼´£º
+  Ê×ÏÈ¼Ù¶¨Ö»´æÔÚ$\boldsymbol{b}$µÄÈÅ¶¯$\delta\boldsymbol{b}$£¬$\boldsymbol{A}$ÎÈ¶¨£¬¿¼²ì$\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}$ µÄ½âÎö½âÏòÁ¿$\boldsymbol{x}+\delta\boldsymbol{x}$£¬¼´£º
   \begin{equation*}
     \boldsymbol{A}(\boldsymbol{x}+\delta\boldsymbol{x})=\boldsymbol{b}+\delta\boldsymbol{b}
   \end{equation*}
@@ -479,8 +482,8 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
 
   ÓÚÊÇ¿ÉÖª½âÏòÁ¿µÄÏà¶ÔÎó²îÓ¦Õı±ÈÓÚ$||\boldsymbol{A}||_2\cdot||\boldsymbol{A}^{-1}||_2\equiv\text{cond}(\boldsymbol{A})\equiv\kappa(\boldsymbol{A})$£¬³Æcondition number.
 
-  ¶ÔÓÚ³¬¶¨·½³Ì£¨$\boldsymbol{A}\in\mathbb{C}^{m\times n}(m>n)$£©£¬±ØÓĞ×îĞ¡¶ş³Ë½â$\boldsymbol{x}=(\boldsymbol{A}^H\boldsymbol{A})^{-1}\boldsymbol{A}^H\boldsymbol{b}$¡£ÈİÒ×Ö¤Ã÷£¨ÄãĞÅÃ´£¿£©$\text{cond}(\boldsymbol{A}^H\boldsymbol{A})=\text{cond}^2(\boldsymbol{A})$¡£Ìõ¼şÊıÊÇÆ½·½¹ØÏµÔö´óµÄ£¬Í¬Ê±ÎÈ¶¨ĞÔ·´±ÈÓÚÌõ¼şÊı¡£
-  }²»ºÃµÄÇé¿öÏÂ¾ØÕóÇóÄæºÜÀ§ÄÑµÄÎÊÌâ¡£condition numberÊÇÒ»¸ö¾ØÕó£¨»òÕßËüËùÃèÊöµÄÏßĞÔÏµÍ³£©µÄÎÈ¶¨ĞÔ»òÕßÃô¸Ğ¶ÈµÄ¶ÈÁ¿£¬Èç¹ûÒ»¸ö¾ØÕóµÄcondition numberÔÚ1¸½½ü£¬ÄÇÃ´Ëü¾ÍÊÇwell-conditionedµÄ£¬Èç¹ûÔ¶´óÓÚ1£¬ÄÇÃ´Ëü¾ÍÊÇill-conditionedµÄ£¬Èç¹ûÒ»¸öÏµÍ³ÊÇill-conditionedµÄ£¬ËüµÄÊä³ö½á¹û¾Í²»¾ßÓĞÏàµ±µÄÖÃĞÅ¶È¡£\\
+  ¶ÔÓÚ³¬¶¨·½³Ì£¨$\boldsymbol{A}\in\mathbb{C}^{m\times n}(m>n)$£©£¬±ØÓĞ×îĞ¡¶ş³Ë½â$\boldsymbol{x}=(\boldsymbol{A}^H\boldsymbol{A})^{-1}\boldsymbol{A}^H\boldsymbol{b}$¡£ ÈİÒ×Ö¤Ã÷£¨ÄãĞÅÃ´£¿£©$\text{cond}(\boldsymbol{A}^H\boldsymbol{A})=\text{cond}^2(\boldsymbol{A})$¡£ Ìõ¼şÊıÊÇÆ½·½¹ØÏµÔö´óµÄ£¬Í¬Ê±ÎÈ¶¨ĞÔ·´±ÈÓÚÌõ¼şÊı¡£
+  }²»ºÃµÄÇé¿öÏÂ¾ØÕóÇóÄæºÜÀ§ÄÑµÄÎÊÌâ¡£condition numberÊÇÒ»¸ö¾ØÕó£¨»òÕßËüËùÃèÊöµÄÏßĞÔÏµÍ³£©µÄÎÈ¶¨ĞÔ»òÕßÃô¸Ğ¶ÈµÄ¶ÈÁ¿£¬Èç¹ûÒ»¸ö¾ØÕóµÄcondition numberÔÚ1 ¸½½ü£¬ÄÇÃ´Ëü¾ÍÊÇwell-conditioned µÄ£¬Èç¹ûÔ¶´óÓÚ1£¬ÄÇÃ´Ëü¾ÍÊÇill-conditioned µÄ£¬Èç¹ûÒ»¸öÏµÍ³ÊÇill-conditionedµÄ£¬ËüµÄÊä³ö½á¹û¾Í²»¾ßÓĞÏàµ±µÄÖÃĞÅ¶È¡£\\
   ´ÓÓÅ»¯»òÕßÊıÖµ¼ÆËãµÄ½Ç¶ÈÀ´Ëµ£¬$L_2$·¶ÊıÓĞÖúÓÚ´¦Àí condition number²»ºÃµÄÇé¿öÏÂ¾ØÕóÇóÄæºÜÀ§ÄÑµÄÎÊÌâ¡£ÒòÎªÄ¿±êº¯ÊıÈç¹ûÊÇ¶ş´ÎµÄ£¬¶ÔÓÚÏßĞÔ»Ø¹éÀ´Ëµ£¬ÄÇÊµ¼ÊÉÏÊÇÓĞ½âÎö½âµÄ£¬Çóµ¼²¢Áîµ¼ÊıµÈÓÚÁã¼´¿ÉµÃµ½×îÓÅ½âÎª£º
   \begin{equation*}
     \boldsymbol{W}=(\boldsymbol{X}^H\boldsymbol{X})^{-1}\boldsymbol{X}^H\boldsymbol{y}
@@ -491,11 +494,11 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
     \boldsymbol{W}=(\boldsymbol{X}^H\boldsymbol{X}+\lambda\boldsymbol{I})^{-1}\boldsymbol{X}^H\boldsymbol{y}
   \end{equation*}
   Õâ¸ö¹æÔòÏîµÄÒıÈëÔò¿ÉÒÔ¸ÄÉÆcondition number.
-  
+
   Èç¹ûÊ¹ÓÃµü´úÓÅ»¯µÄËã·¨£¬condition number Ì«´óÈÔÈ»»áµ¼ÖÂÎÊÌâ£ºËü»áÍÏÂıµü´úµÄÊÕÁ²ËÙ¶È£¬¶ø¹æÔòÏî´ÓÓÅ»¯µÄ½Ç¶ÈÀ´¿´£¬Êµ¼ÊÉÏÊÇ½«Ä¿±êº¯Êı±ä³É$\lambda$-strongly convex\footnote{
   A differentiable function $f$ is called \textbf{$\lambda$-strongly convex} with parameter $\lambda > 0$ if the following inequality holds for all points x, y in its domain:
   \begin{equation*}
-    ( \nabla f(x) - \nabla f(y) )^T (x-y) \ge \lambda \|x-y\|_2^2 
+    ( \nabla f(x) - \nabla f(y) )^T (x-y) \ge \lambda \|x-y\|_2^2
   \end{equation*}
   or, more generally,
   \begin{equation*}
@@ -508,7 +511,7 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
   ¼ÙÉèÎÒÃÇÒªÑµÁ·ÉÏÍ¼Õâ¸öÍøÂç£¬ÔÚÑµÁ·¿ªÊ¼Ê±£¬ÎÒÃÇËæ»úµØ¡°É¾³ı¡±Ò»°ëµÄÒş²ãµ¥Ôª£¬ÊÓËüÃÇÎª²»´æÔÚ;±£³ÖÊäÈëÊä³ö²ã²»±ä£¬°´ÕÕBPËã·¨¸üĞÂÉÏÍ¼Éñ¾­ÍøÂçÖĞµÄÈ¨Öµ£¨ĞéÏßÁ¬½ÓµÄµ¥Ôª²»¸üĞÂ£¬ÒòÎªËüÃÇ±»¡°ÁÙÊ±É¾³ı¡±ÁË£©¡£\\
   ÒÔÉÏ¾ÍÊÇÒ»´Îµü´úµÄ¹ı³Ì£¬ÔÚµÚ¶ş´Îµü´úÖĞ£¬Ò²ÓÃÍ¬ÑùµÄ·½·¨£¬Ö»²»¹ıÕâ´ÎÉ¾³ıµÄÄÇÒ»°ëÒş²ãµ¥Ôª£¬¸úÉÏÒ»´ÎÉ¾³ıµôµÄ¿Ï¶¨ÊÇ²»Ò»ÑùµÄ£¬ÒòÎªÎÒÃÇÃ¿Ò»´Îµü´ú¶¼ÊÇ¡°Ëæ»ú¡±µØÈ¥É¾µôÒ»°ë¡£µÚÈı´Î¡¢µÚËÄ´Î¡­¡­¶¼ÊÇÕâÑù£¬Ö±ÖÁÑµÁ·½áÊø¡£\\
   ÒÔÉÏ¾ÍÊÇDropout£¬ËüÎªÊ²Ã´ÓĞÖúÓÚ·ÀÖ¹¹ıÄâºÏÄØ£¿¿ÉÒÔ¼òµ¥µØÕâÑù½âÊÍ£¬ÔËÓÃÁËdropoutµÄÑµÁ·¹ı³Ì£¬Ïàµ±ÓÚÑµÁ·ÁËºÜ¶à¸öÖ»ÓĞ°ëÊıÒş²ãµ¥ÔªµÄÉñ¾­ÍøÂç£¨ºóÃæ¼ò³ÆÎª¡°°ëÊıÍøÂç¡±£©£¬Ã¿Ò»¸öÕâÑùµÄ°ëÊıÍøÂç£¬¶¼¿ÉÒÔ¸ø³öÒ»¸ö·ÖÀà½á¹û£¬ÕâĞ©½á¹ûÓĞµÄÊÇÕıÈ·µÄ£¬ÓĞµÄÊÇ´íÎóµÄ¡£Ëæ×ÅÑµÁ·µÄ½øĞĞ£¬´ó²¿·Ö°ëÊıÍøÂç¶¼¿ÉÒÔ¸ø³öÕıÈ·µÄ·ÖÀà½á¹û£¬ÄÇÃ´ÉÙÊıµÄ´íÎó·ÖÀà½á¹û¾Í²»»á¶Ô×îÖÕ½á¹ûÔì³É´óµÄÓ°Ïì¡£
-  %¸ü¼ÓÉîÈëµØÀí½â£¬¿ÉÒÔ¿´¿´HintonºÍAlexÁ½Å£2012µÄÂÛÎÄ¡¶ImageNet Classification with Deep Convolutional Neural Networks¡·
+  %¸ü¼ÓÉîÈëµØÀí½â£¬¿ÉÒÔ¿´¿´HintonºÍAlex Á½Å£2012µÄÂÛÎÄ¡¶ImageNet Classification with Deep Convolutional Neural Networks¡·
 
   \begin{figure}[t]
  \centering
@@ -526,13 +529,13 @@ which is called the \textbf{softplus function}. The derivative of softplus is $f
     \item Ò»Ğ©ÓĞµ¯ĞÔµÄ»û±ä£¨elastic distortions£©£¬ÂÛÎÄ\cite{simard2003best}¶ÔMNIST×öÁË¸÷ÖÖ±äÖÖÀ©Ôö¡£
     \item ½ØÈ¡£¨crop£©Ô­Ê¼Í¼Æ¬µÄÒ»²¿·Ö¡£±ÈÈçDeepIDÖĞ£¬´ÓÒ»¸±ÈËÁ³Í¼ÖĞ£¬½ØÈ¡³öÁË100¸öĞ¡patch×÷ÎªÑµÁ·Êı¾İ£¬¼«´óµØÔö¼ÓÁËÊı¾İ¼¯\cite{sun2014deep}¡£
   \end{enumerate}
-  
+
   ¸ü¶àÊı¾İÒâÎ¶×ÅÊ²Ã´£¿ÓÃ50000¸öMNISTµÄÑù±¾ÑµÁ·SVMµÃ³öµÄaccuracy Îª94.48\%£¬ÓÃ5000¸öMNISTµÄÑù±¾ÑµÁ·NNµÃ³öaccuracyÎª93.24\%£¬ËùÒÔ¸ü¶àµÄÊı¾İ¿ÉÒÔÊ¹Ëã·¨±íÏÖµÃ¸üºÃ¡£ÔÚ»úÆ÷Ñ§Ï°ÖĞ£¬Ëã·¨±¾Éí²¢²»ÄÜ¾ö³öÊ¤¸º£¬²»ÄÜÎä¶ÏµØËµÕâĞ©Ëã·¨Ë­ÓÅË­ÁÓ£¬ÒòÎªÊı¾İ¶ÔËã·¨ĞÔÄÜµÄÓ°ÏìºÜ´ó¡£
 
   \item \textbf{Early Stopping}:\\
   ËùÎ½early stopping£¬¼´ÔÚÃ¿Ò»¸öepoch½áÊøÊ±£¨Ò»¸öepoch¼´¶ÔËùÓĞÑµÁ·Êı¾İµÄÒ»ÂÖ±éÀú£©¼ÆËã validation dataµÄaccuracy£¬µ±accuracy²»ÔÙÌá¸ßÊ±£¬¾ÍÍ£Ö¹ÑµÁ·¡£ÕâÊÇºÜ×ÔÈ»µÄ×ö·¨£¬ÒòÎªaccuracy²»ÔÙÌá¸ßÁË£¬ÑµÁ·ÏÂÈ¥Ò²Ã»ÓÃ¡£ÁíÍâ£¬ÕâÑù×ö»¹ÄÜ·ÀÖ¹overfitting¡£
 
-  ÄÇÃ´£¬ÔõÃ´Ñù²ÅËãÊÇvalidation accuracy²»ÔÙÌá¸ßÄØ£¿²¢²»ÊÇËµvalidation accuracyÒ»½µÏÂÀ´£¬Ëü¾ÍÊÇ¡°²»ÔÙÌá¸ß¡±£¬ÒòÎª¿ÉÄÜ¾­¹ıÕâ¸öepochºó£¬accuracy½µµÍÁË£¬µ«ÊÇËæºóµÄepochÓÖÈÃaccuracyÉıÉÏÈ¥ÁË£¬ËùÒÔ²»ÄÜ¸ù¾İÒ»Á½´ÎµÄÁ¬Ğø½µµÍ¾ÍÅĞ¶Ï¡°²»ÔÙÌá¸ß¡±¡£ÕıÈ·µÄ×ö·¨ÊÇ£¬ÔÚÑµÁ·µÄ¹ı³ÌÖĞ£¬¼ÇÂ¼×î¼ÑµÄvalidation accuracy£¬µ±Á¬Ğø10´Îepoch£¨»òÕß¸ü¶à´Î£©Ã»´ïµ½×î¼ÑaccuracyÊ±£¬Äã¿ÉÒÔÈÏÎª¡°²»ÔÙÌá¸ß¡±£¬´ËÊ±Ê¹ÓÃearly stopping¡£Õâ¸ö²ßÂÔ¾Í½Ğ¡° no-improvement-in-n¡±£¬n¼´epochµÄ´ÎÊı£¬¿ÉÒÔ¸ù¾İÊµ¼ÊÇé¿öÈ¡10¡¢20¡¢30¡­.
+  ÄÇÃ´£¬ÔõÃ´Ñù²ÅËãÊÇvalidation accuracy ²»ÔÙÌá¸ßÄØ£¿²¢²»ÊÇËµvalidation accuracyÒ»½µÏÂÀ´£¬Ëü¾ÍÊÇ¡°²»ÔÙÌá¸ß¡±£¬ÒòÎª¿ÉÄÜ¾­¹ıÕâ¸öepochºó£¬accuracy½µµÍÁË£¬µ«ÊÇËæºóµÄepochÓÖÈÃaccuracyÉıÉÏÈ¥ÁË£¬ËùÒÔ²»ÄÜ¸ù¾İÒ»Á½´ÎµÄÁ¬Ğø½µµÍ¾ÍÅĞ¶Ï¡°²»ÔÙÌá¸ß¡±¡£ÕıÈ·µÄ×ö·¨ÊÇ£¬ÔÚÑµÁ·µÄ¹ı³ÌÖĞ£¬¼ÇÂ¼×î¼ÑµÄvalidation accuracy£¬µ±Á¬Ğø10´Îepoch£¨»òÕß¸ü¶à´Î£©Ã»´ïµ½×î¼ÑaccuracyÊ±£¬Äã¿ÉÒÔÈÏÎª¡°²»ÔÙÌá¸ß¡±£¬´ËÊ±Ê¹ÓÃearly stopping¡£Õâ¸ö²ßÂÔ¾Í½Ğ¡° no-improvement-in-n¡±£¬n¼´epochµÄ´ÎÊı£¬¿ÉÒÔ¸ù¾İÊµ¼ÊÇé¿öÈ¡10¡¢20¡¢30¡­.
 \end{itemize}
 \subsection{ËğÊ§º¯Êı}
 Ò»¸öÊµÀı$(x, y)$£¬ÕæÊµÄ¿±êÊÇ$y$£¬»úÆ÷Ñ§Ï°Ä£ĞÍµÄÔ¤²âÎª$f(x, \theta)$¡£ Èç¹ûÔ¤²â´íÎóÊ±£¨$f(x, \theta) \not= y£©$£¬ÎÒÃÇĞèÒª¶¨ÒåÒ»¸ö¶ÈÁ¿º¯ÊıÀ´¶¨Á¿µØ¼ÆËã´íÎóµÄ³Ì¶È¡£³£¼ûµÄËğÊ§º¯ÊıÓĞÈçÏÂ¼¸Àà£º
@@ -867,7 +870,7 @@ sigmoidĞÍº¯Êı¶ÔÖĞ¼äÇøÓòµÄĞÅºÅÓĞÔöÒæ£¬¶ÔÁ½²àÇøµÄĞÅºÅÓĞÒÖÖÆ¡£ÕâÑùµÄÌØµãÒ²ºÍÉúÎïÉñ¾
 
 È»¶øÕâ¸öÀíÂÛÌ«¼òµ¥´Ö±©ÁË£¬Éî²ãÍøÂçµÄËğÊ§º¯Êı³öÏÖ´óÆ½Ô­²»ÊÇ¼¤»îº¯Êı¶ş´Îµ¼ÊıÎª²»ÎªÁãÕâÃ´¼òµ¥µÄÊÂÇé¡£
 
-ÎªÁËÀí½âÕâÖÖ´óÆ½Ô­µÄ³öÏÖ£¬ÎÒÃÇ¿ÉÒÔÓÃÁíÍâÒ»¸öÖ±¹Û´ÖÇ³µØ·½Ê½Àí½â±¥ºÍ£¬¸Ã·½·¨ÁıÍ³À´Ëµ£¬Èç¹û²ÎÊıWÇ±ÔÚµÄ½â¿Õ¼äÔ½´ó£¬ÑµÁ·Ô½ÄÑÕÒµ½¼«Ğ¡¡£ °´ÕÕÈçÏÂ·½Ê½¼ÆËãÇ±ÔÚ½â¿Õ¼ä£¬¼ÙÉèÄãµÄÊäÈëx¶¼±»rescaleµ½0-1Ö®¼ä£¬Äã¼ÆËãĞÅÏ¢ìØ$-\sum x_i \log x_i$£¬·¢ÏÖÊäÈë$x=0.5$¸½½üµÄÇø¼äÓµÓĞ×î´óµÄ×ÔÓÉ¶È£¨×ÔÓÉ»î¶¯¿Õ¼ä´óĞ¡Ô¼µÈÓÚexp(ìØ)£©£¬µ½ÁËsigmoid ÖĞ£¬Ïàµ±ÓÚÒªÇóWx ÎªÁã¡£¸üÒ»°ãÀ´Ëµ£¬¼ÆËãÊäÈëÎª¸ßË¹Ê±$x \sim  N (0.5, \sigma)$£¬Ê¹µÃWx µÈÓÚkµÄW½â¿Õ¼ä´óĞ¡£¬¿ÉÒÔÈçÏÂ¼ÆËã£º$\int \delta(Wx-k)\rho_{gauss}(x)dWdx$£¬$\delta(.)$ÊÇµÒÀ­¿Ëº¯Êı£¬¶ÔÓÚsigmoidÀ´Ëµ£¬kµÈÓÚÁã£¬ÉÏÃæµÄ»ı·ÖÎŞÇî´ó£¨W´¹Ö±x±ã¿É£¬ÓĞÎŞÏŞ½â£©¡£¶ÔÓÚreluÀ´Ëµ£¬k²»µÈÓÚÁã£¬»ı·Ö½á¹ûÎªÓĞÏŞÖµ$C_n k^{n-1}$£¬nÎªx µÄÎ¬¶È£¬$C_n$Í¬kÎŞ¹Ø¡£sigmoidµÄ½â¿Õ¼äÔ¶³¬relu¡£µ¼ÖÂ·ÖÀàÎÊÌâÖĞ£¬sigmoidÔÚ0.5 ¸½½üµÄÇø¼ä¹ı´ó£¬Ã¿²ã¶¼»¨´óÁ¿Ê±¼äËÑË÷£¬ÑµÁ·Ã»·¨ÌáÉı¡£Ô½Éî²ãµÄÍøÂç£¬Ô½ÄÑÒÔÌø³ö£¬ÕâÊÇìØÀİ£¨Ë×³Æ´óÆ½Ô­£©£¬ÓÃÓÚÇø±ğµ¥´¿¾Ö²¿¼«Ğ¡´øÀ´µÄÑµÁ·×è°­£¨¿ÓÍõÖ®Íõ£©¡£
+ÎªÁËÀí½âÕâÖÖ´óÆ½Ô­µÄ³öÏÖ£¬ÎÒÃÇ¿ÉÒÔÓÃÁíÍâÒ»¸öÖ±¹Û´ÖÇ³µØ·½Ê½Àí½â±¥ºÍ£¬¸Ã·½·¨ÁıÍ³À´Ëµ£¬Èç¹û²ÎÊıWÇ±ÔÚµÄ½â¿Õ¼äÔ½´ó£¬ÑµÁ·Ô½ÄÑÕÒµ½¼«Ğ¡¡£ °´ÕÕÈçÏÂ·½Ê½¼ÆËãÇ±ÔÚ½â¿Õ¼ä£¬¼ÙÉèÄãµÄÊäÈëx¶¼±»rescale µ½0-1Ö®¼ä£¬Äã¼ÆËãĞÅÏ¢ìØ$-\sum x_i \log x_i$£¬·¢ÏÖÊäÈë$x=0.5$¸½½üµÄÇø¼äÓµÓĞ×î´óµÄ×ÔÓÉ¶È£¨×ÔÓÉ»î¶¯¿Õ¼ä´óĞ¡Ô¼µÈÓÚexp(ìØ)£©£¬µ½ÁËsigmoid ÖĞ£¬Ïàµ±ÓÚÒªÇóWx ÎªÁã¡£¸üÒ»°ãÀ´Ëµ£¬¼ÆËãÊäÈëÎª¸ßË¹Ê±$x \sim  N (0.5, \sigma)$£¬Ê¹µÃWx µÈÓÚkµÄW½â¿Õ¼ä´óĞ¡£¬¿ÉÒÔÈçÏÂ¼ÆËã£º$\int \delta(Wx-k)\rho_{gauss}(x)dWdx$£¬$\delta(.)$ÊÇµÒÀ­¿Ëº¯Êı£¬¶ÔÓÚsigmoidÀ´Ëµ£¬kµÈÓÚÁã£¬ÉÏÃæµÄ»ı·ÖÎŞÇî´ó£¨W´¹Ö±x±ã¿É£¬ÓĞÎŞÏŞ½â£©¡£¶ÔÓÚreluÀ´Ëµ£¬k²»µÈÓÚÁã£¬»ı·Ö½á¹ûÎªÓĞÏŞÖµ$C_n k^{n-1}$£¬nÎªx µÄÎ¬¶È£¬$C_n$Í¬kÎŞ¹Ø¡£sigmoidµÄ½â¿Õ¼äÔ¶³¬relu¡£µ¼ÖÂ·ÖÀàÎÊÌâÖĞ£¬sigmoidÔÚ0.5 ¸½½üµÄÇø¼ä¹ı´ó£¬Ã¿²ã¶¼»¨´óÁ¿Ê±¼äËÑË÷£¬ÑµÁ·Ã»·¨ÌáÉı¡£Ô½Éî²ãµÄÍøÂç£¬Ô½ÄÑÒÔÌø³ö£¬ÕâÊÇìØÀİ£¨Ë×³Æ´óÆ½Ô­£©£¬ÓÃÓÚÇø±ğµ¥´¿¾Ö²¿¼«Ğ¡´øÀ´µÄÑµÁ·×è°­£¨¿ÓÍõÖ®Íõ£©¡£
 
 tanh½â¿Õ¼äÒ²±ÈsigmoidĞ¡£¬µ±È»ÉÏÃæÎªÁËÕ¹Ê¾Ë¼Â·£¬ÀíÂÛ¹ıÓÚ¼ò»¯ÁË£¬Ã»·¨±È½ÏtanhºÍrelu£¬Êµ¼ÊÉÏ½â¿Õ¼äÊÇ exp(ĞÅÏ¢ìØ) x£¨½â¿Õ¼ä´óĞ¡£©£¬x¿ÉÒÔÔÚ²»ÊÇ0.5´¦È¡¼«Öµ£¬Êµ¼ÊÕâÑù×ötanhµÄ½â¿Õ¼ä»¹ÊÇ±Èrelu´ó²»ÉÙ£¬ÍÆµ¼¹ı³ÌÈçÏÂ¡£
 
@@ -908,7 +911,7 @@ $S_{n-2}$ÊÇ$n-2$Î¬ÇòÃæÃæ»ı£¬×ÛºÏÆğÀ´ÊÇ£¬$\boldsymbol{W}$Æ½¾ù½â¿Õ¼ä´óĞ¡£º
   \left( \left(\sqrt{1-\alpha s^2}\right)^{n-3} \; \exp(-A(s) \log A(s)) \right) ^{n}
 \end{equation*}
 
-»­³ös´Ó0-1µÄÍ¼Ïñ£¬·Ö±ğÊÇsigmoid£¨ºìÉ«ÇúÏß£©£¬relu£¨À¶É«ÇúÏß£©£¬tanh £¨ÂÌÉ«ÇúÏß£©£¬×¢Òâµ½tanhÊÇË«±ß¶Ô³ÆµÄ£¬µ¥¸öÊä³ö½ÚµãµÄ´óĞ¡ĞèÒª¶îÍâ³ËÒÔ2£¬ÎÒÃÇÈ¡alpha=0.1£¬nÈ¡20£¬ÈçÍ¼\ref{fig:5.3}£¨ºáÖáÊÇÊä³ö£¬×İÖáÊÇ¹Ì¶¨Êä³öÏÂ½â¿Õ¼ä´óĞ¡£©
+»­³ös´Ó0-1µÄÍ¼Ïñ£¬·Ö±ğÊÇsigmoid£¨ºìÉ«ÇúÏß£©£¬relu£¨À¶É«ÇúÏß£©£¬tanh £¨ÂÌÉ«ÇúÏß£©£¬×¢Òâµ½tanhÊÇË«±ß¶Ô³ÆµÄ£¬µ¥¸öÊä³ö½ÚµãµÄ´óĞ¡ĞèÒª¶îÍâ³ËÒÔ2£¬ÎÒÃÇÈ¡alpha=0.1£¬nÈ¡20£¬ÈçÍ¼\ref{fig:5.3} £¨ºáÖáÊÇÊä³ö£¬×İÖáÊÇ¹Ì¶¨Êä³öÏÂ½â¿Õ¼ä´óĞ¡£©
 
 \begin{figure}[t]
  \centering
@@ -1153,7 +1156,7 @@ sample $x_j^{(t+1)} \sim p(x_j|\bold{h}^{(t)})$
 
 
 \section{CD AlgorithmÊÇÈçºÎ¶ÔÔ­À´µÄ·Ö²¼$p$ ½øĞĞÓÅ»¯µÄ}
-Ê×ÏÈ£¬¸ù¾İ$\bold{x}^{(0)}$¶Ô$\bold{h}^{(0)}$½øĞĞ²ÉÑù£¬È»ºó¸ù¾İ$\ bold{h}^{(0)}$¶Ô$\bold{x}^{(1)}$½øĞĞ²ÉÑù£¬ÕâÑù¾Í±£Ö¤ÁË¡°²ÉÑù-ÄâºÏ-ÔÙ²ÉÑù-ÔÙËûÂèÄâºÏ¡±¡ª¡ª ¶ÔÓÚCD-1 À´ËµÕâ¸ö¹ı³ÌÖ»ÓĞ¡°²ÉÑù-ÄâºÏ¡±¡£
+Ê×ÏÈ£¬¸ù¾İ$\bold{x}^{(0)}$¶Ô$\bold{h}^{(0)}$½øĞĞ²ÉÑù£¬È»ºó¸ù¾İ$\ bold{h}^{(0)}$¶Ô$\bold{x}^{(1)}$½øĞĞ²ÉÑù£¬ÕâÑù¾Í±£Ö¤ÁË¡°²ÉÑù-ÄâºÏ-ÔÙ²ÉÑù-ÔÙËûÂèÄâºÏ¡±¡ª¡ª ¶ÔÓÚCD-1 À´ËµÕâ¸ö¹ı³ÌÖ»ÓĞ¡°²ÉÑù- ÄâºÏ¡±¡£
 
 »»ÑÔÖ®£¬¶Ô$\bold{x}^{(0)}$À´Ëµ£¬$\bold{h}^{(0)}$ »áÊ¹µÃ·Ö²¼º¯Êı±ä³É¸ü·ûºÏ$\bold{x}^{(0)}$µÄÇé¿ö£¬¶ø²»ÊÇ×´Ì¬³õÊ¼Ê±µÄ$\bold{h}^{*}$£¨$\bold{h}$ ÊÇËæ»ú³õÊ¼»¯µÄ£¬¾ßÌå¼ûÎÄÏ×\footnote{Ïê¼ûhttps://www.cs.toronto.edu/~hinton/absps/guideTR.pdf Section 3}£©¡£
 
@@ -1406,7 +1409,8 @@ Caffe£¬È«³ÆConvolutional Architecture for Fast Feature Embedding£¬ÊÇÒ»¸ö¼ÆËãCNNÏ
 \begin{itemize}
   \item Blob£ºÊÇ»ù´¡µÄÊı¾İ½á¹¹£¬ÊÇÓÃÀ´±£´æÑ§Ï°µ½µÄ²ÎÊıÒÔ¼°ÍøÂç´«Êä¹ı³ÌÖĞ²úÉúÊı¾İµÄÀà¡£
   \item Layer£ºÊÇÍøÂçµÄ»ù±¾µ¥Ôª£¬ÓÉ´ËÅÉÉú³öÁË¸÷ÖÖ²ãÀà¡£ĞŞ¸ÄÕâ²¿·ÖµÄÈËÖ÷ÒªÊÇÑĞ¾¿ÌØÕ÷±í´ï·½ÏòµÄ¡£
-  \item Net£ºÊÇÍøÂçµÄ´î½¨£¬½«Layer ËùÅÉÉú³ö²ãÀà×éºÏ³ÉÍøÂç£»Solver£ºÊÇNet µÄÇó½â£¬ĞŞ¸ÄÕâ²¿·ÖÈËÖ÷Òª»áÊÇÑĞ¾¿DL Çó½â·½ÏòµÄ¡£
+  \item Net£ºÊÇÍøÂçµÄ´î½¨£¬½«Layer ËùÅÉÉú³ö²ãÀà×éºÏ³ÉÍøÂç£»
+  \item Solver£ºÊÇNet µÄÇó½â£¬ĞŞ¸ÄÕâ²¿·ÖÈËÖ÷Òª»áÊÇÑĞ¾¿DL Çó½â·½ÏòµÄ¡£
 \end{itemize}
 \subsection{¸ü½øÒ»²½µÄÌØµã}
 \subsubsection{Blob}
@@ -1453,7 +1457,7 @@ virtual void Backward(const vector<Blob<Dtype>*> &top,
 
 \end{lstlisting}
 
-LayerÀàÅÉÉú³öÀ´µÄ²ãÀàÍ¨¹ıÕâÊµÏÖÕâÁ½¸öĞéº¯Êı£¬²úÉúÁË¸÷Ê½¸÷Ñù¹¦ÄÜµÄ²ãÀà¡£ForwardÊÇ´Ó¸ù¾İbottom¼ÆËãtopµÄ¹ı³Ì£¬BackwardÔòÏà·´£¨¸ù¾İtop¼ÆËãbottom£©¡£×¢ÒâÕâÀïÎªÊ²Ã´ÓÃÁËÒ»¸ö°üº¬BlobµÄÈİÆ÷£¨vector£©£¬¶ÔÓÚ´ó¶àÊıLayerÀ´ËµÊäÈëºÍÊä³ö¶¼¸÷Á¬½ÓÖ»ÓĞÒ»¸öLayer£¬È»¶ø¶ÔÓÚÄ³Ğ©Layer´æÔÚÒ»¶Ô¶àµÄÇé¿ö£¬±ÈÈçLossLayerºÍÄ³Ğ©Á¬½Ó²ã¡£ÔÚÍøÂ·½á¹¹¶¨ÒåÎÄ¼ş£¨*.proto£©ÖĞÃ¿Ò»²ãµÄ²ÎÊıbottom ºÍtopÊıÄ¿¾Í¾ö¶¨ÁËvectorÖĞÔªËØÊıÄ¿¡£
+LayerÀàÅÉÉú³öÀ´µÄ²ãÀàÍ¨¹ıÕâÊµÏÖÕâÁ½¸öĞéº¯Êı£¬²úÉúÁË¸÷Ê½¸÷Ñù¹¦ÄÜµÄ²ãÀà¡£ForwardÊÇ´Ó¸ù¾İbottom¼ÆËãtopµÄ¹ı³Ì£¬BackwardÔòÏà·´£¨¸ù¾İtop¼ÆËãbottom£©¡£×¢ÒâÕâÀïÎªÊ²Ã´ÓÃÁËÒ»¸ö°üº¬BlobµÄÈİÆ÷£¨vector£©£¬¶ÔÓÚ´ó¶àÊıLayerÀ´ËµÊäÈëºÍÊä³ö¶¼¸÷Á¬½ÓÖ»ÓĞÒ»¸öLayer£¬È»¶ø¶ÔÓÚÄ³Ğ©Layer´æÔÚÒ»¶Ô¶àµÄÇé¿ö£¬±ÈÈçLossLayerºÍÄ³Ğ©Á¬½Ó²ã¡£ÔÚÍøÂ·½á¹¹¶¨ÒåÎÄ¼ş£¨*.proto£©ÖĞÃ¿Ò»²ãµÄ²ÎÊıbottom ºÍtop ÊıÄ¿¾Í¾ö¶¨ÁËvectorÖĞÔªËØÊıÄ¿¡£
 
 layers \{
 
@@ -1754,7 +1758,7 @@ LSTMÄ£ĞÍµÄ¹Ø¼üÊÇÒıÈëÁËÒ»×é¼ÇÒäµ¥Ôª£¨Memory Units£©£¬ÔÊĞíÍøÂç¿ÉÒÔÑ§Ï°ºÎÊ±ÒÅÍüÀúÊ·
   \boldsymbol{c}_t=\boldsymbol{f}_t\odot \boldsymbol{c}_{t-1}+\boldsymbol{i}_t\odot \widetilde{\boldsymbol{c}_t}\\
   \boldsymbol{h}_t=\boldsymbol{o}_t\odot\tanh{\boldsymbol{c}_t}
 \end{gather}
-ÕâÀï£¬$\boldsymbol{x}_t$ÊÇµ±Ç°Ê±¿ÌµÄÊäÈë£¬$\sigma$ÊÇlogisticº¯Êı£¬$V_i$£¬$V_f$£¬$V_o$ÊÇ¶Ô½Ç¾ØÕó¡£ÒÅÍüÃÅ$\boldsymbol{f}_t$¿ØÖÆÃ¿Ò»¸öÄÚ´æµ¥ÔªĞèÒªÒÅÍü¶àÉÙĞÅÏ¢£¬ÊäÈëÃÅ$\boldsymbol{i}_t$¿ØÖÆÃ¿Ò»¸öÄÚ´æµ¥Ôª¼ÓÈë¶àÉÙĞÂµÄĞÅÏ¢£¬Êä³öÃÅ$\boldsymbol{o}_t$¿ØÖÆÃ¿Ò»¸öÄÚ´æµ¥ÔªÊä³ö¶àÉÙĞÅÏ¢¡£
+ÕâÀï£¬$\boldsymbol{x}_t$ÊÇµ±Ç°Ê±¿ÌµÄÊäÈë£¬$\sigma$ÊÇlogisticº¯Êı£¬$V_i$£¬$V_f$£¬$V_o$ÊÇ¶Ô½Ç¾ØÕó¡£ÒÅÍüÃÅ$\boldsymbol{f}_t$¿ØÖÆÃ¿Ò»¸öÄÚ´æµ¥ÔªĞèÒªÒÅÍü¶àÉÙĞÅÏ¢£¬ÊäÈëÃÅ$\boldsymbol{i}_t$ ¿ØÖÆÃ¿Ò»¸öÄÚ´æµ¥Ôª¼ÓÈë¶àÉÙĞÂµÄĞÅÏ¢£¬Êä³öÃÅ$\boldsymbol{o}_t$¿ØÖÆÃ¿Ò»¸öÄÚ´æµ¥ÔªÊä³ö¶àÉÙĞÅÏ¢¡£
 \begin{figure}[t]
  \centering
  \includegraphics{pics/74.png}
@@ -1785,15 +1789,76 @@ GRUÄ£ĞÍµÄ¸üĞÂ·½Ê½ÈçÏÂ£º
 \section{Ò»Ğ©¾­µäÂÛÎÄ»ùÓÚDeepNetµÄÊµÑéÖØÏÖ}
 \section{½øÒ»²½µÄÔÄ¶ÁºÍ×Ü½á}
 
-\appendix
-\appendixpage
-\addcontentsline{toc}{section}{Appendices}\markboth{APPENDICES}{}
-\begin{subappendices}
-\subsection{A1}
-\subsection{A2}
-\end{subappendices}
 
+
+%\begin{bibliography}
 \bibliographystyle{plain}
 \bibliography{Lect}
+%\end{bibliography}
+
+\appendixpage
+\addcontentsline{toc}{chapter}{Appendices}\markboth{APPENDICES}{¸½Â¼}
+\begin{subappendices}
+\chapter{Ñ§Ï°ÀíÂÛµÄÍ³¼Æ»úÀí}
+ÕâÒ»²¿·Ö(Statistical Mechanics of Learning)ÎÒÃÇ½«½éÉÜÒ»Ğ©Í³¼ÆÑ§ÉÏµÄÔ­ÀíºÍ·½·¨£¬ÒÔ¼°Õâ·½·¨ÔÚÉñ¾­ÍøÂçÖĞµÄÁ¿»¯ÑĞ¾¿¡£\textbf{¸Ã¸½Â¼µÄÀí½âĞèÒªÏàµ±²¿·ÖµÄÊıÑ§ÖªÊ¶£¬Ñ¡ÔñÔÄ¶Á}¡£
+
+\section{Ò»Ğ©Ô¼¶¨}
+ÊıÑ§ÉÏµÄ·ÖÎö¿ÉÄÜÖ»ÄÜ¶ÔÒ»Ğ©¼«¶ËµÄ½á¹¹×àĞ§¡£ÕâÀïÎÒÃÇ¹ØĞÄÁ½ÖÖÉñ¾­ÍøÂç£ºµÚÒ»ÖÖ¼«¶ËÇé¿öÊÇÈ«»¥ÁªÈçÍ¼\ref{fig:app1}.b£¬Æä¶¯Ì¬½á¹¹ÊÇ¸ß¸´·¢µÄ£¬²¢ÇÒÆä½á¹û½«ÊÇÉñ¾­Ôª²»Í¬»î¶¯Ä£Ê½µÄ»ìãçĞòÁĞ£»ÁíÒ»ÖÖ¼«¶ËÇé¿ö³ÆÎªÇ°À¡Éñ¾­ÍøÂç(feed-forward neural network, FFN)ÈçÍ¼\ref{fig:app1}.c£¬ÆäÉñ¾­Ôª¿ÉÒÔ±»ÅÅĞòÎªlayers $l=1,\cdots,L$£¬Ê¹µÃÔÚ$l$²ãµÄÃ¿¸öÉñ¾­Ôª½ö»áÊÕµ½À´×Ô$l-1$²ãÉñ¾­ÔªµÄinput²¢½ö»áÇ°À¡¸ø$l+1$²ãµÄÉñ¾­Ôª¡£µÚÒ»²ã$l=1$³ÆÊäÈë²ã£¬×îºóÒ»²ã$l=L$³ÆÊä³ö²ã£¬ÆäÓà$1<l<L$³ÆÒş²ã¡£
+
+ÓÉÓÚÈ±Ê§·´À¡»ØÂ·£¬Æä¶¯Ì¬ĞÔÄÜ½«»áÏàµ±¼òµ¥£ºÊäÈë½«Í¨¹ıÁ¬Ğø¹ı³ÌÓ³Éäµ½Êä³ö²ã¡£Òò´Ë£¬»á±íÏÖ³ö´ÓÊäÈëµ½Êä³ö±êÇ©µÄ·ÖÀàĞÔ£¬Í¨¹ıÊä³ö²ãµÄ²»Í¬ÅäÖÃ¡£Õâ¸ö½á¹¹ÊÇ·Ç³£ÊÊºÏ×÷ÎªÑ§Ï°Ö®ÓÃ£¬×îÌØÊâµÄ¾ÍÊÇ¸ĞÖªÆ÷¡£
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app1.png}
+ \caption{²»Í¬ÀàĞÍµÄÉñ¾­ÍøÂç£ºa)ÆÕÊÊ½á¹¹£¬b)È«Á´½ÓÎüÒıÉñ¾­ÍøÂç£¬c)´øÒ»¸öÒş²ãµÄ·´À¡Éñ¾­ÍøÂç£¬d)µ¥²ã¸ĞÖªÆ÷}
+ \label{fig:app1}
+\end{figure}
+\subsection{Annealed Analysis of Gibbs Learning}
+¶ÔÊäÈë$\boldsymbol{S}$µ½¸ĞÖªÆ÷$\boldsymbol{J}$µÄclassification $sgn(\boldsymbol{JS})$£¬ÕâÀï¸ø³öÒ»¸ö¼¸ºÎÉÏµÄ½âÊÍ£º
+\begin{equation*}
+  sgn(\boldsymbol{JS}) =
+  \begin{cases}
+    1       & \langle\boldsymbol{J},\boldsymbol{S}\rangle>\pi/2\\
+    -1  & \langle\boldsymbol{J},\boldsymbol{S}\rangle<\pi/2\\
+  \end{cases}
+\end{equation*}
+ÕâÀï£¬$1,-1$±»³ÆÎª\textbf{¾ö²ß±ß½ç}£¬¿ÉÒÔÀí½âÎª×ÔÊäÈëµÄ°ëÆ½Ãæ·ÖÀà£»Ò²ÊÇÓÉÓÚÕâ¸öÔ­Òò£¬Èç¹û¿ÉÒÔÍ¨¹ıÒ»¸ö¸ĞÖªÆ÷ÊµÏÖµÄ·ÖÀà±»³ÆÎª\textbf{ÏßĞÔ¿É·Ö}µÄ¡£
+
+ÏÔÈ»£¬$\boldsymbol{J},\boldsymbol{S}$µÄlength¶Ô·ÖÀàÃ»ÓĞÓ°Ïì¡£Îª±ÜÃâ²»Í¬µÄñîºÏ£¨length£©µÄÏòÁ¿±»¹éÎªÏàÍ¬·ÖÀàµÄ¿ÉÄÜĞÔ£¬¶ÔÈ¨ÖØºÍÊäÈë¾ù×öÕıÔò»¯£º
+\begin{equation*}
+  \boldsymbol{J}^2=\sum_{i=1}^NJ_i^2=N~~~\text{and}~~~\boldsymbol{S}^2=\sum_{i=1}^NS_i^2=N
+\end{equation*}
+Æä´ú±íµÄ¼¸ºÎÒâÒåÎª$\boldsymbol{J},\boldsymbol{S}$Ö¸Ïò°ë¾¶Îª$\sqrt{N}$µÄ$N$Î¬³¬ÇòÃæ¡£
+
+Îª±È½Ï¶ş¸ĞÖªÆ÷µÄ·ÖÀàĞÔÄÜ£ºteacher perceptron$\boldsymbol{T}$ and student perceptron $\boldsymbol{J}$£¬ÎÒÃÇ½²ÏàÍ¬µÄÊäÈëÍ¨¹ı¶şÕßÓ³Éäµ½Ò»¸öÆ½ÃæÉÏÈçÍ¼\ref{}¡£ÏÔ¶øÒ×¼ûµÄÒõÓ°²¿·ÖÊÇÎóÊ¶ÇøÓò¡£Èç¹ûÊäÈëµÄÑ¡ÔñÊÇËæ»úµÄ£¬ÄÇÃ´ÎóÊ¶µÄ¸ÅÂÊ¿ÉÒÔ¾«È·µÄ±íÊöÎªgeneralization error $\varepsilon$¡£ÓÉÓÚ·ÖÀàÏßÊÇ´¹Ö±ÓÚÏòÁ¿$\boldsymbol{T}~\text{and}~\boldsymbol{J}$µÄ£¬ÏÔÈ»$\varepsilon=\theta/\pi$£¬ÕâÀï$\theta$ÊÇÏòÁ¿$\boldsymbol{T}~\text{and}~\boldsymbol{J}$µÄ¼Ğ½Ç¡£ÓÚÊÇgeneralization error $\varepsilon$Õı±ÈÓÚÏòÁ¿ÔÚ$N$Î¬³¬ÇòÃæÉÏµÄ¼¸ºÎ¾àÀë£¨²âµØÏß¾à£©¡£Îª·½±ã£¬ÎÒÃÇÒıÈëteacher-student overlap:
+\begin{equation*}
+  R=\frac{\boldsymbol{JT}}{N}
+\end{equation*}
+È»¶øÓÉÓÚ£º$\frac{\boldsymbol{JT}}{N}=\frac{\boldsymbol{JT}}{|\boldsymbol{J}|\cdot|\boldsymbol{T}|}=\cos\langle\boldsymbol{J},\boldsymbol{T}\rangle=\cos\theta$£¬generalization error¿ÉÒÔĞ´Îª:
+\begin{equation*}
+  \varepsilon=\frac{1}{\pi}\arccos R
+\end{equation*}
+
+\subsection{The Annealed Approximation in Statistical Mechanics}
+
+\section{The Gardner Analysis}
+\section{Learning by Minimizing Cost Functions}
+\section{Noisy Teachers}
+\section{Variations of Preceptron Learning}
+\end{subappendices}
+
+
+%\begin{appendices}
+%    \renewcommand{\thechapter}{\Alph{appendix}.}
+%
+%      \appendix{First appendix}
+%
+%    some text...
+%
+%      \appendix{Second appendix}
+%
+%    some more text
+%
+%\end{appendices}
 
 \end{document}
