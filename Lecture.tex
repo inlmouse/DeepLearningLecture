@@ -1868,9 +1868,21 @@ GRU模型的更新方式如下：
   \Omega_0(\varepsilon)=\int d\boldsymbol{J}\delta(\boldsymbol{J}^2-N)\delta(\frac{\boldsymbol{JT}}{N}-\cos(\pi\varepsilon))\underset{N\to\infty}{\sim} \exp\{\frac{N}{2}[1+\ln2+\ln\sin^2(\pi\varepsilon)]\}
 \end{equation*}
 记：$p=\alpha N$:
-\begin{equation*}
+\begin{equation}\label{app1}
   \Omega_p(\varepsilon)\underset{N\to\infty}{\sim} \exp\{N[\frac{1}{2}(1+\ln(2\pi))+\frac{1}{2}\ln\sin^2(\pi\varepsilon)+\alpha\ln(1-\varepsilon)]\}
+\end{equation}
+
+上式中括号中的表达式已经在图\ref{fig:app3}中画出。注意到这虽然是$\varepsilon$的一个光滑函数，但是相应的$\Omega_p(\varepsilon)$会被指数级因子$\exp N$放大。因此我们可以得出从我们期望的version space通过随机形式选择的student向量的方法。对于较大的$N$，可以以压倒性的概率选择一个使图\ref{fig:app3}中函数最大的$\varepsilon$。所有其他的$\varepsilon$值可以认为对应的指数级稀少的耦合向量。我们因此希望在较大的$N$极限下，generalization error可以由下式表示：
+\begin{equation*}
+  \varepsilon(\alpha)=\argmax[\frac{1}{2}\ln\sin^2(\pi\varepsilon)+\alpha\ln(1-\varepsilon)]
 \end{equation*}
+对于$\alpha=0$，$\Omega_p(\varepsilon)$在$\varepsilon=5$时取得最大值，对应student与teacher正交。显然，没有更进一步的信息，所有$\boldsymbol{J}$的选择是平权的，并且那些随机表现的students在数量上指数级的压倒了其他的。在学习过程中，这个效果会被来自训练集所包含的信息自动抵消，在Gibbs Learing中也即是\ref{app1}中$\alpha\ln(1-\varepsilon)$。对于一个大的训练集，generalization error会越来越小，当$\alpha\to0$时，$\varepsilon\to\infty$
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app3.png}
+ \caption{Expression of \ref{app1} as a function of $\varepsilon$ for $\alpha=0,1,2,3,4\text{ and }5$ (from top to bottom)}
+ \label{fig:app3}
+\end{figure}
 \subsection{The Annealed Approximation in Statistical Mechanics}
 
 \section{The Gardner Analysis}

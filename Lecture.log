@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  23 APR 2016 16:45
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.17)  2 MAY 2016 21:52
 entering extended mode
 **C:/Users/Glass/Documents/GitHub/DeepLearningLecture/Lecture.tex
 (C:/Users/Glass/Documents/GitHub/DeepLearningLecture/Lecture.tex
@@ -1219,21 +1219,28 @@ m/m/n/10.54/42 ‡ \C19/rm/m/n/10.54/60 #\OT1/cmr/m/n/10.54 example\C19/rm/m/n/10
  []
 
 [99 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/app2.png>]
-Overfull \hbox (4.39267pt too wide) in paragraph at lines 1874--1874
+<pics/app3.png, id=491, 258.9675pt x 189.70876pt>
+File: pics/app3.png Graphic file (type png)
+ <use pics/app3.png>
+Package pdftex.def Info: pics/app3.png used on input line 1882.
+(pdftex.def)             Requested size: 258.96684pt x 189.70828pt.
+
+Overfull \hbox (4.39267pt too wide) in paragraph at lines 1886--1886
 []\OT1/cmr/bx/n/12.05 The An-nealed Ap-prox-i-ma-tion in S-ta-tis-ti-cal Me-cha
 n-
  []
 
-[100] (C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.aux)
+[100] [101 <C:/Users/Glass/Documents/GitHub/DeepLearningLecture/pics/app3.png>]
+(C:\Users\Glass\Documents\GitHub\DeepLearningLecture\Lecture.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14647 strings out of 495354
- 228160 string characters out of 3183859
- 354861 words of memory out of 3000000
- 17429 multiletter control sequences out of 15000+200000
+ 14657 strings out of 495354
+ 228310 string characters out of 3183859
+ 354885 words of memory out of 3000000
+ 17438 multiletter control sequences out of 15000+200000
  93873 words of font info for 320 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,22n,58p,1884b,1730s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1294,9 +1301,9 @@ c/amsfonts/cm/cmsy7.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.p
 fb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/CTEX/MiKTeX/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb><D:/CTEX/MiKTeX/fonts/type1/public
 /amsfonts/symbols/msbm7.pfb>
-Output written on Lecture.pdf (100 pages, 2354468 bytes).
+Output written on Lecture.pdf (101 pages, 2371781 bytes).
 PDF statistics:
- 880 PDF objects out of 1000 (max. 8388607)
+ 885 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

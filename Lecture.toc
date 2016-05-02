@@ -110,8 +110,8 @@
 \contentsline {chapter}{\numberline {第九章\hspace {0.3em}}学习理论的统计机理}{97}
 \contentsline {section}{\numberline {9.A}一些约定}{97}
 \contentsline {subsection}{\numberline {9.A.1}Annealed Analysis of Gibbs Learning}{97}
-\contentsline {subsection}{\numberline {9.A.2}The Annealed Approximation in Statistical Mechanics}{100}
-\contentsline {section}{\numberline {9.B}The Gardner Analysis}{100}
-\contentsline {section}{\numberline {9.C}Learning by Minimizing Cost Functions}{100}
-\contentsline {section}{\numberline {9.D}Noisy Teachers}{100}
-\contentsline {section}{\numberline {9.E}Variations of Preceptron Learning}{100}
+\contentsline {subsection}{\numberline {9.A.2}The Annealed Approximation in Statistical Mechanics}{101}
+\contentsline {section}{\numberline {9.B}The Gardner Analysis}{101}
+\contentsline {section}{\numberline {9.C}Learning by Minimizing Cost Functions}{101}
+\contentsline {section}{\numberline {9.D}Noisy Teachers}{101}
+\contentsline {section}{\numberline {9.E}Variations of Preceptron Learning}{101}

@@ -1830,7 +1830,7 @@ GRU模型的更新方式如下：
 \end{equation*}
 其代表的几何意义为$\boldsymbol{J},\boldsymbol{S}$指向半径为$\sqrt{N}$的$N$维超球面。
 
-为比较二感知器的分类性能：teacher perceptron$\boldsymbol{T}$ and student perceptron $\boldsymbol{J}$，我们讲相同的输入通过二者映射到一个平面上如图\ref{}。显而易见的阴影部分是误识区域。如果输入的选择是随机的，那么误识的概率可以精确的表述为generalization error $\varepsilon$。由于分类线是垂直于向量$\boldsymbol{T}~\text{and}~\boldsymbol{J}$的，显然$\varepsilon=\theta/\pi$，这里$\theta$是向量$\boldsymbol{T}~\text{and}~\boldsymbol{J}$的夹角。于是generalization error $\varepsilon$正比于向量在$N$维超球面上的几何距离（测地线距）。为方便，我们引入teacher-student overlap:
+为比较二感知器的分类性能：teacher perceptron$\boldsymbol{T}$ and student perceptron $\boldsymbol{J}$，我们讲相同的输入通过二者映射到一个平面上如图\ref{fig:app2}。显而易见的阴影部分是误识区域。如果输入的选择是随机的，那么误识的概率可以精确的表述为generalization error $\varepsilon$。由于分类线是垂直于向量$\boldsymbol{T}~\text{and}~\boldsymbol{J}$的，显然$\varepsilon=\theta/\pi$，这里$\theta$是向量$\boldsymbol{T}~\text{and}~\boldsymbol{J}$的夹角。于是generalization error $\varepsilon$正比于向量在$N$维超球面上的几何距离（测地线距）。为方便，我们引入teacher-student overlap:
 \begin{equation*}
   R=\frac{\boldsymbol{JT}}{N}
 \end{equation*}
@@ -1838,7 +1838,47 @@ GRU模型的更新方式如下：
 \begin{equation*}
   \varepsilon=\frac{1}{\pi}\arccos R
 \end{equation*}
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app2.png}
+ \caption{Projection of the input space to the plane spanned by the coupling vectors of teacher and student. Patterns with projection in the shaded region are classified wrongly by student.}
+ \label{fig:app2}
+\end{figure}
 
+现在我们考虑一个策略以期在学习中修复student的错误。考虑耦合向量$\boldsymbol{J}$表征了example完全归为teacher，被\textbf{兼容}的students所组成的几何称为\textbf{version space}。我们要求generalization error在verison space上随机分布。这个简单的方法(prescription)称为\textbf{Gibbs Learning}。其学习规则的结果被发现可以特征化一个被兼容学生的典型表现(\textbf{the typical performance of a compatible student})。
+
+在Gibbs Learning的框架下，generalization error将会随训练集的规模的上升而下降（由于越来越多的$\boldsymbol{J}$被认为不兼容导致的version space的缩小）。如果我们可以量化一个耦合向量的“存活几率”，当一个新example被$\boldsymbol{J}$表征的时候，我们可以得到在训练过程中generalization error的平均表现。显然，根据上面overlap的定义，对每个$\boldsymbol{J}$的存活几率为$1-\arccos R/\pi=1-\varepsilon$。定义$\Omega_0(\varepsilon)$为训练前所有耦合向量$\boldsymbol{J}$的体积，由于每次训练是独立的，那么在第$p$次训练后所能兼容student的平均体积为：
+\begin{equation*}
+  \Omega_p(\varepsilon)=\Omega_0(\varepsilon)(1-\varepsilon)^p
+\end{equation*}
+
+显然\footnote{
+这里积分的计算使用了$\delta$函数的指数极限式定义：
+\begin{equation*}
+  \delta(x) = \lim_{a\to 0}\frac{1}{a \sqrt{\pi}} \mathrm{e}^{-x^2/a^2}
+\end{equation*}
+以下表达式也可代表狄拉克$\delta$函数：
+\begin{gather*}
+  \delta(x)=\lim_{\alpha\to 0^+}\frac{1}{\pi}\frac{\alpha}{\alpha^2+x^2} \\
+  \delta(x)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}e^{ikx}dk \\
+  \delta(x)=\lim_{k\to\infty}\frac{1}{\pi}\frac{\sin{kx}}{x}
+\end{gather*}
+}：
+\begin{equation*}
+  \Omega_0(\varepsilon)=\int d\boldsymbol{J}\delta(\boldsymbol{J}^2-N)\delta(\frac{\boldsymbol{JT}}{N}-\cos(\pi\varepsilon))\underset{N\to\infty}{\sim} \exp\{\frac{N}{2}[1+\ln2+\ln\sin^2(\pi\varepsilon)]\}
+\end{equation*}
+记：$p=\alpha N$:
+\begin{equation}\label{app1}
+  \Omega_p(\varepsilon)\underset{N\to\infty}{\sim} \exp\{N[\frac{1}{2}(1+\ln(2\pi))+\frac{1}{2}\ln\sin^2(\pi\varepsilon)+\alpha\ln(1-\varepsilon)]\}
+\end{equation}
+
+上式中括号中的表达式已经在图中画出。
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app3.png}
+ \caption{Expression of \ref{app1} as a function of $\varepsilon$ for $\alpha=0,1,2,3\text{and}5$ (from top to bottom)}
+ \label{fig:app3}
+\end{figure}
 \subsection{The Annealed Approximation in Statistical Mechanics}
 
 \section{The Gardner Analysis}
