@@ -1864,9 +1864,9 @@ GRU模型的更新方式如下：
   \delta(x)=\lim_{k\to\infty}\frac{1}{\pi}\frac{\sin{kx}}{x}
 \end{gather*}
 }：
-\begin{equation*}
+\begin{equation}\label{appa1}
   \Omega_0(\varepsilon)=\int d\boldsymbol{J}\delta(\boldsymbol{J}^2-N)\delta(\frac{\boldsymbol{JT}}{N}-\cos(\pi\varepsilon))\underset{N\to\infty}{\sim} \exp\{\frac{N}{2}[1+\ln2+\ln\sin^2(\pi\varepsilon)]\}
-\end{equation*}
+\end{equation}
 记：$p=\alpha N$:
 \begin{equation}\label{app1}
   \Omega_p(\varepsilon)\underset{N\to\infty}{\sim} \exp\{N[\frac{1}{2}(1+\ln(2\pi))+\frac{1}{2}\ln\sin^2(\pi\varepsilon)+\alpha\ln(1-\varepsilon)]\}
@@ -1883,7 +1883,60 @@ GRU模型的更新方式如下：
  \caption{Expression of \ref{app1} as a function of $\varepsilon$ for $\alpha=0,1,2,3,4\text{ and }5$ (from top to bottom)}
  \label{fig:app3}
 \end{figure}
+
+以上的结果也提供了关于ANN如何从example中学习的量化指标。首先，网络的特殊结构蕴含了一种可实现的先验层级映射，“简单的”输入输出关系可以被相当多不同的耦合向量实现，而“困难的”则需要微观层面的细节配置。这种层级关系可以被称为系统的偏见。其次，训练集中无可比拟的分类被清除，这种形式的学习本质蕴含了精准性和灵活性的取舍。一个拥有能实现所有映射的系统，原则上能学习任何问题，但是过于广泛的特征也会导致对每个具体问题的处理相同的弱；另一方面，一个非常特殊的系统可能只能对某个限制的问题学习，但是可以比其他的模型做的更好。事实上，类似惊人的"Eureca!"突然转变到完美的普适形式会在这种系统中出现。
+
+为了了解我们为Gibbs Learning的简单分析的正确性，我们将\ref{app1}的结论以点线图在图\ref{fig:app4}中绘出。在与仿真的对比中，我们清晰的发现虽然数值表现的大势所趋被正确表述，并且对于足够大的$\alpha$，我们有：
+\begin{equation*}
+  \varepsilon\sim\frac{1}{\alpha}
+\end{equation*}
+但是根据错误前因子给出的正确缩放尺度下在数值上的拟合是很弱的。
+
+\begin{figure}[t]
+ \centering
+ \includegraphics{pics/app4.png}
+ \caption{Simulation results(circles) for the generalization error of a perceptron learning from example to rank dual numbers. The results are averaged over 1000 realizations of the training set, the statistical error is smaller than the symbol size. The full line gives the analytic results if the quenched calculation, the dashed line that of the annealed approximation.}
+ \label{fig:app4}
+\end{figure}
+
+所以我们的分析错在哪里？主要的错误是我们没有正确处理学习样本$\boldsymbol{\xi}^{\mu}$和teacher耦合向量$\boldsymbol{T}$的随机性。我们用$\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})$来表示经过$p$个样本$\boldsymbol{\xi}^{\mu}$学习后的student耦合向量与teacher耦合向量$\pi\varepsilon$夹角范围内剩余version space的大小。由于$\boldsymbol{\xi}^{\mu}$和$\boldsymbol{T}$均是随机选取的，所以$\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})$的取值也应该是随机的。然而，上面定义的$\Omega_p(\varepsilon)$是以平均意义下描述的。在很多情况下，平均描述可以有意义地给出给出随机系统的典型描述。但是这不是总是成立的，尤其是对于$\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})$。作为结果，对于压倒性概率足够大的$N$，$\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})$的取值是不同于\ref{appa1}中的平均描述。事实上，我们可以说明\ref{app1}总是给出了$\varepsilon$的上界。
+
+为了表示在足够大$N$情况下不能被很好平均表述的$\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})$的分布，更重要的是找到一个正确的方式来描述$\varepsilon(\alpha)$的典型表现。使用统计机理框架下的逼近是很有用的。为表达这些框架，我们会建立针对学习问题量化分析的中心统计机理技巧(Central Statistical Mechanics Techniques for the Quantitative Analysis of Learning Problems)。
 \subsection{The Annealed Approximation in Statistical Mechanics}
+我们来重述一下在统计观点下的学习机制。微观变量$J_i$组成student向量，其span\footnote{
+Given a vector space $V$ over a field $K$, the span of a set $S$ of vectors (not necessarily finite) is defined to be the intersection $W$ of all subspaces of $V$ that contain $S$. $W$ is referred to as the subspace spanned by $S$, or by the vectors in $S$. Conversely, $S$ is called a spanning set of $W$, and we say that $S$ spans $W$.
+
+Alternatively, the span of $S$ may be defined as the set of all finite linear combinations of elements of $S$, which follows from the above definition.
+\begin{equation*}
+  \operatorname{span}(S) =  \left \{ {\sum_{i=1}^k \lambda_i v_i \Big| k \in \mathbb{N}, v_i  \in S, \lambda _i  \in \mathbf{K}} \right \}.
+\end{equation*}
+
+In particular, if $S$ is a finite subset of $V$, then the span of $S$ is the set of all linear combinations of the elements of $S$. In the case of infinite $S$, infinite linear combinations (i.e. where a combination may involve an infinite sum, assuming such sums are defined somehow, e.g. if $V$ is a Banach space) are excluded by the definition; a generalization that allows these is not equivalent.
+}（线性张成空间）组成相空间。generalization error $\varepsilon$也是微观相关的。给定值的$\varepsilon$可能被不同微观选择的$\boldsymbol{J}$实现。在统计学中，一个重要的量化指标：熵$S$：
+\begin{equation}\label{appa11}
+  S(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})=\ln\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})
+\end{equation}
+显然，在学习之前对于足够大$N$：
+\begin{equation}\label{appa12}
+  S_0(\varepsilon)\sim\frac{N}{2}[1+\ln2\pi\ln\sin^2(\pi\varepsilon)]
+\end{equation}
+熵表现出其广阔特性，即是$N$为系统的自由度。
+
+式\ref{appa12}的前两项是独立于$\varepsilon$的，并且对应$N$维超球面。这对$\Omega(\varepsilon:\boldsymbol{\xi}^{\mu},\boldsymbol{T})$的正则化是相当方便的，为此，我们定义积分测度：
+\begin{equation}\label{appa13}
+  d\mu(\boldsymbol{J})\equiv\frac{d\boldsymbol{J}\delta(\boldsymbol{J}^2-N)}{\int d\boldsymbol{J}\delta(\boldsymbol{J}^2-N)}
+\end{equation}
+以保证$\int d\mu(\boldsymbol{J})=1$。重整化后的熵可以简写为：
+\begin{equation}\label{appa14}
+  S_0(\varepsilon)\sim\frac{N}{2}[\ln\sin^2(\pi\varepsilon)]
+\end{equation}
+
+在学习的过程中，由于训练样本$\boldsymbol{\xi}^{\mu}$的完善，越来越多的$\boldsymbol{J}$被抛出。函数：
+\begin{equation}\label{appa15}
+  \chi(\boldsymbol{J})=\prod_{\mu=1}^p\theta((\frac{1}{\sqrt{N}}\boldsymbol{T}\boldsymbol{\xi}^{\mu})(\frac{1}{\sqrt{N}}\boldsymbol{J}\boldsymbol{\xi}^{\mu}))
+\end{equation}
+取1当所有$\boldsymbol{J}$均被样本分类正确；否则取0。它将作为剩余version space的指标函数。
+
 
 \section{The Gardner Analysis}
 \section{Learning by Minimizing Cost Functions}
